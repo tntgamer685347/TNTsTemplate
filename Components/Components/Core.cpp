@@ -71,8 +71,8 @@ void CoreComponent::InitializeGlobals(HMODULE hModule)
     else
     {
         Console.Write("[Core Module] Initalizing.");
-        GObjects = reinterpret_cast<TArray<UObject*>*>(BaseAddress + Offsets::Globals::Steam::GObjects);
-        GNames = reinterpret_cast<TArray<FNameEntry*>*>(BaseAddress + Offsets::Globals::Steam::GNames);
+        GObjects = reinterpret_cast<TArray<UObject*>*>(BaseAddress + Offsets::Globals::Epic::GObjects);
+        GNames = reinterpret_cast<TArray<FNameEntry*>*>(BaseAddress + Offsets::Globals::Epic::GNames);
 
         if (AreGlobalsValid()) {
             Console.Write("[Core Module] offsets worked! Continuing initialization...");
