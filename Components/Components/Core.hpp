@@ -1,5 +1,6 @@
 #pragma once
 #include "../Component.hpp"
+#include <cstdint> // Required for uintptr_t
 
 // Manages global objects and names, along with initializing a new thread for the mod to run on.
 class CoreComponent : public Component
@@ -20,11 +21,10 @@ public:
 	void DestroyThread();
 	static void InitializeGlobals(HMODULE hModule);
 
-public:
-	static uintptr_t GetGObjects();
-	static uintptr_t GetGNames();
-
 private:
+	// Finds a byte pattern within the main game module.
+	static uintptr_t FindPattern(const char* pattern);
+
 	static bool AreGlobalsValid();
 	static bool AreGObjectsValid();
 	static bool AreGNamesValid();
