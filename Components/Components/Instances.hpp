@@ -65,25 +65,26 @@ public: // Helper functions for class instance grabbing/manipulation.
 	}
 
 	// Get all active instances of a class type. Example: std::vector<APawn*> pawns = GetAllInstancesOf<APawn>();
-	template<typename T> std::vector<T*> GetAllInstancesOf()
+	template<typename T> T* GetInstanceOf()
 	{
-		std::vector<T*> objectInstances;
-
 		if (std::is_base_of<UObject, T>::value)
 		{
-			for (UObject* uObject : *UObject::GObjObjects())
+			// Fix: Start from size() - 1, not size()
+			for (int32_t i = UObject::GObjObjects()->size() - 1; i >= 0; i--)
 			{
+				UObject* uObject = UObject::GObjObjects()->at(i);
+	
 				if (uObject && uObject->IsA<T>())
 				{
 					if (uObject->GetFullName().find("Default__") == std::string::npos)
 					{
-						objectInstances.push_back(static_cast<T*>(uObject));
+						return static_cast<T*>(uObject);
 					}
 				}
 			}
 		}
-
-		return objectInstances;
+	
+		return nullptr;
 	}
 
 	// Get all default instances of a class type.
