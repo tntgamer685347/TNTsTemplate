@@ -5,6 +5,7 @@
 - This Project is based on Snayck's Template
 
 - i dont know what this README sais tbh
+- Pattern scanning is based of RocketDumpers pattern scanning - https://github.com/lchmagKekse/RocketDumper
 
 The filters(folders) in your solution explorer may not be correct / you may have to check your additional includes in the project settings 
 
