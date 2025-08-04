@@ -3,6 +3,11 @@
 #include "Components/Includes.hpp"
 #include <vector> // Required for std::vector
 
+struct CarBoostData {
+    FVector screenPosition;
+    float boostAmount;
+};
+
 class ExampleModule : public Module
 {
 public:
@@ -25,8 +30,9 @@ public:
     static AGameEvent_Soccar_TA* CurrentGameEvent;
 
     // Static vectors to store calculated screen positions
-    static std::vector<FVector> carScreenPositions;
+    static std::vector<CarBoostData> carBoostData;
     static std::vector<FVector> ballScreenPositions;
+    static APRI_TA* localPlayerPRI;
 };
 
 extern class ExampleModule Example;
