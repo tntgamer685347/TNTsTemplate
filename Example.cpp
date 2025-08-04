@@ -87,7 +87,7 @@ void ExampleModule::PlayerTickCalled(const PostEvent& event) {
         APRI_TA* PRI = localPlayer->PRI; //SafeRead<APRI_TA*>((uintptr_t)localPlayer + Offsets::TAGame::PlayerController_TA::PRI);
 
         //get input
-        FVehicleInputs currentInputs = localPlayer->VehicleInput;//SafeRead<FVehicleInputs>((uintptr_t)localPlayer + Offsets::TAGame::PlayerController_TA::VehicleInput);
+        FVehicleInputs currentInputs = SafeRead<FVehicleInputs>((uintptr_t)localPlayer + Offsets::TAGame::PlayerController_TA::VehicleInput);
 
         //change inputs
         FVehicleInputs newInputs = FVehicleInputs();
