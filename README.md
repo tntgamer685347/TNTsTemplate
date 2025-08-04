@@ -1,12 +1,10 @@
 # TNTs-Template
 ### Template for creating Rocket League mods
 `DISCLAIMER: IF YOU USE THIS PROJECT FOR MALICIOUS PURPOSES THAT IS ON YOU :P THIS PROJECT HAS BEEN CREATED FOR SOLELY MODDING THE GAME.`
----
-![image](https://user-images.githubusercontent.com/72645298/234754559-16e1872c-6e7b-4c30-8e31-c2acf1dd5d4d.png)
----
-- This project contains code from ItsBranK's old CodeRedTemplate and has ImGui built in using KieroHook. 
+- This project contains code from ItsBranK's old CodeRedTemplate and has ImGui built in using KieroHook.
+- This Project is based on Snayck's Template
 
-If you dont create your own pattern scan function you can just update the offsets to the latest offsets in the `Core.cpp` file. You can get the latest offsets from https://rl.dumps.host/offsets
+- i dont know what this README sais tbh
 
 The filters(folders) in your solution explorer may not be correct / you may have to check your additional includes in the project settings 
 
