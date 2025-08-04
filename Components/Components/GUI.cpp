@@ -9,6 +9,7 @@
 #include "../ImGui/imgui_impl_win32.h"
 #include "../ImGui/imgui_impl_dx11.h"
 #include "../ImGui/imgui_stdlib.h"
+#include "../../Example.hpp"
 
 typedef HRESULT(__stdcall* Present) (IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags);
 typedef LRESULT(CALLBACK* WNDPROC)(HWND, UINT, WPARAM, LPARAM);
@@ -223,6 +224,10 @@ void GUIComponent::Render()
 	ImGuiIO IO = ImGui::GetIO();
 	GUI.DisplayX = IO.DisplaySize.x;
 	GUI.DisplayY = IO.DisplaySize.y;
+
+	if (Example.IsInGame) {
+		Example.OnRender();
+	}
 
 	IO.MouseDrawCursor = IsOpen;
 	ImGui::SetNextWindowSize(ImVec2(840, 450));

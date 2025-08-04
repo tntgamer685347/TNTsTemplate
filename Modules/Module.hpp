@@ -1,6 +1,7 @@
 #pragma once
 #include "../pch.hpp"
 #include "../Extensions/Includes.hpp"
+#include "../Offsets.hpp"
 
 template<typename T>
 bool TryReadMemory(uintptr_t address, T* result) {

@@ -1,107 +1,83 @@
 #include "Drawing.hpp"
 #include "../Components/Includes.hpp"
-
 #include "../ImGui/imgui.h"
-#include "../ImGui/imgui_impl_win32.h"
-#include "../ImGui/imgui_impl_dx11.h"
 
-#define UCONST_Pi 3.1415926
-#define URotation180  32768 
-#define URotationToRadians  UCONST_Pi / URotation180 
+// This constant is taken directly from your working code.
+#define URotationToRadians 3.1415926535f / 32768.0f
 
+// Vector math helpers from your working code
+inline FVector operator-(const FVector& A, const FVector& B) {
+    return { A.X - B.X, A.Y - B.Y, A.Z - B.Z };
+}
+inline float VectorDotProduct(const FVector& A, const FVector& B) {
+    return A.X * B.X + A.Y * B.Y + A.Z * B.Z;
+}
+
+// Constructor/Destructor are fine
 Drawing::Drawing(const std::string& name, const std::string& description, uint32_t states) : Module(name, description, states) {}
 Drawing::~Drawing() {}
 
 
-
-FVector RotationToVector(FRotator R)
+// =====================================================================================
+// This is the direct implementation of your proven WorldToScreen logic. No prediction.
+// =====================================================================================
+FVector Drawing::CalculateScreenCoordinate(FVector WorldLocation, APlayerController_TA* PC)
 {
-	FVector Vec;
-	float fYaw = R.Yaw * URotationToRadians;
-	float fPitch = R.Pitch * URotationToRadians;
-	float CosPitch = cos(fPitch);
-	Vec.X = cos(fYaw) * CosPitch;
-	Vec.Y = sin(fYaw) * CosPitch;
-	Vec.Z = sin(fPitch);
+    FVector ReturnVec{ 0, 0, 1 }; // Z=1 means off-screen/failed
 
-	return Vec;
+    if (!PC) { return ReturnVec; }
+
+    // --- Step 1: Get Camera Data (Logic from your GetCameraData function) ---
+    uintptr_t cameraAddr = SafeRead<uintptr_t>((uintptr_t)PC + Offsets::Engine::PlayerController::PlayerCamera);
+    if (!cameraAddr) {
+        return ReturnVec;
+    }
+
+    FVector cameraLocation = SafeRead<FVector>(cameraAddr + Offsets::Engine::Actor::Location);
+    FRotator cameraRotation = SafeRead<FRotator>(cameraAddr + Offsets::Engine::Actor::Rotation);
+    float cameraFOV = SafeRead<float>(cameraAddr + Offsets::Engine::Camera::DefaultFOV);
+
+    // Critical safety check from your code to prevent crashes
+    if (cameraFOV <= 1.0f) {
+        cameraFOV = 90.0f;
+    }
+
+    // --- Step 2: World-to-Screen Math (Logic from your WorldToScreen function) ---
+    INT32 ViewportSizeX = GUI.DisplayX;
+    INT32 ViewportSizeY = GUI.DisplayY;
+    if (ViewportSizeX <= 0 || ViewportSizeY <= 0) {
+        return ReturnVec;
+    }
+
+    float SY = sin(cameraRotation.Yaw * URotationToRadians);
+    float CY = cos(cameraRotation.Yaw * URotationToRadians);
+    float SP = sin(cameraRotation.Pitch * URotationToRadians);
+    float CP = cos(cameraRotation.Pitch * URotationToRadians);
+
+    FVector AxisX = { CP * CY, CP * SY, SP };
+    FVector AxisY = { -SY, CY, 0 };
+    FVector AxisZ = { -SP * CY, -SP * SY, CP };
+
+    FVector Delta = WorldLocation - cameraLocation;
+    FVector Transformed;
+    Transformed.X = VectorDotProduct(Delta, AxisY);
+    Transformed.Y = VectorDotProduct(Delta, AxisZ);
+    Transformed.Z = VectorDotProduct(Delta, AxisX);
+
+    if (Transformed.Z < 1.0f) {
+        return ReturnVec; // Object is behind the camera
+    }
+
+    // --- Step 3: Projection onto Screen ---
+    float FOVRadians = cameraFOV * (3.14159265f / 180.0f);
+    float TanHalfFOV = tan(FOVRadians / 2.0f);
+
+    float ScreenCenterX = ViewportSizeX / 2.0f;
+    float ScreenCenterY = ViewportSizeY / 2.0f;
+
+    ReturnVec.X = ScreenCenterX + Transformed.X * (ScreenCenterX / TanHalfFOV) / Transformed.Z;
+    ReturnVec.Y = ScreenCenterY - Transformed.Y * (ScreenCenterX / TanHalfFOV) / Transformed.Z;
+    ReturnVec.Z = 0; // Z=0 indicates success and on-screen
+
+    return ReturnVec;
 }
-
-float Size(FVector& v)
-{
-	return sqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
-}
-
-void Normalize(FVector& v)
-{
-	float size = Size(v);
-
-	if (!size)
-	{
-		v.X = v.Y = v.Z = 1;
-	}
-	else
-	{
-		v.X /= size;
-		v.Y /= size;
-		v.Z /= size;
-	}
-}
-
-void inline GetAxes(FRotator R, FVector& X, FVector& Y, FVector& Z)
-{
-	X = RotationToVector(R);
-	Normalize(X);
-	R.Yaw += 16384;
-	FRotator R2 = R;
-	R2.Pitch = 0.f;
-	Y = RotationToVector(R2);
-	Normalize(Y);
-	Y.Z = 0.f;
-	R.Yaw -= 16384;
-	R.Pitch += 16384;
-	Z = RotationToVector(R);
-	Normalize(Z);
-}
-
-FLOAT VectorDotProduct(FVector* pV1, FVector* pV2)
-{
-	return ((pV1->X * pV2->X) + (pV1->Y * pV2->Y) + (pV1->Z * pV2->Z));
-}
-FVector* VectorSubtract(FVector* pOut, FVector* pV1, FVector* pV2)
-{
-	pOut->X = pV1->X - pV2->X;
-	pOut->Y = pV1->Y - pV2->Y;
-	pOut->Z = pV1->Z - pV2->Z;
-
-	return pOut;
-}
-
-FVector Drawing::CalculateScreenCoordinate(FVector Location)
-{
-	APlayerController* aPC = Instances.IAPlayerController();
-	FVector Return;
-
-	FVector AxisX, AxisY, AxisZ, Delta, Transformed;
-	FRotator MYCam = aPC->PlayerCamera->Rotation;
-
-	GetAxes(MYCam, AxisX, AxisY, AxisZ);
-
-
-	VectorSubtract(&Delta, &Location, &aPC->PlayerCamera->Location);
-	Transformed.X = VectorDotProduct(&Delta, &AxisY);
-	Transformed.Y = VectorDotProduct(&Delta, &AxisZ);
-	Transformed.Z = VectorDotProduct(&Delta, &AxisX);
-
-	if (Transformed.Z < 1.00f)
-		Transformed.Z = 1.00f;
-
-	float FOVAngle = aPC->PlayerCamera->GetFOVAngle();
-
-	Return.X = (GUI.DisplayX / 2.0f) + Transformed.X * ((GUI.DisplayX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.Z;
-	Return.Y = (GUI.DisplayY / 2.0f) + -Transformed.Y * ((GUI.DisplayY / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.Z;
-	Return.Z = 0;
-
-	return Return;
-}
-
