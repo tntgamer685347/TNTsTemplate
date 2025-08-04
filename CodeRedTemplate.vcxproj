@@ -217,6 +217,7 @@
     <ClInclude Include="Extensions\Extensions\Memory.hpp" />
     <ClInclude Include="Extensions\Extensions\UnrealMemory.hpp" />
     <ClInclude Include="Extensions\Includes.hpp" />
+    <ClInclude Include="Functions.hpp" />
     <ClInclude Include="ImGui\imconfig.h" />
     <ClInclude Include="ImGui\imgui.h" />
     <ClInclude Include="ImGui\imgui_impl_dx11.h" />

@@ -367,6 +367,9 @@
     <ClInclude Include="Example.hpp">
       <Filter>Modules\Mods</Filter>
     </ClInclude>
+    <ClInclude Include="Functions.hpp">
+      <Filter>CodeRed</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="Detours\detours.lib">

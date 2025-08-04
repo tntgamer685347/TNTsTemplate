@@ -1,6 +1,7 @@
 #pragma once
 #include "Modules/Module.hpp"
 #include "Components/Includes.hpp"
+#include <vector> // Required for std::vector
 
 class ExampleModule : public Module
 {
@@ -10,6 +11,7 @@ public:
 
     void OnCreate();
     void OnDestroy();
+    void OnRender(); // Add the OnRender function declaration
 
     static void Hook();
 
@@ -21,6 +23,10 @@ public:
 
     static bool IsInGame;
     static AGameEvent_Soccar_TA* CurrentGameEvent;
+
+    // Static vectors to store calculated screen positions
+    static std::vector<FVector> carScreenPositions;
+    static std::vector<FVector> ballScreenPositions;
 };
 
 extern class ExampleModule Example;

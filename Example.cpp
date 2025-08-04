@@ -1,14 +1,18 @@
 #include "Example.hpp"
 #include "Offsets.hpp"
+#include "Modules/Mods/Drawing.hpp"
+#include "ImGui/imgui.h"
 
 bool ExampleModule::IsInGame = false;
 AGameEvent_Soccar_TA* ExampleModule::CurrentGameEvent = nullptr;
+std::vector<FVector> ExampleModule::carScreenPositions;
+std::vector<FVector> ExampleModule::ballScreenPositions;
 
 void ExampleModule::Hook() {
-	Events.HookEventPre("Function TAGame.GameEvent_Soccar_TA.PostBeginPlay", OnGameEventStart);
-	Events.HookEventPre("Function TAGame.GameEvent_Soccar_TA.Destroyed", OnGameEventDestroyed);
-	Events.HookEventPre("Function TAGame.GameEvent_Soccar_TA.Active.BeginState", OnGameEventStart);
-	Events.HookEventPre("Function TAGame.GameEvent_Soccar_TA.Countdown.BeginState", OnGameEventStart);
+    Events.HookEventPre("Function TAGame.GameEvent_Soccar_TA.PostBeginPlay", OnGameEventStart);
+    Events.HookEventPre("Function TAGame.GameEvent_Soccar_TA.Destroyed", OnGameEventDestroyed);
+    Events.HookEventPre("Function TAGame.GameEvent_Soccar_TA.Active.BeginState", OnGameEventStart);
+    Events.HookEventPre("Function TAGame.GameEvent_Soccar_TA.Countdown.BeginState", OnGameEventStart);
     Events.HookEventPost("Function TAGame.PlayerController_TA.PlayerTick", PlayerTickCalled);
 }
 
@@ -18,6 +22,8 @@ void ExampleModule::OnGameEventDestroyed(PreEvent& event)
     {
         CurrentGameEvent = nullptr;
         IsInGame = false;
+        carScreenPositions.clear();
+        ballScreenPositions.clear();
     }
     catch (...) { Console.Error("GameEventHook: Exception in OnGameEventDestroyed"); }
 }
@@ -43,48 +49,49 @@ void ExampleWriteToController(FVehicleInputs inputs, APlayerController_TA* playe
 }
 
 void ExampleModule::PlayerTickCalled(const PostEvent& event) {
-    if (!event.Caller() || !event.Caller()->IsA(APlayerController_TA::StaticClass()) || !CurrentGameEvent) {
+    if (!IsInGame || !CurrentGameEvent || !event.Caller() || !event.Caller()->IsA(APlayerController_TA::StaticClass())) {
         return;
     }
 
-    //check game event
-    if (!CurrentGameEvent) { return; }
+    carScreenPositions.clear();
+    ballScreenPositions.clear();
 
-    //get cars
+    TArray<APlayerController_TA*> localPlayers = CurrentGameEvent->LocalPlayers;//SafeRead<TArray<APlayerController_TA*>>((uintptr_t)CurrentGameEvent + Offsets::TAGame::GameEvent_TA::LocalPlayers);
+    if (localPlayers.size() == 0 || !localPlayers[0]) {
+        return;
+    }
+    APlayerController_TA* localPlayerController = localPlayers[0];
+
     TArray<ACar_TA*> cars = SafeRead<TArray<ACar_TA*>>((uintptr_t)CurrentGameEvent + Offsets::TAGame::GameEvent_TA::Cars);
-    //get balls
     TArray<ABall_TA*> balls = SafeRead<TArray<ABall_TA*>>((uintptr_t)CurrentGameEvent + Offsets::TAGame::GameEvent_Soccar_TA::GameBalls);
-    // get localPlayers
-    TArray<APlayerController_TA*> localPlayers = SafeRead<TArray<APlayerController_TA*>>((uintptr_t)CurrentGameEvent + Offsets::TAGame::GameEvent_TA::LocalPlayers); 
 
-
+    // get all cars and save in list.
     for (ACar_TA* car : cars) {
-        // example for car data
+        if (!car) continue;
         FVector carLocation = SafeRead<FVector>((uintptr_t)car + Offsets::Engine::Actor::Location);
-        FVector carVelocity = SafeRead<FVector>((uintptr_t)car + Offsets::Engine::Actor::Velocity);
-        FRotator carRotation = SafeRead<FRotator>((uintptr_t)car + Offsets::Engine::Actor::Rotation);
-        FVector carAngularVelocity = SafeRead<FVector>((uintptr_t)car + Offsets::Engine::Actor::AngularVelocity);
+        FVector screenPos = Drawing::CalculateScreenCoordinate(carLocation, localPlayerController);
+        carScreenPositions.push_back(screenPos);
+    }
 
-        //playerName
-        APRI_TA* carPRI = SafeRead<APRI_TA*>((uintptr_t)car + Offsets::TAGame::Vehicle_TA::PRI);
-        std::string playerName = SafeRead<FString>((uintptr_t)carPRI + Offsets::Engine::PlayerReplicationInfo::PlayerName).ToString();
-
-        ACarComponent_Boost_TA* boostComponent = SafeRead<ACarComponent_Boost_TA*>((uintptr_t)car + Offsets::TAGame::Vehicle_TA::BoostComponent);
-        int boostAmount = SafeRead<float>((uintptr_t)boostComponent + Offsets::TAGame::CarComponent_Boost_TA::CurrentBoostAmount) * 100;
-
-        Console.Write("Player " + playerName + ": " + std::to_string(boostAmount));
-
+    // get all balls and save in list.
+    for (ABall_TA* ball : balls) {
+        if (!ball) continue;
+        FVector ballLocation = SafeRead<FVector>((uintptr_t)ball + Offsets::Engine::Actor::Location);
+        FVector screenPos = Drawing::CalculateScreenCoordinate(ballLocation, localPlayerController);
+        ballScreenPositions.push_back(screenPos);
     }
 
     for (APlayerController_TA* localPlayer : localPlayers) {
-        ACar_TA* car = SafeRead<ACar_TA*>((uintptr_t)localPlayer + Offsets::TAGame::PlayerController_TA::Car);
-        APRI_TA* PRI = SafeRead<APRI_TA*>((uintptr_t)localPlayer + Offsets::TAGame::PlayerController_TA::PRI);
+        // example for getting Car/PRI
+        ACar_TA* car = localPlayer->Car;//SafeRead<ACar_TA*>((uintptr_t)localPlayer + Offsets::TAGame::PlayerController_TA::Car);
+        APRI_TA* PRI = localPlayer->PRI; //SafeRead<APRI_TA*>((uintptr_t)localPlayer + Offsets::TAGame::PlayerController_TA::PRI);
 
-        FVehicleInputs currentInputs = SafeRead<FVehicleInputs>((uintptr_t)localPlayer + Offsets::TAGame::PlayerController_TA::VehicleInput);
+        //get input
+        FVehicleInputs currentInputs = localPlayer->VehicleInput;//SafeRead<FVehicleInputs>((uintptr_t)localPlayer + Offsets::TAGame::PlayerController_TA::VehicleInput);
 
-        // write currentinputs - idea was: {example make throttle to one for every localPlayer (and keep everything else how the player has set it)} but the tought is new coders will shit themselves about this
+        //change inputs
         FVehicleInputs newInputs = FVehicleInputs();
-        newInputs.Throttle = currentInputs.Throttle; //newInputs.Throttle = 1.0;
+        newInputs.Throttle = currentInputs.Throttle;
         newInputs.bActivateBoost = currentInputs.bActivateBoost;
         newInputs.bHoldingBoost = currentInputs.bHoldingBoost;
         newInputs.bHandbrake = currentInputs.bHandbrake;
@@ -96,25 +103,31 @@ void ExampleModule::PlayerTickCalled(const PostEvent& event) {
         newInputs.Yaw = currentInputs.Yaw;
         newInputs.Roll = currentInputs.Roll;
         newInputs.Steer = currentInputs.Steer;
+
+        //write it back
         ExampleWriteToController(newInputs, localPlayer);
     }
+}
 
-    for (ABall_TA* ball : balls) {
-        FVector ballLocation = SafeRead<FVector>((uintptr_t)ball + Offsets::Engine::Actor::Location);
-        FVector ballVelocity = SafeRead<FVector>((uintptr_t)ball + Offsets::Engine::Actor::Velocity);
-        FRotator ballRotation = SafeRead<FRotator>((uintptr_t)ball + Offsets::Engine::Actor::Rotation);
-        FVector ballAngularVelocity = SafeRead<FVector>((uintptr_t)ball + Offsets::Engine::Actor::AngularVelocity);
-
-        // this is just an example with the offsets as its the most reliable. its also possible to do stuff like this:
-        FVector ballLocationFromPointer = ball->Location; 
-        FVector ballVelocityFromPointer = ball->Velocity;
-        FRotator ballRotationFromPointer = ball->Rotation;
-        FVector ballAngularVelocityFromPointer = ball->AngularVelocity;
-        // be carefull tho, if pointers arent valid (can happen because sdk generators arent perfect) it could crash the game.
-        // and also it can return junk data.
+void ExampleModule::OnRender() {
+    if (!IsInGame) {
+        return;
     }
 
-    
+    ImDrawList* drawList = ImGui::GetBackgroundDrawList();
+
+    // draw circle at ball and car positions
+    for (const FVector& screenPos : carScreenPositions) {
+        if (screenPos.Z == 0) {
+            drawList->AddCircleFilled(ImVec2(screenPos.X, screenPos.Y), 5.f, IM_COL32(255, 0, 0, 255));
+        }
+    }
+
+    for (const FVector& screenPos : ballScreenPositions) {
+        if (screenPos.Z == 0) {
+            drawList->AddCircleFilled(ImVec2(screenPos.X, screenPos.Y), 8.f, IM_COL32(0, 255, 0, 255));
+        }
+    }
 }
 
 ExampleModule::ExampleModule() : Module("GameEventHook", "Hooks into game events", States::STATES_All) {
@@ -131,8 +144,8 @@ void ExampleModule::OnDestroy() {
 }
 
 void ExampleModule::Initialize() {
-	Hook();
-	Console.Write("ExampleModule Initalized.");
+    Hook();
+    Console.Write("ExampleModule Initalized.");
 }
 
-extern class ExampleModule Example;
+ExampleModule Example;
