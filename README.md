@@ -1,5 +1,5 @@
 # TNTs-Template
-### Template for creating Rocket League mods
+### Template for creating Rocket League mods (you need to build it in Release x64)
 `DISCLAIMER: IF YOU USE THIS PROJECT FOR MALICIOUS PURPOSES THAT IS ON YOU :P THIS PROJECT HAS BEEN CREATED FOR SOLELY MODDING THE GAME.`
 - This project contains code from ItsBranK's old CodeRedTemplate and has ImGui built in using KieroHook.
 - This Project is based on Snayck's Template
