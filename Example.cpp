@@ -50,11 +50,6 @@ void ExampleModule::OnGameEventStart(PreEvent& event)
     catch (...) { Console.Error("GameEventHook: Exception in OnGameEventStart"); }
 }
 
-void ExampleWriteToController(FVehicleInputs inputs, APlayerController_TA* player) {
-    uintptr_t inputAddress = (uintptr_t)player + Offsets::TAGame::PlayerController_TA::VehicleInput;
-    SafeWrite<FVehicleInputs>(inputAddress, inputs);
-}
-
 void ExampleModule::PlayerTickCalled(const PostEvent& event) {
     if (!IsInGame || !CurrentGameEvent || !event.Caller() || !event.Caller()->IsA(APlayerController_TA::StaticClass())) {
         return;
@@ -80,24 +75,6 @@ void ExampleModule::PlayerTickCalled(const PostEvent& event) {
 
         //get input
         FVehicleInputs currentInputs = SafeRead<FVehicleInputs>((uintptr_t)localPlayer + Offsets::TAGame::PlayerController_TA::VehicleInput);
-
-        //change inputs (or not)
-        FVehicleInputs newInputs = FVehicleInputs();
-        newInputs.Throttle = currentInputs.Throttle;
-        newInputs.bActivateBoost = currentInputs.bActivateBoost;
-        newInputs.bHoldingBoost = currentInputs.bHoldingBoost;
-        newInputs.bHandbrake = currentInputs.bHandbrake;
-        newInputs.bJump = currentInputs.bJump;
-        newInputs.bJumped = currentInputs.bJumped;
-        newInputs.DodgeForward = currentInputs.DodgeForward;
-        newInputs.DodgeRight = currentInputs.DodgeRight;
-        newInputs.Pitch = currentInputs.Pitch;
-        newInputs.Yaw = currentInputs.Yaw;
-        newInputs.Roll = currentInputs.Roll;
-        newInputs.Steer = currentInputs.Steer;
-
-        //write it back
-        ExampleWriteToController(newInputs, localPlayer);
     }
 
     // get all cars with boost data
@@ -227,5 +204,6 @@ void ExampleModule::Initialize() {
     Hook();
     Console.Write("ExampleModule Initalized.");
 }
+
 
 ExampleModule Example;
