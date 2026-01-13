@@ -1,18 +1,21 @@
 /*
 #############################################################################################
-# RocketLeague (1.0.10897.0) SDK
-# Generated with the CodeRedGenerator v1.0.2
+# Rocket League SDK (RLSDK) Season 20 (v2.61)
+# Generated with CodeRedGenerator v1.1.5 on 11/05/2025 07:11PM
 # ========================================================================================= #
 # File: Core_classes.hpp
 # ========================================================================================= #
-# Credits: TheFeckless, ItsBranK
-# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
+# Psyonix Build ID: 251020.62592.500294
+# Build Date: Oct 20 2025 19:02:19
+# ========================================================================================= #
+# Credits: ItsBranK, TheFeckless, SSLow
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, discord.gg/d5ahhQmJbJ
 #############################################################################################
 */
 #pragma once
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+#pragma pack(push, 0x1)
 #endif
 
 /*
@@ -21,28 +24,28 @@
 # ========================================================================================= #
 */
 
-#define CONST_ZeroRotator                                       Rot(0,0,0)
-#define CONST_ZeroVector                                        Vect(0,0,0)
-#define CONST_UpVector                                          Vect(0,0,1)
-#define CONST_RightVector                                       Vect(0,1,0)
-#define CONST_ForwardVector                                     Vect(1,0,0)
-#define CONST_InvAspectRatio16x9                                0.56249
-#define CONST_InvAspectRatio5x4                                 0.8
-#define CONST_InvAspectRatio4x3                                 0.75
-#define CONST_AspectRatio16x9                                   1.77778
-#define CONST_AspectRatio5x4                                    1.25
-#define CONST_AspectRatio4x3                                    1.33333
-#define CONST_INDEX_NONE                                        -1
-#define CONST_UnrRotToDeg                                       0.00549316540360483
-#define CONST_DegToUnrRot                                       182.0444
-#define CONST_RadToUnrRot                                       10430.3783504704527
-#define CONST_UnrRotToRad                                       0.00009587379924285
-#define CONST_DegToRad                                          0.017453292519943296
-#define CONST_RadToDeg                                          57.295779513082321600
-#define CONST_Pi                                                3.1415926535897932
-#define CONST_MaxQWORD                                          0xFFFFFFFFFFFFFFFF
-#define CONST_MinInt                                            0x80000000
-#define CONST_MaxInt                                            0x7fffffff
+#define CONST_ZeroRotator                                 Rot(0,0,0)
+#define CONST_ZeroVector                                  Vect(0,0,0)
+#define CONST_UpVector                                    Vect(0,0,1)
+#define CONST_RightVector                                 Vect(0,1,0)
+#define CONST_ForwardVector                               Vect(1,0,0)
+#define CONST_InvAspectRatio16x9                          0.56249
+#define CONST_InvAspectRatio5x4                           0.8
+#define CONST_InvAspectRatio4x3                           0.75
+#define CONST_AspectRatio16x9                             1.77778
+#define CONST_AspectRatio5x4                              1.25
+#define CONST_AspectRatio4x3                              1.33333
+#define CONST_INDEX_NONE                                  -1
+#define CONST_UnrRotToDeg                                 0.00549316540360483
+#define CONST_DegToUnrRot                                 182.0444
+#define CONST_RadToUnrRot                                 10430.3783504704527
+#define CONST_UnrRotToRad                                 0.00009587379924285
+#define CONST_DegToRad                                    0.017453292519943296
+#define CONST_RadToDeg                                    57.295779513082321600
+#define CONST_Pi                                          3.1415926535897932
+#define CONST_MaxQWORD                                    0xFFFFFFFFFFFFFFFF
+#define CONST_MinInt                                      0x80000000
+#define CONST_MaxInt                                      0x7fffffff
 
 /*
 # ========================================================================================= #
@@ -484,7 +487,7 @@ enum class EContentKeyIndex_PrimeUpdate35C : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate36
-enum class EContentKeyIndex_PrimeUpdate36_0 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate36 : uint8_t
 {
 	PrimeUpdate36_BD02DFB4BA13F3A1C777309414664BD5     = 0,
 	PrimeUpdate36_96D8832E6CBAC01E4D931B3548C8B6CD     = 1,
@@ -524,7 +527,7 @@ enum class EContentKeyIndex_PrimeUpdate36_0 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate36
-enum class EContentKeyIndex_PrimeUpdate36_1 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate36_2 : uint8_t
 {
 	PrimeUpdate36_1_467BBC80C4360BDAEF091CA61DF71FD9   = 0,
 	PrimeUpdate36_1_AC04D31B9DAD00095CE5910C5F6CE072   = 1,
@@ -537,7 +540,7 @@ enum class EContentKeyIndex_PrimeUpdate36_1 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate36
-enum class EContentKeyIndex_PrimeUpdate36_2 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate36_3 : uint8_t
 {
 	PrimeUpdate36_2_BCF72246CE09BB12CDD66EF72732FFC7   = 0,
 	PrimeUpdate36_2_06432D3A1558F6E8EA6605EAB69D66A1   = 1,
@@ -545,7 +548,7 @@ enum class EContentKeyIndex_PrimeUpdate36_2 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate37
-enum class EContentKeyIndex_PrimeUpdate37_0 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate37 : uint8_t
 {
 	PrimeUpdate37_C60B25EC20D29B0FE699ACB6DFEBE550     = 0,
 	PrimeUpdate37_64DC68F90CF2281F000D1F112842BEF5     = 1,
@@ -562,7 +565,7 @@ enum class EContentKeyIndex_PrimeUpdate37_0 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate37
-enum class EContentKeyIndex_PrimeUpdate37_1 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate37_2 : uint8_t
 {
 	PrimeUpdate37_1_A35B6EED2A82E8A6C16B36C1942DEE94   = 0,
 	PrimeUpdate37_1_E08A2E1906A83AF70BDB14C01B413788   = 1,
@@ -574,7 +577,7 @@ enum class EContentKeyIndex_PrimeUpdate37_1 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate37
-enum class EContentKeyIndex_PrimeUpdate37_2 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate37_3 : uint8_t
 {
 	PrimeUpdate37_2_34241E8C41EF7AA005DD4CBB9512D6CC   = 0,
 	PrimeUpdate37_2_930CF89BB70BBACD1A197C424E596A70   = 1,
@@ -603,7 +606,7 @@ enum class EContentKeyIndex_PrimeUpdate37_2 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate38
-enum class EContentKeyIndex_PrimeUpdate38_0 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate38 : uint8_t
 {
 	PrimeUpdate38_8D82153A816BE5FDFB750D3863064110     = 0,
 	PrimeUpdate38_3D01F0EC1174B5420EF917F8ED2FE74B     = 1,
@@ -625,7 +628,7 @@ enum class EContentKeyIndex_PrimeUpdate38_0 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate38
-enum class EContentKeyIndex_PrimeUpdate38_1 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate38_2 : uint8_t
 {
 	PrimeUpdate38_1_34B3E2366B1725E584146D0FAD1700F9   = 0,
 	PrimeUpdate38_1_70812A493AB87B93ABECC7B119B0F6CC   = 1,
@@ -646,7 +649,7 @@ enum class EContentKeyIndex_PrimeUpdate38_1 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate39
-enum class EContentKeyIndex_PrimeUpdate39_0 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate39 : uint8_t
 {
 	PrimeUpdate39_56421AAC43705872D01BED0B45A1B0E6     = 0,
 	PrimeUpdate39_357448C26C4CB1BB2455CE4D23B15B6F     = 1,
@@ -671,7 +674,7 @@ enum class EContentKeyIndex_PrimeUpdate39_0 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate39
-enum class EContentKeyIndex_PrimeUpdate39_1 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate39_2 : uint8_t
 {
 	PrimeUpdate39_1_5E8D9027C3059552E1664170E791A1B3   = 0,
 	PrimeUpdate39_1_3BEAE926AE33C0BF8F95782CB4B36A4A   = 1,
@@ -697,7 +700,7 @@ enum class EContentKeyIndex_PrimeUpdate39_1 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate40
-enum class EContentKeyIndex_PrimeUpdate40_0 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate40 : uint8_t
 {
 	PrimeUpdate40_8C2237625A781A11D2F3F89FEB5049E6     = 0,
 	PrimeUpdate40_7FE4E4CE92A9C8467009C6BCF579BA99     = 1,
@@ -734,7 +737,7 @@ enum class EContentKeyIndex_PrimeUpdate40_0 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate40
-enum class EContentKeyIndex_PrimeUpdate40_1 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate40_2 : uint8_t
 {
 	PrimeUpdate40_1_250828A4E25377F0718BF942E3FB9017   = 0,
 	PrimeUpdate40_1_C4077BE4699B9B2D99DDC6DE7722DA09   = 1,
@@ -1100,7 +1103,7 @@ enum class EContentKeyIndex_PrimeUpdate51 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate52
-enum class EContentKeyIndex_PrimeUpdate52_0 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate52 : uint8_t
 {
 	PrimeUpdate52_20DBACB07637B0BF52D3176CFF0E2571     = 0,
 	PrimeUpdate52_707375B1DE920C184A32B35B08DF9410     = 1,
@@ -1153,7 +1156,7 @@ enum class EContentKeyIndex_PrimeUpdate52_0 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate52
-enum class EContentKeyIndex_PrimeUpdate52_1 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate52_2 : uint8_t
 {
 	PrimeUpdate52_1_EF263948D644E9A83B3252D7B6F88630   = 0,
 	PrimeUpdate52_1_41539D0E082BC098D8F008763090F935   = 1,
@@ -1171,7 +1174,7 @@ enum class EContentKeyIndex_PrimeUpdate52_1 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate53
-enum class EContentKeyIndex_PrimeUpdate53_0 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate53 : uint8_t
 {
 	PrimeUpdate53_6E764DE413BA6A55D6B66586786ED795     = 0,
 	PrimeUpdate53_235382A64AC7D959F54DF189CEA87A0C     = 1,
@@ -1233,7 +1236,7 @@ enum class EContentKeyIndex_PrimeUpdate53_0 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate53
-enum class EContentKeyIndex_PrimeUpdate53_1 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate53_2 : uint8_t
 {
 	PrimeUpdate53_1_9A21C9B48D0C745501AB402F2A228943   = 0,
 	PrimeUpdate53_1_59BDC107CA86C551D576B63FCE32518E   = 1,
@@ -1249,7 +1252,7 @@ enum class EContentKeyIndex_PrimeUpdate53_1 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate54
-enum class EContentKeyIndex_PrimeUpdate54_0 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate54 : uint8_t
 {
 	PrimeUpdate54_826F6FA359F7C7775EC72F2A5791CF07     = 0,
 	PrimeUpdate54_03B64EFE46CE9C432AF23B832A94D8AA     = 1,
@@ -1285,7 +1288,7 @@ enum class EContentKeyIndex_PrimeUpdate54_0 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate54
-enum class EContentKeyIndex_PrimeUpdate54_1 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate54_2 : uint8_t
 {
 	PrimeUpdate54_1_E571A7EDCD3D444441D9A8DCFB639FBB   = 0,
 	PrimeUpdate54_1_BB062E21E1F2D3E5398A1719C8BAC76F   = 1,
@@ -1318,7 +1321,7 @@ enum class EContentKeyIndex_PrimeUpdate54_1 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate55
-enum class EContentKeyIndex_PrimeUpdate55_0 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate55 : uint8_t
 {
 	PrimeUpdate55_507A85E75F2520DE99813E791B31F03E     = 0,
 	PrimeUpdate55_F80054A36B107942DE103AAF5C21CCA7     = 1,
@@ -1354,7 +1357,7 @@ enum class EContentKeyIndex_PrimeUpdate55_0 : uint8_t
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate55
-enum class EContentKeyIndex_PrimeUpdate55_1 : uint8_t
+enum class EContentKeyIndex_PrimeUpdate55_2 : uint8_t
 {
 	PrimeUpdate55_1_2129B40354B9CCE9BDD4B430F8B96737   = 0,
 	PrimeUpdate55_1_CFD3ED2D3229BAF8800F3729D87FA223   = 1,
@@ -1382,6 +1385,65 @@ enum class EContentKeyIndex_PrimeUpdate55_1 : uint8_t
 	PrimeUpdate55_1_726A5B42756747A3F09FF035FBF48EBF   = 23,
 	PrimeUpdate55_1_DE151F6CF81375A771837E540297AA17   = 24,
 	PrimeUpdate55_1_END                                = 25
+};
+
+// Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate56
+enum class EContentKeyIndex_PrimeUpdate56 : uint8_t
+{
+	PrimeUpdate56_41164ED7BDB3F19F21984E0CA10E7C4F     = 0,
+	PrimeUpdate56_C39A48D8A6C08977D55A012BCB13B4D3     = 1,
+	PrimeUpdate56_3209B1937EE66C52D3C1C9216DAC6DB8     = 2,
+	PrimeUpdate56_F3D7A74E3BFDC5D6DFCA45C02F7F7729     = 3,
+	PrimeUpdate56_D79B716521C1174E1FB3FEA6526DECCE     = 4,
+	PrimeUpdate56_6A6AF48FDBD512FA1815A884B952D7A5     = 5,
+	PrimeUpdate56_4BABC8A394750FC25CBDFE31876FD96F     = 6,
+	PrimeUpdate56_C66CB49EA9A9F5AA0099A5406D5D9A79     = 7,
+	PrimeUpdate56_A8D9E7F0372D5FF478154844495FF835     = 8,
+	PrimeUpdate56_C51F2C37FF6CD0108A888AF8CF447F6A     = 9,
+	PrimeUpdate56_13D612D80D63D9D975FA38F60CF88EF2     = 10,
+	PrimeUpdate56_EA5F698DB93ED8C2C27500A497CC2A40     = 11,
+	PrimeUpdate56_8B17C2CAB0CB2B0B152234E45F57D553     = 12,
+	PrimeUpdate56_A48A643DF3A0A727DFD26FAB7EE17389     = 13,
+	PrimeUpdate56_A657ACD394228B2D30E163C349E765B5     = 14,
+	PrimeUpdate56_36669216607B23BD4CA991E82B0F89D1     = 15,
+	PrimeUpdate56_1448C54AF70B6FCCBBCE27EA4B490FF3     = 16,
+	PrimeUpdate56_1E5D9B8D9EB024763D31A07DD1207C91     = 17,
+	PrimeUpdate56_FB23DD57EC3E5E45284E0A5C5ECD624E     = 18,
+	PrimeUpdate56_44CDDD1AF555CAA4D5F62052C757F177     = 19,
+	PrimeUpdate56_28BE02880F6263D0E79FC8B06358FE8A     = 20,
+	PrimeUpdate56_379D4A55A1DDFBE206EC66A67B5E4E51     = 21,
+	PrimeUpdate56_8FF3FC0D6F12F3D2B5DEFF7FEFFCE13F     = 22,
+	PrimeUpdate56_4F9D85A4DAAC2ADC767DE907A782F6D0     = 23,
+	PrimeUpdate56_F85BF95681F2B190DB7CE719FC4F2D4B     = 24,
+	PrimeUpdate56_72245A3AA2009FDCADE521458E9E03E7     = 25,
+	PrimeUpdate56_E83BEBA1D39472EB242EDB0F36E5D705     = 26,
+	PrimeUpdate56_7885584A2661BF346EA285C88957C5A5     = 27,
+	PrimeUpdate56_A43BAB4FD129D0AB1A42BBD3D1DFFB9F     = 28,
+	PrimeUpdate56_D41F80EA1BEF3C55560464959F9B5FFA     = 29,
+	PrimeUpdate56_92A777E7448F613619B98E4FD3AD056D     = 30,
+	PrimeUpdate56_END                                  = 31
+};
+
+// Enum Core._Types_Generated.EContentKeyIndex_PrimeUpdate56
+enum class EContentKeyIndex_PrimeUpdate56_2 : uint8_t
+{
+	PrimeUpdate56_1_896B373E087312595DC2069EA6D5DA07   = 0,
+	PrimeUpdate56_1_CB48A3ACAD6423347398F9E6F1ABEF74   = 1,
+	PrimeUpdate56_1_0380EA1D644D01067143696D98E4FFF5   = 2,
+	PrimeUpdate56_1_581078461AD3FF32419AF3787B2EF131   = 3,
+	PrimeUpdate56_1_57868B1385B592B8BAC09FF81F92DAFC   = 4,
+	PrimeUpdate56_1_91E14D7DBE50DC74B0B7EC413D433520   = 5,
+	PrimeUpdate56_1_F8309D87AC624C7FABCBD26BF092B096   = 6,
+	PrimeUpdate56_1_D985EB29501130EF0258BAEC9F8753A4   = 7,
+	PrimeUpdate56_1_70757702C36103D31C78EBE98D89F80B   = 8,
+	PrimeUpdate56_1_065D29EFF6BC77CA28090627875EEAC3   = 9,
+	PrimeUpdate56_1_8640AA8D5CAAA240E3D6300C10967E64   = 10,
+	PrimeUpdate56_1_844E6B4885D1F0C04144A3E7705F37C1   = 11,
+	PrimeUpdate56_1_A098760F160F2A4CB8C32E1F2D93F380   = 12,
+	PrimeUpdate56_1_F0B1115B1657E08474CCEC5F42FDDC1E   = 13,
+	PrimeUpdate56_1_987C7B7935F7579D4DC0EA99743F8D1C   = 14,
+	PrimeUpdate56_1_CB733CC55DA67D6AFE853A68DC706CA4   = 15,
+	PrimeUpdate56_1_END                                = 16
 };
 
 // Enum Core._Types_Generated.EContentKeyIndex_ContinuousIntegration
@@ -1436,7 +1498,7 @@ public:
 	int32_t                                            ObjectInternalInteger;                         // 0x0038 (0x0004) [0x0000000000821002] (CPF_Const | CPF_Native | CPF_EditConst | CPF_NoExport)
 	int32_t                                            NetIndex;                                      // 0x003C (0x0004) [0x0000000000821002] (CPF_Const | CPF_Native | CPF_EditConst | CPF_NoExport)
 	class UObject*                                     Outer;                                         // 0x0040 (0x0008) [0x0000000000021002] (CPF_Const | CPF_Native | CPF_EditConst)
-	struct FName                                       Name;                                          // 0x0048 (0x0008) [0x0000000000021003] (CPF_Edit | CPF_Const | CPF_Native | CPF_EditConst)
+	class FName                                        Name;                                          // 0x0048 (0x0008) [0x0000000000021003] (CPF_Edit | CPF_Const | CPF_Native | CPF_EditConst)
 	class UClass*                                      Class;                                         // 0x0050 (0x0008) [0x0000000000021002] (CPF_Const | CPF_Native | CPF_EditConst)
 	class UObject*                                     ObjectArchetype;                               // 0x0058 (0x0008) [0x0000000000021003] (CPF_Edit | CPF_Const | CPF_Native | CPF_EditConst)
 
@@ -1453,7 +1515,7 @@ public:
 		return uClassPointer;
 	};
 
-	static TArray<class UObject*>* GObjObjects();
+	static class TArray<class UObject*>* GObjObjects();
 
 	std::string GetName();
 	std::string GetNameCPP();
@@ -1467,48 +1529,23 @@ public:
 			{
 				if (uObject->GetFullName() == objectFullName)
 				{
-					return static_cast<T*>(uObject);
+					return reinterpret_cast<T*>(uObject);
 				}
 			}
 		}
 
 		return nullptr;
 	}
-	template<typename T> static uint32_t CountObject(const std::string& objectName)
-	{
-		static std::map<std::string, int32_t> countCache;
-
-		if (countCache.find(objectName) == countCache.end())
-		{
-			countCache[objectName] = 0;
-
-			for (UObject* uObject : *UObject::GObjObjects())
-			{
-				if (uObject && uObject->IsA<T>())
-				{
-					if (uObject->GetName() == objectName)
-					{
-						countCache[uObject->GetName()]++;
-					}
-				}
-			}
-		}
-
-		return countCache[objectName];
-	}
 	static class UClass* FindClass(const std::string& classFullName);
-	template<typename T> bool IsA()
-	{
-		if (std::is_base_of<UObject, T>::value)
-		{
-			return IsA(T::StaticClass());
-		}
-	}
 	bool IsA(class UClass* uClass);
 	bool IsA(int32_t objInternalInteger);
+	template<typename T> bool IsA()
+	{
+		return IsA(T::StaticClass());
+	}
 
-	static struct FRotator RSmoothInterpTo(struct FRotator From, struct FRotator To, float Lambda, float DeltaTime);
-	static struct FVector VSmoothInterpTo(struct FVector From, struct FVector To, float Lambda, float DeltaTime);
+	static struct FRotator RSmoothInterpTo(const struct FRotator& From, const struct FRotator& To, float Lambda, float DeltaTime);
+	static struct FVector VSmoothInterpTo(const struct FVector& From, const struct FVector& To, float Lambda, float DeltaTime);
 	static float FSmoothInterpTo(float From, float To, float Lambda, float DeltaTime);
 	static float GetSmoothInterpLerpValue(float Lambda, float DeltaTime);
 	static class UObject* GetTypedOuter(class UClass* ObjClass);
@@ -1520,13 +1557,13 @@ public:
 	static int32_t SumInt(int32_t Total, int32_t Value);
 	static int32_t SortDescendingFloat(float A, float B);
 	static int32_t SortAscendingFloat(float A, float B);
-	static int32_t SortDescendingString(class FString A, class FString B);
-	static int32_t SortAscendingString(class FString A, class FString B);
+	static int32_t SortDescendingString(const class FString& A, const class FString& B);
+	static int32_t SortAscendingString(const class FString& A, const class FString& B);
 	static int32_t SortDescendingQWORD(uint64_t A, uint64_t B);
 	static int32_t SortAscendingQWORD(uint64_t A, uint64_t B);
 	static int32_t SortDescendingInt(int32_t A, int32_t B);
 	static int32_t SortAscendingInt(int32_t A, int32_t B);
-	static class FString PadString(class FString Str, int32_t Characters);
+	static class FString PadString(const class FString& Str, int32_t Characters);
 	static uint64_t GetFrameCounter();
 	static float GetScaledAxisValue(float Value, float Sensitivity, float MaxSensitivity);
 	static class UObject* GetSingleton(class UClass* ObjClass);
@@ -1534,56 +1571,56 @@ public:
 	static bool IsAutomationTest();
 	class FString ToJson();
 	void SetRooted(bool bRooted);
-	static void ProfNodeEvent(class FString EventName);
+	static void ProfNodeEvent(const class FString& EventName);
 	static void ProfNodeSetDepthThreshold(int32_t Depth);
 	static void ProfNodeSetTimeThresholdSeconds(float Threshold);
 	static void ProfNodeStop(int32_t optionalAssumedTimerIndex);
-	static int32_t ProfNodeStart(class FString TimerName);
+	static int32_t ProfNodeStart(const class FString& TimerName);
 	static class FString CreateGuidString();
-	static class FString GetStringFromGuid(struct FGuid& InGuid);
-	static struct FGuid GetGuidFromString(class FString& InGuidString);
+	static class FString GetStringFromGuid(struct FGuid& outInGuid);
+	static struct FGuid GetGuidFromString(class FString& outInGuidString);
 	static struct FGuid CreateGuid();
-	static bool IsGuidValid(struct FGuid& InGuid);
-	static void InvalidateGuid(struct FGuid& InGuid);
-	class UObject* FindStructProperty(class UClass* PropertyClass, struct FName PropertyName, struct FName StructName);
-	class UObject* FindProperty(class UClass* PropertyClass, struct FName PropertyName);
+	static bool IsGuidValid(struct FGuid& outInGuid);
+	static void InvalidateGuid(struct FGuid& outInGuid);
+	class UObject* FindStructProperty(class UClass* PropertyClass, const class FName& PropertyName, const class FName& StructName);
+	class UObject* FindProperty(class UClass* PropertyClass, const class FName& PropertyName);
 	class UObject* DuplicateObject(class UObject* Template, class UObject* optionalObjOuter, class UClass* optionalDestClass);
 	float RunningAverage(float OldAverage, float NewValue, int32_t NewCount);
 	static float GetCurrentTimeW();
-	struct FLinearColor GetMaxLinearColorBrightness(struct FLinearColor C);
-	struct FColor GetMaxColorBrightness(struct FColor C);
-	static struct FLinearColor LABtoRGB(struct FLinearColor C);
-	static struct FLinearColor RGBtoLAB(struct FLinearColor C);
-	static struct FLinearColor HSVtoRGB(struct FLinearColor C);
-	static struct FLinearColor RGBtoHSV(struct FLinearColor C);
+	struct FLinearColor GetMaxLinearColorBrightness(const struct FLinearColor& C);
+	struct FColor GetMaxColorBrightness(const struct FColor& C);
+	static struct FLinearColor LABtoRGB(const struct FLinearColor& C);
+	static struct FLinearColor RGBtoLAB(const struct FLinearColor& C);
+	static struct FLinearColor HSVtoRGB(const struct FLinearColor& C);
+	static struct FLinearColor RGBtoHSV(const struct FLinearColor& C);
 	static struct FLinearColor IntToLinearColor(int32_t I);
 	static struct FColor IntToColor(int32_t I);
-	static int32_t LinearColorToInt(struct FLinearColor C);
-	static int32_t ColorToInt(struct FColor C);
-	bool SolveVelocityQuadratic(float Distance, float Speed, float Accel, float& Time);
+	static int32_t LinearColorToInt(const struct FLinearColor& C);
+	static int32_t ColorToInt(const struct FColor& C);
+	bool SolveVelocityQuadratic(float Distance, float Speed, float Accel, float& outTime);
 	float Sign(float X);
 	static struct FVector2D MakeVector2D(float X, float Y);
-	static struct FVector VAbs(struct FVector V);
+	static struct FVector VAbs(const struct FVector& V);
 	static struct FVector MakeVector(float X, float Y, float Z);
-	struct FVector FlattenVector(struct FVector NormalToFlatten, struct FVector PlaneNormal);
-	struct FName GetRealArchetypeName();
+	struct FVector FlattenVector(const struct FVector& NormalToFlatten, const struct FVector& PlaneNormal);
+	class FName GetRealArchetypeName();
 	static class FString FormatTime(int32_t Seconds);
-	static class UObject* GetTextArchetype(class UClass* ArchetypeClass, class FString Path);
+	static class UObject* GetTextArchetype(class UClass* ArchetypeClass, const class FString& Path);
 	bool IsArchetype();
 	void UnsubscribeFromAllEvents();
-	class UObject* NewInstance(class UObject* optionalObjOuter, struct FName optionalObjName);
+	class UObject* NewInstance(class UObject* optionalObjOuter, const class FName& optionalObjName);
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
 	static struct FRotator RotatorFromInt(int32_t RotationPitchAndYaw);
-	static int32_t RotatorToInt(struct FRotator Rotation);
+	static int32_t RotatorToInt(const struct FRotator& Rotation);
 	static class FString GetLanguage();
-	int32_t GetRandomOptionSumFrequency(TArray<float>& FreqList);
+	int32_t GetRandomOptionSumFrequency(class TArray<float>& outFreqList);
 	int32_t GetBuildChangelistNumber();
 	int32_t GetEngineVersion();
 	float GetAppSeconds();
-	void GetSystemTime(int32_t& Year, int32_t& Month, int32_t& DayOfWeek, int32_t& Day, int32_t& Hour, int32_t& Min, int32_t& Sec, int32_t& MSec);
+	void GetSystemTime(int32_t& outYear, int32_t& outMonth, int32_t& outDayOfWeek, int32_t& outDay, int32_t& outHour, int32_t& outMin, int32_t& outSec, int32_t& outMSec);
 	class FString TimeStamp();
-	struct FVector TransformVectorByRotation(struct FRotator SourceRotation, struct FVector SourceVector, bool optionalBInverse);
-	struct FName GetPackageName();
+	struct FVector TransformVectorByRotation(const struct FRotator& SourceRotation, const struct FVector& SourceVector, bool optionalBInverse);
+	class FName GetPackageName();
 	bool IsPendingKill();
 	float RangeByteToFloatUnsigned(uint8_t inputByte);
 	float RangeByteToFloatSigned(uint8_t inputByte);
@@ -1591,109 +1628,109 @@ public:
 	uint8_t FloatToRangeByteSigned(float inputFloat);
 	static float UnwindHeading(float A);
 	static float FindDeltaAngle(float A1, float A2);
-	static float GetHeadingAngle(struct FVector Dir);
-	static void GetAngularDegreesFromRadians(struct FVector2D& OutFOV);
-	static void GetAngularFromDotDist(struct FVector2D DotDist, struct FVector2D& OutAngDist);
-	static bool GetAngularDistance(struct FVector Direction, struct FVector AxisX, struct FVector AxisY, struct FVector AxisZ, struct FVector2D& OutAngularDist);
-	static bool GetDotDistance(struct FVector Direction, struct FVector AxisX, struct FVector AxisY, struct FVector AxisZ, struct FVector2D& OutDotDist);
-	bool LinePlaneIntersection(struct FVector LineStart, struct FVector LineEnd, struct FVector PlaneOrigin, struct FVector PlaneNormal, bool optionalBCheckLineSegment, struct FVector& Out_Intersection, float& Out_T);
-	static struct FVector PointProjectToPlane(struct FVector Point, struct FVector A, struct FVector B, struct FVector C);
-	float PointDistToPlane(struct FVector Point, struct FRotator Orientation, struct FVector Origin, struct FVector& out_ClosestPoint);
-	float PointDistToSegment(struct FVector Point, struct FVector StartPoint, struct FVector EndPoint, struct FVector& OutClosestPoint);
-	static float PointDistToLine(struct FVector Point, struct FVector Line, struct FVector Origin, struct FVector& OutClosestPoint);
-	static void GetPerObjectConfigObjects(class UClass* SearchClass, class UObject* optionalObjectOuter, int32_t optionalMaxResults, class UObject*& OutObject);
-	static bool GetPerObjectConfigSections(class UClass* SearchClass, class UObject* optionalObjectOuter, int32_t optionalMaxResults, TArray<class FString>& out_SectionNames);
-	static void ImportJSON(class FString PropertyName, class FString& JSON);
+	static float GetHeadingAngle(const struct FVector& Dir);
+	static void GetAngularDegreesFromRadians(struct FVector2D& outOutFOV);
+	static void GetAngularFromDotDist(const struct FVector2D& DotDist, struct FVector2D& outOutAngDist);
+	static bool GetAngularDistance(const struct FVector& Direction, const struct FVector& AxisX, const struct FVector& AxisY, const struct FVector& AxisZ, struct FVector2D& outOutAngularDist);
+	static bool GetDotDistance(const struct FVector& Direction, const struct FVector& AxisX, const struct FVector& AxisY, const struct FVector& AxisZ, struct FVector2D& outOutDotDist);
+	bool LinePlaneIntersection(const struct FVector& LineStart, const struct FVector& LineEnd, const struct FVector& PlaneOrigin, const struct FVector& PlaneNormal, bool optionalBCheckLineSegment, struct FVector& outOut_Intersection, float& outOut_T);
+	static struct FVector PointProjectToPlane(const struct FVector& Point, const struct FVector& A, const struct FVector& B, const struct FVector& C);
+	float PointDistToPlane(const struct FVector& Point, const struct FRotator& Orientation, const struct FVector& Origin, struct FVector& outOut_ClosestPoint);
+	float PointDistToSegment(const struct FVector& Point, const struct FVector& StartPoint, const struct FVector& EndPoint, struct FVector& outOutClosestPoint);
+	static float PointDistToLine(const struct FVector& Point, const struct FVector& Line, const struct FVector& Origin, struct FVector& outOutClosestPoint);
+	static void GetPerObjectConfigObjects(class UClass* SearchClass, class UObject* optionalObjectOuter, int32_t optionalMaxResults, class UObject*& outOutObject);
+	static bool GetPerObjectConfigSections(class UClass* SearchClass, class UObject* optionalObjectOuter, int32_t optionalMaxResults, class TArray<class FString>& outOut_SectionNames);
+	static void ImportJSON(const class FString& PropertyName, class FString& outJSON);
 	static void StaticSaveConfig();
 	void SaveConfig();
-	static class UObject* LoadSeekFreeObject(class UClass* ObjClass, class FString Path);
-	static class UObject* FindObject(class FString ObjectName, class UClass* ObjectClass);
-	static class UObject* DynamicLoadObject(class FString ObjectName, class UClass* ObjectClass, bool optionalMayFail);
-	static int32_t EnumFromString(class UObject* E, struct FName ValueName);
-	static struct FName GetEnum(class UObject* E, int32_t I);
-	void Disable(struct FName ProbeFunc);
-	void Enable(struct FName ProbeFunc);
+	static class UObject* LoadSeekFreeObject(class UClass* ObjClass, const class FString& Path);
+	static class UObject* FindObject(const class FString& ObjectName, class UClass* ObjectClass);
+	static class UObject* DynamicLoadObject(const class FString& ObjectName, class UClass* ObjectClass, bool optionalMayFail);
+	static int32_t EnumFromString(class UObject* E, const class FName& ValueName);
+	static class FName GetEnum(class UObject* E, int32_t I);
+	void Disable(const class FName& ProbeFunc);
+	void Enable(const class FName& ProbeFunc);
 	void eventContinuedState();
 	void eventPausedState();
 	void eventPoppedState();
 	void eventPushedState();
-	void eventEndState(struct FName NextStateName);
-	void eventBeginState(struct FName PreviousStateName);
+	void eventEndState(const class FName& NextStateName);
+	void eventBeginState(const class FName& PreviousStateName);
 	void DumpStateStack();
 	void PopState(bool optionalBPopAll);
-	void PushState(struct FName NewState, struct FName optionalNewLabel);
-	struct FName GetStateName();
-	bool IsChildState(struct FName TestState, struct FName TestParentState);
-	bool IsInState(struct FName TestState, bool optionalBTestStateStack);
-	void GotoState(struct FName optionalNewState, struct FName optionalLabel, bool optionalBForceEvents, bool optionalBKeepStack);
+	void PushState(const class FName& NewState, const class FName& optionalNewLabel);
+	class FName GetStateName();
+	bool IsChildState(const class FName& TestState, const class FName& TestParentState);
+	bool IsInState(const class FName& TestState, bool optionalBTestStateStack);
+	void GotoState(const class FName& optionalNewState, const class FName& optionalLabel, bool optionalBForceEvents, bool optionalBKeepStack);
 	static bool IsUTracing();
 	static void SetUTracing(bool bShouldUTrace);
-	static struct FName GetFuncName();
+	static class FName GetFuncName();
 	static void DebugBreak(int32_t optionalUserFlags, EDebugBreakType optionalDebuggerType);
 	static class FString GetScriptTrace();
 	static void ScriptTrace();
-	static class FString ParseLocalizedPropertyPath(class FString PathName);
-	static class FString Localize(class FString SectionName, class FString KeyName, class FString optionalPackageName, bool optionalBOptional);
-	static void WarnInternal(class FString S);
-	static void LogInternal(class FString S, struct FName optionalTag, bool optionalBFileOnly);
-	static struct FLinearColor LinearColorLerp(struct FLinearColor ColorA, struct FLinearColor ColorB, float Alpha);
-	static struct FLinearColor Subtract_LinearColorLinearColor(struct FLinearColor A, struct FLinearColor B);
-	static struct FLinearColor Multiply_LinearColorFloat(struct FLinearColor LC, float Mult);
-	static struct FLinearColor ConvertFromSRGB(struct FLinearColor OldColor);
-	static struct FColor LinearColorToColor(struct FLinearColor OldColor);
-	static struct FLinearColor ColorToLinearColor(struct FColor OldColor);
+	static class FString ParseLocalizedPropertyPath(const class FString& PathName);
+	static class FString Localize(const class FString& SectionName, const class FString& KeyName, const class FString& optionalPackageName, bool optionalBOptional);
+	static void WarnInternal(const class FString& S);
+	static void LogInternal(const class FString& S, const class FName& optionalTag, bool optionalBFileOnly);
+	static struct FLinearColor LinearColorLerp(const struct FLinearColor& ColorA, const struct FLinearColor& ColorB, float Alpha);
+	static struct FLinearColor Subtract_LinearColorLinearColor(const struct FLinearColor& A, const struct FLinearColor& B);
+	static struct FLinearColor Multiply_LinearColorFloat(const struct FLinearColor& LC, float Mult);
+	static struct FLinearColor ConvertFromSRGB(const struct FLinearColor& OldColor);
+	static struct FColor LinearColorToColor(const struct FLinearColor& OldColor);
+	static struct FLinearColor ColorToLinearColor(const struct FColor& OldColor);
 	static struct FLinearColor MakeLinearColor(float R, float G, float B, float optionalA);
-	static struct FColor LerpColor(struct FColor A, struct FColor B, float Alpha);
+	static struct FColor LerpColor(const struct FColor& A, const struct FColor& B, float Alpha);
 	static struct FColor MakeColor(uint8_t R, uint8_t G, uint8_t B, uint8_t optionalA);
-	static struct FColor Add_ColorColor(struct FColor A, struct FColor B);
-	static struct FColor Multiply_ColorFloat(struct FColor A, float B);
-	static struct FColor Multiply_FloatColor(float A, struct FColor B);
-	static struct FColor Subtract_ColorColor(struct FColor A, struct FColor B);
-	static struct FVector2D EvalInterpCurveVector2D(float InVal, struct FInterpCurveVector2D& Vector2DCurve);
-	static void AutoSetTangentsVector(struct FInterpCurveVector& Curve);
-	static struct FVector EvalInterpCurveVector(float InVal, struct FInterpCurveVector& VectorCurve);
-	static void AutoSetTangentsFloat(struct FInterpCurveFloat& Curve);
-	static float EvalInterpCurveFloat(float InVal, struct FInterpCurveFloat& FloatCurve);
+	static struct FColor Add_ColorColor(const struct FColor& A, const struct FColor& B);
+	static struct FColor Multiply_ColorFloat(const struct FColor& A, float B);
+	static struct FColor Multiply_FloatColor(float A, const struct FColor& B);
+	static struct FColor Subtract_ColorColor(const struct FColor& A, const struct FColor& B);
+	static struct FVector2D EvalInterpCurveVector2D(float InVal, struct FInterpCurveVector2D& outVector2DCurve);
+	static void AutoSetTangentsVector(struct FInterpCurveVector& outCurve);
+	static struct FVector EvalInterpCurveVector(float InVal, struct FInterpCurveVector& outVectorCurve);
+	static void AutoSetTangentsFloat(struct FInterpCurveFloat& outCurve);
+	static float EvalInterpCurveFloat(float InVal, struct FInterpCurveFloat& outFloatCurve);
 	static struct FVector2D vect2d(float InX, float InY);
-	static float GetMappedRangeValue(struct FVector2D InputRange, struct FVector2D OutputRange, float Value);
-	static float GetRangePctByValue(struct FVector2D Range, float Value);
-	static float GetRangeValueByPct(struct FVector2D Range, float Pct);
-	static struct FVector2D V2DNormal(struct FVector2D A);
-	static float V2DSizeSq(struct FVector2D A);
-	static float V2DSize(struct FVector2D A);
-	static float Dot_Vector2DVector2D(struct FVector2D A, struct FVector2D B);
-	static struct FVector2D SubtractEqual_Vector2DVector2D(struct FVector2D B, struct FVector2D& A);
-	static struct FVector2D AddEqual_Vector2DVector2D(struct FVector2D B, struct FVector2D& A);
-	static struct FVector2D DivideEqual_Vector2DFloat(float B, struct FVector2D& A);
-	static struct FVector2D MultiplyEqual_Vector2DFloat(float B, struct FVector2D& A);
-	static struct FVector2D Divide_Vector2DFloat(struct FVector2D A, float B);
-	static struct FVector2D Multiply_Vector2DFloat(struct FVector2D A, float B);
-	static struct FVector2D Subtract_Vector2DVector2D(struct FVector2D A, struct FVector2D B);
-	static struct FVector2D Add_Vector2DVector2D(struct FVector2D A, struct FVector2D B);
-	static struct FQuat Subtract_QuatQuat(struct FQuat A, struct FQuat B);
-	static struct FQuat Add_QuatQuat(struct FQuat A, struct FQuat B);
-	static struct FQuat QuatSlerp(struct FQuat A, struct FQuat B, float Alpha, bool optionalBShortestPath);
-	static struct FRotator QuatToRotator(struct FQuat A);
-	static struct FQuat QuatFromRotator(struct FRotator A);
-	static struct FQuat QuatFromAxisAndAngle(struct FVector Axis, float Angle);
-	static struct FQuat QuatFindBetween(struct FVector A, struct FVector B);
-	static struct FVector QuatRotateVector(struct FQuat A, struct FVector B);
-	static struct FQuat QuatInvert(struct FQuat A);
-	static float QuatDot(struct FQuat A, struct FQuat B);
-	static struct FQuat QuatProduct(struct FQuat A, struct FQuat B);
-	static struct FVector MatrixGetAxis(struct FMatrix TM, EAxis Axis);
-	static struct FVector MatrixGetOrigin(struct FMatrix TM);
-	static struct FRotator MatrixGetRotator(struct FMatrix TM);
-	static struct FMatrix MakeRotationMatrix(struct FRotator Rotation);
-	static struct FMatrix MakeRotationTranslationMatrix(struct FVector Translation, struct FRotator Rotation);
-	static struct FVector InverseTransformNormal(struct FMatrix TM, struct FVector A);
-	static struct FVector TransformNormal(struct FMatrix TM, struct FVector A);
-	static struct FVector InverseTransformVector(struct FMatrix TM, struct FVector A);
-	static struct FVector TransformVector(struct FMatrix TM, struct FVector A);
-	static struct FMatrix Multiply_MatrixMatrix(struct FMatrix A, struct FMatrix B);
-	static bool NotEqual_NameName(struct FName A, struct FName B);
-	static bool EqualEqual_NameName(struct FName A, struct FName B);
-	bool IsA(struct FName ClassName);
+	static float GetMappedRangeValue(const struct FVector2D& InputRange, const struct FVector2D& OutputRange, float Value);
+	static float GetRangePctByValue(const struct FVector2D& Range, float Value);
+	static float GetRangeValueByPct(const struct FVector2D& Range, float Pct);
+	static struct FVector2D V2DNormal(const struct FVector2D& A);
+	static float V2DSizeSq(const struct FVector2D& A);
+	static float V2DSize(const struct FVector2D& A);
+	static float Dot_Vector2DVector2D(const struct FVector2D& A, const struct FVector2D& B);
+	static struct FVector2D SubtractEqual_Vector2DVector2D(const struct FVector2D& B, struct FVector2D& outA);
+	static struct FVector2D AddEqual_Vector2DVector2D(const struct FVector2D& B, struct FVector2D& outA);
+	static struct FVector2D DivideEqual_Vector2DFloat(float B, struct FVector2D& outA);
+	static struct FVector2D MultiplyEqual_Vector2DFloat(float B, struct FVector2D& outA);
+	static struct FVector2D Divide_Vector2DFloat(const struct FVector2D& A, float B);
+	static struct FVector2D Multiply_Vector2DFloat(const struct FVector2D& A, float B);
+	static struct FVector2D Subtract_Vector2DVector2D(const struct FVector2D& A, const struct FVector2D& B);
+	static struct FVector2D Add_Vector2DVector2D(const struct FVector2D& A, const struct FVector2D& B);
+	static struct FQuat Subtract_QuatQuat(const struct FQuat& A, const struct FQuat& B);
+	static struct FQuat Add_QuatQuat(const struct FQuat& A, const struct FQuat& B);
+	static struct FQuat QuatSlerp(const struct FQuat& A, const struct FQuat& B, float Alpha, bool optionalBShortestPath);
+	static struct FRotator QuatToRotator(const struct FQuat& A);
+	static struct FQuat QuatFromRotator(const struct FRotator& A);
+	static struct FQuat QuatFromAxisAndAngle(const struct FVector& Axis, float Angle);
+	static struct FQuat QuatFindBetween(const struct FVector& A, const struct FVector& B);
+	static struct FVector QuatRotateVector(const struct FQuat& A, const struct FVector& B);
+	static struct FQuat QuatInvert(const struct FQuat& A);
+	static float QuatDot(const struct FQuat& A, const struct FQuat& B);
+	static struct FQuat QuatProduct(const struct FQuat& A, const struct FQuat& B);
+	static struct FVector MatrixGetAxis(const struct FMatrix& TM, EAxis Axis);
+	static struct FVector MatrixGetOrigin(const struct FMatrix& TM);
+	static struct FRotator MatrixGetRotator(const struct FMatrix& TM);
+	static struct FMatrix MakeRotationMatrix(const struct FRotator& Rotation);
+	static struct FMatrix MakeRotationTranslationMatrix(const struct FVector& Translation, const struct FRotator& Rotation);
+	static struct FVector InverseTransformNormal(const struct FMatrix& TM, const struct FVector& A);
+	static struct FVector TransformNormal(const struct FMatrix& TM, const struct FVector& A);
+	static struct FVector InverseTransformVector(const struct FMatrix& TM, const struct FVector& A);
+	static struct FVector TransformVector(const struct FMatrix& TM, const struct FVector& A);
+	static struct FMatrix Multiply_MatrixMatrix(const struct FMatrix& A, const struct FMatrix& B);
+	static bool NotEqual_NameName(const class FName& A, const class FName& B);
+	static bool EqualEqual_NameName(const class FName& A, const class FName& B);
+	bool IsA(const class FName& ClassName);
 	static bool ClassIsChildOf(class UClass* TestClass, class UClass* ParentClass);
 	static bool NotEqual_InterfaceInterface(class UInterface* A, class UInterface* B);
 	static bool EqualEqual_InterfaceInterface(class UInterface* A, class UInterface* B);
@@ -1701,119 +1738,123 @@ public:
 	static bool EqualEqual_ObjectObject(class UObject* A, class UObject* B);
 	class FString GetPathName();
 	static class FString PathName(class UObject* CheckObject);
-	static TArray<class FString> SplitString(class FString Source, class FString optionalDelimiter, bool optionalBCullEmpty);
-	static void ParseStringIntoArray(class FString BaseString, class FString delim, bool bCullEmpty, TArray<class FString>& Pieces);
-	static bool ContainsWhitespace(class FString Text);
-	static class FString RepeatString(class FString InValue, int32_t Count);
-	static class FString JoinArrayQWord(class FString optionalDelim, bool optionalBIgnoreBlanks, TArray<uint64_t>& QWordArray);
-	static class FString JoinArrayInt(class FString optionalDelim, bool optionalBIgnoreBlanks, TArray<int32_t>& IntArray);
-	static class FString JoinArrayName(class FString optionalDelim, bool optionalBIgnoreBlanks, TArray<struct FName>& NameArray);
-	static class FString JoinArrayStr(class FString optionalDelim, bool optionalBIgnoreBlanks, TArray<class FString>& StringArray);
-	static void JoinArray(class FString optionalDelim, bool optionalBIgnoreBlanks, TArray<class FString>& StringArray, class FString& out_Result);
-	static class FString GetRightMost(class FString Text);
-	static class FString Split(class FString Text, class FString SplitStr, bool optionalBOmitSplitStr);
-	static bool StartsWith(class FString Src, class FString Prefix);
-	static class FString Trim(class FString Src);
-	static class FString Repl(class FString Src, class FString Match, class FString With, bool optionalBCaseSensitive);
-	static int32_t Asc(class FString S);
+	static class TArray<class FString> SplitString(const class FString& Source, const class FString& optionalDelimiter, bool optionalBCullEmpty);
+	static void ParseStringIntoArray(const class FString& BaseString, const class FString& delim, bool bCullEmpty, class TArray<class FString>& outPieces);
+	static bool ContainsWhitespace(const class FString& Text);
+	static class FString RepeatString(const class FString& InValue, int32_t Count);
+	static class FString JoinArrayQWord(const class FString& optionalDelim, bool optionalBIgnoreBlanks, class TArray<uint64_t>& outQWordArray);
+	static class FString JoinArrayInt(const class FString& optionalDelim, bool optionalBIgnoreBlanks, class TArray<int32_t>& outIntArray);
+	static class FString JoinArrayName(const class FString& optionalDelim, bool optionalBIgnoreBlanks, class TArray<class FName>& outNameArray);
+	static class FString JoinArrayStr(const class FString& optionalDelim, bool optionalBIgnoreBlanks, class TArray<class FString>& outStringArray);
+	static void JoinArray(const class FString& optionalDelim, bool optionalBIgnoreBlanks, class TArray<class FString>& outStringArray, class FString& outOut_Result);
+	static class FString GetRightMost(const class FString& Text);
+	static class FString Split(const class FString& Text, const class FString& SplitStr, bool optionalBOmitSplitStr);
+	static class FString TCharToUTF8(const class FString& Src);
+	static class FString UTF8ToTChar(const class FString& Src);
+	static class FString MakeAsciiSafe(const class FString& InStr);
+	static class FString PadRight(const class FString& S, int32_t optionalWidthChars);
+	static bool StartsWith(const class FString& Src, const class FString& Prefix);
+	static class FString Trim(const class FString& Src);
+	static class FString Repl(const class FString& Src, const class FString& Match, const class FString& With, bool optionalBCaseSensitive);
+	static int32_t Asc(const class FString& S);
 	static class FString Chr(int32_t I);
-	static class FString Locs(class FString S);
-	static class FString Caps(class FString S);
-	static class FString Right(class FString S, int32_t I);
-	static class FString Left(class FString S, int32_t I);
-	static class FString Mid(class FString S, int32_t I, int32_t optionalJ);
-	static int32_t InStr(class FString S, class FString T, bool optionalBSearchFromRight, bool optionalBIgnoreCase, int32_t optionalStartPos);
-	static int32_t Len(class FString S);
-	static class FString SubtractEqual_StrStr(class FString B, class FString& A);
-	static class FString AtEqual_StrStr(class FString B, class FString& A);
-	static class FString ConcatEqual_StrStr(class FString B, class FString& A);
-	static bool ComplementEqual_StrStr(class FString A, class FString B);
-	static bool NotEqual_StrStr(class FString A, class FString B);
-	static bool EqualEqual_StrStr(class FString A, class FString B);
-	static bool GreaterEqual_StrStr(class FString A, class FString B);
-	static bool LessEqual_StrStr(class FString A, class FString B);
-	static bool Greater_StrStr(class FString A, class FString B);
-	static bool Less_StrStr(class FString A, class FString B);
-	static class FString At_StrStr(class FString A, class FString B);
-	static class FString Concat_StrStr(class FString A, class FString B);
-	static struct FRotator RotateRotator(struct FVector Axis, struct FRotator Rot, struct FRotator Direction, float Amount);
+	static class FString Locs(const class FString& S);
+	static class FString Caps(const class FString& S);
+	static class FString Right(const class FString& S, int32_t I);
+	static class FString Left(const class FString& S, int32_t I);
+	static class FString Mid(const class FString& S, int32_t I, int32_t optionalJ);
+	static int32_t InStr(const class FString& S, const class FString& T, bool optionalBSearchFromRight, bool optionalBIgnoreCase, int32_t optionalStartPos);
+	static int32_t Len(const class FString& S);
+	static class FString SubtractEqual_StrStr(const class FString& B, class FString& outA);
+	static class FString AtEqual_StrStr(const class FString& B, class FString& outA);
+	static class FString ConcatEqual_StrStr(const class FString& B, class FString& outA);
+	static bool ComplementEqual_StrStr(const class FString& A, const class FString& B);
+	static bool NotEqual_StrStr(const class FString& A, const class FString& B);
+	static bool EqualEqual_StrStr(const class FString& A, const class FString& B);
+	static bool GreaterEqual_StrStr(const class FString& A, const class FString& B);
+	static bool LessEqual_StrStr(const class FString& A, const class FString& B);
+	static bool Greater_StrStr(const class FString& A, const class FString& B);
+	static bool Less_StrStr(const class FString& A, const class FString& B);
+	static class FString At_StrStr(const class FString& A, const class FString& B);
+	static class FString Concat_StrStr(const class FString& A, const class FString& B);
+	static struct FRotator RotateRotator(const struct FVector& Axis, const struct FRotator& Rot, const struct FRotator& Direction, float Amount);
 	static struct FQuat MakeQuat(float X, float Y, float Z, float W);
 	static struct FRotator MakeRotator(int32_t Pitch, int32_t Yaw, int32_t Roll);
-	static bool SClampRotAxis(float DeltaTime, int32_t ViewAxis, int32_t MaxLimit, int32_t MinLimit, float InterpolationSpeed, int32_t& out_DeltaViewAxis);
+	static bool SClampRotAxis(float DeltaTime, int32_t ViewAxis, int32_t MaxLimit, int32_t MinLimit, float InterpolationSpeed, int32_t& outOut_DeltaViewAxis);
 	static int32_t ClampRotAxisFromRange(int32_t Current, int32_t Min, int32_t Max);
 	static int32_t ClampRotAxisFromBase(int32_t Current, int32_t Center, int32_t MaxDelta);
-	static void ClampRotAxis(int32_t ViewAxis, int32_t MaxLimit, int32_t MinLimit, int32_t& out_DeltaViewAxis);
-	static struct FRotator FlattenRotatorOnAxis(struct FVector AxisToRemove, struct FRotator RotToFlatten, struct FRotator optionalRotToFlattenTo);
-	static float RSize(struct FRotator R);
-	static float RDiff(struct FRotator A, struct FRotator B);
+	static void ClampRotAxis(int32_t ViewAxis, int32_t MaxLimit, int32_t MinLimit, int32_t& outOut_DeltaViewAxis);
+	static struct FRotator FlattenRotatorOnAxis(const struct FVector& AxisToRemove, const struct FRotator& RotToFlatten, const struct FRotator& optionalRotToFlattenTo);
+	static float RSize(const struct FRotator& R);
+	static float RDiff(const struct FRotator& A, const struct FRotator& B);
 	static int32_t NormalizeRotAxis(int32_t Angle);
-	static struct FRotator RInterpTo(struct FRotator Current, struct FRotator Target, float DeltaTime, float InterpSpeed, bool optionalBConstantInterpSpeed);
-	static struct FRotator RTransform(struct FRotator R, struct FRotator RBasis);
-	static struct FRotator RLerp(struct FRotator A, struct FRotator B, float Alpha, bool optionalBShortestPath);
-	static struct FRotator Normalize(struct FRotator Rot);
-	static struct FRotator OrthoRotation(struct FVector X, struct FVector Y, struct FVector Z);
+	static struct FRotator RInterpTo(const struct FRotator& Current, const struct FRotator& Target, float DeltaTime, float InterpSpeed, bool optionalBConstantInterpSpeed);
+	static struct FRotator RTransform(const struct FRotator& R, const struct FRotator& RBasis);
+	static struct FRotator RLerp(const struct FRotator& A, const struct FRotator& B, float Alpha, bool optionalBShortestPath);
+	static struct FRotator Normalize(const struct FRotator& Rot);
+	static struct FRotator OrthoRotation(const struct FVector& X, const struct FVector& Y, const struct FVector& Z);
 	static struct FRotator RotRand(bool optionalBRoll);
-	static struct FVector GetRotatorAxis(struct FRotator A, int32_t Axis);
-	static void GetUnAxes(struct FRotator A, struct FVector& X, struct FVector& Y, struct FVector& Z);
-	static void GetAxes(struct FRotator A, struct FVector& X, struct FVector& Y, struct FVector& Z);
+	static struct FVector GetRotatorAxis(const struct FRotator& A, int32_t Axis);
+	static void GetUnAxes(const struct FRotator& A, struct FVector& outX, struct FVector& outY, struct FVector& outZ);
+	static void GetAxes(const struct FRotator& A, struct FVector& outX, struct FVector& outY, struct FVector& outZ);
 	static bool ClockwiseFrom_IntInt(int32_t A, int32_t B);
-	static struct FRotator SubtractEqual_RotatorRotator(struct FRotator B, struct FRotator& A);
-	static struct FRotator AddEqual_RotatorRotator(struct FRotator B, struct FRotator& A);
-	static struct FRotator Subtract_RotatorRotator(struct FRotator A, struct FRotator B);
-	static struct FRotator Add_RotatorRotator(struct FRotator A, struct FRotator B);
-	static struct FRotator DivideEqual_RotatorFloat(float B, struct FRotator& A);
-	static struct FRotator MultiplyEqual_RotatorFloat(float B, struct FRotator& A);
-	static struct FRotator Divide_RotatorFloat(struct FRotator A, float B);
-	static struct FRotator Multiply_FloatRotator(float A, struct FRotator B);
-	static struct FRotator Multiply_RotatorFloat(struct FRotator A, float B);
-	static bool NotEqual_RotatorRotator(struct FRotator A, struct FRotator B);
-	static bool EqualEqual_RotatorRotator(struct FRotator A, struct FRotator B);
-	static float GetRadiansBetweenVectors(struct FVector V0, struct FVector v1);
-	static struct FVector VClamp(struct FVector A, struct FVector Min, struct FVector Max);
+	static struct FRotator SubtractEqual_RotatorRotator(const struct FRotator& B, struct FRotator& outA);
+	static struct FRotator AddEqual_RotatorRotator(const struct FRotator& B, struct FRotator& outA);
+	static struct FRotator Subtract_RotatorRotator(const struct FRotator& A, const struct FRotator& B);
+	static struct FRotator Add_RotatorRotator(const struct FRotator& A, const struct FRotator& B);
+	static struct FRotator DivideEqual_RotatorFloat(float B, struct FRotator& outA);
+	static struct FRotator MultiplyEqual_RotatorFloat(float B, struct FRotator& outA);
+	static struct FRotator Divide_RotatorFloat(const struct FRotator& A, float B);
+	static struct FRotator Multiply_FloatRotator(float A, const struct FRotator& B);
+	static struct FRotator Multiply_RotatorFloat(const struct FRotator& A, float B);
+	static bool NotEqual_RotatorRotator(const struct FRotator& A, const struct FRotator& B);
+	static bool EqualEqual_RotatorRotator(const struct FRotator& A, const struct FRotator& B);
+	static float GetRadiansBetweenVectors(const struct FVector& V0, const struct FVector& v1);
+	static struct FVector VClamp(const struct FVector& A, const struct FVector& Min, const struct FVector& Max);
 	static struct FVector vect3d(float X, float Y, float Z);
-	bool InCylinder(struct FVector Origin, struct FRotator Dir, float Width, struct FVector A, bool optionalBIgnoreZ);
-	static float NoZDot(struct FVector A, struct FVector B);
-	static struct FVector ClampLength(struct FVector V, float MaxLength);
-	static struct FVector VInterpConstantTo(struct FVector Current, struct FVector Target, float DeltaTime, float InterpSpeed);
-	static struct FVector VInterpTo(struct FVector Current, struct FVector Target, float DeltaTime, float InterpSpeed);
+	bool InCylinder(const struct FVector& Origin, const struct FRotator& Dir, float Width, const struct FVector& A, bool optionalBIgnoreZ);
+	static float NoZDot(const struct FVector& A, const struct FVector& B);
+	static struct FVector ClampLength(const struct FVector& V, float MaxLength);
+	static struct FVector VInterpConstantTo(const struct FVector& Current, const struct FVector& Target, float DeltaTime, float InterpSpeed);
+	static struct FVector VInterpTo(const struct FVector& Current, const struct FVector& Target, float DeltaTime, float InterpSpeed);
 	void eventConstruct();
-	static struct FVector ProjectOnToPlane(struct FVector InVector, struct FVector InNormal, float optionalOverBounce);
-	static bool IsZero(struct FVector A);
-	static struct FVector ProjectOnTo(struct FVector X, struct FVector Y);
-	static struct FVector MirrorVectorByNormal(struct FVector InVect, struct FVector InNormal);
-	static struct FVector VRandCone2(struct FVector Dir, float HorizontalConeHalfAngleRadians, float VerticalConeHalfAngleRadians);
-	static struct FVector VRandCone(struct FVector Dir, float ConeHalfAngleRadians);
+	static struct FVector ProjectOnToPlane(const struct FVector& InVector, const struct FVector& InNormal, float optionalOverBounce);
+	static bool IsZero(const struct FVector& A);
+	static struct FVector ProjectOnTo(const struct FVector& X, const struct FVector& Y);
+	static struct FVector MirrorVectorByNormal(const struct FVector& InVect, const struct FVector& InNormal);
+	static struct FVector VRandCone2(const struct FVector& Dir, float HorizontalConeHalfAngleRadians, float VerticalConeHalfAngleRadians);
+	static struct FVector VRandCone(const struct FVector& Dir, float ConeHalfAngleRadians);
 	static struct FVector VRand();
-	static struct FVector VLerp(struct FVector A, struct FVector B, float Alpha);
-	static struct FVector Normal2D(struct FVector A);
-	static struct FVector Normal(struct FVector A);
-	static float VSizeSq2D(struct FVector A);
-	static float VSizeSq(struct FVector A);
-	static float VSize2D(struct FVector A);
-	static float VSize(struct FVector A);
-	static struct FVector SubtractEqual_VectorVector(struct FVector B, struct FVector& A);
-	static struct FVector AddEqual_VectorVector(struct FVector B, struct FVector& A);
-	static struct FVector DivideEqual_VectorFloat(float B, struct FVector& A);
-	static struct FVector MultiplyEqual_VectorVector(struct FVector B, struct FVector& A);
-	static struct FVector MultiplyEqual_VectorFloat(float B, struct FVector& A);
-	static struct FVector Cross_VectorVector(struct FVector A, struct FVector B);
-	static float Dot_VectorVector(struct FVector A, struct FVector B);
-	static bool NotEqual_VectorVector(struct FVector A, struct FVector B);
-	static bool EqualEqual_VectorVector(struct FVector A, struct FVector B);
-	static struct FVector GreaterGreater_VectorRotator(struct FVector A, struct FRotator B);
-	static struct FVector LessLess_VectorRotator(struct FVector A, struct FRotator B);
-	static struct FVector Subtract_VectorVector(struct FVector A, struct FVector B);
-	static struct FVector Add_VectorVector(struct FVector A, struct FVector B);
-	static struct FVector Divide_VectorFloat(struct FVector A, float B);
-	static struct FVector Multiply_VectorVector(struct FVector A, struct FVector B);
-	static struct FVector Multiply_FloatVector(float A, struct FVector B);
-	static struct FVector Multiply_VectorFloat(struct FVector A, float B);
-	static struct FVector Subtract_PreVector(struct FVector A);
+	static struct FVector VLerp(const struct FVector& A, const struct FVector& B, float Alpha);
+	static struct FVector Normal2D(const struct FVector& A);
+	static struct FVector Normal(const struct FVector& A);
+	static float VSizeSq2D(const struct FVector& A);
+	static float VSizeSq(const struct FVector& A);
+	static float VSize2D(const struct FVector& A);
+	static float VSize(const struct FVector& A);
+	static struct FVector SubtractEqual_VectorVector(const struct FVector& B, struct FVector& outA);
+	static struct FVector AddEqual_VectorVector(const struct FVector& B, struct FVector& outA);
+	static struct FVector DivideEqual_VectorFloat(float B, struct FVector& outA);
+	static struct FVector MultiplyEqual_VectorVector(const struct FVector& B, struct FVector& outA);
+	static struct FVector MultiplyEqual_VectorFloat(float B, struct FVector& outA);
+	static struct FVector Cross_VectorVector(const struct FVector& A, const struct FVector& B);
+	static float Dot_VectorVector(const struct FVector& A, const struct FVector& B);
+	static bool NotEqual_VectorVector(const struct FVector& A, const struct FVector& B);
+	static bool EqualEqual_VectorVector(const struct FVector& A, const struct FVector& B);
+	static struct FVector GreaterGreater_VectorRotator(const struct FVector& A, const struct FRotator& B);
+	static struct FVector LessLess_VectorRotator(const struct FVector& A, const struct FRotator& B);
+	static struct FVector Subtract_VectorVector(const struct FVector& A, const struct FVector& B);
+	static struct FVector Add_VectorVector(const struct FVector& A, const struct FVector& B);
+	static struct FVector Divide_VectorFloat(const struct FVector& A, float B);
+	static struct FVector Multiply_VectorVector(const struct FVector& A, const struct FVector& B);
+	static struct FVector Multiply_FloatVector(float A, const struct FVector& B);
+	static struct FVector Multiply_VectorFloat(const struct FVector& A, float B);
+	static struct FVector Subtract_PreVector(const struct FVector& A);
 	static float FInterpConstantTo(float Current, float Target, float DeltaTime, float InterpSpeed);
 	static float FInterpTo(float Current, float Target, float DeltaTime, float InterpSpeed);
 	static float FPctByRange(float Value, float InMin, float InMax);
 	static float RandSign(float optionalValue);
-	static struct FVector CalculateGravityPosition(struct FVector Location, struct FVector Velocity, float Gravity, float Time, struct FVector optionalGravityDirection);
+	static struct FVector CalculateGravityPosition(const struct FVector& Location, const struct FVector& Velocity, float Gravity, float Time, const struct FVector& optionalGravityDirection);
 	static float RandRange(float InMin, float InMax);
 	static float FInterpEaseInOut(float A, float B, float Alpha, float Exp);
 	static float FInterpEaseOut(float A, float B, float Alpha, float Exp);
@@ -1840,10 +1881,10 @@ public:
 	static float Asin(float A);
 	static float Sin(float A);
 	static float Abs(float A);
-	static float SubtractEqual_FloatFloat(float B, float& A);
-	static float AddEqual_FloatFloat(float B, float& A);
-	static float DivideEqual_FloatFloat(float B, float& A);
-	static float MultiplyEqual_FloatFloat(float B, float& A);
+	static float SubtractEqual_FloatFloat(float B, float& outA);
+	static float AddEqual_FloatFloat(float B, float& outA);
+	static float DivideEqual_FloatFloat(float B, float& outA);
+	static float MultiplyEqual_FloatFloat(float B, float& outA);
 	static bool NotEqual_FloatFloat(float A, float B);
 	static bool ComplementEqual_FloatFloat(float A, float B);
 	static bool EqualEqual_FloatFloat(float A, float B);
@@ -1863,13 +1904,15 @@ public:
 	static int32_t Max(int32_t A, int32_t B);
 	static int32_t Min(int32_t A, int32_t B);
 	static int32_t Rand(int32_t Max);
-	static struct FColor FromHexColor(class FString Hex);
-	static int32_t FromHex(class FString Hex);
+	static struct FColor FromHexColor(const class FString& Hex);
+	static int32_t FromHex(const class FString& Hex);
 	static uint64_t QMin(uint64_t A, uint64_t B);
 	static uint64_t QMax(uint64_t A, uint64_t B);
 	static uint64_t QSubtract(uint64_t A, uint64_t B);
 	static bool NotEqual_QWordInt(uint64_t A, int32_t B);
 	static bool EqualEqual_QWordInt(uint64_t A, int32_t B);
+	static uint64_t SubtractEqual_QWordQWord(uint64_t B, uint64_t& outA);
+	static uint64_t AddEqual_QWordQWord(uint64_t B, uint64_t& outA);
 	static bool NotEqual_QWordQWord(uint64_t A, uint64_t B);
 	static bool EqualEqual_QWordQWord(uint64_t A, uint64_t B);
 	static bool GreaterEqual_QWordQWord(uint64_t A, uint64_t B);
@@ -1878,14 +1921,16 @@ public:
 	static bool Less_QWordQWord(uint64_t A, uint64_t B);
 	static int32_t Subtract_QWordQWord(uint64_t A, uint64_t B);
 	static uint64_t Add_QWordQWord(uint64_t A, uint64_t B);
-	static int32_t SubtractSubtract_Int(int32_t& A);
-	static int32_t AddAdd_Int(int32_t& A);
-	static int32_t SubtractSubtract_PreInt(int32_t& A);
-	static int32_t AddAdd_PreInt(int32_t& A);
-	static int32_t SubtractEqual_IntInt(int32_t B, int32_t& A);
-	static int32_t AddEqual_IntInt(int32_t B, int32_t& A);
-	static int32_t DivideEqual_IntFloat(float B, int32_t& A);
-	static int32_t MultiplyEqual_IntFloat(float B, int32_t& A);
+	static uint64_t Divide_QWordQWord(uint64_t A, uint64_t B);
+	static uint64_t Multiply_QWordQWord(uint64_t A, uint64_t B);
+	static int32_t SubtractSubtract_Int(int32_t& outA);
+	static int32_t AddAdd_Int(int32_t& outA);
+	static int32_t SubtractSubtract_PreInt(int32_t& outA);
+	static int32_t AddAdd_PreInt(int32_t& outA);
+	static int32_t SubtractEqual_IntInt(int32_t B, int32_t& outA);
+	static int32_t AddEqual_IntInt(int32_t B, int32_t& outA);
+	static int32_t DivideEqual_IntFloat(float B, int32_t& outA);
+	static int32_t MultiplyEqual_IntFloat(float B, int32_t& outA);
 	static int32_t Or_IntInt(int32_t A, int32_t B);
 	static int32_t Xor_IntInt(int32_t A, int32_t B);
 	static int32_t And_IntInt(int32_t A, int32_t B);
@@ -1905,15 +1950,15 @@ public:
 	static int32_t Multiply_IntInt(int32_t A, int32_t B);
 	static int32_t Subtract_PreInt(int32_t A);
 	static int32_t Complement_PreInt(int32_t A);
-	static uint8_t SubtractSubtract_Byte(uint8_t& A);
-	static uint8_t AddAdd_Byte(uint8_t& A);
-	static uint8_t SubtractSubtract_PreByte(uint8_t& A);
-	static uint8_t AddAdd_PreByte(uint8_t& A);
-	static uint8_t SubtractEqual_ByteByte(uint8_t B, uint8_t& A);
-	static uint8_t AddEqual_ByteByte(uint8_t B, uint8_t& A);
-	static uint8_t DivideEqual_ByteByte(uint8_t B, uint8_t& A);
-	static uint8_t MultiplyEqual_ByteFloat(float B, uint8_t& A);
-	static uint8_t MultiplyEqual_ByteByte(uint8_t B, uint8_t& A);
+	static uint8_t SubtractSubtract_Byte(uint8_t& outA);
+	static uint8_t AddAdd_Byte(uint8_t& outA);
+	static uint8_t SubtractSubtract_PreByte(uint8_t& outA);
+	static uint8_t AddAdd_PreByte(uint8_t& outA);
+	static uint8_t SubtractEqual_ByteByte(uint8_t B, uint8_t& outA);
+	static uint8_t AddEqual_ByteByte(uint8_t B, uint8_t& outA);
+	static uint8_t DivideEqual_ByteByte(uint8_t B, uint8_t& outA);
+	static uint8_t MultiplyEqual_ByteFloat(float B, uint8_t& outA);
+	static uint8_t MultiplyEqual_ByteByte(uint8_t B, uint8_t& outA);
 	static bool OrOr_BoolBool(bool A, bool B);
 	static bool XorXor_BoolBool(bool A, bool B);
 	static bool AndAnd_BoolBool(bool A, bool B);
@@ -1928,7 +1973,7 @@ public:
 class UConfig_ORS : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0x60];                           // 0x0060 (0x0060) FINAL PADDING
+	uint8_t                                          UnknownData00[0x60];                          // 0x0060 (0x0060) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -1950,7 +1995,7 @@ public:
 class UClassTupleCollection_ORS : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0x60];                           // 0x0060 (0x0060) FINAL PADDING
+	uint8_t                                          UnknownData00[0x60];                          // 0x0060 (0x0060) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -1972,7 +2017,7 @@ public:
 class UClassTuple_ORS : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0x68];                           // 0x0060 (0x0068) FINAL PADDING
+	uint8_t                                          UnknownData00[0x68];                          // 0x0060 (0x0068) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -1994,7 +2039,7 @@ public:
 class USubscriptionCollection_ORS : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0x20];                           // 0x0060 (0x0020) FINAL PADDING
+	uint8_t                                          UnknownData00[0x20];                          // 0x0060 (0x0020) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2016,7 +2061,7 @@ public:
 class UInstance_ORS : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0xB0];                           // 0x0060 (0x00B0) FINAL PADDING
+	uint8_t                                          UnknownData00[0xB0];                          // 0x0060 (0x00B0) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2038,7 +2083,7 @@ public:
 class UGlobal_ORS : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0x18];                           // 0x0060 (0x0018) FINAL PADDING
+	uint8_t                                          UnknownData00[0x18];                          // 0x0060 (0x0018) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2074,10 +2119,10 @@ public:
 		return uClassPointer;
 	};
 
-	static void DecodeInline(TArray<uint8_t>& Input, class FString& Output);
-	static class FString Decode(TArray<uint8_t>& Input);
-	static void EncodeInline(class FString Input, TArray<uint8_t>& Output);
-	static TArray<uint8_t> Encode(class FString Input);
+	static void DecodeInline(class TArray<uint8_t>& outInput, class FString& outOutput);
+	static class FString Decode(class TArray<uint8_t>& outInput);
+	static void EncodeInline(const class FString& Input, class TArray<uint8_t>& outOutput);
+	static class TArray<uint8_t> Encode(const class FString& Input);
 };
 
 // Class Core.TextBuffer
@@ -2085,7 +2130,7 @@ public:
 class UTextBuffer : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0x30];                           // 0x0060 (0x0030) FINAL PADDING
+	uint8_t                                          UnknownData00[0x30];                          // 0x0060 (0x0030) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2134,19 +2179,20 @@ public:
 	int32_t                                            MaxOverallCacheSize;                           // 0x0070 (0x0004) [0x0000000000004000] (CPF_Config)  
 	int32_t                                            PackageSizeSoftLimit;                          // 0x0074 (0x0004) [0x0000000000004000] (CPF_Config)  
 	float                                              AsyncIOBandwidthLimit;                         // 0x0078 (0x0004) [0x0000000000004000] (CPF_Config)  
+	uint8_t                                          UnknownData00[0x4];                            // 0x007C (0x0004) MISSED OFFSET
 	class FString                                      SavePath;                                      // 0x0080 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
 	class FString                                      CachePath;                                     // 0x0090 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
 	class FString                                      CacheExt;                                      // 0x00A0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	TArray<class FString>                              Paths;                                         // 0x00B0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	TArray<class FString>                              SeekFreePCPaths;                               // 0x00C0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	TArray<class FString>                              ScriptPaths;                                   // 0x00D0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	TArray<class FString>                              FRScriptPaths;                                 // 0x00E0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	TArray<class FString>                              CutdownPaths;                                  // 0x00F0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	TArray<struct FName>                               Suppress;                                      // 0x0100 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	TArray<struct FName>                               SuppressPublic;                                // 0x0110 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	TArray<class FString>                              Extensions;                                    // 0x0120 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	TArray<class FString>                              SeekFreePCExtensions;                          // 0x0130 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
-	TArray<class FString>                              LocalizationPaths;                             // 0x0140 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	class TArray<class FString>                        Paths;                                         // 0x00B0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	class TArray<class FString>                        SeekFreePCPaths;                               // 0x00C0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	class TArray<class FString>                        ScriptPaths;                                   // 0x00D0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	class TArray<class FString>                        FRScriptPaths;                                 // 0x00E0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	class TArray<class FString>                        CutdownPaths;                                  // 0x00F0 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	class TArray<class FName>                          Suppress;                                      // 0x0100 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	class TArray<class FName>                          SuppressPublic;                                // 0x0110 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	class TArray<class FString>                        Extensions;                                    // 0x0120 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	class TArray<class FString>                        SeekFreePCExtensions;                          // 0x0130 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
+	class TArray<class FString>                        LocalizationPaths;                             // 0x0140 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
 	class FString                                      TextureFileCacheExtension;                     // 0x0150 (0x0010) [0x0000000000404000] (CPF_Config | CPF_NeedCtorLink)
 
 public:
@@ -2186,11 +2232,11 @@ public:
 
 	static void __Subscription__TriggerAll_0x1(class USubscription* S);
 	static class USubscription* GetNone();
-	static void TriggerAll(TArray<class USubscription*>& Subscriptions);
-	static class USubscription* Create(struct FScriptDelegate InCallback);
+	static void TriggerAll(class TArray<class USubscription*>& outSubscriptions);
+	static class USubscription* Create(const struct FScriptDelegate& InCallback);
 	void eventDispose();
 	void TriggerCallback();
-	void SetCallback(struct FScriptDelegate InCallback);
+	void SetCallback(const struct FScriptDelegate& InCallback);
 	void SubscriberCallback();
 };
 
@@ -2199,7 +2245,7 @@ public:
 class UPropertyChangeDispatcher : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0x10];                           // 0x0060 (0x0010) FINAL PADDING
+	uint8_t                                          UnknownData00[0x10];                          // 0x0060 (0x0010) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2221,7 +2267,7 @@ public:
 class UPackageMap : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0xB8];                           // 0x0060 (0x00B8) FINAL PADDING
+	uint8_t                                          UnknownData00[0xB8];                          // 0x0060 (0x00B8) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2257,12 +2303,12 @@ public:
 		return uClassPointer;
 	};
 
-	static class UClass* FindClass(struct FName ClassName);
+	static class UClass* FindClass(const class FName& ClassName);
 	static void ClearNaNValues(class UObject* InObject);
 	static bool IdenticalDeep(class UObject* Left, class UObject* Right);
 	static bool Identical(class UObject* Left, class UObject* Right);
 	static void InitProperties(class UObject* InObject);
-	static void AllCDOs(class UClass* BaseClass, bool optionalBIncludeAbstract, class UObject*& OutCDO);
+	static void AllCDOs(class UClass* BaseClass, bool optionalBIncludeAbstract, class UObject*& outOutCDO);
 	static class UObject* GetCDO(class UClass* InClass);
 };
 
@@ -2271,7 +2317,7 @@ public:
 class UObjectSerializer : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0x10];                           // 0x0060 (0x0010) FINAL PADDING
+	uint8_t                                          UnknownData00[0x10];                          // 0x0060 (0x0010) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2293,7 +2339,7 @@ public:
 class UObjectRedirector : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0x8];                            // 0x0060 (0x0008) FINAL PADDING
+	uint8_t                                          UnknownData00[0x8];                            // 0x0060 (0x0008) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2315,7 +2361,7 @@ public:
 class UMetaData : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0x50];                           // 0x0060 (0x0050) FINAL PADDING
+	uint8_t                                          UnknownData00[0x50];                          // 0x0060 (0x0050) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2337,7 +2383,7 @@ public:
 class ULinker : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0x188];                          // 0x0060 (0x0188) FINAL PADDING
+	uint8_t                                          UnknownData00[0x188];                        // 0x0060 (0x0188) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2359,7 +2405,7 @@ public:
 class ULinkerSave : public ULinker
 {
 public:
-	uint8_t                                           UnknownData00[0xC0];                           // 0x01E8 (0x00C0) FINAL PADDING
+	uint8_t                                          UnknownData00[0xC0];                          // 0x01E8 (0x00C0) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2381,7 +2427,7 @@ public:
 class ULinkerLoad : public ULinker
 {
 public:
-	uint8_t                                           UnknownData00[0x628];                          // 0x01E8 (0x0628) FINAL PADDING
+	uint8_t                                          UnknownData00[0x628];                        // 0x01E8 (0x0628) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2441,20 +2487,20 @@ public:
 	static bool IsCookedBuild();
 	static void CloseLogFile();
 	static class FString GetLogFileName();
-	static bool DeleteDirectoryTree(class FString Path);
-	static bool DeleteFileW(class FString Path);
-	static bool AppendStringToFile(class FString Path, class FString Text);
-	static bool SaveStringToFile(class FString Path, class FString Text);
-	static bool SaveBytesToFile(class FString Path, TArray<uint8_t>& Bytes);
-	static bool LoadFileToBytes(class FString Path, int32_t optionalStartOffset, int32_t optionalLength, TArray<uint8_t>& OutBytes);
-	static bool LoadFileToString(class FString Path, class FString& OutText);
-	static int32_t GetFileSize(class FString Path);
-	static class FString GetFileExtensionWithoutDot(class FString Path);
-	static class FString GetFileExtension(class FString Path);
-	static class FString GetFilePathWithoutExtension(class FString Path);
-	static class FString GetFileNameWithoutExtension(class FString Path);
-	static class FString GetFilename(class FString Path);
-	static void FindFiles(class FString Path, TArray<class FString>& OutFilenames);
+	static bool DeleteDirectoryTree(const class FString& Path);
+	static bool DeleteFileW(const class FString& Path);
+	static bool AppendStringToFile(const class FString& Path, const class FString& Text);
+	static bool SaveStringToFile(const class FString& Path, const class FString& Text);
+	static bool SaveBytesToFile(const class FString& Path, class TArray<uint8_t>& outBytes);
+	static bool LoadFileToBytes(const class FString& Path, int32_t optionalStartOffset, int32_t optionalLength, class TArray<uint8_t>& outOutBytes);
+	static bool LoadFileToString(const class FString& Path, class FString& outOutText);
+	static int32_t GetFileSize(const class FString& Path);
+	static class FString GetFileExtensionWithoutDot(const class FString& Path);
+	static class FString GetFileExtension(const class FString& Path);
+	static class FString GetFilePathWithoutExtension(const class FString& Path);
+	static class FString GetFileNameWithoutExtension(const class FString& Path);
+	static class FString GetFilename(const class FString& Path);
+	static void FindFiles(const class FString& Path, class TArray<class FString>& outOutFilenames);
 };
 
 // Class Core.Field
@@ -2462,8 +2508,8 @@ public:
 class UField : public UObject
 {
 public:
-	class UField* Next; // 0x0060 (0x0008)
-	uint8_t UnknownData00[0x8]; // 0x0068 (0x0008) DYNAMIC FIELD PADDING
+	class UField* Next;           // 0x0060 (0x0008)
+	uint8_t UnknownData00[0x8];   // 0x0068 (0x0008) DYNAMIC FIELD PADDING
 
 public:
 	static UClass* StaticClass()
@@ -2485,11 +2531,13 @@ public:
 class UStruct : public UField
 {
 public:
-	uint8_t UnknownData00[0x10]; // 0x0070 (0x0010) DYNAMIC FIELD PADDING
-	class UField* SuperField; // 0x0080 (0x0008)
-	class UField* Children; // 0x0088 (0x0008)
-	uint32_t PropertySize; // 0x0090 (0x0004)
-	uint8_t UnknownData01[0x9C]; // 0x0094 (0x009C) DYNAMIC FIELD PADDING
+	uint8_t UnknownData00[0x10];  // 0x0070 (0x0010) DYNAMIC FIELD PADDING
+	class UField* SuperField;     // 0x0080 (0x0008)
+	class UField* Children;       // 0x0088 (0x0008)
+	int32_t PropertySize;         // 0x0090 (0x0004)
+	uint8_t UnknownData01[0x1C];  // 0x0094 (0x001C) DYNAMIC FIELD PADDING
+	int32_t MinAlignment;         // 0x00B0 (0x0004)
+	uint8_t UnknownData02[0x7C];  // 0x00B4 (0x007C) DYNAMIC FIELD PADDING
 
 public:
 	static UClass* StaticClass()
@@ -2511,7 +2559,7 @@ public:
 class UScriptStruct : public UStruct
 {
 public:
-	uint8_t                                           UnknownData00[0x28];                           // 0x0130 (0x0028) FINAL PADDING
+	uint8_t                                          UnknownData00[0x28];                          // 0x0130 (0x0028) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2528,14 +2576,24 @@ public:
 
 };
 
+class UStructProperty;
+
 // Class Core.Function
 // 0x0030 (0x0130 - 0x0160)
 class UFunction : public UStruct
 {
 public:
-	uint64_t FunctionFlags; // 0x0130 (0x0008)
-	uint16_t iNative; // 0x0138 (0x0002)
-	uint8_t UnknownData00[0x26]; // 0x013A (0x0026) DYNAMIC FIELD PADDING
+	uint64_t FunctionFlags;       // 0x0130 (0x0008)
+	uint16_t iNative;             // 0x0138 (0x0002)
+	uint16_t RepOffset;           // 0x013A (0x0002)
+	class FName FriendlyName;     // 0x013C (0x0008)
+	uint8_t OperPrecedence;       // 0x0144 (0x0001)
+	uint8_t NumParms;             // 0x0145 (0x0001)
+	uint16_t ParmsSize;           // 0x0146 (0x0002)
+	uint16_t ReturnValueOffset;   // 0x0148 (0x0002)
+	uint8_t UnknownData00[0x6];   // 0x014A (0x0006) DYNAMIC FIELD PADDING
+	UStructProperty* FirstStructWithDefaults;// 0x0150 (0x0008)
+	void* Func;                   // 0x0158 (0x0008)
 
 public:
 	static UClass* StaticClass()
@@ -2558,12 +2616,12 @@ public:
 class UProperty : public UField
 {
 public:
-	uint32_t ArrayDim; // 0x0070 (0x0004)
-	uint32_t ElementSize; // 0x0074 (0x0004)
-	uint64_t PropertyFlags; // 0x0078 (0x0008)
-	uint8_t UnknownData00[0x18]; // 0x0080 (0x0018) DYNAMIC FIELD PADDING
-	uint32_t Offset; // 0x0098 (0x0004)
-	uint8_t UnknownData01[0x2C]; // 0x009C (0x002C) DYNAMIC FIELD PADDING
+	int32_t ArrayDim;             // 0x0070 (0x0004)
+	int32_t ElementSize;          // 0x0074 (0x0004)
+	uint64_t PropertyFlags;       // 0x0078 (0x0008)
+	uint8_t UnknownData00[0x18];  // 0x0080 (0x0018) DYNAMIC FIELD PADDING
+	int32_t Offset;               // 0x0098 (0x0004)
+	uint8_t UnknownData01[0x2C];  // 0x009C (0x002C) DYNAMIC FIELD PADDING
 
 public:
 	static UClass* StaticClass()
@@ -2585,7 +2643,7 @@ public:
 class UStructProperty : public UProperty
 {
 public:
-	class UStruct* Struct; // 0x00C8 (0x0008)
+	class UStruct* Struct;        // 0x00C8 (0x0008)
 
 public:
 	static UClass* StaticClass()
@@ -2649,8 +2707,8 @@ public:
 class UObjectProperty : public UProperty
 {
 public:
-	class UClass* PropertyClass; // 0x00C8 (0x0008)
-	uint8_t UnknownData00[0x8]; // 0x00D0 (0x0008) DYNAMIC FIELD PADDING
+	class UClass* PropertyClass;  // 0x00C8 (0x0008)
+	uint8_t UnknownData00[0x8];   // 0x00D0 (0x0008) DYNAMIC FIELD PADDING
 
 public:
 	static UClass* StaticClass()
@@ -2693,7 +2751,7 @@ public:
 class UClassProperty : public UObjectProperty
 {
 public:
-	uint8_t                                           UnknownData00[0x8];                            // 0x00D8 (0x0008) FINAL PADDING
+	class UClass* MetaClass;      // 0x00D8 (0x0008)
 
 public:
 	static UClass* StaticClass()
@@ -2736,8 +2794,8 @@ public:
 class UMapProperty : public UProperty
 {
 public:
-	class UProperty* Key; // 0x00C8 (0x0008)
-	class UProperty* Value; // 0x00D0 (0x0008)
+	class UProperty* Key;         // 0x00C8 (0x0008)
+	class UProperty* Value;       // 0x00D0 (0x0008)
 
 public:
 	static UClass* StaticClass()
@@ -2781,7 +2839,7 @@ class UInterfaceProperty : public UProperty
 {
 public:
 	class UClass* InterfaceClass; // 0x00C8 (0x0008)
-	uint8_t UnknownData00[0x8]; // 0x00D0 (0x0008) DYNAMIC FIELD PADDING
+	uint8_t UnknownData00[0x8];   // 0x00D0 (0x0008) DYNAMIC FIELD PADDING
 
 public:
 	static UClass* StaticClass()
@@ -2824,8 +2882,7 @@ public:
 class UDelegateProperty : public UProperty
 {
 public:
-	class UFuncton* DelegateFunction; // 0x00C8 (0x0008)
-	struct FName DelegateName; // 0x00D0 (0x0008)
+	uint8_t                                          UnknownData00[0x10];                          // 0x00C8 (0x0010) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -2847,7 +2904,7 @@ public:
 class UByteProperty : public UProperty
 {
 public:
-	class UEnum* Enum; // 0x00C8 (0x0008)
+	class UEnum* Enum;            // 0x00C8 (0x0008)
 
 public:
 	static UClass* StaticClass()
@@ -2869,7 +2926,7 @@ public:
 class UBoolProperty : public UProperty
 {
 public:
-	uint64_t BitMask; // 0x00C8 (0x0008)
+	uint32_t BitMask;             // 0x00C8 (0x0008)
 
 public:
 	static UClass* StaticClass()
@@ -2891,7 +2948,7 @@ public:
 class UArrayProperty : public UProperty
 {
 public:
-	class UProperty* Inner; // 0x00C8 (0x0008)
+	class UProperty* Inner;       // 0x00C8 (0x0008)
 
 public:
 	static UClass* StaticClass()
@@ -2913,7 +2970,7 @@ public:
 class UEnum : public UField
 {
 public:
-	TArray<struct FName> Names; // 0x0070 (0x0010)
+	class TArray<class FName> Names;// 0x0070 (0x0010)
 
 public:
 	static UClass* StaticClass()
@@ -2935,7 +2992,7 @@ public:
 class UConst : public UField
 {
 public:
-	class FString Value; // 0x0070 (0x0010)
+	class FString Value;          // 0x0070 (0x0010)
 
 public:
 	static UClass* StaticClass()
@@ -2957,120 +3014,129 @@ public:
 class UFeatureSystem : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0x8];                            // 0x0060 (0x0008) MISSED OFFSET
-	uint32_t                                           Prime : 1;                                     // 0x0068 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
-	uint32_t                                           Matchmaking : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
-	uint32_t                                           PrivateMatch : 1;                              // 0x0068 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
-	uint32_t                                           SplitscreenMatch : 1;                          // 0x0068 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
-	uint32_t                                           SplitscreenJoin : 1;                           // 0x0068 (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
-	uint32_t                                           SeasonMode : 1;                                // 0x0068 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
-	uint32_t                                           Tutorial : 1;                                  // 0x0068 (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
-	uint32_t                                           Garage : 1;                                    // 0x0068 (0x0004) [0x0000000040000000] [0x00000200] (CPF_EditInlineNotify)
-	uint32_t                                           Options : 1;                                   // 0x0068 (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
-	uint32_t                                           ReplaySaves : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
-	uint32_t                                           MainMenu : 1;                                  // 0x0068 (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
-	uint32_t                                           MidgameMenu : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00002000] (CPF_EditInlineNotify)
-	uint32_t                                           Party : 1;                                     // 0x0068 (0x0004) [0x0000000040000000] [0x00004000] (CPF_EditInlineNotify)
-	uint32_t                                           PsyNetParty : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00008000] (CPF_EditInlineNotify)
-	uint32_t                                           Achievements : 1;                              // 0x0068 (0x0004) [0x0000000040000000] [0x00010000] (CPF_EditInlineNotify)
-	uint32_t                                           Stats : 1;                                     // 0x0068 (0x0004) [0x0000000040000000] [0x00020000] (CPF_EditInlineNotify)
-	uint32_t                                           Leaderboards : 1;                              // 0x0068 (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
-	uint32_t                                           XP : 1;                                        // 0x0068 (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
-	uint32_t                                           Chat : 1;                                      // 0x0068 (0x0004) [0x0000000040000000] [0x00100000] (CPF_EditInlineNotify)
-	uint32_t                                           TrainingDifficulties : 1;                      // 0x0068 (0x0004) [0x0000000040000000] [0x00200000] (CPF_EditInlineNotify)
-	uint32_t                                           Spectator : 1;                                 // 0x0068 (0x0004) [0x0000000040000000] [0x00400000] (CPF_EditInlineNotify)
-	uint32_t                                           CrossPlatformPrivateMatch : 1;                 // 0x0068 (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
-	uint32_t                                           Lan : 1;                                       // 0x0068 (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
-	uint32_t                                           PlayerReporting : 1;                           // 0x0068 (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
-	uint32_t                                           OnlineServices : 1;                            // 0x0068 (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
-	uint32_t                                           RemoveCrossPlatformProducts : 1;               // 0x0068 (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
-	uint32_t                                           ProductValidation : 1;                         // 0x006C (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
-	uint32_t                                           MapPrefs : 1;                                  // 0x006C (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
-	uint32_t                                           PreMatchLobby : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
-	uint32_t                                           Challenges : 1;                                // 0x006C (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
-	uint32_t                                           AntiAddiction : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
-	uint32_t                                           TrainingEditor : 1;                            // 0x006C (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
-	uint32_t                                           VoiceChat : 1;                                 // 0x006C (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
-	uint32_t                                           SplitScreen : 1;                               // 0x006C (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
-	uint32_t                                           Clubs : 1;                                     // 0x006C (0x0004) [0x0000000040000000] [0x00000200] (CPF_EditInlineNotify)
-	uint32_t                                           FilterContent : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
-	uint32_t                                           EncryptContent : 1;                            // 0x006C (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
-	uint32_t                                           EsportsCamera : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00004000] (CPF_EditInlineNotify)
-	uint32_t                                           OnlineXP : 1;                                  // 0x006C (0x0004) [0x0000000040000000] [0x00008000] (CPF_EditInlineNotify)
-	uint32_t                                           ClanforgeReservation : 1;                      // 0x006C (0x0004) [0x0000000040000000] [0x00020000] (CPF_EditInlineNotify)
-	uint32_t                                           UserSettingObserver : 1;                       // 0x006C (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
-	uint32_t                                           Metrics : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
-	uint32_t                                           EOSMetrics : 1;                                // 0x006C (0x0004) [0x0000000040000000] [0x00100000] (CPF_EditInlineNotify)
-	uint32_t                                           MusicPlaylistSelection : 1;                    // 0x006C (0x0004) [0x0000000040000000] [0x00200000] (CPF_EditInlineNotify)
-	uint32_t                                           SpecialEvents : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00400000] (CPF_EditInlineNotify)
-	uint32_t                                           PlayerBannerCustomization : 1;                 // 0x006C (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
-	uint32_t                                           SecureUDP : 1;                                 // 0x006C (0x0004) [0x0000000040000000] [0x01000000] (CPF_EditInlineNotify)
-	uint32_t                                           PsyNet : 1;                                    // 0x006C (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
-	uint32_t                                           OnlinePlayerStorage : 1;                       // 0x006C (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
-	uint32_t                                           LocalSaveData : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
-	uint32_t                                           CrowdV2 : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x10000000] (CPF_EditInlineNotify)
-	uint32_t                                           ChatBan : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x20000000] (CPF_EditInlineNotify)
-	uint32_t                                           BacktraceCrashDumps : 1;                       // 0x006C (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
-	uint32_t                                           SpotifyButton : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
-	uint32_t                                           SeasonRewards : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
-	uint32_t                                           FaceIt : 1;                                    // 0x0070 (0x0004) [0x0000000040000000] [0x00000004] (CPF_EditInlineNotify)
-	uint32_t                                           KnockOut : 1;                                  // 0x0070 (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
-	uint32_t                                           OnlinePlayerTitles : 1;                        // 0x0070 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
-	uint32_t                                           RestrictByRegion : 1;                          // 0x0070 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
-	uint32_t                                           FirstTimeExperience : 1;                       // 0x0070 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
-	uint32_t                                           RLBot : 1;                                     // 0x0070 (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
-	uint32_t                                           UserBugReport : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00000200] (CPF_EditInlineNotify)
-	uint32_t                                           SteamInput : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
-	uint32_t                                           ReplayFXControls : 1;                          // 0x0070 (0x0004) [0x0000000040000000] [0x00008000] (CPF_EditInlineNotify)
-	uint32_t                                           ESportsShop : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x00010000] (CPF_EditInlineNotify)
-	uint32_t                                           MatchHistory : 1;                              // 0x0070 (0x0004) [0x0000000040000000] [0x00020000] (CPF_EditInlineNotify)
-	uint32_t                                           DynamicRangeAudioSettings : 1;                 // 0x0070 (0x0004) [0x0000000040000000] [0x00100000] (CPF_EditInlineNotify)
-	uint32_t                                           QuickPlay : 1;                                 // 0x0070 (0x0004) [0x0000000040000000] [0x00200000] (CPF_EditInlineNotify)
-	uint32_t                                           NewsPanelV2 : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x00400000] (CPF_EditInlineNotify)
-	uint32_t                                           Blueprints : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
-	uint32_t                                           RocketBucks : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
-	uint32_t                                           Tritip : 1;                                    // 0x0070 (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
-	uint32_t                                           DiscordRichPresence : 1;                       // 0x0070 (0x0004) [0x0000000040000000] [0x20000000] (CPF_EditInlineNotify)
-	uint32_t                                           SupportACreator : 1;                           // 0x0070 (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
-	uint32_t                                           CinematicIntro : 1;                            // 0x0070 (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
-	uint32_t                                           TinyCrowd : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
-	uint32_t                                           CrumbTrail : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
-	uint32_t                                           XPGatedPlaylists : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
-	uint32_t                                           TradeInV2 : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
-	uint32_t                                           Football : 1;                                  // 0x0074 (0x0004) [0x0000000040000000] [0x00000040] (CPF_EditInlineNotify)
-	uint32_t                                           RumbleSelection : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
-	uint32_t                                           UndersizedParty : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
-	uint32_t                                           StreamerSafeAudio : 1;                         // 0x0074 (0x0004) [0x0000000040000000] [0x00000200] (CPF_EditInlineNotify)
-	uint32_t                                           FreeplayCommands : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00000400] (CPF_EditInlineNotify)
-	uint32_t                                           Rumble_BM : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000800] (CPF_EditInlineNotify)
-	uint32_t                                           PlayerReportingV2 : 1;                         // 0x0074 (0x0004) [0x0000000040000000] [0x00001000] (CPF_EditInlineNotify)
-	uint32_t                                           BlogScheduling : 1;                            // 0x0074 (0x0004) [0x0000000040000000] [0x00002000] (CPF_EditInlineNotify)
-	uint32_t                                           EOSVoice : 1;                                  // 0x0074 (0x0004) [0x0000000040000000] [0x00004000] (CPF_EditInlineNotify)
-	uint32_t                                           QuickPostMatchRequeue : 1;                     // 0x0074 (0x0004) [0x0000000040000000] [0x00008000] (CPF_EditInlineNotify)
-	uint32_t                                           TrainingNavigation : 1;                        // 0x0074 (0x0004) [0x0000000040000000] [0x00040000] (CPF_EditInlineNotify)
-	uint32_t                                           TrainingManipulation : 1;                      // 0x0074 (0x0004) [0x0000000040000000] [0x00080000] (CPF_EditInlineNotify)
-	uint32_t                                           FilterByColor : 1;                             // 0x0074 (0x0004) [0x0000000040000000] [0x00200000] (CPF_EditInlineNotify)
-	uint32_t                                           Scoreboard : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x00400000] (CPF_EditInlineNotify)
-	uint32_t                                           DynamicMapEvents : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00800000] (CPF_EditInlineNotify)
-	uint32_t                                           NameplateBoost : 1;                            // 0x0074 (0x0004) [0x0000000040000000] [0x02000000] (CPF_EditInlineNotify)
-	uint32_t                                           EOSGameClips : 1;                              // 0x0074 (0x0004) [0x0000000040000000] [0x04000000] (CPF_EditInlineNotify)
-	uint32_t                                           DynamicLogos : 1;                              // 0x0074 (0x0004) [0x0000000040000000] [0x08000000] (CPF_EditInlineNotify)
-	uint32_t                                           XETagging : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x10000000] (CPF_EditInlineNotify)
-	uint32_t                                           PlayMenuV4 : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x20000000] (CPF_EditInlineNotify)
-	uint32_t                                           DemoUpgrades : 1;                              // 0x0074 (0x0004) [0x0000000040000000] [0x40000000] (CPF_EditInlineNotify)
-	uint32_t                                           QuickChatTimeStamp : 1;                        // 0x0074 (0x0004) [0x0000000040000000] [0x80000000] (CPF_EditInlineNotify)
-	uint32_t                                           SoccarPong : 1;                                // 0x0078 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
-	uint32_t                                           OnlineFreeplay : 1;                            // 0x0078 (0x0004) [0x0000000040000000] [0x00000002] (CPF_EditInlineNotify)
-	uint32_t                                           MatchmakingSubRegion : 1;                      // 0x0078 (0x0004) [0x0000000040000000] [0x00000008] (CPF_EditInlineNotify)
-	uint32_t                                           CrossbarSFX : 1;                               // 0x0078 (0x0004) [0x0000000040000000] [0x00000010] (CPF_EditInlineNotify)
-	uint32_t                                           RugbyIteration : 1;                            // 0x0078 (0x0004) [0x0000000040000000] [0x00000020] (CPF_EditInlineNotify)
-	uint32_t                                           ChallengesV2 : 1;                              // 0x0078 (0x0004) [0x0000000040000000] [0x00000080] (CPF_EditInlineNotify)
-	uint32_t                                           PossessionExpanded : 1;                        // 0x0078 (0x0004) [0x0000000040000000] [0x00000100] (CPF_EditInlineNotify)
-	uint32_t                                           RocketPassUpgrades : 1;                        // 0x0078 (0x0004) [0x0000000040000000] [0x00002000] (CPF_EditInlineNotify)
-	uint32_t                                           PentathlonTournaments : 1;                     // 0x0078 (0x0004) [0x0000000040000000] [0x00004000] (CPF_EditInlineNotify)
-	uint32_t                                           ViralItem : 1;                                 // 0x0078 (0x0004) [0x0000000040000000] [0x00010000] (CPF_EditInlineNotify)
-	uint32_t                                           ThankYouMessage : 1;                           // 0x0078 (0x0004) [0x0000000040000000] [0x00020000] (CPF_EditInlineNotify)
-	uint8_t                                           UnknownData01[0x4];                            // 0x007C (0x0004) FINAL PADDING
+	uint8_t                                          UnknownData00[0x8];                            // 0x0060 (0x0008) MISSED OFFSET
+	uint32_t                                           Prime : 1;                                     // 0x0068 (0x0004) [0x0000000040000000] [0x00000002] (CPF_DataBinding)
+	uint32_t                                           Matchmaking : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00000008] (CPF_DataBinding)
+	uint32_t                                           PrivateMatch : 1;                              // 0x0068 (0x0004) [0x0000000040000000] [0x00000010] (CPF_DataBinding)
+	uint32_t                                           SplitscreenMatch : 1;                          // 0x0068 (0x0004) [0x0000000040000000] [0x00000020] (CPF_DataBinding)
+	uint32_t                                           SplitscreenJoin : 1;                           // 0x0068 (0x0004) [0x0000000040000000] [0x00000040] (CPF_DataBinding)
+	uint32_t                                           SeasonMode : 1;                                // 0x0068 (0x0004) [0x0000000040000000] [0x00000080] (CPF_DataBinding)
+	uint32_t                                           Tutorial : 1;                                  // 0x0068 (0x0004) [0x0000000040000000] [0x00000100] (CPF_DataBinding)
+	uint32_t                                           Garage : 1;                                    // 0x0068 (0x0004) [0x0000000040000000] [0x00000200] (CPF_DataBinding)
+	uint32_t                                           Options : 1;                                   // 0x0068 (0x0004) [0x0000000040000000] [0x00000400] (CPF_DataBinding)
+	uint32_t                                           ReplaySaves : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00000800] (CPF_DataBinding)
+	uint32_t                                           MainMenu : 1;                                  // 0x0068 (0x0004) [0x0000000040000000] [0x00001000] (CPF_DataBinding)
+	uint32_t                                           MidgameMenu : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00002000] (CPF_DataBinding)
+	uint32_t                                           Party : 1;                                     // 0x0068 (0x0004) [0x0000000040000000] [0x00004000] (CPF_DataBinding)
+	uint32_t                                           PsyNetParty : 1;                               // 0x0068 (0x0004) [0x0000000040000000] [0x00008000] (CPF_DataBinding)
+	uint32_t                                           Achievements : 1;                              // 0x0068 (0x0004) [0x0000000040000000] [0x00010000] (CPF_DataBinding)
+	uint32_t                                           Stats : 1;                                     // 0x0068 (0x0004) [0x0000000040000000] [0x00020000] (CPF_DataBinding)
+	uint32_t                                           Leaderboards : 1;                              // 0x0068 (0x0004) [0x0000000040000000] [0x00040000] (CPF_DataBinding)
+	uint32_t                                           XP : 1;                                        // 0x0068 (0x0004) [0x0000000040000000] [0x00080000] (CPF_DataBinding)
+	uint32_t                                           Chat : 1;                                      // 0x0068 (0x0004) [0x0000000040000000] [0x00100000] (CPF_DataBinding)
+	uint32_t                                           TrainingDifficulties : 1;                      // 0x0068 (0x0004) [0x0000000040000000] [0x00200000] (CPF_DataBinding)
+	uint32_t                                           Spectator : 1;                                 // 0x0068 (0x0004) [0x0000000040000000] [0x00400000] (CPF_DataBinding)
+	uint32_t                                           CrossPlatformPrivateMatch : 1;                 // 0x0068 (0x0004) [0x0000000040000000] [0x00800000] (CPF_DataBinding)
+	uint32_t                                           Lan : 1;                                       // 0x0068 (0x0004) [0x0000000040000000] [0x01000000] (CPF_DataBinding)
+	uint32_t                                           PlayerReporting : 1;                           // 0x0068 (0x0004) [0x0000000040000000] [0x02000000] (CPF_DataBinding)
+	uint32_t                                           OnlineServices : 1;                            // 0x0068 (0x0004) [0x0000000040000000] [0x40000000] (CPF_DataBinding)
+	uint32_t                                           RemoveCrossPlatformProducts : 1;               // 0x0068 (0x0004) [0x0000000040000000] [0x80000000] (CPF_DataBinding)
+	uint32_t                                           ProductValidation : 1;                         // 0x006C (0x0004) [0x0000000040000000] [0x00000001] (CPF_DataBinding)
+	uint32_t                                           MapPrefs : 1;                                  // 0x006C (0x0004) [0x0000000040000000] [0x00000002] (CPF_DataBinding)
+	uint32_t                                           PreMatchLobby : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00000008] (CPF_DataBinding)
+	uint32_t                                           Challenges : 1;                                // 0x006C (0x0004) [0x0000000040000000] [0x00000010] (CPF_DataBinding)
+	uint32_t                                           AntiAddiction : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00000020] (CPF_DataBinding)
+	uint32_t                                           TrainingEditor : 1;                            // 0x006C (0x0004) [0x0000000040000000] [0x00000040] (CPF_DataBinding)
+	uint32_t                                           VoiceChat : 1;                                 // 0x006C (0x0004) [0x0000000040000000] [0x00000080] (CPF_DataBinding)
+	uint32_t                                           SplitScreen : 1;                               // 0x006C (0x0004) [0x0000000040000000] [0x00000100] (CPF_DataBinding)
+	uint32_t                                           Clubs : 1;                                     // 0x006C (0x0004) [0x0000000040000000] [0x00000200] (CPF_DataBinding)
+	uint32_t                                           FilterContent : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00000400] (CPF_DataBinding)
+	uint32_t                                           EncryptContent : 1;                            // 0x006C (0x0004) [0x0000000040000000] [0x00000800] (CPF_DataBinding)
+	uint32_t                                           EsportsCamera : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00004000] (CPF_DataBinding)
+	uint32_t                                           OnlineXP : 1;                                  // 0x006C (0x0004) [0x0000000040000000] [0x00008000] (CPF_DataBinding)
+	uint32_t                                           ClanforgeReservation : 1;                      // 0x006C (0x0004) [0x0000000040000000] [0x00020000] (CPF_DataBinding)
+	uint32_t                                           UserSettingObserver : 1;                       // 0x006C (0x0004) [0x0000000040000000] [0x00040000] (CPF_DataBinding)
+	uint32_t                                           Metrics : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x00080000] (CPF_DataBinding)
+	uint32_t                                           EOSMetrics : 1;                                // 0x006C (0x0004) [0x0000000040000000] [0x00100000] (CPF_DataBinding)
+	uint32_t                                           MusicPlaylistSelection : 1;                    // 0x006C (0x0004) [0x0000000040000000] [0x00200000] (CPF_DataBinding)
+	uint32_t                                           SpecialEvents : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x00400000] (CPF_DataBinding)
+	uint32_t                                           PlayerBannerCustomization : 1;                 // 0x006C (0x0004) [0x0000000040000000] [0x00800000] (CPF_DataBinding)
+	uint32_t                                           SecureUDP : 1;                                 // 0x006C (0x0004) [0x0000000040000000] [0x01000000] (CPF_DataBinding)
+	uint32_t                                           PsyNet : 1;                                    // 0x006C (0x0004) [0x0000000040000000] [0x02000000] (CPF_DataBinding)
+	uint32_t                                           OnlinePlayerStorage : 1;                       // 0x006C (0x0004) [0x0000000040000000] [0x04000000] (CPF_DataBinding)
+	uint32_t                                           LocalSaveData : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x08000000] (CPF_DataBinding)
+	uint32_t                                           CrowdV2 : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x10000000] (CPF_DataBinding)
+	uint32_t                                           ChatBan : 1;                                   // 0x006C (0x0004) [0x0000000040000000] [0x20000000] (CPF_DataBinding)
+	uint32_t                                           BacktraceCrashDumps : 1;                       // 0x006C (0x0004) [0x0000000040000000] [0x40000000] (CPF_DataBinding)
+	uint32_t                                           SpotifyButton : 1;                             // 0x006C (0x0004) [0x0000000040000000] [0x80000000] (CPF_DataBinding)
+	uint32_t                                           SeasonRewards : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00000002] (CPF_DataBinding)
+	uint32_t                                           FaceIt : 1;                                    // 0x0070 (0x0004) [0x0000000040000000] [0x00000004] (CPF_DataBinding)
+	uint32_t                                           KnockOut : 1;                                  // 0x0070 (0x0004) [0x0000000040000000] [0x00000008] (CPF_DataBinding)
+	uint32_t                                           OnlinePlayerTitles : 1;                        // 0x0070 (0x0004) [0x0000000040000000] [0x00000010] (CPF_DataBinding)
+	uint32_t                                           RestrictByRegion : 1;                          // 0x0070 (0x0004) [0x0000000040000000] [0x00000020] (CPF_DataBinding)
+	uint32_t                                           FirstTimeExperience : 1;                       // 0x0070 (0x0004) [0x0000000040000000] [0x00000080] (CPF_DataBinding)
+	uint32_t                                           RLBot : 1;                                     // 0x0070 (0x0004) [0x0000000040000000] [0x00000100] (CPF_DataBinding)
+	uint32_t                                           UserBugReport : 1;                             // 0x0070 (0x0004) [0x0000000040000000] [0x00000200] (CPF_DataBinding)
+	uint32_t                                           SteamInput : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x00000400] (CPF_DataBinding)
+	uint32_t                                           ReplayFXControls : 1;                          // 0x0070 (0x0004) [0x0000000040000000] [0x00008000] (CPF_DataBinding)
+	uint32_t                                           ESportsShop : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x00010000] (CPF_DataBinding)
+	uint32_t                                           MatchHistory : 1;                              // 0x0070 (0x0004) [0x0000000040000000] [0x00020000] (CPF_DataBinding)
+	uint32_t                                           DynamicRangeAudioSettings : 1;                 // 0x0070 (0x0004) [0x0000000040000000] [0x00100000] (CPF_DataBinding)
+	uint32_t                                           QuickPlay : 1;                                 // 0x0070 (0x0004) [0x0000000040000000] [0x00200000] (CPF_DataBinding)
+	uint32_t                                           NewsPanelV2 : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x00400000] (CPF_DataBinding)
+	uint32_t                                           Blueprints : 1;                                // 0x0070 (0x0004) [0x0000000040000000] [0x00800000] (CPF_DataBinding)
+	uint32_t                                           RocketBucks : 1;                               // 0x0070 (0x0004) [0x0000000040000000] [0x02000000] (CPF_DataBinding)
+	uint32_t                                           Tritip : 1;                                    // 0x0070 (0x0004) [0x0000000040000000] [0x08000000] (CPF_DataBinding)
+	uint32_t                                           DiscordRichPresence : 1;                       // 0x0070 (0x0004) [0x0000000040000000] [0x20000000] (CPF_DataBinding)
+	uint32_t                                           SupportACreator : 1;                           // 0x0070 (0x0004) [0x0000000040000000] [0x40000000] (CPF_DataBinding)
+	uint32_t                                           CinematicIntro : 1;                            // 0x0070 (0x0004) [0x0000000040000000] [0x80000000] (CPF_DataBinding)
+	uint32_t                                           TinyCrowd : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000001] (CPF_DataBinding)
+	uint32_t                                           CrumbTrail : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x00000002] (CPF_DataBinding)
+	uint32_t                                           EpicGameStoreBuild : 1;                        // 0x0074 (0x0004) [0x0000000040000000] [0x00000004] (CPF_DataBinding)
+	uint32_t                                           XPGatedPlaylists : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00000008] (CPF_DataBinding)
+	uint32_t                                           TradeInV2 : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000020] (CPF_DataBinding)
+	uint32_t                                           Football : 1;                                  // 0x0074 (0x0004) [0x0000000040000000] [0x00000040] (CPF_DataBinding)
+	uint32_t                                           RumbleSelection : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00000080] (CPF_DataBinding)
+	uint32_t                                           UndersizedParty : 1;                           // 0x0074 (0x0004) [0x0000000040000000] [0x00000100] (CPF_DataBinding)
+	uint32_t                                           StreamerSafeAudio : 1;                         // 0x0074 (0x0004) [0x0000000040000000] [0x00000200] (CPF_DataBinding)
+	uint32_t                                           FreeplayCommands : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00000400] (CPF_DataBinding)
+	uint32_t                                           Rumble_BM : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x00000800] (CPF_DataBinding)
+	uint32_t                                           PlayerReportingV2 : 1;                         // 0x0074 (0x0004) [0x0000000040000000] [0x00001000] (CPF_DataBinding)
+	uint32_t                                           BlogScheduling : 1;                            // 0x0074 (0x0004) [0x0000000040000000] [0x00002000] (CPF_DataBinding)
+	uint32_t                                           EOSVoice : 1;                                  // 0x0074 (0x0004) [0x0000000040000000] [0x00004000] (CPF_DataBinding)
+	uint32_t                                           QuickPostMatchRequeue : 1;                     // 0x0074 (0x0004) [0x0000000040000000] [0x00008000] (CPF_DataBinding)
+	uint32_t                                           TrainingNavigation : 1;                        // 0x0074 (0x0004) [0x0000000040000000] [0x00040000] (CPF_DataBinding)
+	uint32_t                                           TrainingManipulation : 1;                      // 0x0074 (0x0004) [0x0000000040000000] [0x00080000] (CPF_DataBinding)
+	uint32_t                                           FilterByColor : 1;                             // 0x0074 (0x0004) [0x0000000040000000] [0x00200000] (CPF_DataBinding)
+	uint32_t                                           Scoreboard : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x00400000] (CPF_DataBinding)
+	uint32_t                                           DynamicMapEvents : 1;                          // 0x0074 (0x0004) [0x0000000040000000] [0x00800000] (CPF_DataBinding)
+	uint32_t                                           NameplateBoost : 1;                            // 0x0074 (0x0004) [0x0000000040000000] [0x02000000] (CPF_DataBinding)
+	uint32_t                                           EOSGameClips : 1;                              // 0x0074 (0x0004) [0x0000000040000000] [0x04000000] (CPF_DataBinding)
+	uint32_t                                           DynamicLogos : 1;                              // 0x0074 (0x0004) [0x0000000040000000] [0x08000000] (CPF_DataBinding)
+	uint32_t                                           XETagging : 1;                                 // 0x0074 (0x0004) [0x0000000040000000] [0x10000000] (CPF_DataBinding)
+	uint32_t                                           PlayMenuV4 : 1;                                // 0x0074 (0x0004) [0x0000000040000000] [0x20000000] (CPF_DataBinding)
+	uint32_t                                           DemoUpgrades : 1;                              // 0x0074 (0x0004) [0x0000000040000000] [0x40000000] (CPF_DataBinding)
+	uint32_t                                           QuickChatTimeStamp : 1;                        // 0x0074 (0x0004) [0x0000000040000000] [0x80000000] (CPF_DataBinding)
+	uint32_t                                           SoccarPong : 1;                                // 0x0078 (0x0004) [0x0000000040000000] [0x00000001] (CPF_DataBinding)
+	uint32_t                                           OnlineFreeplay : 1;                            // 0x0078 (0x0004) [0x0000000040000000] [0x00000002] (CPF_DataBinding)
+	uint32_t                                           MatchmakingSubRegion : 1;                      // 0x0078 (0x0004) [0x0000000040000000] [0x00000008] (CPF_DataBinding)
+	uint32_t                                           CrossbarSFX : 1;                               // 0x0078 (0x0004) [0x0000000040000000] [0x00000010] (CPF_DataBinding)
+	uint32_t                                           RugbyIteration : 1;                            // 0x0078 (0x0004) [0x0000000040000000] [0x00000020] (CPF_DataBinding)
+	uint32_t                                           ChallengesV2 : 1;                              // 0x0078 (0x0004) [0x0000000040000000] [0x00000080] (CPF_DataBinding)
+	uint32_t                                           PossessionExpanded : 1;                        // 0x0078 (0x0004) [0x0000000040000000] [0x00000100] (CPF_DataBinding)
+	uint32_t                                           KeepUp : 1;                                    // 0x0078 (0x0004) [0x0000000040000000] [0x00000800] (CPF_DataBinding)
+	uint32_t                                           RocketPassUpgrades : 1;                        // 0x0078 (0x0004) [0x0000000040000000] [0x00002000] (CPF_DataBinding)
+	uint32_t                                           PentathlonTournaments : 1;                     // 0x0078 (0x0004) [0x0000000040000000] [0x00004000] (CPF_DataBinding)
+	uint32_t                                           DemolishUpdates : 1;                           // 0x0078 (0x0004) [0x0000000040000000] [0x00008000] (CPF_DataBinding)
+	uint32_t                                           ViralItem : 1;                                 // 0x0078 (0x0004) [0x0000000040000000] [0x00010000] (CPF_DataBinding)
+	uint32_t                                           ThankYouMessage : 1;                           // 0x0078 (0x0004) [0x0000000040000000] [0x00020000] (CPF_DataBinding)
+	uint32_t                                           AttackerDemoFX : 1;                            // 0x0078 (0x0004) [0x0000000040000000] [0x00040000] (CPF_DataBinding)
+	uint32_t                                           NewDriverChallengesV2 : 1;                     // 0x0078 (0x0004) [0x0000000040000000] [0x00080000] (CPF_DataBinding)
+	uint32_t                                           TextModeration : 1;                            // 0x0078 (0x0004) [0x0000000040000000] [0x00400000] (CPF_DataBinding)
+	uint32_t                                           FilterToggle : 1;                              // 0x0078 (0x0004) [0x0000000040000000] [0x00800000] (CPF_DataBinding)
+	uint32_t                                           DdosPrevention : 1;                            // 0x0078 (0x0004) [0x0000000040000000] [0x01000000] (CPF_DataBinding)
+	uint32_t                                           FastFreeplay : 1;                              // 0x0078 (0x0004) [0x0000000040000000] [0x04000000] (CPF_DataBinding)
+	uint8_t                                          UnknownData01[0x4];                            // 0x007C (0x0004) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -3096,14 +3162,14 @@ public:
 	class UClass*                                      SupportedClass;                                // 0x0070 (0x0008) [0x0000000000000000]               
 	class UClass*                                      ContextClass;                                  // 0x0078 (0x0008) [0x0000000000000000]               
 	class FString                                      Description;                                   // 0x0080 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	TArray<class FString>                              Formats;                                       // 0x0090 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
+	class TArray<class FString>                        Formats;                                       // 0x0090 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	uint32_t                                           bCreateNew : 1;                                // 0x00A0 (0x0004) [0x0000000000000000] [0x00000001] 
 	uint32_t                                           bEditAfterNew : 1;                             // 0x00A0 (0x0004) [0x0000000000000000] [0x00000002] 
 	uint32_t                                           bEditorImport : 1;                             // 0x00A0 (0x0004) [0x0000000000000000] [0x00000004] 
 	uint32_t                                           bText : 1;                                     // 0x00A0 (0x0004) [0x0000000000000000] [0x00000008] 
 	uint32_t                                           bAssetNameMatchesPackageName : 1;              // 0x00A0 (0x0004) [0x0000000000000000] [0x00000010] 
 	int32_t                                            AutoPriority;                                  // 0x00A4 (0x0004) [0x0000000000000000]               
-	TArray<class FString>                              ValidGameNames;                                // 0x00A8 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
+	class TArray<class FString>                        ValidGameNames;                                // 0x00A8 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 
 public:
 	static UClass* StaticClass()
@@ -3146,10 +3212,10 @@ public:
 class UExporter : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0x8];                            // 0x0060 (0x0008) MISSED OFFSET
-	TArray<class FString>                              FormatExtension;                               // 0x0068 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	TArray<class FString>                              FormatDescription;                             // 0x0078 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	uint8_t                                           UnknownData01[0x10];                           // 0x0088 (0x0010) FINAL PADDING
+	uint8_t                                          UnknownData00[0x8];                            // 0x0060 (0x0008) MISSED OFFSET
+	class TArray<class FString>                        FormatExtension;                               // 0x0068 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
+	class TArray<class FString>                        FormatDescription;                             // 0x0078 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
+	uint8_t                                          UnknownData01[0x10];                          // 0x0088 (0x0010) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -3186,7 +3252,7 @@ public:
 		return uClassPointer;
 	};
 
-	class UError* CreateError(class FString optionalInErrorMessage, int32_t optionalInErrorCode);
+	class UError* CreateError(const class FString& optionalInErrorMessage, int32_t optionalInErrorCode);
 	class FString GetLocalizedMessage();
 };
 
@@ -3211,7 +3277,7 @@ public:
 		return uClassPointer;
 	};
 
-	static class UErrorType* GetErrorType(struct FName Error);
+	static class UErrorType* GetErrorType(const class FName& Error);
 };
 
 // Class Core.ArrayErrors
@@ -3245,7 +3311,7 @@ public:
 	class UErrorType*                                  Type;                                          // 0x0060 (0x0008) [0x0000000000002002] (CPF_Const | CPF_Transient)
 	class FString                                      Message;                                       // 0x0068 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
 	int32_t                                            Code;                                          // 0x0078 (0x0004) [0x0000000000002002] (CPF_Const | CPF_Transient)
-	struct FName                                       RetryKey;                                      // 0x007C (0x0008) [0x0000000000002002] (CPF_Const | CPF_Transient)
+	class FName                                        RetryKey;                                      // 0x007C (0x0008) [0x0000000000002002] (CPF_Const | CPF_Transient)
 
 public:
 	static UClass* StaticClass()
@@ -3269,7 +3335,7 @@ public:
 class UDelegateTracker : public UObject
 {
 public:
-	TArray<struct FAsyncDelegateInfo>                  AsyncDelegates;                                // 0x0060 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
+	class TArray<struct FAsyncDelegateInfo>            AsyncDelegates;                                // 0x0060 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __PlaceholderDelegate__Delegate;               // 0x0070 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 
 public:
@@ -3286,7 +3352,7 @@ public:
 	};
 
 	struct FScriptDelegate RemoveDelegate(int32_t CallbackId);
-	int32_t AddDelegate(struct FScriptDelegate Callback);
+	int32_t AddDelegate(const struct FScriptDelegate& Callback);
 	void PlaceholderDelegate();
 };
 
@@ -3298,11 +3364,13 @@ public:
 	struct FColor                                      DefaultTextColor;                              // 0x0060 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	uint32_t                                           bSilent : 1;                                   // 0x0064 (0x0004) [0x0000000000000001] [0x00000001] (CPF_Edit)
 	uint32_t                                           bPrintActorsInline : 1;                        // 0x0064 (0x0004) [0x0000000000000001] [0x00000002] (CPF_Edit)
-	int32_t                                            Indentation;                                   // 0x0068 (0x0004) [0x0000008000002000] (CPF_Transient)
-	class FString                                      IndentationString;                             // 0x0070 (0x0010) [0x0000008000402000] (CPF_Transient | CPF_NeedCtorLink)
-	TArray<class UObject*>                             PrintedObjects;                                // 0x0080 (0x0010) [0x0000000000402000] (CPF_Transient | CPF_NeedCtorLink)
-	TArray<class UObject*>                             QueuedObjects;                                 // 0x0090 (0x0010) [0x0000000000402000] (CPF_Transient | CPF_NeedCtorLink)
+	int32_t                                            Indentation;                                   // 0x0068 (0x0004) [0x0000008000002000] (CPF_Transient | CPF_ProtectedWrite)
+	uint8_t                                          UnknownData00[0x4];                            // 0x006C (0x0004) MISSED OFFSET
+	class FString                                      IndentationString;                             // 0x0070 (0x0010) [0x0000008000402000] (CPF_Transient | CPF_NeedCtorLink | CPF_ProtectedWrite)
+	class TArray<class UObject*>                       PrintedObjects;                                // 0x0080 (0x0010) [0x0000000000402000] (CPF_Transient | CPF_NeedCtorLink)
+	class TArray<class UObject*>                       QueuedObjects;                                 // 0x0090 (0x0010) [0x0000000000402000] (CPF_Transient | CPF_NeedCtorLink)
 	int32_t                                            PrintObjectCount;                              // 0x00A0 (0x0004) [0x0000000000002000] (CPF_Transient)
+	uint8_t                                          UnknownData01[0x4];                            // 0x00A4 (0x0004) MISSED OFFSET
 	struct FScriptDelegate                             __LogFunc__Delegate;                           // 0x00A8 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 
 public:
@@ -3319,17 +3387,17 @@ public:
 	};
 
 	void Reset();
-	void PrintText(class FString Text, struct FColor optionalInColor);
-	void eventPrintArrayProperty(class FString PropertyName, int32_t Index, class FString Value);
-	void eventPrintProperty(class FString PropertyName, class FString Value);
+	void PrintText(const class FString& Text, const struct FColor& optionalInColor);
+	void eventPrintArrayProperty(const class FString& PropertyName, int32_t Index, const class FString& Value);
+	void eventPrintProperty(const class FString& PropertyName, const class FString& Value);
 	void eventEndSection();
 	void eventStartSection();
-	void eventPrintObject(class FString Title, class UObject* ForObj);
+	void eventPrintObject(const class FString& Title, class UObject* ForObj);
 	void eventPrintSeperater();
-	void eventDebugArrayObject(class FString Title, int32_t Index, class UObject* ForObj);
-	void eventDebugObject(class FString Title, class UObject* ForObj);
-	bool ShouldDisplayDebug(struct FName Category);
-	void LogFunc(class FString Str);
+	void eventDebugArrayObject(const class FString& Title, int32_t Index, class UObject* ForObj);
+	void eventDebugObject(const class FString& Title, class UObject* ForObj);
+	bool ShouldDisplayDebug(const class FName& Category);
+	void LogFunc(const class FString& Str);
 };
 
 // Class Core.Compression
@@ -3351,7 +3419,7 @@ public:
 		return uClassPointer;
 	};
 
-	static bool ZLibCompress(TArray<uint8_t>& Uncompressed, TArray<uint8_t>& OutCompressed);
+	static bool ZLibCompress(class TArray<uint8_t>& outUncompressed, class TArray<uint8_t>& outOutCompressed);
 };
 
 // Class Core.Component
@@ -3360,7 +3428,7 @@ class UComponent : public UObject
 {
 public:
 	class UClass*                                      TemplateOwnerClass;                            // 0x0060 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
-	struct FName                                       TemplateName;                                  // 0x0068 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
+	class FName                                        TemplateName;                                  // 0x0068 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
 
 public:
 	static UClass* StaticClass()
@@ -3397,13 +3465,13 @@ public:
 		return uClassPointer;
 	};
 
-	bool Contains(class FString Key);
-	void Remove(class FString Key);
-	bool TryGetObjectW(class FString Key, class UObject*& OutValue);
+	bool Contains(const class FString& Key);
+	void Remove(const class FString& Key);
+	bool TryGetObjectW(const class FString& Key, class UObject*& outOutValue);
 	void TryGet();
-	class UObject* GetObjectW(class FString Key);
+	class UObject* GetObjectW(const class FString& Key);
 	void Get();
-	void Set(class FString Key, class UObject* Value);
+	void Set(const class FString& Key, class UObject* Value);
 };
 
 // Class Core.StringMap
@@ -3427,14 +3495,14 @@ public:
 		return uClassPointer;
 	};
 
-	void ForEach(struct FScriptDelegate Callback);
+	void ForEach(const struct FScriptDelegate& Callback);
 	void Append(class UStringMap* Other);
-	bool Contains(class FString Key);
-	void Remove(class FString Key);
-	bool TryGet(class FString Key, class FString& OutValue);
-	class FString Get(class FString Key);
-	void Set(class FString Key, class FString Value);
-	void PairCallback(class FString Key, class FString Value);
+	bool Contains(const class FString& Key);
+	void Remove(const class FString& Key);
+	bool TryGet(const class FString& Key, class FString& outOutValue);
+	class FString Get(const class FString& Key);
+	void Set(const class FString& Key, const class FString& Value);
+	void PairCallback(const class FString& Key, const class FString& Value);
 };
 
 // Class Core.ObjectProvider
@@ -3443,21 +3511,22 @@ class UObjectProvider : public UComponent
 {
 public:
 	struct FPointer                                    VfTable_FObjectDestructionSubscriber;          // 0x0070 (0x0008) [0x0000000000801002] (CPF_Const | CPF_Native | CPF_NoExport)
-	TArray<class UObject*>                             MyObjects;                                     // 0x0078 (0x0010) [0x0000004000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
+	class TArray<class UObject*>                       MyObjects;                                     // 0x0078 (0x0010) [0x0000004000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink | CPF_PrivateWrite)
 	struct FMap_Mirror                                 ObjectRefs;                                    // 0x0088 (0x0050) [0x0000000000003002] (CPF_Const | CPF_Native | CPF_Transient)
-	TArray<class UObject*>                             TreeObjects;                                   // 0x00D8 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
-	TArray<struct FObjectProviderSubscription>         SubscribedToAdds;                              // 0x00E8 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
-	TArray<struct FObjectProviderSubscription>         SubscribedToRemoves;                           // 0x00F8 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
-	TArray<struct FObjectProviderSubscription>         SubscribedToLists;                             // 0x0108 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
+	class TArray<class UObject*>                       TreeObjects;                                   // 0x00D8 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
+	class TArray<struct FObjectProviderSubscription>   SubscribedToAdds;                              // 0x00E8 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
+	class TArray<struct FObjectProviderSubscription>   SubscribedToRemoves;                           // 0x00F8 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
+	class TArray<struct FObjectProviderSubscription>   SubscribedToLists;                             // 0x0108 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
 	struct FArray_Mirror                               Injections;                                    // 0x0118 (0x0010) [0x0000000000003002] (CPF_Const | CPF_Native | CPF_Transient)
 	struct FArray_Mirror                               InterfaceInjections;                           // 0x0128 (0x0010) [0x0000000000003002] (CPF_Const | CPF_Native | CPF_Transient)
-	TArray<class UClass*>                              PendingInjectionClasses;                       // 0x0138 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
-	TArray<struct FObjectProviderPendingCallback>      PendingCallbacks;                              // 0x0148 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
+	class TArray<class UClass*>                        PendingInjectionClasses;                       // 0x0138 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
+	class TArray<struct FObjectProviderPendingCallback> PendingCallbacks;                              // 0x0148 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
 	uint8_t                                            bTriggeringCallbacks;                          // 0x0158 (0x0001) [0x0000000000002002] (CPF_Const | CPF_Transient)
+	uint8_t                                          UnknownData00[0x7];                            // 0x0159 (0x0007) MISSED OFFSET
 	class UObjectProvider*                             Parent;                                        // 0x0160 (0x0008) [0x000000000408200A] (CPF_Const | CPF_ExportObject | CPF_Transient | CPF_Component | CPF_EditInline)
-	TArray<class UObjectProvider*>                     Children;                                      // 0x0168 (0x0010) [0x000000000448200A] (CPF_Const | CPF_ExportObject | CPF_Transient | CPF_Component | CPF_NeedCtorLink | CPF_EditInline)
-	TArray<class UObjectProvider*>                     Proxies;                                       // 0x0178 (0x0010) [0x000000000448200A] (CPF_Const | CPF_ExportObject | CPF_Transient | CPF_Component | CPF_NeedCtorLink | CPF_EditInline)
-	TArray<struct FObjectProviderPendingCallback>      PendingInjectionCallbacks;                     // 0x0188 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
+	class TArray<class UObjectProvider*>               Children;                                      // 0x0168 (0x0010) [0x000000000448200A] (CPF_Const | CPF_ExportObject | CPF_Transient | CPF_Component | CPF_NeedCtorLink | CPF_EditInline)
+	class TArray<class UObjectProvider*>               Proxies;                                       // 0x0178 (0x0010) [0x000000000448200A] (CPF_Const | CPF_ExportObject | CPF_Transient | CPF_Component | CPF_NeedCtorLink | CPF_EditInline)
+	class TArray<struct FObjectProviderPendingCallback> PendingInjectionCallbacks;                     // 0x0188 (0x0010) [0x0000000000402002] (CPF_Const | CPF_Transient | CPF_NeedCtorLink)
 	struct FScriptDelegate                             __ObjectSubscriptionCallback__Delegate;        // 0x0198 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __ObjectListSubscriptionCallback__Delegate;    // 0x01B0 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __ObjectChangeCallback__Delegate;              // 0x01C8 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -3480,11 +3549,11 @@ public:
 	void AddProxy(class UObjectProvider* InProxy);
 	void SetSingleton(class UClass* ObjClass, class UObject* Replacement);
 	void Replace(class UObject* Existing, class UObject* Replacement);
-	void AddAndRemoveObjects(TArray<class UObject*>& AddObjects, TArray<class UObject*>& RemoveObjects);
-	void RemoveObjects(TArray<class UObject*>& InObjects);
+	void AddAndRemoveObjects(class TArray<class UObject*>& outAddObjects, class TArray<class UObject*>& outRemoveObjects);
+	void RemoveObjects(class TArray<class UObject*>& outInObjects);
 	void RemoveAllObjects(class UClass* ObjectClass);
 	void RemoveObject(class UObject* Obj);
-	void AddObjects(TArray<class UObject*>& InObjects);
+	void AddObjects(class TArray<class UObject*>& outInObjects);
 	void AddObject(class UObject* Obj);
 	int32_t GetExactCount(class UClass* ObjClass);
 	int32_t GetCount(class UClass* ObjClass);
@@ -3492,15 +3561,15 @@ public:
 	class UObject* GetExact(class UClass* ObjClass);
 	class UObject* GetUnsafe(class UClass* ObjClass);
 	class UObject* Get(class UClass* ObjClass);
-	void AllObjects(class UClass* BaseClass, class UClass* optionalInterfaceClass, class UObject*& Obj);
+	void AllObjects(class UClass* BaseClass, class UClass* optionalInterfaceClass, class UObject*& outObj);
 	bool IsRegisteredForInjection(class UObject* Subscriber);
 	void InjectDelayed(class UObject* Subscriber);
 	void Inject(class UObject* Subscriber);
 	void UnsubscribeAll(class UObject* Subscriber);
-	void Unsubscribe(struct FScriptDelegate Callback, struct FScriptDelegate optionalCallback2);
-	void SubscribeList(class UClass* BaseClass, struct FScriptDelegate Callback);
-	void SubscribeOnce(class UClass* BaseClass, struct FScriptDelegate optionalOnAdd, struct FScriptDelegate optionalOnRemove);
-	void Subscribe(class UClass* BaseClass, struct FScriptDelegate optionalOnAdd, struct FScriptDelegate optionalOnRemove);
+	void Unsubscribe(const struct FScriptDelegate& Callback, const struct FScriptDelegate& optionalCallback2);
+	void SubscribeList(class UClass* BaseClass, const struct FScriptDelegate& Callback);
+	void SubscribeOnce(class UClass* BaseClass, const struct FScriptDelegate& optionalOnAdd, const struct FScriptDelegate& optionalOnRemove);
+	void Subscribe(class UClass* BaseClass, const struct FScriptDelegate& optionalOnAdd, const struct FScriptDelegate& optionalOnRemove);
 	void ObjectChangeCallback();
 	void ObjectListSubscriptionCallback(class UObjectProvider* Provider);
 	void ObjectSubscriptionCallback(class UObject* Obj);
@@ -3564,8 +3633,8 @@ public:
 	class FString                                      HelpDescription;                               // 0x0060 (0x0010) [0x0000000000408002] (CPF_Const | CPF_Localized | CPF_NeedCtorLink)
 	class FString                                      HelpUsage;                                     // 0x0070 (0x0010) [0x0000000000408002] (CPF_Const | CPF_Localized | CPF_NeedCtorLink)
 	class FString                                      HelpWebLink;                                   // 0x0080 (0x0010) [0x0000000000408002] (CPF_Const | CPF_Localized | CPF_NeedCtorLink)
-	TArray<class FString>                              HelpParamNames;                                // 0x0090 (0x0010) [0x0000000000408002] (CPF_Const | CPF_Localized | CPF_NeedCtorLink)
-	TArray<class FString>                              HelpParamDescriptions;                         // 0x00A0 (0x0010) [0x0000000000408002] (CPF_Const | CPF_Localized | CPF_NeedCtorLink)
+	class TArray<class FString>                        HelpParamNames;                                // 0x0090 (0x0010) [0x0000000000408002] (CPF_Const | CPF_Localized | CPF_NeedCtorLink)
+	class TArray<class FString>                        HelpParamDescriptions;                         // 0x00A0 (0x0010) [0x0000000000408002] (CPF_Const | CPF_Localized | CPF_NeedCtorLink)
 	uint32_t                                           IsServer : 1;                                  // 0x00B0 (0x0004) [0x0000000000000000] [0x00000001] 
 	uint32_t                                           IsClient : 1;                                  // 0x00B0 (0x0004) [0x0000000000000000] [0x00000002] 
 	uint32_t                                           IsEditor : 1;                                  // 0x00B0 (0x0004) [0x0000000000000000] [0x00000004] 
@@ -3585,7 +3654,7 @@ public:
 		return uClassPointer;
 	};
 
-	int32_t eventMain(class FString Params);
+	int32_t eventMain(const class FString& Params);
 };
 
 // Class Core.HelpCommandlet
@@ -3593,7 +3662,7 @@ public:
 class UHelpCommandlet : public UCommandlet
 {
 public:
-	uint8_t                                           UnknownData00[0x4];                            // 0x00B4 (0x0004) FINAL PADDING
+	uint8_t                                          UnknownData00[0x4];                            // 0x00B4 (0x0004) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -3608,7 +3677,7 @@ public:
 		return uClassPointer;
 	};
 
-	int32_t eventMain(class FString Params);
+	int32_t eventMain(const class FString& Params);
 };
 
 // Class Core.Breadcrumbs
@@ -3631,8 +3700,8 @@ public:
 		return uClassPointer;
 	};
 
-	void BreadcrumbFloat(class FString Category, float Value);
-	void BreadcrumbString(class FString Category, class FString Value);
+	void BreadcrumbFloat(const class FString& Category, float Value);
+	void BreadcrumbString(const class FString& Category, const class FString& Value);
 };
 
 // Class Core.Base64
@@ -3654,14 +3723,15 @@ public:
 		return uClassPointer;
 	};
 
-	static void DecodeStringInline(class FString Input, TArray<uint8_t>& Output);
-	static TArray<uint8_t> DecodeString(class FString Input);
-	static void DecodeInline(TArray<uint8_t>& Input, TArray<uint8_t>& Output);
-	static TArray<uint8_t> Decode(TArray<uint8_t>& Input);
-	static void EncodeStringInline(TArray<uint8_t>& Input, class FString& Output);
-	static class FString EncodeString(TArray<uint8_t>& Input);
-	static void EncodeInline(TArray<uint8_t>& Input, TArray<uint8_t>& Output);
-	static TArray<uint8_t> Encode(TArray<uint8_t>& Input);
+	static class TArray<uint8_t> PadAndDecodeString(const class FString& Input);
+	static void DecodeStringInline(const class FString& Input, class TArray<uint8_t>& outOutput);
+	static class TArray<uint8_t> DecodeString(const class FString& Input);
+	static void DecodeInline(class TArray<uint8_t>& outInput, class TArray<uint8_t>& outOutput);
+	static class TArray<uint8_t> Decode(class TArray<uint8_t>& outInput);
+	static void EncodeStringInline(class TArray<uint8_t>& outInput, class FString& outOutput);
+	static class FString EncodeString(class TArray<uint8_t>& outInput);
+	static void EncodeInline(class TArray<uint8_t>& outInput, class TArray<uint8_t>& outOutput);
+	static class TArray<uint8_t> Encode(class TArray<uint8_t>& outInput);
 };
 
 // Class Core.AutomationTest
@@ -3669,10 +3739,10 @@ public:
 class UAutomationTest : public UObject
 {
 public:
-	TArray<class FString>                              MaterialsCompiled;                             // 0x0060 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	TArray<class FString>                              MaterialsFailedCompile;                        // 0x0070 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	TArray<class FString>                              AsyncPreloadPackagesMissing;                   // 0x0080 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
-	TArray<struct FScriptWarning>                      ScriptWarnings;                                // 0x0090 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
+	class TArray<class FString>                        MaterialsCompiled;                             // 0x0060 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
+	class TArray<class FString>                        MaterialsFailedCompile;                        // 0x0070 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
+	class TArray<class FString>                        AsyncPreloadPackagesMissing;                   // 0x0080 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
+	class TArray<struct FScriptWarning>                ScriptWarnings;                                // 0x0090 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 
 public:
 	static UClass* StaticClass()
@@ -3694,9 +3764,10 @@ public:
 class UAsyncTask : public UObject
 {
 public:
-	uint32_t                                           bComplete : 1;                                 // 0x0060 (0x0004) [0x0000004000000000] [0x00000001] 
-	uint32_t                                           bDisposed : 1;                                 // 0x0060 (0x0004) [0x0000004000000000] [0x00000002] 
-	class UError*                                      Error;                                         // 0x0068 (0x0008) [0x0000004000000000]               
+	uint32_t                                           bComplete : 1;                                 // 0x0060 (0x0004) [0x0000004000000000] [0x00000001] (CPF_PrivateWrite)
+	uint32_t                                           bDisposed : 1;                                 // 0x0060 (0x0004) [0x0000004000000000] [0x00000002] (CPF_PrivateWrite)
+	uint8_t                                          UnknownData00[0x4];                            // 0x0064 (0x0004) MISSED OFFSET
+	class UError*                                      Error;                                         // 0x0068 (0x0008) [0x0000004000000000] (CPF_PrivateWrite)
 	struct FScriptDelegate                             __EventAsyncTaskSuccess__Delegate;             // 0x0070 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __EventAsyncTaskFail__Delegate;                // 0x0088 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __EventAsyncTaskComplete__Delegate;            // 0x00A0 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -3720,16 +3791,16 @@ public:
 	static class UAsyncTask* CreateSuccess();
 	static class UAsyncTask* Create();
 	class UAsyncTask* Watch(class UAsyncTask* Other);
-	static class UAsyncTask* All(TArray<class UAsyncTask*> Dependents);
+	static class UAsyncTask* All(const class TArray<class UAsyncTask*>& Dependents);
 	class UAsyncTask* DependOn(class UAsyncTask* Other);
-	class UAsyncTask* eventNotifyOnDispose(struct FScriptDelegate Callback);
+	class UAsyncTask* eventNotifyOnDispose(const struct FScriptDelegate& Callback);
 	void eventClearCallbacks();
 	void eventDispose();
 	void SetComplete(class UError* optionalInError);
 	void eventSetError(class UError* InError);
-	class UAsyncTask* eventNotifyOnComplete(struct FScriptDelegate Callback);
-	class UAsyncTask* eventNotifyOnFail(struct FScriptDelegate Callback);
-	class UAsyncTask* eventNotifyOnSuccess(struct FScriptDelegate Callback);
+	class UAsyncTask* eventNotifyOnComplete(const struct FScriptDelegate& Callback);
+	class UAsyncTask* eventNotifyOnFail(const struct FScriptDelegate& Callback);
+	class UAsyncTask* eventNotifyOnSuccess(const struct FScriptDelegate& Callback);
 	void EventDisposed();
 	void EventAsyncTaskComplete(class UError* TaskError);
 	void EventAsyncTaskFail(class UError* TaskError);
@@ -3783,7 +3854,7 @@ public:
 class UState : public UStruct
 {
 public:
-	uint8_t                                           UnknownData00[0x60];                           // 0x0130 (0x0060) FINAL PADDING
+	uint8_t                                          UnknownData00[0x60];                          // 0x0130 (0x0060) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -3805,7 +3876,7 @@ public:
 class UPackage : public UObject
 {
 public:
-	uint8_t                                           UnknownData00[0xE8];                           // 0x0060 (0x00E8) FINAL PADDING
+	uint8_t                                          UnknownData00[0xE8];                          // 0x0060 (0x00E8) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -3827,7 +3898,7 @@ public:
 class UClass : public UState
 {
 public:
-	uint8_t                                           UnknownData00[0x228];                          // 0x0190 (0x0228) FINAL PADDING
+	uint8_t                                          UnknownData00[0x228];                        // 0x0190 (0x0228) MISSED OFFSET
 
 public:
 	static UClass* StaticClass()
@@ -3850,6 +3921,7 @@ class U__AsyncTask__All_0x1 : public UObject
 {
 public:
 	int32_t                                            DependentsCount;                               // 0x0060 (0x0004) [0x0000000000000000]               
+	uint8_t                                          UnknownData00[0x4];                            // 0x0064 (0x0004) MISSED OFFSET
 	class UAsyncTask*                                  Parent;                                        // 0x0068 (0x0008) [0x0000000000000000]               
 
 public:
@@ -3975,8 +4047,8 @@ public:
 		return uClassPointer;
 	};
 
-	static struct FRotatorRadians GetAsRadians(struct FRotator InRotator);
-	static struct FRotatorDegrees GetAsDegrees(struct FRotator InRotator);
+	static struct FRotatorRadians GetAsRadians(const struct FRotator& InRotator);
+	static struct FRotatorDegrees GetAsDegrees(const struct FRotator& InRotator);
 };
 
 // Class Core.TAsyncResult
@@ -4007,5 +4079,5 @@ public:
 */
 
 #ifdef _MSC_VER
-	#pragma pack(pop)
+#pragma pack(pop)
 #endif

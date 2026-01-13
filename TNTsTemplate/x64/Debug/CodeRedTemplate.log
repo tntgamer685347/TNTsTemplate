@@ -1,0 +1,1435 @@
+﻿  Component.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Components/Component.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Component.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Component.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Component.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Components/Component.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Main.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Components/Components/Main.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Main.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Main.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Main.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Components\Components\Main.cpp(61,39): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Components/Components/Main.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Console.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Components/Components/Console.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Console.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Console.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Console.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Components/Components/Console.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Core.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Components/Components/Core.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Core.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Core.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Core.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Components/Components/Core.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Events.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Components/Components/Events.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Events.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Events.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Events.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Components/Components/Events.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  GameState.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Components/Components/GameState.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GameState.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GameState.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GameState.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Components/Components/GameState.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Instances.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Components/Components/Instances.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Instances.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Instances.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Instances.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Components\Components\Instances.cpp(62,41): error C2838: 'RF_TagGarbageTemp': illegal qualified name in member declaration
+D:\Downloads\TemplateShit\TNTsTemplate\Components\Components\Instances.cpp(62,41): error C2065: 'RF_TagGarbageTemp': undeclared identifier
+D:\Downloads\TemplateShit\TNTsTemplate\Components\Components\Instances.cpp(65,40): error C2838: 'RF_MarkAsRootSet': illegal qualified name in member declaration
+D:\Downloads\TemplateShit\TNTsTemplate\Components\Components\Instances.cpp(65,40): error C2065: 'RF_MarkAsRootSet': undeclared identifier
+D:\Downloads\TemplateShit\TNTsTemplate\Components\Components\Instances.cpp(76,40): error C2838: 'RF_TagGarbageTemp': illegal qualified name in member declaration
+D:\Downloads\TemplateShit\TNTsTemplate\Components\Components\Instances.cpp(76,40): error C2065: 'RF_TagGarbageTemp': undeclared identifier
+  Manager.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Components/Components/Manager.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Manager.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Manager.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/Manager.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Components/Components/Manager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  dllmain.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'dllmain.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'dllmain.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'dllmain.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'dllmain.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'dllmain.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Example.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Example.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Example.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Example.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Example.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Example.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Colors.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Extensions/Extensions/Colors.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Colors.cpp(36,26): warning C4244: 'return': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Colors.cpp(41,26): warning C4244: 'return': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Colors.cpp(94,34): warning C4244: '=': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Colors.cpp(102,35): warning C4244: '=': conversion from 'uint64_t' to 'uint32_t', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Extensions/Extensions/Colors.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Formatting.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Extensions/Extensions/Formatting.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Extensions/Extensions/Formatting.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Math.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Extensions/Extensions/Math.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(117,27): warning C4244: '=': conversion from '_Ty' to 'int', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(117,27): warning C4244:         with
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(117,27): warning C4244:         [
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(117,27): warning C4244:             _Ty=double
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(117,27): warning C4244:         ]
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(118,27): warning C4244: '=': conversion from '_Ty' to 'int', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(118,27): warning C4244:         with
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(118,27): warning C4244:         [
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(118,27): warning C4244:             _Ty=double
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(118,27): warning C4244:         ]
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(187,27): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(188,47): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(189,16): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(230,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(231,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(232,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(233,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(234,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(235,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(252,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(291,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(297,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(298,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(299,8): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(306,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(307,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(308,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(315,27): warning C4244: '=': conversion from 'double' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(316,47): warning C4244: '=': conversion from 'double' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(337,27): warning C4244: '=': conversion from '_Ty' to 'int', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(337,27): warning C4244:         with
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(337,27): warning C4244:         [
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(337,27): warning C4244:             _Ty=double
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(337,27): warning C4244:         ]
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(338,27): warning C4244: '=': conversion from '_Ty' to 'int', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(338,27): warning C4244:         with
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(338,27): warning C4244:         [
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(338,27): warning C4244:             _Ty=double
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(338,27): warning C4244:         ]
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(339,27): warning C4244: '=': conversion from '_Ty' to 'int', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(339,27): warning C4244:         with
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(339,27): warning C4244:         [
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(339,27): warning C4244:             _Ty=double
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(339,27): warning C4244:         ]
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(354,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(397,14): warning C4244: 'initializing': conversion from 'const int32_t' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(398,12): warning C4244: 'initializing': conversion from 'const int32_t' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(399,13): warning C4244: 'initializing': conversion from 'const int32_t' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(434,24): warning C4244: 'argument': conversion from 'int32_t' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(434,23): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(435,22): warning C4244: 'argument': conversion from 'int32_t' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(435,21): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(436,23): warning C4244: 'argument': conversion from 'int32_t' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(436,22): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(482,35): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(482,29): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(483,33): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(483,27): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(498,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(499,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(500,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(501,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(502,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(503,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(627,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(628,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(629,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(630,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(631,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(632,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(784,27): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(785,43): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(786,55): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(790,27): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(791,43): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(792,55): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(796,58): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(797,43): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Math.cpp(798,92): warning C4244: '=': conversion from 'float' to 'int32_t', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Extensions/Extensions/Math.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Memory.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Extensions/Extensions/Memory.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Extensions/Extensions/Memory.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Extensions/Extensions/Memory.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Extensions/Extensions/Memory.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.cpp(54,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.cpp(54,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.cpp(59,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Extensions/Extensions/Memory.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  UnrealMemory.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Extensions/Extensions/UnrealMemory.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Extensions/Extensions/UnrealMemory.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  GUI.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Components/Components/GUI.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GUI.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GUI.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GUI.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\d3d11.h(106,19): warning C4099: 'ID3D11Texture2D': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GUI.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\SDK_HEADERS\Extras.hpp(215,7):
+      see declaration of 'ID3D11Texture2D'
+  
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\d3d11.h(127,19): warning C4099: 'ID3D11ShaderResourceView': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GUI.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\SDK_HEADERS\Extras.hpp(212,7):
+      see declaration of 'ID3D11ShaderResourceView'
+  
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\d3d11.h(134,19): warning C4099: 'ID3D11RenderTargetView': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GUI.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\SDK_HEADERS\Extras.hpp(213,7):
+      see declaration of 'ID3D11RenderTargetView'
+  
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\d3d11.h(141,19): warning C4099: 'ID3D11DepthStencilView': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GUI.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\SDK_HEADERS\Extras.hpp(214,7):
+      see declaration of 'ID3D11DepthStencilView'
+  
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\d3d11.h(2880,5): warning C4099: 'ID3D11Texture2D': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GUI.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\d3d11.h(2880,5):
+      see declaration of 'ID3D11Texture2D'
+  
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\d3d11.h(3722,5): warning C4099: 'ID3D11ShaderResourceView': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GUI.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\d3d11.h(3722,5):
+      see declaration of 'ID3D11ShaderResourceView'
+  
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\d3d11.h(4104,5): warning C4099: 'ID3D11RenderTargetView': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GUI.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\d3d11.h(4104,5):
+      see declaration of 'ID3D11RenderTargetView'
+  
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\d3d11.h(4582,5): warning C4099: 'ID3D11DepthStencilView': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Components/Components/GUI.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\d3d11.h(4582,5):
+      see declaration of 'ID3D11DepthStencilView'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Components\Components\GUI.cpp(225,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Downloads\TemplateShit\TNTsTemplate\Components\Components\GUI.cpp(226,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Components/Components/GUI.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  imgui_impl_dx11.cpp
+  Drawing.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Modules/Mods/Drawing.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Modules/Mods/Drawing.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Modules/Mods/Drawing.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Modules/Mods/Drawing.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Modules/Mods/Drawing.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Module.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'Modules/Module.cpp')
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,25): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Modules/Module.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(10,54): warning C4099: 'FString': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Modules/Module.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(915,7):
+      see declaration of 'FString'
+  
+D:\Downloads\TemplateShit\TNTsTemplate\Extensions\Extensions\Memory.hpp(11,23): warning C4099: 'FName': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'Modules/Module.cpp')
+      D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(791,7):
+      see declaration of 'FName'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'Modules/Module.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  pch.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'pch.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'pch.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Generating Code...
+  Compiling...
+  GameDefines.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'RLSDK/GameDefines.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'RLSDK/GameDefines.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  AkAudio_classes.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/AkAudio_classes.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/AkAudio_classes.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Core_classes.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/Core_classes.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/Core_classes.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Engine_classes.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/Engine_classes.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/Engine_classes.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  GFxUI_classes.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/GFxUI_classes.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/GFxUI_classes.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  IpDrv_classes.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/IpDrv_classes.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/IpDrv_classes.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  OnlineSubsystemEOS_classes.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/OnlineSubsystemEOS_classes.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/OnlineSubsystemEOS_classes.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  ProjectX_classes.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/ProjectX_classes.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/ProjectX_classes.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  TAGame_classes.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/TAGame_classes.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/TAGame_classes.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  WinDrv_classes.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/WinDrv_classes.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/WinDrv_classes.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  XAudio2_classes.cpp
+D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(934,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/XAudio2_classes.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18): warning C4244: '=': conversion from 'wchar_t' to 'char', possible loss of data
+  (compiling source file 'RLSDK/SDK_HEADERS/XAudio2_classes.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4813,18):
+      the template instantiation context (the oldest one first) is
+          D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,21):
+          see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+              D:\Downloads\TemplateShit\TNTsTemplate\RLSDK\GameDefines.hpp(787,3):
+              see the first reference to 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string' in 'FNameEntry::ToString'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(812,17):
+          see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
+          with
+          [
+              _Size_type=unsigned __int64,
+              _Iter=wchar_t *,
+              _Sent=wchar_t *,
+              _Size=unsigned __int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(968,18):
+          see reference to function template instantiation '_OutIt *std::_Copy_n_unchecked4<wchar_t*,_Size,char*>(_InIt,_SizeTy,_OutIt)' being compiled
+          with
+          [
+              _OutIt=char *,
+              _Size=unsigned __int64,
+              _InIt=wchar_t *,
+              _SizeTy=unsigned __int64
+          ]
+  
+  Generating Code...

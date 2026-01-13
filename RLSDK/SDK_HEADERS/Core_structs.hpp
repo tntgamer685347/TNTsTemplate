@@ -1,18 +1,21 @@
 /*
 #############################################################################################
-# RocketLeague (1.0.10897.0) SDK
-# Generated with the CodeRedGenerator v1.0.2
+# Rocket League SDK (RLSDK) Season 20 (v2.61)
+# Generated with CodeRedGenerator v1.1.5 on 11/05/2025 07:11PM
 # ========================================================================================= #
 # File: Core_structs.hpp
 # ========================================================================================= #
-# Credits: TheFeckless, ItsBranK
-# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
+# Psyonix Build ID: 251020.62592.500294
+# Build Date: Oct 20 2025 19:02:19
+# ========================================================================================= #
+# Credits: ItsBranK, TheFeckless, SSLow
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, discord.gg/d5ahhQmJbJ
 #############################################################################################
 */
 #pragma once
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+#pragma pack(push, 0x1)
 #endif
 
 /*
@@ -22,7 +25,7 @@
 */
 
 // ScriptStruct Core.Object.Rotator
-// 0x000C
+// Size: 0x000C
 struct FRotator
 {
 	int32_t                                            Pitch;                                         // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -31,7 +34,7 @@ struct FRotator
 };
 
 // ScriptStruct Core.Object.Vector
-// 0x000C
+// Size: 0x000C
 struct FVector
 {
 	float                                              X;                                             // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -47,7 +50,7 @@ struct FPlane : FVector
 };
 
 // ScriptStruct Core.Object.Guid
-// 0x0010
+// Size: 0x0010
 struct FGuid
 {
 	int32_t                                            A;                                             // 0x0000 (0x0004) [0x0000000000000000]               
@@ -57,7 +60,7 @@ struct FGuid
 };
 
 // ScriptStruct Core.Object.Array_Mirror
-// 0x0010
+// Size: 0x0010
 struct FArray_Mirror
 {
 	struct FPointer                                    Data;                                          // 0x0000 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
@@ -66,7 +69,7 @@ struct FArray_Mirror
 };
 
 // ScriptStruct Core.Object.InlinePointerArray_Mirror
-// 0x0018
+// Size: 0x0018
 struct FInlinePointerArray_Mirror
 {
 	struct FPointer                                    InlineData;                                    // 0x0000 (0x0008) [0x0000000000000002] (CPF_Const)   
@@ -74,7 +77,7 @@ struct FInlinePointerArray_Mirror
 };
 
 // ScriptStruct Core.Object.LinearColor
-// 0x0010
+// Size: 0x0010
 struct FLinearColor
 {
 	float                                              R;                                             // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -84,7 +87,7 @@ struct FLinearColor
 };
 
 // ScriptStruct Core.Object.Color
-// 0x0004
+// Size: 0x0004
 struct FColor
 {
 	uint8_t                                            B;                                             // 0x0000 (0x0001) [0x0000000000000001] (CPF_Edit)    
@@ -94,7 +97,7 @@ struct FColor
 };
 
 // ScriptStruct Core.Object.Vector2D
-// 0x0008
+// Size: 0x0008
 struct FVector2D
 {
 	float                                              X;                                             // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -102,7 +105,7 @@ struct FVector2D
 };
 
 // ScriptStruct Core.Object.Vector4
-// 0x0010
+// Size: 0x0010
 struct FVector4
 {
 	float                                              X;                                             // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -112,7 +115,7 @@ struct FVector4
 };
 
 // ScriptStruct Core.Object.InterpCurvePointVector2D
-// 0x002D
+// Size: 0x0030 (0x002D PropertySize + 0x0003 padding to satisfy MinAlignment of 4)
 struct FInterpCurvePointVector2D
 {
 	float                                              InVal;                                         // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -122,18 +125,20 @@ struct FInterpCurvePointVector2D
 	struct FVector2D                                   ArriveWeight;                                  // 0x001C (0x0008) [0x0000000000000001] (CPF_Edit)    
 	struct FVector2D                                   LeaveWeight;                                   // 0x0024 (0x0008) [0x0000000000000001] (CPF_Edit)    
 	uint8_t                                            InterpMode;                                    // 0x002C (0x0001) [0x0000000000000001] (CPF_Edit)    
+	uint8_t                                          MinAlignmentPadding[0x3];                      // 0x002D (0x0003) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.InterpCurveVector2D
-// 0x0011
+// Size: 0x0018 (0x0011 PropertySize + 0x0007 padding to satisfy MinAlignment of 8)
 struct FInterpCurveVector2D
 {
-	TArray<struct FInterpCurvePointVector2D>           Points;                                        // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
+	class TArray<struct FInterpCurvePointVector2D>     Points;                                        // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	uint8_t                                            InterpMethod;                                  // 0x0010 (0x0001) [0x0000000000000000]               
+	uint8_t                                          MinAlignmentPadding[0x7];                      // 0x0011 (0x0007) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.InterpCurvePointFloat
-// 0x0019
+// Size: 0x001C (0x0019 PropertySize + 0x0003 padding to satisfy MinAlignment of 4)
 struct FInterpCurvePointFloat
 {
 	float                                              InVal;                                         // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -143,18 +148,20 @@ struct FInterpCurvePointFloat
 	float                                              ArriveWeight;                                  // 0x0010 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              LeaveWeight;                                   // 0x0014 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	uint8_t                                            InterpMode;                                    // 0x0018 (0x0001) [0x0000000000000001] (CPF_Edit)    
+	uint8_t                                          MinAlignmentPadding[0x3];                      // 0x0019 (0x0003) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.InterpCurveFloat
-// 0x0011
+// Size: 0x0018 (0x0011 PropertySize + 0x0007 padding to satisfy MinAlignment of 8)
 struct FInterpCurveFloat
 {
-	TArray<struct FInterpCurvePointFloat>              Points;                                        // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
+	class TArray<struct FInterpCurvePointFloat>        Points;                                        // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	uint8_t                                            InterpMethod;                                  // 0x0010 (0x0001) [0x0000000000000000]               
+	uint8_t                                          MinAlignmentPadding[0x7];                      // 0x0011 (0x0007) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.Cylinder
-// 0x0008
+// Size: 0x0008
 struct FCylinder
 {
 	float                                              Radius;                                        // 0x0000 (0x0004) [0x0000000000000000]               
@@ -162,7 +169,7 @@ struct FCylinder
 };
 
 // ScriptStruct Core.Object.InterpCurvePointVector
-// 0x0041
+// Size: 0x0044 (0x0041 PropertySize + 0x0003 padding to satisfy MinAlignment of 4)
 struct FInterpCurvePointVector
 {
 	float                                              InVal;                                         // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -172,18 +179,20 @@ struct FInterpCurvePointVector
 	struct FVector                                     ArriveWeight;                                  // 0x0028 (0x000C) [0x0000000000000001] (CPF_Edit)    
 	struct FVector                                     LeaveWeight;                                   // 0x0034 (0x000C) [0x0000000000000001] (CPF_Edit)    
 	uint8_t                                            InterpMode;                                    // 0x0040 (0x0001) [0x0000000000000001] (CPF_Edit)    
+	uint8_t                                          MinAlignmentPadding[0x3];                      // 0x0041 (0x0003) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.InterpCurveVector
-// 0x0011
+// Size: 0x0018 (0x0011 PropertySize + 0x0007 padding to satisfy MinAlignment of 8)
 struct FInterpCurveVector
 {
-	TArray<struct FInterpCurvePointVector>             Points;                                        // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
+	class TArray<struct FInterpCurvePointVector>       Points;                                        // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	uint8_t                                            InterpMethod;                                  // 0x0010 (0x0001) [0x0000000000000000]               
+	uint8_t                                          MinAlignmentPadding[0x7];                      // 0x0011 (0x0007) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.Quat
-// 0x0010
+// Size: 0x0010
 struct FQuat
 {
 	float                                              X;                                             // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -193,7 +202,7 @@ struct FQuat
 };
 
 // ScriptStruct Core.Object.Matrix
-// 0x0040
+// Size: 0x0040
 struct FMatrix
 {
 	struct FPlane                                      XPlane;                                        // 0x0000 (0x0010) [0x0000000000000001] (CPF_Edit)    
@@ -203,7 +212,7 @@ struct FMatrix
 };
 
 // ScriptStruct Core.Object.BoxSphereBounds
-// 0x001C
+// Size: 0x001C
 struct FBoxSphereBounds
 {
 	struct FVector                                     Origin;                                        // 0x0000 (0x000C) [0x0000000000000001] (CPF_Edit)    
@@ -212,7 +221,7 @@ struct FBoxSphereBounds
 };
 
 // ScriptStruct Core.Object.TwoVectors
-// 0x0018
+// Size: 0x0018
 struct FTwoVectors
 {
 	struct FVector                                     v1;                                            // 0x0000 (0x000C) [0x0000000000000001] (CPF_Edit)    
@@ -220,7 +229,7 @@ struct FTwoVectors
 };
 
 // ScriptStruct Core.Object.TAlphaBlend
-// 0x0015
+// Size: 0x0018 (0x0015 PropertySize + 0x0003 padding to satisfy MinAlignment of 4)
 struct FTAlphaBlend
 {
 	float                                              AlphaIn;                                       // 0x0000 (0x0004) [0x0000000000000002] (CPF_Const)   
@@ -229,10 +238,11 @@ struct FTAlphaBlend
 	float                                              BlendTime;                                     // 0x000C (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              BlendTimeToGo;                                 // 0x0010 (0x0004) [0x0000000000000002] (CPF_Const)   
 	uint8_t                                            BlendType;                                     // 0x0014 (0x0001) [0x0000000000000001] (CPF_Edit)    
+	uint8_t                                          MinAlignmentPadding[0x3];                      // 0x0015 (0x0003) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.BoneAtom
-// 0x0020
+// Size: 0x0020
 struct FBoneAtom
 {
 	struct FQuat                                       Rotation;                                      // 0x0000 (0x0010) [0x0000000000000000]               
@@ -241,35 +251,37 @@ struct FBoneAtom
 };
 
 // ScriptStruct Core.Object.OctreeElementId
-// 0x000C
+// Size: 0x0010 (0x000C PropertySize + 0x0004 padding to satisfy MinAlignment of 8)
 struct FOctreeElementId
 {
 	struct FPointer                                    Node;                                          // 0x0000 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            ElementIndex;                                  // 0x0008 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
+	uint8_t                                          MinAlignmentPadding[0x4];                      // 0x000C (0x0004) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.RenderCommandFence
-// 0x0004
+// Size: 0x0004
 struct FRenderCommandFence
 {
 	int32_t                                            NumPendingFences;                              // 0x0000 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
 };
 
 // ScriptStruct Core.Object.RawDistribution
-// 0x0020
+// Size: 0x0020
 struct FRawDistribution
 {
 	uint8_t                                            Type;                                          // 0x0000 (0x0001) [0x0000000000000000]               
 	uint8_t                                            Op;                                            // 0x0001 (0x0001) [0x0000000000000000]               
 	uint8_t                                            LookupTableNumElements;                        // 0x0002 (0x0001) [0x0000000000000000]               
 	uint8_t                                            LookupTableChunkSize;                          // 0x0003 (0x0001) [0x0000000000000000]               
-	TArray<float>                                      LookupTable;                                   // 0x0008 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
+	uint8_t                                          UnknownData00[0x4];                            // 0x0004 (0x0004) MISSED OFFSET
+	class TArray<float>                                LookupTable;                                   // 0x0008 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	float                                              LookupTableTimeScale;                          // 0x0018 (0x0004) [0x0000000000000000]               
 	float                                              LookupTableStartTime;                          // 0x001C (0x0004) [0x0000000000000000]               
 };
 
 // ScriptStruct Core.Object.InterpCurvePointLinearColor
-// 0x0055
+// Size: 0x0058 (0x0055 PropertySize + 0x0003 padding to satisfy MinAlignment of 4)
 struct FInterpCurvePointLinearColor
 {
 	float                                              InVal;                                         // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -279,40 +291,44 @@ struct FInterpCurvePointLinearColor
 	struct FLinearColor                                ArriveWeight;                                  // 0x0034 (0x0010) [0x0000000000000001] (CPF_Edit)    
 	struct FLinearColor                                LeaveWeight;                                   // 0x0044 (0x0010) [0x0000000000000001] (CPF_Edit)    
 	uint8_t                                            InterpMode;                                    // 0x0054 (0x0001) [0x0000000000000001] (CPF_Edit)    
+	uint8_t                                          MinAlignmentPadding[0x3];                      // 0x0055 (0x0003) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.InterpCurveLinearColor
-// 0x0011
+// Size: 0x0018 (0x0011 PropertySize + 0x0007 padding to satisfy MinAlignment of 8)
 struct FInterpCurveLinearColor
 {
-	TArray<struct FInterpCurvePointLinearColor>        Points;                                        // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
+	class TArray<struct FInterpCurvePointLinearColor>  Points;                                        // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	uint8_t                                            InterpMethod;                                  // 0x0010 (0x0001) [0x0000000000000000]               
+	uint8_t                                          MinAlignmentPadding[0x7];                      // 0x0011 (0x0007) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.InterpCurvePointQuat
-// 0x0061
+// Size: 0x0070 (0x0061 PropertySize + 0x000F padding to satisfy MinAlignment of 16)
 struct FInterpCurvePointQuat
 {
 	float                                              InVal;                                         // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
-	uint8_t                                           UnknownData00[0xC];                               		// 0x0004 (0x000C) MISSED OFFSET
+	uint8_t                                          UnknownData00[0xC];                            // 0x0004 (0x000C) MISSED OFFSET
 	struct FQuat                                       OutVal;                                        // 0x0010 (0x0010) [0x0000000000000001] (CPF_Edit)    
 	struct FQuat                                       ArriveTangent;                                 // 0x0020 (0x0010) [0x0000000000000001] (CPF_Edit)    
 	struct FQuat                                       LeaveTangent;                                  // 0x0030 (0x0010) [0x0000000000000001] (CPF_Edit)    
 	struct FQuat                                       ArriveWeight;                                  // 0x0040 (0x0010) [0x0000000000000001] (CPF_Edit)    
 	struct FQuat                                       LeaveWeight;                                   // 0x0050 (0x0010) [0x0000000000000001] (CPF_Edit)    
 	uint8_t                                            InterpMode;                                    // 0x0060 (0x0001) [0x0000000000000001] (CPF_Edit)    
+	uint8_t                                          MinAlignmentPadding[0xF];                      // 0x0061 (0x000F) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.InterpCurveQuat
-// 0x0011
+// Size: 0x0018 (0x0011 PropertySize + 0x0007 padding to satisfy MinAlignment of 8)
 struct FInterpCurveQuat
 {
-	TArray<struct FInterpCurvePointQuat>               Points;                                        // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
+	class TArray<struct FInterpCurvePointQuat>         Points;                                        // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	uint8_t                                            InterpMethod;                                  // 0x0010 (0x0001) [0x0000000000000000]               
+	uint8_t                                          MinAlignmentPadding[0x7];                      // 0x0011 (0x0007) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.InterpCurvePointTwoVectors
-// 0x007D
+// Size: 0x0080 (0x007D PropertySize + 0x0003 padding to satisfy MinAlignment of 4)
 struct FInterpCurvePointTwoVectors
 {
 	float                                              InVal;                                         // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -322,27 +338,30 @@ struct FInterpCurvePointTwoVectors
 	struct FTwoVectors                                 ArriveWeight;                                  // 0x004C (0x0018) [0x0000000000000001] (CPF_Edit)    
 	struct FTwoVectors                                 LeaveWeight;                                   // 0x0064 (0x0018) [0x0000000000000001] (CPF_Edit)    
 	uint8_t                                            InterpMode;                                    // 0x007C (0x0001) [0x0000000000000001] (CPF_Edit)    
+	uint8_t                                          MinAlignmentPadding[0x3];                      // 0x007D (0x0003) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.InterpCurveTwoVectors
-// 0x0011
+// Size: 0x0018 (0x0011 PropertySize + 0x0007 padding to satisfy MinAlignment of 8)
 struct FInterpCurveTwoVectors
 {
-	TArray<struct FInterpCurvePointTwoVectors>         Points;                                        // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
+	class TArray<struct FInterpCurvePointTwoVectors>   Points;                                        // 0x0000 (0x0010) [0x0000000000400001] (CPF_Edit | CPF_NeedCtorLink)
 	uint8_t                                            InterpMethod;                                  // 0x0010 (0x0001) [0x0000000000000000]               
+	uint8_t                                          MinAlignmentPadding[0x7];                      // 0x0011 (0x0007) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.Box
-// 0x0019
+// Size: 0x001C (0x0019 PropertySize + 0x0003 padding to satisfy MinAlignment of 4)
 struct FBox
 {
 	struct FVector                                     Min;                                           // 0x0000 (0x000C) [0x0000000000000001] (CPF_Edit)    
 	struct FVector                                     Max;                                           // 0x000C (0x000C) [0x0000000000000001] (CPF_Edit)    
 	uint8_t                                            IsValid;                                       // 0x0018 (0x0001) [0x0000000000000000]               
+	uint8_t                                          MinAlignmentPadding[0x3];                      // 0x0019 (0x0003) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.TPOV
-// 0x001C
+// Size: 0x001C
 struct FTPOV
 {
 	struct FVector                                     Location;                                      // 0x0000 (0x000C) [0x0000000000000001] (CPF_Edit)    
@@ -351,15 +370,15 @@ struct FTPOV
 };
 
 // ScriptStruct Core.Object.SHVector
-// 0x0030
+// Size: 0x0030
 struct FSHVector
 {
-	float                                              V[0x9];                                        // 0x0000 (0x0024) [0x0000000000000001] (CPF_Edit)    
-	float                                              Padding[0x3];                                  // 0x0024 (0x000C) [0x0000000000000000]               
+	float                                              V[9];                                          // 0x0000 (0x0024) [0x0000000000000001] (CPF_Edit)    
+	float                                              Padding[3];                                    // 0x0024 (0x000C) [0x0000000000000000]               
 };
 
 // ScriptStruct Core.Object.SHVectorRGB
-// 0x0090
+// Size: 0x0090
 struct FSHVectorRGB
 {
 	struct FSHVector                                   R;                                             // 0x0000 (0x0030) [0x0000000000000001] (CPF_Edit)    
@@ -368,7 +387,7 @@ struct FSHVectorRGB
 };
 
 // ScriptStruct Core.Object.IntPoint
-// 0x0008
+// Size: 0x0008
 struct FIntPoint
 {
 	int32_t                                            X;                                             // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -376,7 +395,7 @@ struct FIntPoint
 };
 
 // ScriptStruct Core.Object.PackedNormal
-// 0x0004
+// Size: 0x0004
 struct FPackedNormal
 {
 	uint8_t                                            X;                                             // 0x0000 (0x0001) [0x0000000000000001] (CPF_Edit)    
@@ -386,7 +405,7 @@ struct FPackedNormal
 };
 
 // ScriptStruct Core.Object.IndirectArray_Mirror
-// 0x0010
+// Size: 0x0010
 struct FIndirectArray_Mirror
 {
 	struct FPointer                                    Data;                                          // 0x0000 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
@@ -395,7 +414,7 @@ struct FIndirectArray_Mirror
 };
 
 // ScriptStruct Core.Object.FColorVertexBuffer_Mirror
-// 0x001C
+// Size: 0x0020 (0x001C PropertySize + 0x0004 padding to satisfy MinAlignment of 8)
 struct FFColorVertexBuffer_Mirror
 {
 	struct FPointer                                    VfTable;                                       // 0x0000 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
@@ -403,17 +422,18 @@ struct FFColorVertexBuffer_Mirror
 	int32_t                                            Data;                                          // 0x0010 (0x0004) [0x0000000000000002] (CPF_Const)   
 	int32_t                                            Stride;                                        // 0x0014 (0x0004) [0x0000000000000002] (CPF_Const)   
 	int32_t                                            NumVertices;                                   // 0x0018 (0x0004) [0x0000000000000002] (CPF_Const)   
+	uint8_t                                          MinAlignmentPadding[0x4];                      // 0x001C (0x0004) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.RenderCommandFence_Mirror
-// 0x0004
+// Size: 0x0004
 struct FRenderCommandFence_Mirror
 {
 	int32_t                                            NumPendingFences;                              // 0x0000 (0x0004) [0x0000000000003002] (CPF_Const | CPF_Native | CPF_Transient)
 };
 
 // ScriptStruct Core.Object.UntypedBulkData_Mirror
-// 0x0054
+// Size: 0x0058 (0x0054 PropertySize + 0x0004 padding to satisfy MinAlignment of 8)
 struct FUntypedBulkData_Mirror
 {
 	struct FPointer                                    VfTable;                                       // 0x0000 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
@@ -423,67 +443,73 @@ struct FUntypedBulkData_Mirror
 	int32_t                                            BulkDataSizeOnDisk;                            // 0x0018 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            SavedBulkDataFlags;                            // 0x001C (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            SavedElementCount;                             // 0x0020 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
+	uint8_t                                          UnknownData00[0x4];                            // 0x0024 (0x0004) MISSED OFFSET
 	uint64_t                                           SavedBulkDataOffsetInFile;                     // 0x0028 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            SavedBulkDataSizeOnDisk;                       // 0x0030 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
+	uint8_t                                          UnknownData01[0x4];                            // 0x0034 (0x0004) MISSED OFFSET
 	struct FPointer                                    BulkData;                                      // 0x0038 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            LockStatus;                                    // 0x0040 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
+	uint8_t                                          UnknownData02[0x4];                            // 0x0044 (0x0004) MISSED OFFSET
 	struct FPointer                                    AttachedAr;                                    // 0x0048 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            bShouldFreeOnEmpty;                            // 0x0050 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
+	uint8_t                                          MinAlignmentPadding[0x4];                      // 0x0054 (0x0004) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.BitArray_Mirror
-// 0x0020
+// Size: 0x0020
 struct FBitArray_Mirror
 {
 	struct FPointer                                    IndirectData;                                  // 0x0000 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
-	int32_t                                            InlineData[0x4];                               // 0x0008 (0x0010) [0x0000000000001002] (CPF_Const | CPF_Native)
+	int32_t                                            InlineData[4];                                 // 0x0008 (0x0010) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            NumBits;                                       // 0x0018 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            MaxBits;                                       // 0x001C (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
 };
 
 // ScriptStruct Core.Object.SparseArray_Mirror
-// 0x0038
+// Size: 0x0038
 struct FSparseArray_Mirror
 {
-	TArray<int32_t>                                    Elements;                                      // 0x0000 (0x0010) [0x0000000000001002] (CPF_Const | CPF_Native)
+	class TArray<int32_t>                              Elements;                                      // 0x0000 (0x0010) [0x0000000000001002] (CPF_Const | CPF_Native)
 	struct FBitArray_Mirror                            AllocationFlags;                               // 0x0010 (0x0020) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            FirstFreeIndex;                                // 0x0030 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            NumFreeIndices;                                // 0x0034 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
 };
 
 // ScriptStruct Core.Object.Set_Mirror
-// 0x004C
+// Size: 0x0050 (0x004C PropertySize + 0x0004 padding to satisfy MinAlignment of 8)
 struct FSet_Mirror
 {
 	struct FSparseArray_Mirror                         Elements;                                      // 0x0000 (0x0038) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            InlineHash;                                    // 0x0038 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
+	uint8_t                                          UnknownData00[0x4];                            // 0x003C (0x0004) MISSED OFFSET
 	struct FPointer                                    Hash;                                          // 0x0040 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
 	int32_t                                            HashSize;                                      // 0x0048 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
+	uint8_t                                          MinAlignmentPadding[0x4];                      // 0x004C (0x0004) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Object.MultiMap_Mirror
-// 0x0050
+// Size: 0x0050
 struct FMultiMap_Mirror
 {
 	struct FSet_Mirror                                 Pairs;                                         // 0x0000 (0x0050) [0x0000000000001002] (CPF_Const | CPF_Native)
 };
 
 // ScriptStruct Core.Object.Map_Mirror
-// 0x0050
+// Size: 0x0050
 struct FMap_Mirror
 {
 	struct FSet_Mirror                                 Pairs;                                         // 0x0000 (0x0050) [0x0000000000001002] (CPF_Const | CPF_Native)
 };
 
 // ScriptStruct Core.Object.ThreadSafeCounter
-// 0x0004
+// Size: 0x0004
 struct FThreadSafeCounter
 {
 	int32_t                                            Value;                                         // 0x0000 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
 };
 
 // ScriptStruct Core.Object.Double
-// 0x0008
+// Size: 0x0008
 struct FDouble
 {
 	int32_t                                            A;                                             // 0x0000 (0x0004) [0x0000000000001002] (CPF_Const | CPF_Native)
@@ -491,7 +517,7 @@ struct FDouble
 };
 
 // ScriptStruct Core.Object.IpAddr
-// 0x0014
+// Size: 0x0014
 struct FIpAddr
 {
 	int32_t                                            AddrA;                                         // 0x0000 (0x0004) [0x0000000000000000]               
@@ -502,23 +528,24 @@ struct FIpAddr
 };
 
 // ScriptStruct Core.Object.HatPointer
-// 0x0008
+// Size: 0x0008
 struct FHatPointer
 {
 	uint64_t                                           Dummy;                                         // 0x0000 (0x0008) [0x0000000000001002] (CPF_Const | CPF_Native)
 };
 
 // ScriptStruct Core._Types_Core.SceNpOnlineId
-// 0x0014
+// Size: 0x0018 (0x0014 PropertySize + 0x0004 padding to satisfy MinAlignment of 8)
 struct FSceNpOnlineId
 {
-	uint64_t                                           Data[0x2];                                     // 0x0000 (0x0010) [0x0000000000000000]               
+	uint64_t                                           Data[2];                                       // 0x0000 (0x0010) [0x0000000000000000]               
 	uint8_t                                            Term;                                          // 0x0010 (0x0001) [0x0000000000000000]               
-	uint8_t                                            Dummy[0x3];                                    // 0x0011 (0x0003) [0x0000000000000000]               
+	uint8_t                                            Dummy[3];                                      // 0x0011 (0x0003) [0x0000000000000000]               
+	uint8_t                                          MinAlignmentPadding[0x4];                      // 0x0014 (0x0004) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core._Types_Core.SceNpId
-// 0x0028
+// Size: 0x0028
 struct FSceNpId
 {
 	struct FSceNpOnlineId                              Handle;                                        // 0x0000 (0x0018) [0x0000000000000002] (CPF_Const)   
@@ -527,7 +554,7 @@ struct FSceNpId
 };
 
 // ScriptStruct Core._Types_Core.UniqueNetId
-// 0x0042
+// Size: 0x0048 (0x0042 PropertySize + 0x0006 padding to satisfy MinAlignment of 8)
 struct FUniqueNetId
 {
 	uint64_t                                           Uid;                                           // 0x0000 (0x0008) [0x0000000000000000]               
@@ -535,33 +562,35 @@ struct FUniqueNetId
 	class FString                                      EpicAccountId;                                 // 0x0030 (0x0010) [0x0000000000400000] (CPF_NeedCtorLink)
 	uint8_t                                            Platform;                                      // 0x0040 (0x0001) [0x0000000000000000]               
 	uint8_t                                            SplitscreenID;                                 // 0x0041 (0x0001) [0x0000000000000000]               
+	uint8_t                                          MinAlignmentPadding[0x6];                      // 0x0042 (0x0006) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core._Types_Core.ProductHashID
-// 0x0004
+// Size: 0x0004
 struct FProductHashID
 {
 	int32_t                                            Id;                                            // 0x0000 (0x0004) [0x0000000000000000]               
 };
 
 // ScriptStruct Core._Types_Core.EncryptedKeyIndex
-// 0x0004
+// Size: 0x0004
 struct FEncryptedKeyIndex
 {
 	int32_t                                            Index;                                         // 0x0000 (0x0004) [0x0000000000000000]               
 };
 
 // ScriptStruct Core._Types_Core.VoiceAudioDevice
-// 0x0024
+// Size: 0x0028 (0x0024 PropertySize + 0x0004 padding to satisfy MinAlignment of 8)
 struct FVoiceAudioDevice
 {
-	class FString                                      Id;                                            // 0x0000 (0x0010) [0x0000000040400000] (CPF_NeedCtorLink | CPF_EditInlineNotify)
-	class FString                                      Name;                                          // 0x0010 (0x0010) [0x0000000040400000] (CPF_NeedCtorLink | CPF_EditInlineNotify)
-	uint32_t                                           bDefault : 1;                                  // 0x0020 (0x0004) [0x0000000040000000] [0x00000001] (CPF_EditInlineNotify)
+	class FString                                      Id;                                            // 0x0000 (0x0010) [0x0000000040400000] (CPF_NeedCtorLink | CPF_DataBinding)
+	class FString                                      Name;                                          // 0x0010 (0x0010) [0x0000000040400000] (CPF_NeedCtorLink | CPF_DataBinding)
+	uint32_t                                           bDefault : 1;                                  // 0x0020 (0x0004) [0x0000000040000000] [0x00000001] (CPF_DataBinding)
+	uint8_t                                          MinAlignmentPadding[0x4];                      // 0x0024 (0x0004) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core._Types_Core.VoiceRoomMemberStatus
-// 0x0004
+// Size: 0x0004
 struct FVoiceRoomMemberStatus
 {
 	uint32_t                                           bLocal : 1;                                    // 0x0000 (0x0004) [0x0000000000000000] [0x00000001] 
@@ -573,7 +602,7 @@ struct FVoiceRoomMemberStatus
 };
 
 // ScriptStruct Core._Types_Core.ProductInstanceID
-// 0x0010
+// Size: 0x0010
 struct FProductInstanceID
 {
 	uint64_t                                           UpperBits;                                     // 0x0000 (0x0008) [0x0000000000000000]               
@@ -581,17 +610,18 @@ struct FProductInstanceID
 };
 
 // ScriptStruct Core.AutomationTest.ScriptWarning
-// 0x0034
+// Size: 0x0038 (0x0034 PropertySize + 0x0004 padding to satisfy MinAlignment of 8)
 struct FScriptWarning
 {
 	class FString                                      Node;                                          // 0x0000 (0x0010) [0x0000000000500000] (CPF_NeedCtorLink)
 	class FString                                      Message;                                       // 0x0010 (0x0010) [0x0000000000500000] (CPF_NeedCtorLink)
 	class FString                                      StackTrace;                                    // 0x0020 (0x0010) [0x0000000000500000] (CPF_NeedCtorLink)
 	int32_t                                            ScriptPosition;                                // 0x0030 (0x0004) [0x0000000000000000]               
+	uint8_t                                          MinAlignmentPadding[0x4];                      // 0x0034 (0x0004) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.Breadcrumbs.BreadcrumbEntry
-// 0x0020
+// Size: 0x0020
 struct FBreadcrumbEntry
 {
 	class FString                                      Category;                                      // 0x0000 (0x0010) [0x0000000000500000] (CPF_NeedCtorLink)
@@ -599,10 +629,11 @@ struct FBreadcrumbEntry
 };
 
 // ScriptStruct Core.DelegateTracker.AsyncDelegateInfo
-// 0x0020
+// Size: 0x0020
 struct FAsyncDelegateInfo
 {
 	int32_t                                            CallbackId;                                    // 0x0000 (0x0004) [0x0000000000000000]               
+	uint8_t                                          UnknownData00[0x4];                            // 0x0004 (0x0004) MISSED OFFSET
 	struct FScriptDelegate                             AsyncDelegate;                                 // 0x0008 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 };
 
@@ -629,16 +660,17 @@ struct FRawDistributionVector : FRawDistribution
 };
 
 // ScriptStruct Core.ObjectProvider.ObjectProviderSubscription
-// 0x0024
+// Size: 0x0028 (0x0024 PropertySize + 0x0004 padding to satisfy MinAlignment of 8)
 struct FObjectProviderSubscription
 {
 	class UClass*                                      ObjClass;                                      // 0x0000 (0x0008) [0x0000000000000000]               
 	struct FScriptDelegate                             Callback;                                      // 0x0008 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
 	uint32_t                                           bFireOnce : 1;                                 // 0x0020 (0x0004) [0x0000000000000000] [0x00000001] 
+	uint8_t                                          MinAlignmentPadding[0x4];                      // 0x0024 (0x0004) PADDING FOR MINALIGNMENT
 };
 
 // ScriptStruct Core.ObjectProvider.ObjectProviderPendingCallback
-// 0x0020
+// Size: 0x0020
 struct FObjectProviderPendingCallback
 {
 	struct FScriptDelegate                             Callback;                                      // 0x0000 (0x0018) [0x0000000000400000] (CPF_NeedCtorLink)
@@ -646,7 +678,7 @@ struct FObjectProviderPendingCallback
 };
 
 // ScriptStruct Core.ObjectProvider.ObjectPropertyInjection
-// 0x0010
+// Size: 0x0010
 struct FObjectPropertyInjection
 {
 	class UObject*                                     Subscriber;                                    // 0x0000 (0x0008) [0x0000000000000000]               
@@ -654,7 +686,7 @@ struct FObjectPropertyInjection
 };
 
 // ScriptStruct Core.ObjectProvider.InterfacePropertyInjection
-// 0x0010
+// Size: 0x0010
 struct FInterfacePropertyInjection
 {
 	class UObject*                                     Subscriber;                                    // 0x0000 (0x0008) [0x0000000000000000]               
@@ -662,7 +694,7 @@ struct FInterfacePropertyInjection
 };
 
 // ScriptStruct Core.RotatorConversions.RotatorDegrees
-// 0x000C
+// Size: 0x000C
 struct FRotatorDegrees
 {
 	float                                              Pitch;                                         // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
@@ -671,18 +703,12 @@ struct FRotatorDegrees
 };
 
 // ScriptStruct Core.RotatorConversions.RotatorRadians
-// 0x000C
+// Size: 0x000C
 struct FRotatorRadians
 {
 	float                                              Pitch;                                         // 0x0000 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              Yaw;                                           // 0x0004 (0x0004) [0x0000000000000001] (CPF_Edit)    
 	float                                              Roll;                                          // 0x0008 (0x0004) [0x0000000000000001] (CPF_Edit)    
-};
-
-// ScriptStruct Core.Default__ScriptStruct
-// 0x0000
-struct FDefault__ScriptStruct
-{
 };
 
 /*
@@ -692,5 +718,5 @@ struct FDefault__ScriptStruct
 */
 
 #ifdef _MSC_VER
-	#pragma pack(pop)
+#pragma pack(pop)
 #endif

@@ -1,18 +1,21 @@
 /*
 #############################################################################################
-# RocketLeague (1.0.10897.0) SDK
-# Generated with the CodeRedGenerator v1.0.2
+# Rocket League SDK (RLSDK) Season 20 (v2.61)
+# Generated with CodeRedGenerator v1.1.5 on 11/05/2025 07:11PM
 # ========================================================================================= #
 # File: GFxUI_classes.cpp
 # ========================================================================================= #
-# Credits: TheFeckless, ItsBranK
-# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
+# Psyonix Build ID: 251020.62592.500294
+# Build Date: Oct 20 2025 19:02:19
+# ========================================================================================= #
+# Credits: ItsBranK, TheFeckless, SSLow
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, discord.gg/d5ahhQmJbJ
 #############################################################################################
 */
 #include "../SdkHeaders.hpp"
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+#pragma pack(push, 0x1)
 #endif
 
 /*
@@ -39,9 +42,7 @@ void UGFxEngine::UpdateMovieLoadingInfo(struct FLoadingMovieMapInfo& LoadingInfo
 	memset(&UpdateMovieLoadingInfo_Params, 0, sizeof(UpdateMovieLoadingInfo_Params));
 	memcpy_s(&UpdateMovieLoadingInfo_Params.LoadingInfo, sizeof(UpdateMovieLoadingInfo_Params.LoadingInfo), &LoadingInfo, sizeof(LoadingInfo));
 
-	uFnUpdateMovieLoadingInfo->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnUpdateMovieLoadingInfo, &UpdateMovieLoadingInfo_Params, nullptr);
-	uFnUpdateMovieLoadingInfo->FunctionFlags |= 0x400;
 
 	memcpy_s(&LoadingInfo, sizeof(LoadingInfo), &UpdateMovieLoadingInfo_Params.LoadingInfo, sizeof(UpdateMovieLoadingInfo_Params.LoadingInfo));
 };
@@ -76,7 +77,7 @@ void UGFxEngine::eventTick(float DeltaTime)
 // class FString                  Cmd                            (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Arg                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UGFxFSCmdHandler::eventFSCommand(class UGFxMoviePlayer* Movie, class UGFxEvent_FSCommand* Event, class FString Cmd, class FString Arg)
+bool UGFxFSCmdHandler::eventFSCommand(class UGFxMoviePlayer* Movie, class UGFxEvent_FSCommand* Event, const class FString& Cmd, const class FString& Arg)
 {
 	static UFunction* uFnFSCommand = nullptr;
 
@@ -87,8 +88,8 @@ bool UGFxFSCmdHandler::eventFSCommand(class UGFxMoviePlayer* Movie, class UGFxEv
 
 	UGFxFSCmdHandler_eventFSCommand_Params FSCommand_Params;
 	memset(&FSCommand_Params, 0, sizeof(FSCommand_Params));
-	memcpy_s(&FSCommand_Params.Movie, sizeof(FSCommand_Params.Movie), &Movie, sizeof(Movie));
-	memcpy_s(&FSCommand_Params.Event, sizeof(FSCommand_Params.Event), &Event, sizeof(Event));
+	FSCommand_Params.Movie = Movie;
+	FSCommand_Params.Event = Event;
 	memcpy_s(&FSCommand_Params.Cmd, sizeof(FSCommand_Params.Cmd), &Cmd, sizeof(Cmd));
 	memcpy_s(&FSCommand_Params.Arg, sizeof(FSCommand_Params.Arg), &Arg, sizeof(Arg));
 
@@ -101,12 +102,12 @@ bool UGFxFSCmdHandler::eventFSCommand(class UGFxMoviePlayer* Movie, class UGFxEv
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        ControllerId                   (CPF_Parm)
-// struct FName                   Key                            (CPF_Parm)
+// class FName                    Key                            (CPF_Parm)
 // EInputEvent                    Event                          (CPF_Parm)
 // float                          AmountDepressed                (CPF_Parm)
-// bool                           bGamepad                       (CPF_Parm)
+// uint32_t                       bGamepad                       (CPF_Parm)
 
-void UGFxInteraction::DebugInputKey(int32_t ControllerId, struct FName Key, EInputEvent Event, float AmountDepressed, bool bGamepad)
+void UGFxInteraction::DebugInputKey(int32_t ControllerId, const class FName& Key, EInputEvent Event, float AmountDepressed, bool bGamepad)
 {
 	static UFunction* uFnDebugInputKey = nullptr;
 
@@ -123,9 +124,7 @@ void UGFxInteraction::DebugInputKey(int32_t ControllerId, struct FName Key, EInp
 	memcpy_s(&DebugInputKey_Params.AmountDepressed, sizeof(DebugInputKey_Params.AmountDepressed), &AmountDepressed, sizeof(AmountDepressed));
 	DebugInputKey_Params.bGamepad = bGamepad;
 
-	uFnDebugInputKey->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDebugInputKey, &DebugInputKey_Params, nullptr);
-	uFnDebugInputKey->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxInteraction.CloseAllMoviePlayers
@@ -144,9 +143,7 @@ void UGFxInteraction::CloseAllMoviePlayers()
 	UGFxInteraction_execCloseAllMoviePlayers_Params CloseAllMoviePlayers_Params;
 	memset(&CloseAllMoviePlayers_Params, 0, sizeof(CloseAllMoviePlayers_Params));
 
-	uFnCloseAllMoviePlayers->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnCloseAllMoviePlayers, &CloseAllMoviePlayers_Params, nullptr);
-	uFnCloseAllMoviePlayers->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxInteraction.NotifySplitscreenLayoutChanged
@@ -165,13 +162,11 @@ void UGFxInteraction::NotifySplitscreenLayoutChanged()
 	UGFxInteraction_execNotifySplitscreenLayoutChanged_Params NotifySplitscreenLayoutChanged_Params;
 	memset(&NotifySplitscreenLayoutChanged_Params, 0, sizeof(NotifySplitscreenLayoutChanged_Params));
 
-	uFnNotifySplitscreenLayoutChanged->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnNotifySplitscreenLayoutChanged, &NotifySplitscreenLayoutChanged_Params, nullptr);
-	uFnNotifySplitscreenLayoutChanged->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxInteraction.NotifyPlayerRemoved
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        PlayerIndex                    (CPF_Parm)
 // class ULocalPlayer*            RemovedPlayer                  (CPF_Parm)
@@ -188,15 +183,13 @@ void UGFxInteraction::NotifyPlayerRemoved(int32_t PlayerIndex, class ULocalPlaye
 	UGFxInteraction_execNotifyPlayerRemoved_Params NotifyPlayerRemoved_Params;
 	memset(&NotifyPlayerRemoved_Params, 0, sizeof(NotifyPlayerRemoved_Params));
 	memcpy_s(&NotifyPlayerRemoved_Params.PlayerIndex, sizeof(NotifyPlayerRemoved_Params.PlayerIndex), &PlayerIndex, sizeof(PlayerIndex));
-	memcpy_s(&NotifyPlayerRemoved_Params.RemovedPlayer, sizeof(NotifyPlayerRemoved_Params.RemovedPlayer), &RemovedPlayer, sizeof(RemovedPlayer));
+	NotifyPlayerRemoved_Params.RemovedPlayer = RemovedPlayer;
 
-	uFnNotifyPlayerRemoved->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnNotifyPlayerRemoved, &NotifyPlayerRemoved_Params, nullptr);
-	uFnNotifyPlayerRemoved->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxInteraction.NotifyPlayerAdded
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        PlayerIndex                    (CPF_Parm)
 // class ULocalPlayer*            AddedPlayer                    (CPF_Parm)
@@ -213,15 +206,13 @@ void UGFxInteraction::NotifyPlayerAdded(int32_t PlayerIndex, class ULocalPlayer*
 	UGFxInteraction_execNotifyPlayerAdded_Params NotifyPlayerAdded_Params;
 	memset(&NotifyPlayerAdded_Params, 0, sizeof(NotifyPlayerAdded_Params));
 	memcpy_s(&NotifyPlayerAdded_Params.PlayerIndex, sizeof(NotifyPlayerAdded_Params.PlayerIndex), &PlayerIndex, sizeof(PlayerIndex));
-	memcpy_s(&NotifyPlayerAdded_Params.AddedPlayer, sizeof(NotifyPlayerAdded_Params.AddedPlayer), &AddedPlayer, sizeof(AddedPlayer));
+	NotifyPlayerAdded_Params.AddedPlayer = AddedPlayer;
 
-	uFnNotifyPlayerAdded->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnNotifyPlayerAdded, &NotifyPlayerAdded_Params, nullptr);
-	uFnNotifyPlayerAdded->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxInteraction.NotifyGameSessionEnded
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void UGFxInteraction::NotifyGameSessionEnded()
@@ -236,9 +227,7 @@ void UGFxInteraction::NotifyGameSessionEnded()
 	UGFxInteraction_execNotifyGameSessionEnded_Params NotifyGameSessionEnded_Params;
 	memset(&NotifyGameSessionEnded_Params, 0, sizeof(NotifyGameSessionEnded_Params));
 
-	uFnNotifyGameSessionEnded->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnNotifyGameSessionEnded, &NotifyGameSessionEnded_Params, nullptr);
-	uFnNotifyGameSessionEnded->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxInteraction.GetFocusMovie
@@ -260,9 +249,7 @@ class UGFxMoviePlayer* UGFxInteraction::GetFocusMovie(int32_t ControllerId)
 	memset(&GetFocusMovie_Params, 0, sizeof(GetFocusMovie_Params));
 	memcpy_s(&GetFocusMovie_Params.ControllerId, sizeof(GetFocusMovie_Params.ControllerId), &ControllerId, sizeof(ControllerId));
 
-	uFnGetFocusMovie->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetFocusMovie, &GetFocusMovie_Params, nullptr);
-	uFnGetFocusMovie->FunctionFlags |= 0x400;
 
 	return GetFocusMovie_Params.ReturnValue;
 };
@@ -270,7 +257,7 @@ class UGFxMoviePlayer* UGFxInteraction::GetFocusMovie(int32_t ControllerId)
 // Function GFxUI.GFxMoviePlayer.SetFullScreen
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bFullScreen                    (CPF_Parm)
+// uint32_t                       bFullScreen                    (CPF_Parm)
 
 void UGFxMoviePlayer::SetFullScreen(bool bFullScreen)
 {
@@ -285,9 +272,7 @@ void UGFxMoviePlayer::SetFullScreen(bool bFullScreen)
 	memset(&SetFullScreen_Params, 0, sizeof(SetFullScreen_Params));
 	SetFullScreen_Params.bFullScreen = bFullScreen;
 
-	uFnSetFullScreen->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetFullScreen, &SetFullScreen_Params, nullptr);
-	uFnSetFullScreen->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.IsHidden
@@ -307,9 +292,7 @@ bool UGFxMoviePlayer::IsHidden()
 	UGFxMoviePlayer_execIsHidden_Params IsHidden_Params;
 	memset(&IsHidden_Params, 0, sizeof(IsHidden_Params));
 
-	uFnIsHidden->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnIsHidden, &IsHidden_Params, nullptr);
-	uFnIsHidden->FunctionFlags |= 0x400;
 
 	return IsHidden_Params.ReturnValue;
 };
@@ -317,7 +300,7 @@ bool UGFxMoviePlayer::IsHidden()
 // Function GFxUI.GFxMoviePlayer.SetHidden
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bHidden                        (CPF_Parm)
+// uint32_t                       bHidden                        (CPF_Parm)
 
 void UGFxMoviePlayer::SetHidden(bool bHidden)
 {
@@ -332,9 +315,7 @@ void UGFxMoviePlayer::SetHidden(bool bHidden)
 	memset(&SetHidden_Params, 0, sizeof(SetHidden_Params));
 	SetHidden_Params.bHidden = bHidden;
 
-	uFnSetHidden->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetHidden, &SetHidden_Params, nullptr);
-	uFnSetHidden->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.RenderOnce
@@ -353,9 +334,7 @@ void UGFxMoviePlayer::RenderOnce()
 	UGFxMoviePlayer_execRenderOnce_Params RenderOnce_Params;
 	memset(&RenderOnce_Params, 0, sizeof(RenderOnce_Params));
 
-	uFnRenderOnce->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnRenderOnce, &RenderOnce_Params, nullptr);
-	uFnRenderOnce->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.UpdateSplitscreenLayout
@@ -374,15 +353,13 @@ void UGFxMoviePlayer::UpdateSplitscreenLayout()
 	UGFxMoviePlayer_execUpdateSplitscreenLayout_Params UpdateSplitscreenLayout_Params;
 	memset(&UpdateSplitscreenLayout_Params, 0, sizeof(UpdateSplitscreenLayout_Params));
 
-	uFnUpdateSplitscreenLayout->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnUpdateSplitscreenLayout, &UpdateSplitscreenLayout_Params, nullptr);
-	uFnUpdateSplitscreenLayout->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.ApplyPriorityVisibilityEffect
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bRemoveEffect                  (CPF_Parm)
+// uint32_t                       bRemoveEffect                  (CPF_Parm)
 
 void UGFxMoviePlayer::ApplyPriorityVisibilityEffect(bool bRemoveEffect)
 {
@@ -403,7 +380,7 @@ void UGFxMoviePlayer::ApplyPriorityVisibilityEffect(bool bRemoveEffect)
 // Function GFxUI.GFxMoviePlayer.ApplyPriorityBlurEffect
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bRemoveEffect                  (CPF_Parm)
+// uint32_t                       bRemoveEffect                  (CPF_Parm)
 
 void UGFxMoviePlayer::ApplyPriorityBlurEffect(bool bRemoveEffect)
 {
@@ -424,8 +401,8 @@ void UGFxMoviePlayer::ApplyPriorityBlurEffect(bool bRemoveEffect)
 // Function GFxUI.GFxMoviePlayer.ApplyPriorityEffect
 // [0x00020803] (FUNC_Final | FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bRequestedBlurState            (CPF_Parm)
-// bool                           bRequestedHiddenState          (CPF_Parm)
+// uint32_t                       bRequestedBlurState            (CPF_Parm)
+// uint32_t                       bRequestedHiddenState          (CPF_Parm)
 
 void UGFxMoviePlayer::eventApplyPriorityEffect(bool bRequestedBlurState, bool bRequestedHiddenState)
 {
@@ -447,10 +424,10 @@ void UGFxMoviePlayer::eventApplyPriorityEffect(bool bRequestedBlurState, bool bR
 // Function GFxUI.GFxMoviePlayer.PlaySoundFromTheme
 // [0x00024802] (FUNC_Defined | FUNC_Event | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   EventName                      (CPF_Parm)
-// struct FName                   SoundThemeName                 (CPF_OptionalParm | CPF_Parm)
+// class FName                    EventName                      (CPF_Parm)
+// class FName                    SoundThemeName                 (CPF_OptionalParm | CPF_Parm)
 
-void UGFxMoviePlayer::eventPlaySoundFromTheme(struct FName EventName, struct FName SoundThemeName)
+void UGFxMoviePlayer::eventPlaySoundFromTheme(const class FName& EventName, const class FName& SoundThemeName)
 {
 	static UFunction* uFnPlaySoundFromTheme = nullptr;
 
@@ -514,7 +491,7 @@ void UGFxMoviePlayer::eventOnFocusGained(int32_t LocalPlayerIndex)
 // Parameter Info:
 // class FString                  Command                        (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxMoviePlayer::ConsoleCommand(class FString Command)
+void UGFxMoviePlayer::ConsoleCommand(const class FString& Command)
 {
 	static UFunction* uFnConsoleCommand = nullptr;
 
@@ -590,7 +567,7 @@ void UGFxMoviePlayer::Init(class ULocalPlayer* LocPlay)
 
 	UGFxMoviePlayer_execInit_Params Init_Params;
 	memset(&Init_Params, 0, sizeof(Init_Params));
-	memcpy_s(&Init_Params.LocPlay, sizeof(Init_Params.LocPlay), &LocPlay, sizeof(LocPlay));
+	Init_Params.LocPlay = LocPlay;
 
 	this->ProcessEvent(uFnInit, &Init_Params, nullptr);
 };
@@ -599,9 +576,9 @@ void UGFxMoviePlayer::Init(class ULocalPlayer* LocPlay)
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UGFxObject*              WidgetToBind                   (CPF_Parm)
-// struct FName                   Path                           (CPF_Parm)
+// class FName                    Path                           (CPF_Parm)
 
-void UGFxMoviePlayer::SetWidgetPathBinding(class UGFxObject* WidgetToBind, struct FName Path)
+void UGFxMoviePlayer::SetWidgetPathBinding(class UGFxObject* WidgetToBind, const class FName& Path)
 {
 	static UFunction* uFnSetWidgetPathBinding = nullptr;
 
@@ -612,12 +589,10 @@ void UGFxMoviePlayer::SetWidgetPathBinding(class UGFxObject* WidgetToBind, struc
 
 	UGFxMoviePlayer_execSetWidgetPathBinding_Params SetWidgetPathBinding_Params;
 	memset(&SetWidgetPathBinding_Params, 0, sizeof(SetWidgetPathBinding_Params));
-	memcpy_s(&SetWidgetPathBinding_Params.WidgetToBind, sizeof(SetWidgetPathBinding_Params.WidgetToBind), &WidgetToBind, sizeof(WidgetToBind));
+	SetWidgetPathBinding_Params.WidgetToBind = WidgetToBind;
 	memcpy_s(&SetWidgetPathBinding_Params.Path, sizeof(SetWidgetPathBinding_Params.Path), &Path, sizeof(Path));
 
-	uFnSetWidgetPathBinding->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetWidgetPathBinding, &SetWidgetPathBinding_Params, nullptr);
-	uFnSetWidgetPathBinding->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.PostWidgetInit
@@ -643,11 +618,11 @@ void UGFxMoviePlayer::eventPostWidgetInit()
 // [0x00020801] (FUNC_Final | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   WidgetName                     (CPF_Parm)
-// struct FName                   WidgetPath                     (CPF_Parm)
+// class FName                    WidgetName                     (CPF_Parm)
+// class FName                    WidgetPath                     (CPF_Parm)
 // class UGFxObject*              Widget                         (CPF_Parm)
 
-bool UGFxMoviePlayer::eventWidgetUnloaded(struct FName WidgetName, struct FName WidgetPath, class UGFxObject* Widget)
+bool UGFxMoviePlayer::eventWidgetUnloaded(const class FName& WidgetName, const class FName& WidgetPath, class UGFxObject* Widget)
 {
 	static UFunction* uFnWidgetUnloaded = nullptr;
 
@@ -660,7 +635,7 @@ bool UGFxMoviePlayer::eventWidgetUnloaded(struct FName WidgetName, struct FName 
 	memset(&WidgetUnloaded_Params, 0, sizeof(WidgetUnloaded_Params));
 	memcpy_s(&WidgetUnloaded_Params.WidgetName, sizeof(WidgetUnloaded_Params.WidgetName), &WidgetName, sizeof(WidgetName));
 	memcpy_s(&WidgetUnloaded_Params.WidgetPath, sizeof(WidgetUnloaded_Params.WidgetPath), &WidgetPath, sizeof(WidgetPath));
-	memcpy_s(&WidgetUnloaded_Params.Widget, sizeof(WidgetUnloaded_Params.Widget), &Widget, sizeof(Widget));
+	WidgetUnloaded_Params.Widget = Widget;
 
 	this->ProcessEvent(uFnWidgetUnloaded, &WidgetUnloaded_Params, nullptr);
 
@@ -671,11 +646,11 @@ bool UGFxMoviePlayer::eventWidgetUnloaded(struct FName WidgetName, struct FName 
 // [0x00020801] (FUNC_Final | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   WidgetName                     (CPF_Parm)
-// struct FName                   WidgetPath                     (CPF_Parm)
+// class FName                    WidgetName                     (CPF_Parm)
+// class FName                    WidgetPath                     (CPF_Parm)
 // class UGFxObject*              Widget                         (CPF_Parm)
 
-bool UGFxMoviePlayer::eventWidgetInitialized(struct FName WidgetName, struct FName WidgetPath, class UGFxObject* Widget)
+bool UGFxMoviePlayer::eventWidgetInitialized(const class FName& WidgetName, const class FName& WidgetPath, class UGFxObject* Widget)
 {
 	static UFunction* uFnWidgetInitialized = nullptr;
 
@@ -688,7 +663,7 @@ bool UGFxMoviePlayer::eventWidgetInitialized(struct FName WidgetName, struct FNa
 	memset(&WidgetInitialized_Params, 0, sizeof(WidgetInitialized_Params));
 	memcpy_s(&WidgetInitialized_Params.WidgetName, sizeof(WidgetInitialized_Params.WidgetName), &WidgetName, sizeof(WidgetName));
 	memcpy_s(&WidgetInitialized_Params.WidgetPath, sizeof(WidgetInitialized_Params.WidgetPath), &WidgetPath, sizeof(WidgetPath));
-	memcpy_s(&WidgetInitialized_Params.Widget, sizeof(WidgetInitialized_Params.Widget), &Widget, sizeof(Widget));
+	WidgetInitialized_Params.Widget = Widget;
 
 	this->ProcessEvent(uFnWidgetInitialized, &WidgetInitialized_Params, nullptr);
 
@@ -701,7 +676,7 @@ bool UGFxMoviePlayer::eventWidgetInitialized(struct FName WidgetName, struct FNa
 // class UGFxObject*              ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  ClassName                      (CPF_Parm | CPF_NeedCtorLink)
 
-class UGFxObject* UGFxMoviePlayer::ActionScriptConstructor(class FString ClassName)
+class UGFxObject* UGFxMoviePlayer::ActionScriptConstructor(const class FString& ClassName)
 {
 	static UFunction* uFnActionScriptConstructor = nullptr;
 
@@ -714,9 +689,7 @@ class UGFxObject* UGFxMoviePlayer::ActionScriptConstructor(class FString ClassNa
 	memset(&ActionScriptConstructor_Params, 0, sizeof(ActionScriptConstructor_Params));
 	memcpy_s(&ActionScriptConstructor_Params.ClassName, sizeof(ActionScriptConstructor_Params.ClassName), &ClassName, sizeof(ClassName));
 
-	uFnActionScriptConstructor->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptConstructor, &ActionScriptConstructor_Params, nullptr);
-	uFnActionScriptConstructor->FunctionFlags |= 0x400;
 
 	return ActionScriptConstructor_Params.ReturnValue;
 };
@@ -727,7 +700,7 @@ class UGFxObject* UGFxMoviePlayer::ActionScriptConstructor(class FString ClassNa
 // class UGFxObject*              ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-class UGFxObject* UGFxMoviePlayer::ActionScriptObject(class FString Path)
+class UGFxObject* UGFxMoviePlayer::ActionScriptObject(const class FString& Path)
 {
 	static UFunction* uFnActionScriptObject = nullptr;
 
@@ -740,9 +713,7 @@ class UGFxObject* UGFxMoviePlayer::ActionScriptObject(class FString Path)
 	memset(&ActionScriptObject_Params, 0, sizeof(ActionScriptObject_Params));
 	memcpy_s(&ActionScriptObject_Params.Path, sizeof(ActionScriptObject_Params.Path), &Path, sizeof(Path));
 
-	uFnActionScriptObject->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptObject, &ActionScriptObject_Params, nullptr);
-	uFnActionScriptObject->FunctionFlags |= 0x400;
 
 	return ActionScriptObject_Params.ReturnValue;
 };
@@ -753,7 +724,7 @@ class UGFxObject* UGFxMoviePlayer::ActionScriptObject(class FString Path)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UGFxMoviePlayer::ActionScriptString(class FString Path)
+class FString UGFxMoviePlayer::ActionScriptString(const class FString& Path)
 {
 	static UFunction* uFnActionScriptString = nullptr;
 
@@ -766,9 +737,7 @@ class FString UGFxMoviePlayer::ActionScriptString(class FString Path)
 	memset(&ActionScriptString_Params, 0, sizeof(ActionScriptString_Params));
 	memcpy_s(&ActionScriptString_Params.Path, sizeof(ActionScriptString_Params.Path), &Path, sizeof(Path));
 
-	uFnActionScriptString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptString, &ActionScriptString_Params, nullptr);
-	uFnActionScriptString->FunctionFlags |= 0x400;
 
 	return ActionScriptString_Params.ReturnValue;
 };
@@ -779,7 +748,7 @@ class FString UGFxMoviePlayer::ActionScriptString(class FString Path)
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-float UGFxMoviePlayer::ActionScriptFloat(class FString Path)
+float UGFxMoviePlayer::ActionScriptFloat(const class FString& Path)
 {
 	static UFunction* uFnActionScriptFloat = nullptr;
 
@@ -792,9 +761,7 @@ float UGFxMoviePlayer::ActionScriptFloat(class FString Path)
 	memset(&ActionScriptFloat_Params, 0, sizeof(ActionScriptFloat_Params));
 	memcpy_s(&ActionScriptFloat_Params.Path, sizeof(ActionScriptFloat_Params.Path), &Path, sizeof(Path));
 
-	uFnActionScriptFloat->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptFloat, &ActionScriptFloat_Params, nullptr);
-	uFnActionScriptFloat->FunctionFlags |= 0x400;
 
 	return ActionScriptFloat_Params.ReturnValue;
 };
@@ -805,7 +772,7 @@ float UGFxMoviePlayer::ActionScriptFloat(class FString Path)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UGFxMoviePlayer::ActionScriptInt(class FString Path)
+int32_t UGFxMoviePlayer::ActionScriptInt(const class FString& Path)
 {
 	static UFunction* uFnActionScriptInt = nullptr;
 
@@ -818,9 +785,7 @@ int32_t UGFxMoviePlayer::ActionScriptInt(class FString Path)
 	memset(&ActionScriptInt_Params, 0, sizeof(ActionScriptInt_Params));
 	memcpy_s(&ActionScriptInt_Params.Path, sizeof(ActionScriptInt_Params.Path), &Path, sizeof(Path));
 
-	uFnActionScriptInt->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptInt, &ActionScriptInt_Params, nullptr);
-	uFnActionScriptInt->FunctionFlags |= 0x400;
 
 	return ActionScriptInt_Params.ReturnValue;
 };
@@ -830,7 +795,7 @@ int32_t UGFxMoviePlayer::ActionScriptInt(class FString Path)
 // Parameter Info:
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxMoviePlayer::ActionScriptVoid(class FString Path)
+void UGFxMoviePlayer::ActionScriptVoid(const class FString& Path)
 {
 	static UFunction* uFnActionScriptVoid = nullptr;
 
@@ -843,9 +808,7 @@ void UGFxMoviePlayer::ActionScriptVoid(class FString Path)
 	memset(&ActionScriptVoid_Params, 0, sizeof(ActionScriptVoid_Params));
 	memcpy_s(&ActionScriptVoid_Params.Path, sizeof(ActionScriptVoid_Params.Path), &Path, sizeof(Path));
 
-	uFnActionScriptVoid->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptVoid, &ActionScriptVoid_Params, nullptr);
-	uFnActionScriptVoid->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.Invoke
@@ -853,9 +816,9 @@ void UGFxMoviePlayer::ActionScriptVoid(class FString Path)
 // Parameter Info:
 // struct FASValue                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  method                         (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FASValue>        args                           (CPF_Parm | CPF_NeedCtorLink)
+// class TArray<struct FASValue>  args                           (CPF_Parm | CPF_NeedCtorLink)
 
-struct FASValue UGFxMoviePlayer::Invoke(class FString method, TArray<struct FASValue> args)
+struct FASValue UGFxMoviePlayer::Invoke(const class FString& method, const class TArray<struct FASValue>& args)
 {
 	static UFunction* uFnInvoke = nullptr;
 
@@ -869,9 +832,7 @@ struct FASValue UGFxMoviePlayer::Invoke(class FString method, TArray<struct FASV
 	memcpy_s(&Invoke_Params.method, sizeof(Invoke_Params.method), &method, sizeof(method));
 	memcpy_s(&Invoke_Params.args, sizeof(Invoke_Params.args), &args, sizeof(args));
 
-	uFnInvoke->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnInvoke, &Invoke_Params, nullptr);
-	uFnInvoke->FunctionFlags |= 0x400;
 
 	return Invoke_Params.ReturnValue;
 };
@@ -882,7 +843,7 @@ struct FASValue UGFxMoviePlayer::Invoke(class FString method, TArray<struct FASV
 // class UGFxObject*              Object                         (CPF_Parm)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxMoviePlayer::ActionScriptSetFunction(class UGFxObject* Object, class FString Member)
+void UGFxMoviePlayer::ActionScriptSetFunction(class UGFxObject* Object, const class FString& Member)
 {
 	static UFunction* uFnActionScriptSetFunction = nullptr;
 
@@ -893,12 +854,10 @@ void UGFxMoviePlayer::ActionScriptSetFunction(class UGFxObject* Object, class FS
 
 	UGFxMoviePlayer_execActionScriptSetFunction_Params ActionScriptSetFunction_Params;
 	memset(&ActionScriptSetFunction_Params, 0, sizeof(ActionScriptSetFunction_Params));
-	memcpy_s(&ActionScriptSetFunction_Params.Object, sizeof(ActionScriptSetFunction_Params.Object), &Object, sizeof(Object));
+	ActionScriptSetFunction_Params.Object = Object;
 	memcpy_s(&ActionScriptSetFunction_Params.Member, sizeof(ActionScriptSetFunction_Params.Member), &Member, sizeof(Member));
 
-	uFnActionScriptSetFunction->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptSetFunction, &ActionScriptSetFunction_Params, nullptr);
-	uFnActionScriptSetFunction->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.CreateArray
@@ -918,9 +877,7 @@ class UGFxObject* UGFxMoviePlayer::CreateArray()
 	UGFxMoviePlayer_execCreateArray_Params CreateArray_Params;
 	memset(&CreateArray_Params, 0, sizeof(CreateArray_Params));
 
-	uFnCreateArray->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnCreateArray, &CreateArray_Params, nullptr);
-	uFnCreateArray->FunctionFlags |= 0x400;
 
 	return CreateArray_Params.ReturnValue;
 };
@@ -931,9 +888,9 @@ class UGFxObject* UGFxMoviePlayer::CreateArray()
 // class UGFxObject*              ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  ASClass                        (CPF_Parm | CPF_NeedCtorLink)
 // class UClass*                  Type                           (CPF_OptionalParm | CPF_Parm)
-// TArray<struct FASValue>        args                           (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
+// class TArray<struct FASValue>  args                           (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 
-class UGFxObject* UGFxMoviePlayer::CreateObject(class FString ASClass, class UClass* Type, TArray<struct FASValue> args)
+class UGFxObject* UGFxMoviePlayer::CreateObject(const class FString& ASClass, class UClass* Type, const class TArray<struct FASValue>& args)
 {
 	static UFunction* uFnCreateObject = nullptr;
 
@@ -945,12 +902,10 @@ class UGFxObject* UGFxMoviePlayer::CreateObject(class FString ASClass, class UCl
 	UGFxMoviePlayer_execCreateObject_Params CreateObject_Params;
 	memset(&CreateObject_Params, 0, sizeof(CreateObject_Params));
 	memcpy_s(&CreateObject_Params.ASClass, sizeof(CreateObject_Params.ASClass), &ASClass, sizeof(ASClass));
-	memcpy_s(&CreateObject_Params.Type, sizeof(CreateObject_Params.Type), &Type, sizeof(Type));
+	CreateObject_Params.Type = Type;
 	memcpy_s(&CreateObject_Params.args, sizeof(CreateObject_Params.args), &args, sizeof(args));
 
-	uFnCreateObject->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnCreateObject, &CreateObject_Params, nullptr);
-	uFnCreateObject->FunctionFlags |= 0x400;
 
 	return CreateObject_Params.ReturnValue;
 };
@@ -961,9 +916,9 @@ class UGFxObject* UGFxMoviePlayer::CreateObject(class FString ASClass, class UCl
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Index                          (CPF_Parm)
-// TArray<class FString>          Arg                            (CPF_Parm | CPF_NeedCtorLink)
+// class TArray<class FString>    Arg                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UGFxMoviePlayer::SetVariableStringArray(class FString Path, int32_t Index, TArray<class FString> Arg)
+bool UGFxMoviePlayer::SetVariableStringArray(const class FString& Path, int32_t Index, const class TArray<class FString>& Arg)
 {
 	static UFunction* uFnSetVariableStringArray = nullptr;
 
@@ -978,9 +933,7 @@ bool UGFxMoviePlayer::SetVariableStringArray(class FString Path, int32_t Index, 
 	memcpy_s(&SetVariableStringArray_Params.Index, sizeof(SetVariableStringArray_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&SetVariableStringArray_Params.Arg, sizeof(SetVariableStringArray_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnSetVariableStringArray->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetVariableStringArray, &SetVariableStringArray_Params, nullptr);
-	uFnSetVariableStringArray->FunctionFlags |= 0x400;
 
 	return SetVariableStringArray_Params.ReturnValue;
 };
@@ -991,9 +944,9 @@ bool UGFxMoviePlayer::SetVariableStringArray(class FString Path, int32_t Index, 
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Index                          (CPF_Parm)
-// TArray<float>                  Arg                            (CPF_Parm | CPF_NeedCtorLink)
+// class TArray<float>            Arg                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UGFxMoviePlayer::SetVariableFloatArray(class FString Path, int32_t Index, TArray<float> Arg)
+bool UGFxMoviePlayer::SetVariableFloatArray(const class FString& Path, int32_t Index, const class TArray<float>& Arg)
 {
 	static UFunction* uFnSetVariableFloatArray = nullptr;
 
@@ -1008,9 +961,7 @@ bool UGFxMoviePlayer::SetVariableFloatArray(class FString Path, int32_t Index, T
 	memcpy_s(&SetVariableFloatArray_Params.Index, sizeof(SetVariableFloatArray_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&SetVariableFloatArray_Params.Arg, sizeof(SetVariableFloatArray_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnSetVariableFloatArray->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetVariableFloatArray, &SetVariableFloatArray_Params, nullptr);
-	uFnSetVariableFloatArray->FunctionFlags |= 0x400;
 
 	return SetVariableFloatArray_Params.ReturnValue;
 };
@@ -1021,9 +972,9 @@ bool UGFxMoviePlayer::SetVariableFloatArray(class FString Path, int32_t Index, T
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Index                          (CPF_Parm)
-// TArray<int32_t>                Arg                            (CPF_Parm | CPF_NeedCtorLink)
+// class TArray<int32_t>          Arg                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UGFxMoviePlayer::SetVariableIntArray(class FString Path, int32_t Index, TArray<int32_t> Arg)
+bool UGFxMoviePlayer::SetVariableIntArray(const class FString& Path, int32_t Index, const class TArray<int32_t>& Arg)
 {
 	static UFunction* uFnSetVariableIntArray = nullptr;
 
@@ -1038,9 +989,7 @@ bool UGFxMoviePlayer::SetVariableIntArray(class FString Path, int32_t Index, TAr
 	memcpy_s(&SetVariableIntArray_Params.Index, sizeof(SetVariableIntArray_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&SetVariableIntArray_Params.Arg, sizeof(SetVariableIntArray_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnSetVariableIntArray->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetVariableIntArray, &SetVariableIntArray_Params, nullptr);
-	uFnSetVariableIntArray->FunctionFlags |= 0x400;
 
 	return SetVariableIntArray_Params.ReturnValue;
 };
@@ -1051,9 +1000,9 @@ bool UGFxMoviePlayer::SetVariableIntArray(class FString Path, int32_t Index, TAr
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Index                          (CPF_Parm)
-// TArray<struct FASValue>        Arg                            (CPF_Parm | CPF_NeedCtorLink)
+// class TArray<struct FASValue>  Arg                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UGFxMoviePlayer::SetVariableArray(class FString Path, int32_t Index, TArray<struct FASValue> Arg)
+bool UGFxMoviePlayer::SetVariableArray(const class FString& Path, int32_t Index, const class TArray<struct FASValue>& Arg)
 {
 	static UFunction* uFnSetVariableArray = nullptr;
 
@@ -1068,9 +1017,7 @@ bool UGFxMoviePlayer::SetVariableArray(class FString Path, int32_t Index, TArray
 	memcpy_s(&SetVariableArray_Params.Index, sizeof(SetVariableArray_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&SetVariableArray_Params.Arg, sizeof(SetVariableArray_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnSetVariableArray->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetVariableArray, &SetVariableArray_Params, nullptr);
-	uFnSetVariableArray->FunctionFlags |= 0x400;
 
 	return SetVariableArray_Params.ReturnValue;
 };
@@ -1081,9 +1028,9 @@ bool UGFxMoviePlayer::SetVariableArray(class FString Path, int32_t Index, TArray
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Index                          (CPF_Parm)
-// TArray<class FString>          Arg                            (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FString>    Arg                            (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UGFxMoviePlayer::GetVariableStringArray(class FString Path, int32_t Index, TArray<class FString>& Arg)
+bool UGFxMoviePlayer::GetVariableStringArray(const class FString& Path, int32_t Index, class TArray<class FString>& Arg)
 {
 	static UFunction* uFnGetVariableStringArray = nullptr;
 
@@ -1098,9 +1045,7 @@ bool UGFxMoviePlayer::GetVariableStringArray(class FString Path, int32_t Index, 
 	memcpy_s(&GetVariableStringArray_Params.Index, sizeof(GetVariableStringArray_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&GetVariableStringArray_Params.Arg, sizeof(GetVariableStringArray_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnGetVariableStringArray->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariableStringArray, &GetVariableStringArray_Params, nullptr);
-	uFnGetVariableStringArray->FunctionFlags |= 0x400;
 
 	memcpy_s(&Arg, sizeof(Arg), &GetVariableStringArray_Params.Arg, sizeof(GetVariableStringArray_Params.Arg));
 
@@ -1113,9 +1058,9 @@ bool UGFxMoviePlayer::GetVariableStringArray(class FString Path, int32_t Index, 
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Index                          (CPF_Parm)
-// TArray<float>                  Arg                            (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<float>            Arg                            (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UGFxMoviePlayer::GetVariableFloatArray(class FString Path, int32_t Index, TArray<float>& Arg)
+bool UGFxMoviePlayer::GetVariableFloatArray(const class FString& Path, int32_t Index, class TArray<float>& Arg)
 {
 	static UFunction* uFnGetVariableFloatArray = nullptr;
 
@@ -1130,9 +1075,7 @@ bool UGFxMoviePlayer::GetVariableFloatArray(class FString Path, int32_t Index, T
 	memcpy_s(&GetVariableFloatArray_Params.Index, sizeof(GetVariableFloatArray_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&GetVariableFloatArray_Params.Arg, sizeof(GetVariableFloatArray_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnGetVariableFloatArray->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariableFloatArray, &GetVariableFloatArray_Params, nullptr);
-	uFnGetVariableFloatArray->FunctionFlags |= 0x400;
 
 	memcpy_s(&Arg, sizeof(Arg), &GetVariableFloatArray_Params.Arg, sizeof(GetVariableFloatArray_Params.Arg));
 
@@ -1145,9 +1088,9 @@ bool UGFxMoviePlayer::GetVariableFloatArray(class FString Path, int32_t Index, T
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Index                          (CPF_Parm)
-// TArray<int32_t>                Arg                            (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<int32_t>          Arg                            (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UGFxMoviePlayer::GetVariableIntArray(class FString Path, int32_t Index, TArray<int32_t>& Arg)
+bool UGFxMoviePlayer::GetVariableIntArray(const class FString& Path, int32_t Index, class TArray<int32_t>& Arg)
 {
 	static UFunction* uFnGetVariableIntArray = nullptr;
 
@@ -1162,9 +1105,7 @@ bool UGFxMoviePlayer::GetVariableIntArray(class FString Path, int32_t Index, TAr
 	memcpy_s(&GetVariableIntArray_Params.Index, sizeof(GetVariableIntArray_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&GetVariableIntArray_Params.Arg, sizeof(GetVariableIntArray_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnGetVariableIntArray->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariableIntArray, &GetVariableIntArray_Params, nullptr);
-	uFnGetVariableIntArray->FunctionFlags |= 0x400;
 
 	memcpy_s(&Arg, sizeof(Arg), &GetVariableIntArray_Params.Arg, sizeof(GetVariableIntArray_Params.Arg));
 
@@ -1177,9 +1118,9 @@ bool UGFxMoviePlayer::GetVariableIntArray(class FString Path, int32_t Index, TAr
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Index                          (CPF_Parm)
-// TArray<struct FASValue>        Arg                            (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FASValue>  Arg                            (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UGFxMoviePlayer::GetVariableArray(class FString Path, int32_t Index, TArray<struct FASValue>& Arg)
+bool UGFxMoviePlayer::GetVariableArray(const class FString& Path, int32_t Index, class TArray<struct FASValue>& Arg)
 {
 	static UFunction* uFnGetVariableArray = nullptr;
 
@@ -1194,9 +1135,7 @@ bool UGFxMoviePlayer::GetVariableArray(class FString Path, int32_t Index, TArray
 	memcpy_s(&GetVariableArray_Params.Index, sizeof(GetVariableArray_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&GetVariableArray_Params.Arg, sizeof(GetVariableArray_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnGetVariableArray->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariableArray, &GetVariableArray_Params, nullptr);
-	uFnGetVariableArray->FunctionFlags |= 0x400;
 
 	memcpy_s(&Arg, sizeof(Arg), &GetVariableArray_Params.Arg, sizeof(GetVariableArray_Params.Arg));
 
@@ -1209,7 +1148,7 @@ bool UGFxMoviePlayer::GetVariableArray(class FString Path, int32_t Index, TArray
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // class UGFxObject*              Object                         (CPF_Parm)
 
-void UGFxMoviePlayer::SetVariableObject(class FString Path, class UGFxObject* Object)
+void UGFxMoviePlayer::SetVariableObject(const class FString& Path, class UGFxObject* Object)
 {
 	static UFunction* uFnSetVariableObject = nullptr;
 
@@ -1221,11 +1160,9 @@ void UGFxMoviePlayer::SetVariableObject(class FString Path, class UGFxObject* Ob
 	UGFxMoviePlayer_execSetVariableObject_Params SetVariableObject_Params;
 	memset(&SetVariableObject_Params, 0, sizeof(SetVariableObject_Params));
 	memcpy_s(&SetVariableObject_Params.Path, sizeof(SetVariableObject_Params.Path), &Path, sizeof(Path));
-	memcpy_s(&SetVariableObject_Params.Object, sizeof(SetVariableObject_Params.Object), &Object, sizeof(Object));
+	SetVariableObject_Params.Object = Object;
 
-	uFnSetVariableObject->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetVariableObject, &SetVariableObject_Params, nullptr);
-	uFnSetVariableObject->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.SetVariableString
@@ -1234,7 +1171,7 @@ void UGFxMoviePlayer::SetVariableObject(class FString Path, class UGFxObject* Ob
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  S                              (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxMoviePlayer::SetVariableString(class FString Path, class FString S)
+void UGFxMoviePlayer::SetVariableString(const class FString& Path, const class FString& S)
 {
 	static UFunction* uFnSetVariableString = nullptr;
 
@@ -1248,9 +1185,7 @@ void UGFxMoviePlayer::SetVariableString(class FString Path, class FString S)
 	memcpy_s(&SetVariableString_Params.Path, sizeof(SetVariableString_Params.Path), &Path, sizeof(Path));
 	memcpy_s(&SetVariableString_Params.S, sizeof(SetVariableString_Params.S), &S, sizeof(S));
 
-	uFnSetVariableString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetVariableString, &SetVariableString_Params, nullptr);
-	uFnSetVariableString->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.SetVariableInt
@@ -1259,7 +1194,7 @@ void UGFxMoviePlayer::SetVariableString(class FString Path, class FString S)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        I                              (CPF_Parm)
 
-void UGFxMoviePlayer::SetVariableInt(class FString Path, int32_t I)
+void UGFxMoviePlayer::SetVariableInt(const class FString& Path, int32_t I)
 {
 	static UFunction* uFnSetVariableInt = nullptr;
 
@@ -1273,9 +1208,7 @@ void UGFxMoviePlayer::SetVariableInt(class FString Path, int32_t I)
 	memcpy_s(&SetVariableInt_Params.Path, sizeof(SetVariableInt_Params.Path), &Path, sizeof(Path));
 	memcpy_s(&SetVariableInt_Params.I, sizeof(SetVariableInt_Params.I), &I, sizeof(I));
 
-	uFnSetVariableInt->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetVariableInt, &SetVariableInt_Params, nullptr);
-	uFnSetVariableInt->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.SetVariableNumber
@@ -1284,7 +1217,7 @@ void UGFxMoviePlayer::SetVariableInt(class FString Path, int32_t I)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // float                          F                              (CPF_Parm)
 
-void UGFxMoviePlayer::SetVariableNumber(class FString Path, float F)
+void UGFxMoviePlayer::SetVariableNumber(const class FString& Path, float F)
 {
 	static UFunction* uFnSetVariableNumber = nullptr;
 
@@ -1298,18 +1231,16 @@ void UGFxMoviePlayer::SetVariableNumber(class FString Path, float F)
 	memcpy_s(&SetVariableNumber_Params.Path, sizeof(SetVariableNumber_Params.Path), &Path, sizeof(Path));
 	memcpy_s(&SetVariableNumber_Params.F, sizeof(SetVariableNumber_Params.F), &F, sizeof(F));
 
-	uFnSetVariableNumber->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetVariableNumber, &SetVariableNumber_Params, nullptr);
-	uFnSetVariableNumber->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.SetVariableBool
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
-// bool                           B                              (CPF_Parm)
+// uint32_t                       B                              (CPF_Parm)
 
-void UGFxMoviePlayer::SetVariableBool(class FString Path, bool B)
+void UGFxMoviePlayer::SetVariableBool(const class FString& Path, bool B)
 {
 	static UFunction* uFnSetVariableBool = nullptr;
 
@@ -1323,9 +1254,7 @@ void UGFxMoviePlayer::SetVariableBool(class FString Path, bool B)
 	memcpy_s(&SetVariableBool_Params.Path, sizeof(SetVariableBool_Params.Path), &Path, sizeof(Path));
 	SetVariableBool_Params.B = B;
 
-	uFnSetVariableBool->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetVariableBool, &SetVariableBool_Params, nullptr);
-	uFnSetVariableBool->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.SetVariable
@@ -1334,7 +1263,7 @@ void UGFxMoviePlayer::SetVariableBool(class FString Path, bool B)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // struct FASValue                Arg                            (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxMoviePlayer::SetVariable(class FString Path, struct FASValue Arg)
+void UGFxMoviePlayer::SetVariable(const class FString& Path, const struct FASValue& Arg)
 {
 	static UFunction* uFnSetVariable = nullptr;
 
@@ -1348,9 +1277,7 @@ void UGFxMoviePlayer::SetVariable(class FString Path, struct FASValue Arg)
 	memcpy_s(&SetVariable_Params.Path, sizeof(SetVariable_Params.Path), &Path, sizeof(Path));
 	memcpy_s(&SetVariable_Params.Arg, sizeof(SetVariable_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnSetVariable->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetVariable, &SetVariable_Params, nullptr);
-	uFnSetVariable->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.GetVariableObject
@@ -1360,7 +1287,7 @@ void UGFxMoviePlayer::SetVariable(class FString Path, struct FASValue Arg)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 // class UClass*                  Type                           (CPF_OptionalParm | CPF_Parm)
 
-class UGFxObject* UGFxMoviePlayer::GetVariableObject(class FString Path, class UClass* Type)
+class UGFxObject* UGFxMoviePlayer::GetVariableObject(const class FString& Path, class UClass* Type)
 {
 	static UFunction* uFnGetVariableObject = nullptr;
 
@@ -1372,11 +1299,9 @@ class UGFxObject* UGFxMoviePlayer::GetVariableObject(class FString Path, class U
 	UGFxMoviePlayer_execGetVariableObject_Params GetVariableObject_Params;
 	memset(&GetVariableObject_Params, 0, sizeof(GetVariableObject_Params));
 	memcpy_s(&GetVariableObject_Params.Path, sizeof(GetVariableObject_Params.Path), &Path, sizeof(Path));
-	memcpy_s(&GetVariableObject_Params.Type, sizeof(GetVariableObject_Params.Type), &Type, sizeof(Type));
+	GetVariableObject_Params.Type = Type;
 
-	uFnGetVariableObject->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariableObject, &GetVariableObject_Params, nullptr);
-	uFnGetVariableObject->FunctionFlags |= 0x400;
 
 	return GetVariableObject_Params.ReturnValue;
 };
@@ -1387,7 +1312,7 @@ class UGFxObject* UGFxMoviePlayer::GetVariableObject(class FString Path, class U
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UGFxMoviePlayer::GetVariableString(class FString Path)
+class FString UGFxMoviePlayer::GetVariableString(const class FString& Path)
 {
 	static UFunction* uFnGetVariableString = nullptr;
 
@@ -1400,9 +1325,7 @@ class FString UGFxMoviePlayer::GetVariableString(class FString Path)
 	memset(&GetVariableString_Params, 0, sizeof(GetVariableString_Params));
 	memcpy_s(&GetVariableString_Params.Path, sizeof(GetVariableString_Params.Path), &Path, sizeof(Path));
 
-	uFnGetVariableString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariableString, &GetVariableString_Params, nullptr);
-	uFnGetVariableString->FunctionFlags |= 0x400;
 
 	return GetVariableString_Params.ReturnValue;
 };
@@ -1413,7 +1336,7 @@ class FString UGFxMoviePlayer::GetVariableString(class FString Path)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UGFxMoviePlayer::GetVariableInt(class FString Path)
+int32_t UGFxMoviePlayer::GetVariableInt(const class FString& Path)
 {
 	static UFunction* uFnGetVariableInt = nullptr;
 
@@ -1426,9 +1349,7 @@ int32_t UGFxMoviePlayer::GetVariableInt(class FString Path)
 	memset(&GetVariableInt_Params, 0, sizeof(GetVariableInt_Params));
 	memcpy_s(&GetVariableInt_Params.Path, sizeof(GetVariableInt_Params.Path), &Path, sizeof(Path));
 
-	uFnGetVariableInt->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariableInt, &GetVariableInt_Params, nullptr);
-	uFnGetVariableInt->FunctionFlags |= 0x400;
 
 	return GetVariableInt_Params.ReturnValue;
 };
@@ -1439,7 +1360,7 @@ int32_t UGFxMoviePlayer::GetVariableInt(class FString Path)
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-float UGFxMoviePlayer::GetVariableNumber(class FString Path)
+float UGFxMoviePlayer::GetVariableNumber(const class FString& Path)
 {
 	static UFunction* uFnGetVariableNumber = nullptr;
 
@@ -1452,9 +1373,7 @@ float UGFxMoviePlayer::GetVariableNumber(class FString Path)
 	memset(&GetVariableNumber_Params, 0, sizeof(GetVariableNumber_Params));
 	memcpy_s(&GetVariableNumber_Params.Path, sizeof(GetVariableNumber_Params.Path), &Path, sizeof(Path));
 
-	uFnGetVariableNumber->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariableNumber, &GetVariableNumber_Params, nullptr);
-	uFnGetVariableNumber->FunctionFlags |= 0x400;
 
 	return GetVariableNumber_Params.ReturnValue;
 };
@@ -1465,7 +1384,7 @@ float UGFxMoviePlayer::GetVariableNumber(class FString Path)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-bool UGFxMoviePlayer::GetVariableBool(class FString Path)
+bool UGFxMoviePlayer::GetVariableBool(const class FString& Path)
 {
 	static UFunction* uFnGetVariableBool = nullptr;
 
@@ -1478,9 +1397,7 @@ bool UGFxMoviePlayer::GetVariableBool(class FString Path)
 	memset(&GetVariableBool_Params, 0, sizeof(GetVariableBool_Params));
 	memcpy_s(&GetVariableBool_Params.Path, sizeof(GetVariableBool_Params.Path), &Path, sizeof(Path));
 
-	uFnGetVariableBool->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariableBool, &GetVariableBool_Params, nullptr);
-	uFnGetVariableBool->FunctionFlags |= 0x400;
 
 	return GetVariableBool_Params.ReturnValue;
 };
@@ -1491,7 +1408,7 @@ bool UGFxMoviePlayer::GetVariableBool(class FString Path)
 // struct FASValue                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-struct FASValue UGFxMoviePlayer::GetVariable(class FString Path)
+struct FASValue UGFxMoviePlayer::GetVariable(const class FString& Path)
 {
 	static UFunction* uFnGetVariable = nullptr;
 
@@ -1504,9 +1421,7 @@ struct FASValue UGFxMoviePlayer::GetVariable(class FString Path)
 	memset(&GetVariable_Params, 0, sizeof(GetVariable_Params));
 	memcpy_s(&GetVariable_Params.Path, sizeof(GetVariable_Params.Path), &Path, sizeof(Path));
 
-	uFnGetVariable->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariable, &GetVariable_Params, nullptr);
-	uFnGetVariable->FunctionFlags |= 0x400;
 
 	return GetVariable_Params.ReturnValue;
 };
@@ -1528,9 +1443,7 @@ int32_t UGFxMoviePlayer::GetAVMVersion()
 	UGFxMoviePlayer_execGetAVMVersion_Params GetAVMVersion_Params;
 	memset(&GetAVMVersion_Params, 0, sizeof(GetAVMVersion_Params));
 
-	uFnGetAVMVersion->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetAVMVersion, &GetAVMVersion_Params, nullptr);
-	uFnGetAVMVersion->FunctionFlags |= 0x400;
 
 	return GetAVMVersion_Params.ReturnValue;
 };
@@ -1540,10 +1453,10 @@ int32_t UGFxMoviePlayer::GetAVMVersion()
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // int32_t                        ControllerId                   (CPF_Parm)
-// struct FName                   ButtonName                     (CPF_Parm)
+// class FName                    ButtonName                     (CPF_Parm)
 // EInputEvent                    InputEvent                     (CPF_Parm)
 
-bool UGFxMoviePlayer::eventFilterButtonInput(int32_t ControllerId, struct FName ButtonName, EInputEvent InputEvent)
+bool UGFxMoviePlayer::eventFilterButtonInput(int32_t ControllerId, const class FName& ButtonName, EInputEvent InputEvent)
 {
 	static UFunction* uFnFilterButtonInput = nullptr;
 
@@ -1566,7 +1479,7 @@ bool UGFxMoviePlayer::eventFilterButtonInput(int32_t ControllerId, struct FName 
 // Function GFxUI.GFxMoviePlayer.FlushPlayerInput
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           capturekeysonly                (CPF_Parm)
+// uint32_t                       capturekeysonly                (CPF_Parm)
 
 void UGFxMoviePlayer::FlushPlayerInput(bool capturekeysonly)
 {
@@ -1581,9 +1494,7 @@ void UGFxMoviePlayer::FlushPlayerInput(bool capturekeysonly)
 	memset(&FlushPlayerInput_Params, 0, sizeof(FlushPlayerInput_Params));
 	FlushPlayerInput_Params.capturekeysonly = capturekeysonly;
 
-	uFnFlushPlayerInput->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnFlushPlayerInput, &FlushPlayerInput_Params, nullptr);
-	uFnFlushPlayerInput->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.ClearFocusIgnoreKeys
@@ -1602,17 +1513,15 @@ void UGFxMoviePlayer::ClearFocusIgnoreKeys()
 	UGFxMoviePlayer_execClearFocusIgnoreKeys_Params ClearFocusIgnoreKeys_Params;
 	memset(&ClearFocusIgnoreKeys_Params, 0, sizeof(ClearFocusIgnoreKeys_Params));
 
-	uFnClearFocusIgnoreKeys->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearFocusIgnoreKeys, &ClearFocusIgnoreKeys_Params, nullptr);
-	uFnClearFocusIgnoreKeys->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.AddFocusIgnoreKey
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   Key                            (CPF_Parm)
+// class FName                    Key                            (CPF_Parm)
 
-void UGFxMoviePlayer::AddFocusIgnoreKey(struct FName Key)
+void UGFxMoviePlayer::AddFocusIgnoreKey(const class FName& Key)
 {
 	static UFunction* uFnAddFocusIgnoreKey = nullptr;
 
@@ -1625,9 +1534,7 @@ void UGFxMoviePlayer::AddFocusIgnoreKey(struct FName Key)
 	memset(&AddFocusIgnoreKey_Params, 0, sizeof(AddFocusIgnoreKey_Params));
 	memcpy_s(&AddFocusIgnoreKey_Params.Key, sizeof(AddFocusIgnoreKey_Params.Key), &Key, sizeof(Key));
 
-	uFnAddFocusIgnoreKey->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAddFocusIgnoreKey, &AddFocusIgnoreKey_Params, nullptr);
-	uFnAddFocusIgnoreKey->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.ClearCaptureKeys
@@ -1646,17 +1553,15 @@ void UGFxMoviePlayer::ClearCaptureKeys()
 	UGFxMoviePlayer_execClearCaptureKeys_Params ClearCaptureKeys_Params;
 	memset(&ClearCaptureKeys_Params, 0, sizeof(ClearCaptureKeys_Params));
 
-	uFnClearCaptureKeys->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearCaptureKeys, &ClearCaptureKeys_Params, nullptr);
-	uFnClearCaptureKeys->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.AddCaptureKey
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   Key                            (CPF_Parm)
+// class FName                    Key                            (CPF_Parm)
 
-void UGFxMoviePlayer::AddCaptureKey(struct FName Key)
+void UGFxMoviePlayer::AddCaptureKey(const class FName& Key)
 {
 	static UFunction* uFnAddCaptureKey = nullptr;
 
@@ -1669,15 +1574,13 @@ void UGFxMoviePlayer::AddCaptureKey(struct FName Key)
 	memset(&AddCaptureKey_Params, 0, sizeof(AddCaptureKey_Params));
 	memcpy_s(&AddCaptureKey_Params.Key, sizeof(AddCaptureKey_Params.Key), &Key, sizeof(Key));
 
-	uFnAddCaptureKey->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAddCaptureKey, &AddCaptureKey_Params, nullptr);
-	uFnAddCaptureKey->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.SetMovieCanReceiveInput
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bCanReceiveInput               (CPF_Parm)
+// uint32_t                       bCanReceiveInput               (CPF_Parm)
 
 void UGFxMoviePlayer::SetMovieCanReceiveInput(bool bCanReceiveInput)
 {
@@ -1692,15 +1595,13 @@ void UGFxMoviePlayer::SetMovieCanReceiveInput(bool bCanReceiveInput)
 	memset(&SetMovieCanReceiveInput_Params, 0, sizeof(SetMovieCanReceiveInput_Params));
 	SetMovieCanReceiveInput_Params.bCanReceiveInput = bCanReceiveInput;
 
-	uFnSetMovieCanReceiveInput->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetMovieCanReceiveInput, &SetMovieCanReceiveInput_Params, nullptr);
-	uFnSetMovieCanReceiveInput->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.SetMovieCanReceiveFocus
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bCanReceiveFocus               (CPF_Parm)
+// uint32_t                       bCanReceiveFocus               (CPF_Parm)
 
 void UGFxMoviePlayer::SetMovieCanReceiveFocus(bool bCanReceiveFocus)
 {
@@ -1715,9 +1616,7 @@ void UGFxMoviePlayer::SetMovieCanReceiveFocus(bool bCanReceiveFocus)
 	memset(&SetMovieCanReceiveFocus_Params, 0, sizeof(SetMovieCanReceiveFocus_Params));
 	SetMovieCanReceiveFocus_Params.bCanReceiveFocus = bCanReceiveFocus;
 
-	uFnSetMovieCanReceiveFocus->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetMovieCanReceiveFocus, &SetMovieCanReceiveFocus_Params, nullptr);
-	uFnSetMovieCanReceiveFocus->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.SetPerspective3D
@@ -1738,9 +1637,7 @@ void UGFxMoviePlayer::SetPerspective3D(struct FMatrix& matPersp)
 	memset(&SetPerspective3D_Params, 0, sizeof(SetPerspective3D_Params));
 	memcpy_s(&SetPerspective3D_Params.matPersp, sizeof(SetPerspective3D_Params.matPersp), &matPersp, sizeof(matPersp));
 
-	uFnSetPerspective3D->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetPerspective3D, &SetPerspective3D_Params, nullptr);
-	uFnSetPerspective3D->FunctionFlags |= 0x400;
 
 	memcpy_s(&matPersp, sizeof(matPersp), &SetPerspective3D_Params.matPersp, sizeof(SetPerspective3D_Params.matPersp));
 };
@@ -1763,9 +1660,7 @@ void UGFxMoviePlayer::SetView3D(struct FMatrix& matView)
 	memset(&SetView3D_Params, 0, sizeof(SetView3D_Params));
 	memcpy_s(&SetView3D_Params.matView, sizeof(SetView3D_Params.matView), &matView, sizeof(matView));
 
-	uFnSetView3D->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetView3D, &SetView3D_Params, nullptr);
-	uFnSetView3D->FunctionFlags |= 0x400;
 
 	memcpy_s(&matView, sizeof(matView), &SetView3D_Params.matView, sizeof(SetView3D_Params.matView));
 };
@@ -1794,9 +1689,7 @@ void UGFxMoviePlayer::GetVisibleFrameRect(float& x0, float& y0, float& X1, float
 	memcpy_s(&GetVisibleFrameRect_Params.X1, sizeof(GetVisibleFrameRect_Params.X1), &X1, sizeof(X1));
 	memcpy_s(&GetVisibleFrameRect_Params.Y1, sizeof(GetVisibleFrameRect_Params.Y1), &Y1, sizeof(Y1));
 
-	uFnGetVisibleFrameRect->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVisibleFrameRect, &GetVisibleFrameRect_Params, nullptr);
-	uFnGetVisibleFrameRect->FunctionFlags |= 0x400;
 
 	memcpy_s(&x0, sizeof(x0), &GetVisibleFrameRect_Params.x0, sizeof(GetVisibleFrameRect_Params.x0));
 	memcpy_s(&y0, sizeof(y0), &GetVisibleFrameRect_Params.y0, sizeof(GetVisibleFrameRect_Params.y0));
@@ -1822,9 +1715,7 @@ void UGFxMoviePlayer::SetAlignment(EGFxAlign A)
 	memset(&SetAlignment_Params, 0, sizeof(SetAlignment_Params));
 	memcpy_s(&SetAlignment_Params.A, sizeof(SetAlignment_Params.A), &A, sizeof(A));
 
-	uFnSetAlignment->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetAlignment, &SetAlignment_Params, nullptr);
-	uFnSetAlignment->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.SetViewScaleMode
@@ -1845,9 +1736,7 @@ void UGFxMoviePlayer::SetViewScaleMode(EGFxScaleMode SM)
 	memset(&SetViewScaleMode_Params, 0, sizeof(SetViewScaleMode_Params));
 	memcpy_s(&SetViewScaleMode_Params.SM, sizeof(SetViewScaleMode_Params.SM), &SM, sizeof(SM));
 
-	uFnSetViewScaleMode->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetViewScaleMode, &SetViewScaleMode_Params, nullptr);
-	uFnSetViewScaleMode->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.SetViewport
@@ -1874,9 +1763,7 @@ void UGFxMoviePlayer::SetViewport(int32_t X, int32_t Y, int32_t Width, int32_t H
 	memcpy_s(&SetViewport_Params.Width, sizeof(SetViewport_Params.Width), &Width, sizeof(Width));
 	memcpy_s(&SetViewport_Params.Height, sizeof(SetViewport_Params.Height), &Height, sizeof(Height));
 
-	uFnSetViewport->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetViewport, &SetViewport_Params, nullptr);
-	uFnSetViewport->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.GetGameViewportClient
@@ -1896,11 +1783,32 @@ class UGameViewportClient* UGFxMoviePlayer::GetGameViewportClient()
 	UGFxMoviePlayer_execGetGameViewportClient_Params GetGameViewportClient_Params;
 	memset(&GetGameViewportClient_Params, 0, sizeof(GetGameViewportClient_Params));
 
-	uFnGetGameViewportClient->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetGameViewportClient, &GetGameViewportClient_Params, nullptr);
-	uFnGetGameViewportClient->FunctionFlags |= 0x400;
 
 	return GetGameViewportClient_Params.ReturnValue;
+};
+
+// Function GFxUI.GFxMoviePlayer.RequestGarbageCollection
+// [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
+// Parameter Info:
+// EGFxCollectionMode             Mode                           (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bImmediate                     (CPF_OptionalParm | CPF_Parm)
+
+void UGFxMoviePlayer::RequestGarbageCollection(EGFxCollectionMode Mode, bool bImmediate)
+{
+	static UFunction* uFnRequestGarbageCollection = nullptr;
+
+	if (!uFnRequestGarbageCollection)
+	{
+		uFnRequestGarbageCollection = UFunction::FindFunction("Function GFxUI.GFxMoviePlayer.RequestGarbageCollection");
+	}
+
+	UGFxMoviePlayer_execRequestGarbageCollection_Params RequestGarbageCollection_Params;
+	memset(&RequestGarbageCollection_Params, 0, sizeof(RequestGarbageCollection_Params));
+	memcpy_s(&RequestGarbageCollection_Params.Mode, sizeof(RequestGarbageCollection_Params.Mode), &Mode, sizeof(Mode));
+	RequestGarbageCollection_Params.bImmediate = bImmediate;
+
+	this->ProcessEvent(uFnRequestGarbageCollection, &RequestGarbageCollection_Params, nullptr);
 };
 
 // Function GFxUI.GFxMoviePlayer.SetPriority
@@ -1921,9 +1829,7 @@ void UGFxMoviePlayer::SetPriority(uint8_t NewPriority)
 	memset(&SetPriority_Params, 0, sizeof(SetPriority_Params));
 	memcpy_s(&SetPriority_Params.NewPriority, sizeof(SetPriority_Params.NewPriority), &NewPriority, sizeof(NewPriority));
 
-	uFnSetPriority->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetPriority, &SetPriority_Params, nullptr);
-	uFnSetPriority->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.SetExternalTexture
@@ -1933,7 +1839,7 @@ void UGFxMoviePlayer::SetPriority(uint8_t NewPriority)
 // class FString                  Resource                       (CPF_Parm | CPF_NeedCtorLink)
 // class UTexture*                Texture                        (CPF_Parm)
 
-bool UGFxMoviePlayer::SetExternalTexture(class FString Resource, class UTexture* Texture)
+bool UGFxMoviePlayer::SetExternalTexture(const class FString& Resource, class UTexture* Texture)
 {
 	static UFunction* uFnSetExternalTexture = nullptr;
 
@@ -1945,11 +1851,9 @@ bool UGFxMoviePlayer::SetExternalTexture(class FString Resource, class UTexture*
 	UGFxMoviePlayer_execSetExternalTexture_Params SetExternalTexture_Params;
 	memset(&SetExternalTexture_Params, 0, sizeof(SetExternalTexture_Params));
 	memcpy_s(&SetExternalTexture_Params.Resource, sizeof(SetExternalTexture_Params.Resource), &Resource, sizeof(Resource));
-	memcpy_s(&SetExternalTexture_Params.Texture, sizeof(SetExternalTexture_Params.Texture), &Texture, sizeof(Texture));
+	SetExternalTexture_Params.Texture = Texture;
 
-	uFnSetExternalTexture->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetExternalTexture, &SetExternalTexture_Params, nullptr);
-	uFnSetExternalTexture->FunctionFlags |= 0x400;
 
 	return SetExternalTexture_Params.ReturnValue;
 };
@@ -1970,7 +1874,7 @@ void UGFxMoviePlayer::SetExternalInterface(class UObject* H)
 
 	UGFxMoviePlayer_execSetExternalInterface_Params SetExternalInterface_Params;
 	memset(&SetExternalInterface_Params, 0, sizeof(SetExternalInterface_Params));
-	memcpy_s(&SetExternalInterface_Params.H, sizeof(SetExternalInterface_Params.H), &H, sizeof(H));
+	SetExternalInterface_Params.H = H;
 
 	this->ProcessEvent(uFnSetExternalInterface, &SetExternalInterface_Params, nullptr);
 };
@@ -1993,9 +1897,7 @@ void UGFxMoviePlayer::SetTimingMode(EGFxTimingMode Mode)
 	memset(&SetTimingMode_Params, 0, sizeof(SetTimingMode_Params));
 	memcpy_s(&SetTimingMode_Params.Mode, sizeof(SetTimingMode_Params.Mode), &Mode, sizeof(Mode));
 
-	uFnSetTimingMode->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetTimingMode, &SetTimingMode_Params, nullptr);
-	uFnSetTimingMode->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.SetMovieInfo
@@ -2014,7 +1916,7 @@ void UGFxMoviePlayer::SetMovieInfo(class USwfMovie* Data)
 
 	UGFxMoviePlayer_execSetMovieInfo_Params SetMovieInfo_Params;
 	memset(&SetMovieInfo_Params, 0, sizeof(SetMovieInfo_Params));
-	memcpy_s(&SetMovieInfo_Params.Data, sizeof(SetMovieInfo_Params.Data), &Data, sizeof(Data));
+	SetMovieInfo_Params.Data = Data;
 
 	this->ProcessEvent(uFnSetMovieInfo, &SetMovieInfo_Params, nullptr);
 };
@@ -2079,7 +1981,7 @@ void UGFxMoviePlayer::eventOnClose()
 // Function GFxUI.GFxMoviePlayer.Close
 // [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           Unload                         (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       Unload                         (CPF_OptionalParm | CPF_Parm)
 
 void UGFxMoviePlayer::Close(bool Unload)
 {
@@ -2094,15 +1996,13 @@ void UGFxMoviePlayer::Close(bool Unload)
 	memset(&Close_Params, 0, sizeof(Close_Params));
 	Close_Params.Unload = Unload;
 
-	uFnClose->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClose, &Close_Params, nullptr);
-	uFnClose->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.SetPause
 // [0x00024401] (FUNC_Final | FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bPausePlayback                 (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bPausePlayback                 (CPF_OptionalParm | CPF_Parm)
 
 void UGFxMoviePlayer::SetPause(bool bPausePlayback)
 {
@@ -2117,9 +2017,7 @@ void UGFxMoviePlayer::SetPause(bool bPausePlayback)
 	memset(&SetPause_Params, 0, sizeof(SetPause_Params));
 	SetPause_Params.bPausePlayback = bPausePlayback;
 
-	uFnSetPause->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetPause, &SetPause_Params, nullptr);
-	uFnSetPause->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.OnPostAdvance
@@ -2161,9 +2059,7 @@ void UGFxMoviePlayer::PostAdvance(float DeltaTime)
 	memset(&PostAdvance_Params, 0, sizeof(PostAdvance_Params));
 	memcpy_s(&PostAdvance_Params.DeltaTime, sizeof(PostAdvance_Params.DeltaTime), &DeltaTime, sizeof(DeltaTime));
 
-	uFnPostAdvance->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnPostAdvance, &PostAdvance_Params, nullptr);
-	uFnPostAdvance->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.Advance
@@ -2184,16 +2080,14 @@ void UGFxMoviePlayer::Advance(float Time)
 	memset(&Advance_Params, 0, sizeof(Advance_Params));
 	memcpy_s(&Advance_Params.Time, sizeof(Advance_Params.Time), &Time, sizeof(Time));
 
-	uFnAdvance->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAdvance, &Advance_Params, nullptr);
-	uFnAdvance->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxMoviePlayer.Start
 // [0x00024C00] (FUNC_Native | FUNC_Event | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// bool                           StartPaused                    (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       StartPaused                    (CPF_OptionalParm | CPF_Parm)
 
 bool UGFxMoviePlayer::eventStart(bool StartPaused)
 {
@@ -2208,9 +2102,7 @@ bool UGFxMoviePlayer::eventStart(bool StartPaused)
 	memset(&Start_Params, 0, sizeof(Start_Params));
 	Start_Params.StartPaused = StartPaused;
 
-	uFnStart->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnStart, &Start_Params, nullptr);
-	uFnStart->FunctionFlags |= 0x400;
 
 	return Start_Params.ReturnValue;
 };
@@ -2219,11 +2111,11 @@ bool UGFxMoviePlayer::eventStart(bool StartPaused)
 // [0x00020801] (FUNC_Final | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   WidgetName                     (CPF_Parm)
-// struct FName                   WidgetPath                     (CPF_Parm)
+// class FName                    WidgetName                     (CPF_Parm)
+// class FName                    WidgetPath                     (CPF_Parm)
 // class UGFxObject*              Widget                         (CPF_Parm)
 
-bool UGFxObject::eventWidgetUnloaded(struct FName WidgetName, struct FName WidgetPath, class UGFxObject* Widget)
+bool UGFxObject::eventWidgetUnloaded(const class FName& WidgetName, const class FName& WidgetPath, class UGFxObject* Widget)
 {
 	static UFunction* uFnWidgetUnloaded = nullptr;
 
@@ -2236,7 +2128,7 @@ bool UGFxObject::eventWidgetUnloaded(struct FName WidgetName, struct FName Widge
 	memset(&WidgetUnloaded_Params, 0, sizeof(WidgetUnloaded_Params));
 	memcpy_s(&WidgetUnloaded_Params.WidgetName, sizeof(WidgetUnloaded_Params.WidgetName), &WidgetName, sizeof(WidgetName));
 	memcpy_s(&WidgetUnloaded_Params.WidgetPath, sizeof(WidgetUnloaded_Params.WidgetPath), &WidgetPath, sizeof(WidgetPath));
-	memcpy_s(&WidgetUnloaded_Params.Widget, sizeof(WidgetUnloaded_Params.Widget), &Widget, sizeof(Widget));
+	WidgetUnloaded_Params.Widget = Widget;
 
 	this->ProcessEvent(uFnWidgetUnloaded, &WidgetUnloaded_Params, nullptr);
 
@@ -2247,11 +2139,11 @@ bool UGFxObject::eventWidgetUnloaded(struct FName WidgetName, struct FName Widge
 // [0x00020801] (FUNC_Final | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   WidgetName                     (CPF_Parm)
-// struct FName                   WidgetPath                     (CPF_Parm)
+// class FName                    WidgetName                     (CPF_Parm)
+// class FName                    WidgetPath                     (CPF_Parm)
 // class UGFxObject*              Widget                         (CPF_Parm)
 
-bool UGFxObject::eventWidgetInitialized(struct FName WidgetName, struct FName WidgetPath, class UGFxObject* Widget)
+bool UGFxObject::eventWidgetInitialized(const class FName& WidgetName, const class FName& WidgetPath, class UGFxObject* Widget)
 {
 	static UFunction* uFnWidgetInitialized = nullptr;
 
@@ -2264,7 +2156,7 @@ bool UGFxObject::eventWidgetInitialized(struct FName WidgetName, struct FName Wi
 	memset(&WidgetInitialized_Params, 0, sizeof(WidgetInitialized_Params));
 	memcpy_s(&WidgetInitialized_Params.WidgetName, sizeof(WidgetInitialized_Params.WidgetName), &WidgetName, sizeof(WidgetName));
 	memcpy_s(&WidgetInitialized_Params.WidgetPath, sizeof(WidgetInitialized_Params.WidgetPath), &WidgetPath, sizeof(WidgetPath));
-	memcpy_s(&WidgetInitialized_Params.Widget, sizeof(WidgetInitialized_Params.Widget), &Widget, sizeof(Widget));
+	WidgetInitialized_Params.Widget = Widget;
 
 	this->ProcessEvent(uFnWidgetInitialized, &WidgetInitialized_Params, nullptr);
 
@@ -2280,7 +2172,7 @@ bool UGFxObject::eventWidgetInitialized(struct FName WidgetName, struct FName Wi
 // int32_t                        Depth                          (CPF_OptionalParm | CPF_Parm)
 // class UClass*                  Type                           (CPF_OptionalParm | CPF_Parm)
 
-class UGFxObject* UGFxObject::AttachMovie(class FString symbolname, class FString instancename, int32_t Depth, class UClass* Type)
+class UGFxObject* UGFxObject::AttachMovie(const class FString& symbolname, const class FString& instancename, int32_t Depth, class UClass* Type)
 {
 	static UFunction* uFnAttachMovie = nullptr;
 
@@ -2294,11 +2186,9 @@ class UGFxObject* UGFxObject::AttachMovie(class FString symbolname, class FStrin
 	memcpy_s(&AttachMovie_Params.symbolname, sizeof(AttachMovie_Params.symbolname), &symbolname, sizeof(symbolname));
 	memcpy_s(&AttachMovie_Params.instancename, sizeof(AttachMovie_Params.instancename), &instancename, sizeof(instancename));
 	memcpy_s(&AttachMovie_Params.Depth, sizeof(AttachMovie_Params.Depth), &Depth, sizeof(Depth));
-	memcpy_s(&AttachMovie_Params.Type, sizeof(AttachMovie_Params.Type), &Type, sizeof(Type));
+	AttachMovie_Params.Type = Type;
 
-	uFnAttachMovie->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAttachMovie, &AttachMovie_Params, nullptr);
-	uFnAttachMovie->FunctionFlags |= 0x400;
 
 	return AttachMovie_Params.ReturnValue;
 };
@@ -2311,7 +2201,7 @@ class UGFxObject* UGFxObject::AttachMovie(class FString symbolname, class FStrin
 // int32_t                        Depth                          (CPF_OptionalParm | CPF_Parm)
 // class UClass*                  Type                           (CPF_OptionalParm | CPF_Parm)
 
-class UGFxObject* UGFxObject::CreateEmptyMovieClip(class FString instancename, int32_t Depth, class UClass* Type)
+class UGFxObject* UGFxObject::CreateEmptyMovieClip(const class FString& instancename, int32_t Depth, class UClass* Type)
 {
 	static UFunction* uFnCreateEmptyMovieClip = nullptr;
 
@@ -2324,11 +2214,9 @@ class UGFxObject* UGFxObject::CreateEmptyMovieClip(class FString instancename, i
 	memset(&CreateEmptyMovieClip_Params, 0, sizeof(CreateEmptyMovieClip_Params));
 	memcpy_s(&CreateEmptyMovieClip_Params.instancename, sizeof(CreateEmptyMovieClip_Params.instancename), &instancename, sizeof(instancename));
 	memcpy_s(&CreateEmptyMovieClip_Params.Depth, sizeof(CreateEmptyMovieClip_Params.Depth), &Depth, sizeof(Depth));
-	memcpy_s(&CreateEmptyMovieClip_Params.Type, sizeof(CreateEmptyMovieClip_Params.Type), &Type, sizeof(Type));
+	CreateEmptyMovieClip_Params.Type = Type;
 
-	uFnCreateEmptyMovieClip->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnCreateEmptyMovieClip, &CreateEmptyMovieClip_Params, nullptr);
-	uFnCreateEmptyMovieClip->FunctionFlags |= 0x400;
 
 	return CreateEmptyMovieClip_Params.ReturnValue;
 };
@@ -2351,9 +2239,7 @@ void UGFxObject::GotoAndStopI(int32_t frame)
 	memset(&GotoAndStopI_Params, 0, sizeof(GotoAndStopI_Params));
 	memcpy_s(&GotoAndStopI_Params.frame, sizeof(GotoAndStopI_Params.frame), &frame, sizeof(frame));
 
-	uFnGotoAndStopI->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGotoAndStopI, &GotoAndStopI_Params, nullptr);
-	uFnGotoAndStopI->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.GotoAndStop
@@ -2361,7 +2247,7 @@ void UGFxObject::GotoAndStopI(int32_t frame)
 // Parameter Info:
 // class FString                  frame                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxObject::GotoAndStop(class FString frame)
+void UGFxObject::GotoAndStop(const class FString& frame)
 {
 	static UFunction* uFnGotoAndStop = nullptr;
 
@@ -2374,9 +2260,7 @@ void UGFxObject::GotoAndStop(class FString frame)
 	memset(&GotoAndStop_Params, 0, sizeof(GotoAndStop_Params));
 	memcpy_s(&GotoAndStop_Params.frame, sizeof(GotoAndStop_Params.frame), &frame, sizeof(frame));
 
-	uFnGotoAndStop->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGotoAndStop, &GotoAndStop_Params, nullptr);
-	uFnGotoAndStop->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.GotoAndPlayI
@@ -2397,9 +2281,7 @@ void UGFxObject::GotoAndPlayI(int32_t frame)
 	memset(&GotoAndPlayI_Params, 0, sizeof(GotoAndPlayI_Params));
 	memcpy_s(&GotoAndPlayI_Params.frame, sizeof(GotoAndPlayI_Params.frame), &frame, sizeof(frame));
 
-	uFnGotoAndPlayI->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGotoAndPlayI, &GotoAndPlayI_Params, nullptr);
-	uFnGotoAndPlayI->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.GotoAndPlay
@@ -2407,7 +2289,7 @@ void UGFxObject::GotoAndPlayI(int32_t frame)
 // Parameter Info:
 // class FString                  frame                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxObject::GotoAndPlay(class FString frame)
+void UGFxObject::GotoAndPlay(const class FString& frame)
 {
 	static UFunction* uFnGotoAndPlay = nullptr;
 
@@ -2420,18 +2302,16 @@ void UGFxObject::GotoAndPlay(class FString frame)
 	memset(&GotoAndPlay_Params, 0, sizeof(GotoAndPlay_Params));
 	memcpy_s(&GotoAndPlay_Params.frame, sizeof(GotoAndPlay_Params.frame), &frame, sizeof(frame));
 
-	uFnGotoAndPlay->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGotoAndPlay, &GotoAndPlay_Params, nullptr);
-	uFnGotoAndPlay->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.ActionScriptArray
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// TArray<class UGFxObject*>      ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class TArray<class UGFxObject*> ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-TArray<class UGFxObject*> UGFxObject::ActionScriptArray(class FString Path)
+class TArray<class UGFxObject*> UGFxObject::ActionScriptArray(const class FString& Path)
 {
 	static UFunction* uFnActionScriptArray = nullptr;
 
@@ -2444,9 +2324,7 @@ TArray<class UGFxObject*> UGFxObject::ActionScriptArray(class FString Path)
 	memset(&ActionScriptArray_Params, 0, sizeof(ActionScriptArray_Params));
 	memcpy_s(&ActionScriptArray_Params.Path, sizeof(ActionScriptArray_Params.Path), &Path, sizeof(Path));
 
-	uFnActionScriptArray->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptArray, &ActionScriptArray_Params, nullptr);
-	uFnActionScriptArray->FunctionFlags |= 0x400;
 
 	return ActionScriptArray_Params.ReturnValue;
 };
@@ -2457,7 +2335,7 @@ TArray<class UGFxObject*> UGFxObject::ActionScriptArray(class FString Path)
 // class UGFxObject*              ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Path                           (CPF_Parm | CPF_NeedCtorLink)
 
-class UGFxObject* UGFxObject::ActionScriptObject(class FString Path)
+class UGFxObject* UGFxObject::ActionScriptObject(const class FString& Path)
 {
 	static UFunction* uFnActionScriptObject = nullptr;
 
@@ -2470,9 +2348,7 @@ class UGFxObject* UGFxObject::ActionScriptObject(class FString Path)
 	memset(&ActionScriptObject_Params, 0, sizeof(ActionScriptObject_Params));
 	memcpy_s(&ActionScriptObject_Params.Path, sizeof(ActionScriptObject_Params.Path), &Path, sizeof(Path));
 
-	uFnActionScriptObject->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptObject, &ActionScriptObject_Params, nullptr);
-	uFnActionScriptObject->FunctionFlags |= 0x400;
 
 	return ActionScriptObject_Params.ReturnValue;
 };
@@ -2483,7 +2359,7 @@ class UGFxObject* UGFxObject::ActionScriptObject(class FString Path)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  method                         (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UGFxObject::ActionScriptString(class FString method)
+class FString UGFxObject::ActionScriptString(const class FString& method)
 {
 	static UFunction* uFnActionScriptString = nullptr;
 
@@ -2496,9 +2372,7 @@ class FString UGFxObject::ActionScriptString(class FString method)
 	memset(&ActionScriptString_Params, 0, sizeof(ActionScriptString_Params));
 	memcpy_s(&ActionScriptString_Params.method, sizeof(ActionScriptString_Params.method), &method, sizeof(method));
 
-	uFnActionScriptString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptString, &ActionScriptString_Params, nullptr);
-	uFnActionScriptString->FunctionFlags |= 0x400;
 
 	return ActionScriptString_Params.ReturnValue;
 };
@@ -2509,7 +2383,7 @@ class FString UGFxObject::ActionScriptString(class FString method)
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  method                         (CPF_Parm | CPF_NeedCtorLink)
 
-float UGFxObject::ActionScriptFloat(class FString method)
+float UGFxObject::ActionScriptFloat(const class FString& method)
 {
 	static UFunction* uFnActionScriptFloat = nullptr;
 
@@ -2522,9 +2396,7 @@ float UGFxObject::ActionScriptFloat(class FString method)
 	memset(&ActionScriptFloat_Params, 0, sizeof(ActionScriptFloat_Params));
 	memcpy_s(&ActionScriptFloat_Params.method, sizeof(ActionScriptFloat_Params.method), &method, sizeof(method));
 
-	uFnActionScriptFloat->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptFloat, &ActionScriptFloat_Params, nullptr);
-	uFnActionScriptFloat->FunctionFlags |= 0x400;
 
 	return ActionScriptFloat_Params.ReturnValue;
 };
@@ -2535,7 +2407,7 @@ float UGFxObject::ActionScriptFloat(class FString method)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  method                         (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UGFxObject::ActionScriptInt(class FString method)
+int32_t UGFxObject::ActionScriptInt(const class FString& method)
 {
 	static UFunction* uFnActionScriptInt = nullptr;
 
@@ -2548,9 +2420,7 @@ int32_t UGFxObject::ActionScriptInt(class FString method)
 	memset(&ActionScriptInt_Params, 0, sizeof(ActionScriptInt_Params));
 	memcpy_s(&ActionScriptInt_Params.method, sizeof(ActionScriptInt_Params.method), &method, sizeof(method));
 
-	uFnActionScriptInt->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptInt, &ActionScriptInt_Params, nullptr);
-	uFnActionScriptInt->FunctionFlags |= 0x400;
 
 	return ActionScriptInt_Params.ReturnValue;
 };
@@ -2560,7 +2430,7 @@ int32_t UGFxObject::ActionScriptInt(class FString method)
 // Parameter Info:
 // class FString                  method                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxObject::ActionScriptVoid(class FString method)
+void UGFxObject::ActionScriptVoid(const class FString& method)
 {
 	static UFunction* uFnActionScriptVoid = nullptr;
 
@@ -2573,9 +2443,7 @@ void UGFxObject::ActionScriptVoid(class FString method)
 	memset(&ActionScriptVoid_Params, 0, sizeof(ActionScriptVoid_Params));
 	memcpy_s(&ActionScriptVoid_Params.method, sizeof(ActionScriptVoid_Params.method), &method, sizeof(method));
 
-	uFnActionScriptVoid->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptVoid, &ActionScriptVoid_Params, nullptr);
-	uFnActionScriptVoid->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.Invoke
@@ -2583,9 +2451,9 @@ void UGFxObject::ActionScriptVoid(class FString method)
 // Parameter Info:
 // struct FASValue                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FASValue>        args                           (CPF_Parm | CPF_NeedCtorLink)
+// class TArray<struct FASValue>  args                           (CPF_Parm | CPF_NeedCtorLink)
 
-struct FASValue UGFxObject::Invoke(class FString Member, TArray<struct FASValue> args)
+struct FASValue UGFxObject::Invoke(const class FString& Member, const class TArray<struct FASValue>& args)
 {
 	static UFunction* uFnInvoke = nullptr;
 
@@ -2599,9 +2467,7 @@ struct FASValue UGFxObject::Invoke(class FString Member, TArray<struct FASValue>
 	memcpy_s(&Invoke_Params.Member, sizeof(Invoke_Params.Member), &Member, sizeof(Member));
 	memcpy_s(&Invoke_Params.args, sizeof(Invoke_Params.args), &args, sizeof(args));
 
-	uFnInvoke->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnInvoke, &Invoke_Params, nullptr);
-	uFnInvoke->FunctionFlags |= 0x400;
 
 	return Invoke_Params.ReturnValue;
 };
@@ -2612,7 +2478,7 @@ struct FASValue UGFxObject::Invoke(class FString Member, TArray<struct FASValue>
 // class UGFxObject*              Target                         (CPF_Parm)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxObject::ActionScriptSetFunctionOn(class UGFxObject* Target, class FString Member)
+void UGFxObject::ActionScriptSetFunctionOn(class UGFxObject* Target, const class FString& Member)
 {
 	static UFunction* uFnActionScriptSetFunctionOn = nullptr;
 
@@ -2623,12 +2489,10 @@ void UGFxObject::ActionScriptSetFunctionOn(class UGFxObject* Target, class FStri
 
 	UGFxObject_execActionScriptSetFunctionOn_Params ActionScriptSetFunctionOn_Params;
 	memset(&ActionScriptSetFunctionOn_Params, 0, sizeof(ActionScriptSetFunctionOn_Params));
-	memcpy_s(&ActionScriptSetFunctionOn_Params.Target, sizeof(ActionScriptSetFunctionOn_Params.Target), &Target, sizeof(Target));
+	ActionScriptSetFunctionOn_Params.Target = Target;
 	memcpy_s(&ActionScriptSetFunctionOn_Params.Member, sizeof(ActionScriptSetFunctionOn_Params.Member), &Member, sizeof(Member));
 
-	uFnActionScriptSetFunctionOn->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptSetFunctionOn, &ActionScriptSetFunctionOn_Params, nullptr);
-	uFnActionScriptSetFunctionOn->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.ActionScriptSetFunction
@@ -2636,7 +2500,7 @@ void UGFxObject::ActionScriptSetFunctionOn(class UGFxObject* Target, class FStri
 // Parameter Info:
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxObject::ActionScriptSetFunction(class FString Member)
+void UGFxObject::ActionScriptSetFunction(const class FString& Member)
 {
 	static UFunction* uFnActionScriptSetFunction = nullptr;
 
@@ -2649,9 +2513,7 @@ void UGFxObject::ActionScriptSetFunction(class FString Member)
 	memset(&ActionScriptSetFunction_Params, 0, sizeof(ActionScriptSetFunction_Params));
 	memcpy_s(&ActionScriptSetFunction_Params.Member, sizeof(ActionScriptSetFunction_Params.Member), &Member, sizeof(Member));
 
-	uFnActionScriptSetFunction->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnActionScriptSetFunction, &ActionScriptSetFunction_Params, nullptr);
-	uFnActionScriptSetFunction->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementMemberString
@@ -2661,7 +2523,7 @@ void UGFxObject::ActionScriptSetFunction(class FString Member)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  S                              (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxObject::SetElementMemberString(int32_t Index, class FString Member, class FString S)
+void UGFxObject::SetElementMemberString(int32_t Index, const class FString& Member, const class FString& S)
 {
 	static UFunction* uFnSetElementMemberString = nullptr;
 
@@ -2676,9 +2538,7 @@ void UGFxObject::SetElementMemberString(int32_t Index, class FString Member, cla
 	memcpy_s(&SetElementMemberString_Params.Member, sizeof(SetElementMemberString_Params.Member), &Member, sizeof(Member));
 	memcpy_s(&SetElementMemberString_Params.S, sizeof(SetElementMemberString_Params.S), &S, sizeof(S));
 
-	uFnSetElementMemberString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementMemberString, &SetElementMemberString_Params, nullptr);
-	uFnSetElementMemberString->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementMemberInt
@@ -2688,7 +2548,7 @@ void UGFxObject::SetElementMemberString(int32_t Index, class FString Member, cla
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        I                              (CPF_Parm)
 
-void UGFxObject::SetElementMemberInt(int32_t Index, class FString Member, int32_t I)
+void UGFxObject::SetElementMemberInt(int32_t Index, const class FString& Member, int32_t I)
 {
 	static UFunction* uFnSetElementMemberInt = nullptr;
 
@@ -2703,9 +2563,7 @@ void UGFxObject::SetElementMemberInt(int32_t Index, class FString Member, int32_
 	memcpy_s(&SetElementMemberInt_Params.Member, sizeof(SetElementMemberInt_Params.Member), &Member, sizeof(Member));
 	memcpy_s(&SetElementMemberInt_Params.I, sizeof(SetElementMemberInt_Params.I), &I, sizeof(I));
 
-	uFnSetElementMemberInt->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementMemberInt, &SetElementMemberInt_Params, nullptr);
-	uFnSetElementMemberInt->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementMemberFloat
@@ -2715,7 +2573,7 @@ void UGFxObject::SetElementMemberInt(int32_t Index, class FString Member, int32_
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 // float                          F                              (CPF_Parm)
 
-void UGFxObject::SetElementMemberFloat(int32_t Index, class FString Member, float F)
+void UGFxObject::SetElementMemberFloat(int32_t Index, const class FString& Member, float F)
 {
 	static UFunction* uFnSetElementMemberFloat = nullptr;
 
@@ -2730,9 +2588,7 @@ void UGFxObject::SetElementMemberFloat(int32_t Index, class FString Member, floa
 	memcpy_s(&SetElementMemberFloat_Params.Member, sizeof(SetElementMemberFloat_Params.Member), &Member, sizeof(Member));
 	memcpy_s(&SetElementMemberFloat_Params.F, sizeof(SetElementMemberFloat_Params.F), &F, sizeof(F));
 
-	uFnSetElementMemberFloat->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementMemberFloat, &SetElementMemberFloat_Params, nullptr);
-	uFnSetElementMemberFloat->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementMemberBool
@@ -2740,9 +2596,9 @@ void UGFxObject::SetElementMemberFloat(int32_t Index, class FString Member, floa
 // Parameter Info:
 // int32_t                        Index                          (CPF_Parm)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
-// bool                           B                              (CPF_Parm)
+// uint32_t                       B                              (CPF_Parm)
 
-void UGFxObject::SetElementMemberBool(int32_t Index, class FString Member, bool B)
+void UGFxObject::SetElementMemberBool(int32_t Index, const class FString& Member, bool B)
 {
 	static UFunction* uFnSetElementMemberBool = nullptr;
 
@@ -2757,9 +2613,7 @@ void UGFxObject::SetElementMemberBool(int32_t Index, class FString Member, bool 
 	memcpy_s(&SetElementMemberBool_Params.Member, sizeof(SetElementMemberBool_Params.Member), &Member, sizeof(Member));
 	SetElementMemberBool_Params.B = B;
 
-	uFnSetElementMemberBool->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementMemberBool, &SetElementMemberBool_Params, nullptr);
-	uFnSetElementMemberBool->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementMemberObject
@@ -2769,7 +2623,7 @@ void UGFxObject::SetElementMemberBool(int32_t Index, class FString Member, bool 
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 // class UGFxObject*              val                            (CPF_Parm)
 
-void UGFxObject::SetElementMemberObject(int32_t Index, class FString Member, class UGFxObject* val)
+void UGFxObject::SetElementMemberObject(int32_t Index, const class FString& Member, class UGFxObject* val)
 {
 	static UFunction* uFnSetElementMemberObject = nullptr;
 
@@ -2782,11 +2636,9 @@ void UGFxObject::SetElementMemberObject(int32_t Index, class FString Member, cla
 	memset(&SetElementMemberObject_Params, 0, sizeof(SetElementMemberObject_Params));
 	memcpy_s(&SetElementMemberObject_Params.Index, sizeof(SetElementMemberObject_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&SetElementMemberObject_Params.Member, sizeof(SetElementMemberObject_Params.Member), &Member, sizeof(Member));
-	memcpy_s(&SetElementMemberObject_Params.val, sizeof(SetElementMemberObject_Params.val), &val, sizeof(val));
+	SetElementMemberObject_Params.val = val;
 
-	uFnSetElementMemberObject->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementMemberObject, &SetElementMemberObject_Params, nullptr);
-	uFnSetElementMemberObject->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementMember
@@ -2796,7 +2648,7 @@ void UGFxObject::SetElementMemberObject(int32_t Index, class FString Member, cla
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 // struct FASValue                Arg                            (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxObject::SetElementMember(int32_t Index, class FString Member, struct FASValue Arg)
+void UGFxObject::SetElementMember(int32_t Index, const class FString& Member, const struct FASValue& Arg)
 {
 	static UFunction* uFnSetElementMember = nullptr;
 
@@ -2811,9 +2663,7 @@ void UGFxObject::SetElementMember(int32_t Index, class FString Member, struct FA
 	memcpy_s(&SetElementMember_Params.Member, sizeof(SetElementMember_Params.Member), &Member, sizeof(Member));
 	memcpy_s(&SetElementMember_Params.Arg, sizeof(SetElementMember_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnSetElementMember->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementMember, &SetElementMember_Params, nullptr);
-	uFnSetElementMember->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.GetElementMemberString
@@ -2823,7 +2673,7 @@ void UGFxObject::SetElementMember(int32_t Index, class FString Member, struct FA
 // int32_t                        Index                          (CPF_Parm)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UGFxObject::GetElementMemberString(int32_t Index, class FString Member)
+class FString UGFxObject::GetElementMemberString(int32_t Index, const class FString& Member)
 {
 	static UFunction* uFnGetElementMemberString = nullptr;
 
@@ -2837,9 +2687,7 @@ class FString UGFxObject::GetElementMemberString(int32_t Index, class FString Me
 	memcpy_s(&GetElementMemberString_Params.Index, sizeof(GetElementMemberString_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&GetElementMemberString_Params.Member, sizeof(GetElementMemberString_Params.Member), &Member, sizeof(Member));
 
-	uFnGetElementMemberString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElementMemberString, &GetElementMemberString_Params, nullptr);
-	uFnGetElementMemberString->FunctionFlags |= 0x400;
 
 	return GetElementMemberString_Params.ReturnValue;
 };
@@ -2851,7 +2699,7 @@ class FString UGFxObject::GetElementMemberString(int32_t Index, class FString Me
 // int32_t                        Index                          (CPF_Parm)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UGFxObject::GetElementMemberInt(int32_t Index, class FString Member)
+int32_t UGFxObject::GetElementMemberInt(int32_t Index, const class FString& Member)
 {
 	static UFunction* uFnGetElementMemberInt = nullptr;
 
@@ -2865,9 +2713,7 @@ int32_t UGFxObject::GetElementMemberInt(int32_t Index, class FString Member)
 	memcpy_s(&GetElementMemberInt_Params.Index, sizeof(GetElementMemberInt_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&GetElementMemberInt_Params.Member, sizeof(GetElementMemberInt_Params.Member), &Member, sizeof(Member));
 
-	uFnGetElementMemberInt->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElementMemberInt, &GetElementMemberInt_Params, nullptr);
-	uFnGetElementMemberInt->FunctionFlags |= 0x400;
 
 	return GetElementMemberInt_Params.ReturnValue;
 };
@@ -2879,7 +2725,7 @@ int32_t UGFxObject::GetElementMemberInt(int32_t Index, class FString Member)
 // int32_t                        Index                          (CPF_Parm)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 
-float UGFxObject::GetElementMemberFloat(int32_t Index, class FString Member)
+float UGFxObject::GetElementMemberFloat(int32_t Index, const class FString& Member)
 {
 	static UFunction* uFnGetElementMemberFloat = nullptr;
 
@@ -2893,9 +2739,7 @@ float UGFxObject::GetElementMemberFloat(int32_t Index, class FString Member)
 	memcpy_s(&GetElementMemberFloat_Params.Index, sizeof(GetElementMemberFloat_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&GetElementMemberFloat_Params.Member, sizeof(GetElementMemberFloat_Params.Member), &Member, sizeof(Member));
 
-	uFnGetElementMemberFloat->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElementMemberFloat, &GetElementMemberFloat_Params, nullptr);
-	uFnGetElementMemberFloat->FunctionFlags |= 0x400;
 
 	return GetElementMemberFloat_Params.ReturnValue;
 };
@@ -2907,7 +2751,7 @@ float UGFxObject::GetElementMemberFloat(int32_t Index, class FString Member)
 // int32_t                        Index                          (CPF_Parm)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 
-bool UGFxObject::GetElementMemberBool(int32_t Index, class FString Member)
+bool UGFxObject::GetElementMemberBool(int32_t Index, const class FString& Member)
 {
 	static UFunction* uFnGetElementMemberBool = nullptr;
 
@@ -2921,9 +2765,7 @@ bool UGFxObject::GetElementMemberBool(int32_t Index, class FString Member)
 	memcpy_s(&GetElementMemberBool_Params.Index, sizeof(GetElementMemberBool_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&GetElementMemberBool_Params.Member, sizeof(GetElementMemberBool_Params.Member), &Member, sizeof(Member));
 
-	uFnGetElementMemberBool->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElementMemberBool, &GetElementMemberBool_Params, nullptr);
-	uFnGetElementMemberBool->FunctionFlags |= 0x400;
 
 	return GetElementMemberBool_Params.ReturnValue;
 };
@@ -2936,7 +2778,7 @@ bool UGFxObject::GetElementMemberBool(int32_t Index, class FString Member)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 // class UClass*                  Type                           (CPF_OptionalParm | CPF_Parm)
 
-class UGFxObject* UGFxObject::GetElementMemberObject(int32_t Index, class FString Member, class UClass* Type)
+class UGFxObject* UGFxObject::GetElementMemberObject(int32_t Index, const class FString& Member, class UClass* Type)
 {
 	static UFunction* uFnGetElementMemberObject = nullptr;
 
@@ -2949,11 +2791,9 @@ class UGFxObject* UGFxObject::GetElementMemberObject(int32_t Index, class FStrin
 	memset(&GetElementMemberObject_Params, 0, sizeof(GetElementMemberObject_Params));
 	memcpy_s(&GetElementMemberObject_Params.Index, sizeof(GetElementMemberObject_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&GetElementMemberObject_Params.Member, sizeof(GetElementMemberObject_Params.Member), &Member, sizeof(Member));
-	memcpy_s(&GetElementMemberObject_Params.Type, sizeof(GetElementMemberObject_Params.Type), &Type, sizeof(Type));
+	GetElementMemberObject_Params.Type = Type;
 
-	uFnGetElementMemberObject->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElementMemberObject, &GetElementMemberObject_Params, nullptr);
-	uFnGetElementMemberObject->FunctionFlags |= 0x400;
 
 	return GetElementMemberObject_Params.ReturnValue;
 };
@@ -2965,7 +2805,7 @@ class UGFxObject* UGFxObject::GetElementMemberObject(int32_t Index, class FStrin
 // int32_t                        Index                          (CPF_Parm)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 
-struct FASValue UGFxObject::GetElementMember(int32_t Index, class FString Member)
+struct FASValue UGFxObject::GetElementMember(int32_t Index, const class FString& Member)
 {
 	static UFunction* uFnGetElementMember = nullptr;
 
@@ -2979,9 +2819,7 @@ struct FASValue UGFxObject::GetElementMember(int32_t Index, class FString Member
 	memcpy_s(&GetElementMember_Params.Index, sizeof(GetElementMember_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&GetElementMember_Params.Member, sizeof(GetElementMember_Params.Member), &Member, sizeof(Member));
 
-	uFnGetElementMember->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElementMember, &GetElementMember_Params, nullptr);
-	uFnGetElementMember->FunctionFlags |= 0x400;
 
 	return GetElementMember_Params.ReturnValue;
 };
@@ -2992,7 +2830,7 @@ struct FASValue UGFxObject::GetElementMember(int32_t Index, class FString Member
 // int32_t                        Index                          (CPF_Parm)
 // struct FASColorTransform       cxform                         (CPF_Parm)
 
-void UGFxObject::SetElementColorTransform(int32_t Index, struct FASColorTransform cxform)
+void UGFxObject::SetElementColorTransform(int32_t Index, const struct FASColorTransform& cxform)
 {
 	static UFunction* uFnSetElementColorTransform = nullptr;
 
@@ -3006,9 +2844,7 @@ void UGFxObject::SetElementColorTransform(int32_t Index, struct FASColorTransfor
 	memcpy_s(&SetElementColorTransform_Params.Index, sizeof(SetElementColorTransform_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&SetElementColorTransform_Params.cxform, sizeof(SetElementColorTransform_Params.cxform), &cxform, sizeof(cxform));
 
-	uFnSetElementColorTransform->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementColorTransform, &SetElementColorTransform_Params, nullptr);
-	uFnSetElementColorTransform->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementPosition
@@ -3033,16 +2869,14 @@ void UGFxObject::SetElementPosition(int32_t Index, float X, float Y)
 	memcpy_s(&SetElementPosition_Params.X, sizeof(SetElementPosition_Params.X), &X, sizeof(X));
 	memcpy_s(&SetElementPosition_Params.Y, sizeof(SetElementPosition_Params.Y), &Y, sizeof(Y));
 
-	uFnSetElementPosition->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementPosition, &SetElementPosition_Params, nullptr);
-	uFnSetElementPosition->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementVisible
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        Index                          (CPF_Parm)
-// bool                           Visible                        (CPF_Parm)
+// uint32_t                       Visible                        (CPF_Parm)
 
 void UGFxObject::SetElementVisible(int32_t Index, bool Visible)
 {
@@ -3058,9 +2892,7 @@ void UGFxObject::SetElementVisible(int32_t Index, bool Visible)
 	memcpy_s(&SetElementVisible_Params.Index, sizeof(SetElementVisible_Params.Index), &Index, sizeof(Index));
 	SetElementVisible_Params.Visible = Visible;
 
-	uFnSetElementVisible->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementVisible, &SetElementVisible_Params, nullptr);
-	uFnSetElementVisible->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementDisplayMatrix
@@ -3069,7 +2901,7 @@ void UGFxObject::SetElementVisible(int32_t Index, bool Visible)
 // int32_t                        Index                          (CPF_Parm)
 // struct FMatrix                 M                              (CPF_Parm)
 
-void UGFxObject::SetElementDisplayMatrix(int32_t Index, struct FMatrix M)
+void UGFxObject::SetElementDisplayMatrix(int32_t Index, const struct FMatrix& M)
 {
 	static UFunction* uFnSetElementDisplayMatrix = nullptr;
 
@@ -3083,9 +2915,7 @@ void UGFxObject::SetElementDisplayMatrix(int32_t Index, struct FMatrix M)
 	memcpy_s(&SetElementDisplayMatrix_Params.Index, sizeof(SetElementDisplayMatrix_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&SetElementDisplayMatrix_Params.M, sizeof(SetElementDisplayMatrix_Params.M), &M, sizeof(M));
 
-	uFnSetElementDisplayMatrix->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementDisplayMatrix, &SetElementDisplayMatrix_Params, nullptr);
-	uFnSetElementDisplayMatrix->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementDisplayInfo
@@ -3094,7 +2924,7 @@ void UGFxObject::SetElementDisplayMatrix(int32_t Index, struct FMatrix M)
 // int32_t                        Index                          (CPF_Parm)
 // struct FASDisplayInfo          D                              (CPF_Parm)
 
-void UGFxObject::SetElementDisplayInfo(int32_t Index, struct FASDisplayInfo D)
+void UGFxObject::SetElementDisplayInfo(int32_t Index, const struct FASDisplayInfo& D)
 {
 	static UFunction* uFnSetElementDisplayInfo = nullptr;
 
@@ -3108,9 +2938,7 @@ void UGFxObject::SetElementDisplayInfo(int32_t Index, struct FASDisplayInfo D)
 	memcpy_s(&SetElementDisplayInfo_Params.Index, sizeof(SetElementDisplayInfo_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&SetElementDisplayInfo_Params.D, sizeof(SetElementDisplayInfo_Params.D), &D, sizeof(D));
 
-	uFnSetElementDisplayInfo->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementDisplayInfo, &SetElementDisplayInfo_Params, nullptr);
-	uFnSetElementDisplayInfo->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.GetElementDisplayMatrix
@@ -3132,9 +2960,7 @@ struct FMatrix UGFxObject::GetElementDisplayMatrix(int32_t Index)
 	memset(&GetElementDisplayMatrix_Params, 0, sizeof(GetElementDisplayMatrix_Params));
 	memcpy_s(&GetElementDisplayMatrix_Params.Index, sizeof(GetElementDisplayMatrix_Params.Index), &Index, sizeof(Index));
 
-	uFnGetElementDisplayMatrix->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElementDisplayMatrix, &GetElementDisplayMatrix_Params, nullptr);
-	uFnGetElementDisplayMatrix->FunctionFlags |= 0x400;
 
 	return GetElementDisplayMatrix_Params.ReturnValue;
 };
@@ -3158,9 +2984,7 @@ struct FASDisplayInfo UGFxObject::GetElementDisplayInfo(int32_t Index)
 	memset(&GetElementDisplayInfo_Params, 0, sizeof(GetElementDisplayInfo_Params));
 	memcpy_s(&GetElementDisplayInfo_Params.Index, sizeof(GetElementDisplayInfo_Params.Index), &Index, sizeof(Index));
 
-	uFnGetElementDisplayInfo->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElementDisplayInfo, &GetElementDisplayInfo_Params, nullptr);
-	uFnGetElementDisplayInfo->FunctionFlags |= 0x400;
 
 	return GetElementDisplayInfo_Params.ReturnValue;
 };
@@ -3171,7 +2995,7 @@ struct FASDisplayInfo UGFxObject::GetElementDisplayInfo(int32_t Index)
 // int32_t                        Index                          (CPF_Parm)
 // class FString                  S                              (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxObject::SetElementString(int32_t Index, class FString S)
+void UGFxObject::SetElementString(int32_t Index, const class FString& S)
 {
 	static UFunction* uFnSetElementString = nullptr;
 
@@ -3185,9 +3009,7 @@ void UGFxObject::SetElementString(int32_t Index, class FString S)
 	memcpy_s(&SetElementString_Params.Index, sizeof(SetElementString_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&SetElementString_Params.S, sizeof(SetElementString_Params.S), &S, sizeof(S));
 
-	uFnSetElementString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementString, &SetElementString_Params, nullptr);
-	uFnSetElementString->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementInt
@@ -3210,9 +3032,7 @@ void UGFxObject::SetElementInt(int32_t Index, int32_t I)
 	memcpy_s(&SetElementInt_Params.Index, sizeof(SetElementInt_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&SetElementInt_Params.I, sizeof(SetElementInt_Params.I), &I, sizeof(I));
 
-	uFnSetElementInt->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementInt, &SetElementInt_Params, nullptr);
-	uFnSetElementInt->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementFloat
@@ -3235,16 +3055,14 @@ void UGFxObject::SetElementFloat(int32_t Index, float F)
 	memcpy_s(&SetElementFloat_Params.Index, sizeof(SetElementFloat_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&SetElementFloat_Params.F, sizeof(SetElementFloat_Params.F), &F, sizeof(F));
 
-	uFnSetElementFloat->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementFloat, &SetElementFloat_Params, nullptr);
-	uFnSetElementFloat->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementBool
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        Index                          (CPF_Parm)
-// bool                           B                              (CPF_Parm)
+// uint32_t                       B                              (CPF_Parm)
 
 void UGFxObject::SetElementBool(int32_t Index, bool B)
 {
@@ -3260,9 +3078,7 @@ void UGFxObject::SetElementBool(int32_t Index, bool B)
 	memcpy_s(&SetElementBool_Params.Index, sizeof(SetElementBool_Params.Index), &Index, sizeof(Index));
 	SetElementBool_Params.B = B;
 
-	uFnSetElementBool->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementBool, &SetElementBool_Params, nullptr);
-	uFnSetElementBool->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElementObject
@@ -3283,11 +3099,9 @@ void UGFxObject::SetElementObject(int32_t Index, class UGFxObject* val)
 	UGFxObject_execSetElementObject_Params SetElementObject_Params;
 	memset(&SetElementObject_Params, 0, sizeof(SetElementObject_Params));
 	memcpy_s(&SetElementObject_Params.Index, sizeof(SetElementObject_Params.Index), &Index, sizeof(Index));
-	memcpy_s(&SetElementObject_Params.val, sizeof(SetElementObject_Params.val), &val, sizeof(val));
+	SetElementObject_Params.val = val;
 
-	uFnSetElementObject->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElementObject, &SetElementObject_Params, nullptr);
-	uFnSetElementObject->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetElement
@@ -3296,7 +3110,7 @@ void UGFxObject::SetElementObject(int32_t Index, class UGFxObject* val)
 // int32_t                        Index                          (CPF_Parm)
 // struct FASValue                Arg                            (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxObject::SetElement(int32_t Index, struct FASValue Arg)
+void UGFxObject::SetElement(int32_t Index, const struct FASValue& Arg)
 {
 	static UFunction* uFnSetElement = nullptr;
 
@@ -3310,9 +3124,7 @@ void UGFxObject::SetElement(int32_t Index, struct FASValue Arg)
 	memcpy_s(&SetElement_Params.Index, sizeof(SetElement_Params.Index), &Index, sizeof(Index));
 	memcpy_s(&SetElement_Params.Arg, sizeof(SetElement_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnSetElement->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetElement, &SetElement_Params, nullptr);
-	uFnSetElement->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.GetElementString
@@ -3334,9 +3146,7 @@ class FString UGFxObject::GetElementString(int32_t Index)
 	memset(&GetElementString_Params, 0, sizeof(GetElementString_Params));
 	memcpy_s(&GetElementString_Params.Index, sizeof(GetElementString_Params.Index), &Index, sizeof(Index));
 
-	uFnGetElementString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElementString, &GetElementString_Params, nullptr);
-	uFnGetElementString->FunctionFlags |= 0x400;
 
 	return GetElementString_Params.ReturnValue;
 };
@@ -3360,9 +3170,7 @@ int32_t UGFxObject::GetElementInt(int32_t Index)
 	memset(&GetElementInt_Params, 0, sizeof(GetElementInt_Params));
 	memcpy_s(&GetElementInt_Params.Index, sizeof(GetElementInt_Params.Index), &Index, sizeof(Index));
 
-	uFnGetElementInt->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElementInt, &GetElementInt_Params, nullptr);
-	uFnGetElementInt->FunctionFlags |= 0x400;
 
 	return GetElementInt_Params.ReturnValue;
 };
@@ -3386,9 +3194,7 @@ float UGFxObject::GetElementFloat(int32_t Index)
 	memset(&GetElementFloat_Params, 0, sizeof(GetElementFloat_Params));
 	memcpy_s(&GetElementFloat_Params.Index, sizeof(GetElementFloat_Params.Index), &Index, sizeof(Index));
 
-	uFnGetElementFloat->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElementFloat, &GetElementFloat_Params, nullptr);
-	uFnGetElementFloat->FunctionFlags |= 0x400;
 
 	return GetElementFloat_Params.ReturnValue;
 };
@@ -3412,9 +3218,7 @@ bool UGFxObject::GetElementBool(int32_t Index)
 	memset(&GetElementBool_Params, 0, sizeof(GetElementBool_Params));
 	memcpy_s(&GetElementBool_Params.Index, sizeof(GetElementBool_Params.Index), &Index, sizeof(Index));
 
-	uFnGetElementBool->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElementBool, &GetElementBool_Params, nullptr);
-	uFnGetElementBool->FunctionFlags |= 0x400;
 
 	return GetElementBool_Params.ReturnValue;
 };
@@ -3438,11 +3242,9 @@ class UGFxObject* UGFxObject::GetElementObject(int32_t Index, class UClass* Type
 	UGFxObject_execGetElementObject_Params GetElementObject_Params;
 	memset(&GetElementObject_Params, 0, sizeof(GetElementObject_Params));
 	memcpy_s(&GetElementObject_Params.Index, sizeof(GetElementObject_Params.Index), &Index, sizeof(Index));
-	memcpy_s(&GetElementObject_Params.Type, sizeof(GetElementObject_Params.Type), &Type, sizeof(Type));
+	GetElementObject_Params.Type = Type;
 
-	uFnGetElementObject->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElementObject, &GetElementObject_Params, nullptr);
-	uFnGetElementObject->FunctionFlags |= 0x400;
 
 	return GetElementObject_Params.ReturnValue;
 };
@@ -3466,9 +3268,7 @@ struct FASValue UGFxObject::GetElement(int32_t Index)
 	memset(&GetElement_Params, 0, sizeof(GetElement_Params));
 	memcpy_s(&GetElement_Params.Index, sizeof(GetElement_Params.Index), &Index, sizeof(Index));
 
-	uFnGetElement->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetElement, &GetElement_Params, nullptr);
-	uFnGetElement->FunctionFlags |= 0x400;
 
 	return GetElement_Params.ReturnValue;
 };
@@ -3479,7 +3279,7 @@ struct FASValue UGFxObject::GetElement(int32_t Index)
 // class FString                  Text                           (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 // class UTranslationContext*     InContext                      (CPF_OptionalParm | CPF_Parm)
 
-void UGFxObject::SetText(class FString Text, class UTranslationContext* InContext)
+void UGFxObject::SetText(const class FString& Text, class UTranslationContext* InContext)
 {
 	static UFunction* uFnSetText = nullptr;
 
@@ -3491,11 +3291,9 @@ void UGFxObject::SetText(class FString Text, class UTranslationContext* InContex
 	UGFxObject_execSetText_Params SetText_Params;
 	memset(&SetText_Params, 0, sizeof(SetText_Params));
 	memcpy_s(&SetText_Params.Text, sizeof(SetText_Params.Text), &Text, sizeof(Text));
-	memcpy_s(&SetText_Params.InContext, sizeof(SetText_Params.InContext), &InContext, sizeof(InContext));
+	SetText_Params.InContext = InContext;
 
-	uFnSetText->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetText, &SetText_Params, nullptr);
-	uFnSetText->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.GetText
@@ -3515,9 +3313,7 @@ class FString UGFxObject::GetText()
 	UGFxObject_execGetText_Params GetText_Params;
 	memset(&GetText_Params, 0, sizeof(GetText_Params));
 
-	uFnGetText->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetText, &GetText_Params, nullptr);
-	uFnGetText->FunctionFlags |= 0x400;
 
 	return GetText_Params.ReturnValue;
 };
@@ -3525,7 +3321,7 @@ class FString UGFxObject::GetText()
 // Function GFxUI.GFxObject.SetVisible
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           Visible                        (CPF_Parm)
+// uint32_t                       Visible                        (CPF_Parm)
 
 void UGFxObject::SetVisible(bool Visible)
 {
@@ -3540,9 +3336,7 @@ void UGFxObject::SetVisible(bool Visible)
 	memset(&SetVisible_Params, 0, sizeof(SetVisible_Params));
 	SetVisible_Params.Visible = Visible;
 
-	uFnSetVisible->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetVisible, &SetVisible_Params, nullptr);
-	uFnSetVisible->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetDisplayMatrix3D
@@ -3550,7 +3344,7 @@ void UGFxObject::SetVisible(bool Visible)
 // Parameter Info:
 // struct FMatrix                 M                              (CPF_Parm)
 
-void UGFxObject::SetDisplayMatrix3D(struct FMatrix M)
+void UGFxObject::SetDisplayMatrix3D(const struct FMatrix& M)
 {
 	static UFunction* uFnSetDisplayMatrix3D = nullptr;
 
@@ -3563,9 +3357,7 @@ void UGFxObject::SetDisplayMatrix3D(struct FMatrix M)
 	memset(&SetDisplayMatrix3D_Params, 0, sizeof(SetDisplayMatrix3D_Params));
 	memcpy_s(&SetDisplayMatrix3D_Params.M, sizeof(SetDisplayMatrix3D_Params.M), &M, sizeof(M));
 
-	uFnSetDisplayMatrix3D->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetDisplayMatrix3D, &SetDisplayMatrix3D_Params, nullptr);
-	uFnSetDisplayMatrix3D->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetDisplayMatrix
@@ -3573,7 +3365,7 @@ void UGFxObject::SetDisplayMatrix3D(struct FMatrix M)
 // Parameter Info:
 // struct FMatrix                 M                              (CPF_Parm)
 
-void UGFxObject::SetDisplayMatrix(struct FMatrix M)
+void UGFxObject::SetDisplayMatrix(const struct FMatrix& M)
 {
 	static UFunction* uFnSetDisplayMatrix = nullptr;
 
@@ -3586,9 +3378,7 @@ void UGFxObject::SetDisplayMatrix(struct FMatrix M)
 	memset(&SetDisplayMatrix_Params, 0, sizeof(SetDisplayMatrix_Params));
 	memcpy_s(&SetDisplayMatrix_Params.M, sizeof(SetDisplayMatrix_Params.M), &M, sizeof(M));
 
-	uFnSetDisplayMatrix->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetDisplayMatrix, &SetDisplayMatrix_Params, nullptr);
-	uFnSetDisplayMatrix->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetColorTransform
@@ -3596,7 +3386,7 @@ void UGFxObject::SetDisplayMatrix(struct FMatrix M)
 // Parameter Info:
 // struct FASColorTransform       cxform                         (CPF_Parm)
 
-void UGFxObject::SetColorTransform(struct FASColorTransform cxform)
+void UGFxObject::SetColorTransform(const struct FASColorTransform& cxform)
 {
 	static UFunction* uFnSetColorTransform = nullptr;
 
@@ -3609,9 +3399,7 @@ void UGFxObject::SetColorTransform(struct FASColorTransform cxform)
 	memset(&SetColorTransform_Params, 0, sizeof(SetColorTransform_Params));
 	memcpy_s(&SetColorTransform_Params.cxform, sizeof(SetColorTransform_Params.cxform), &cxform, sizeof(cxform));
 
-	uFnSetColorTransform->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetColorTransform, &SetColorTransform_Params, nullptr);
-	uFnSetColorTransform->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetPosition
@@ -3634,9 +3422,7 @@ void UGFxObject::SetPosition(float X, float Y)
 	memcpy_s(&SetPosition_Params.X, sizeof(SetPosition_Params.X), &X, sizeof(X));
 	memcpy_s(&SetPosition_Params.Y, sizeof(SetPosition_Params.Y), &Y, sizeof(Y));
 
-	uFnSetPosition->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetPosition, &SetPosition_Params, nullptr);
-	uFnSetPosition->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetDisplayInfo
@@ -3644,7 +3430,7 @@ void UGFxObject::SetPosition(float X, float Y)
 // Parameter Info:
 // struct FASDisplayInfo          D                              (CPF_Parm)
 
-void UGFxObject::SetDisplayInfo(struct FASDisplayInfo D)
+void UGFxObject::SetDisplayInfo(const struct FASDisplayInfo& D)
 {
 	static UFunction* uFnSetDisplayInfo = nullptr;
 
@@ -3657,9 +3443,7 @@ void UGFxObject::SetDisplayInfo(struct FASDisplayInfo D)
 	memset(&SetDisplayInfo_Params, 0, sizeof(SetDisplayInfo_Params));
 	memcpy_s(&SetDisplayInfo_Params.D, sizeof(SetDisplayInfo_Params.D), &D, sizeof(D));
 
-	uFnSetDisplayInfo->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetDisplayInfo, &SetDisplayInfo_Params, nullptr);
-	uFnSetDisplayInfo->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.GetDisplayMatrix3D
@@ -3679,9 +3463,7 @@ struct FMatrix UGFxObject::GetDisplayMatrix3D()
 	UGFxObject_execGetDisplayMatrix3D_Params GetDisplayMatrix3D_Params;
 	memset(&GetDisplayMatrix3D_Params, 0, sizeof(GetDisplayMatrix3D_Params));
 
-	uFnGetDisplayMatrix3D->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetDisplayMatrix3D, &GetDisplayMatrix3D_Params, nullptr);
-	uFnGetDisplayMatrix3D->FunctionFlags |= 0x400;
 
 	return GetDisplayMatrix3D_Params.ReturnValue;
 };
@@ -3703,9 +3485,7 @@ struct FMatrix UGFxObject::GetDisplayMatrix()
 	UGFxObject_execGetDisplayMatrix_Params GetDisplayMatrix_Params;
 	memset(&GetDisplayMatrix_Params, 0, sizeof(GetDisplayMatrix_Params));
 
-	uFnGetDisplayMatrix->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetDisplayMatrix, &GetDisplayMatrix_Params, nullptr);
-	uFnGetDisplayMatrix->FunctionFlags |= 0x400;
 
 	return GetDisplayMatrix_Params.ReturnValue;
 };
@@ -3727,9 +3507,7 @@ struct FASColorTransform UGFxObject::GetColorTransform()
 	UGFxObject_execGetColorTransform_Params GetColorTransform_Params;
 	memset(&GetColorTransform_Params, 0, sizeof(GetColorTransform_Params));
 
-	uFnGetColorTransform->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetColorTransform, &GetColorTransform_Params, nullptr);
-	uFnGetColorTransform->FunctionFlags |= 0x400;
 
 	return GetColorTransform_Params.ReturnValue;
 };
@@ -3755,9 +3533,7 @@ bool UGFxObject::GetPosition(float& X, float& Y)
 	memcpy_s(&GetPosition_Params.X, sizeof(GetPosition_Params.X), &X, sizeof(X));
 	memcpy_s(&GetPosition_Params.Y, sizeof(GetPosition_Params.Y), &Y, sizeof(Y));
 
-	uFnGetPosition->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetPosition, &GetPosition_Params, nullptr);
-	uFnGetPosition->FunctionFlags |= 0x400;
 
 	memcpy_s(&X, sizeof(X), &GetPosition_Params.X, sizeof(GetPosition_Params.X));
 	memcpy_s(&Y, sizeof(Y), &GetPosition_Params.Y, sizeof(GetPosition_Params.Y));
@@ -3782,9 +3558,7 @@ struct FASDisplayInfo UGFxObject::GetDisplayInfo()
 	UGFxObject_execGetDisplayInfo_Params GetDisplayInfo_Params;
 	memset(&GetDisplayInfo_Params, 0, sizeof(GetDisplayInfo_Params));
 
-	uFnGetDisplayInfo->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetDisplayInfo, &GetDisplayInfo_Params, nullptr);
-	uFnGetDisplayInfo->FunctionFlags |= 0x400;
 
 	return GetDisplayInfo_Params.ReturnValue;
 };
@@ -3796,7 +3570,7 @@ struct FASDisplayInfo UGFxObject::GetDisplayInfo()
 // class FString                  StringToTranslate              (CPF_Parm | CPF_NeedCtorLink)
 // class UTranslationContext*     InContext                      (CPF_OptionalParm | CPF_Parm)
 
-class FString UGFxObject::TranslateString(class FString StringToTranslate, class UTranslationContext* InContext)
+class FString UGFxObject::TranslateString(const class FString& StringToTranslate, class UTranslationContext* InContext)
 {
 	static UFunction* uFnTranslateString = nullptr;
 
@@ -3808,11 +3582,9 @@ class FString UGFxObject::TranslateString(class FString StringToTranslate, class
 	UGFxObject_execTranslateString_Params TranslateString_Params;
 	memset(&TranslateString_Params, 0, sizeof(TranslateString_Params));
 	memcpy_s(&TranslateString_Params.StringToTranslate, sizeof(TranslateString_Params.StringToTranslate), &StringToTranslate, sizeof(StringToTranslate));
-	memcpy_s(&TranslateString_Params.InContext, sizeof(TranslateString_Params.InContext), &InContext, sizeof(InContext));
+	TranslateString_Params.InContext = InContext;
 
-	uFnTranslateString->FunctionFlags &= ~0x400;
 	UGFxObject::StaticClass()->ProcessEvent(uFnTranslateString, &TranslateString_Params, nullptr);
-	uFnTranslateString->FunctionFlags |= 0x400;
 
 	return TranslateString_Params.ReturnValue;
 };
@@ -3822,9 +3594,9 @@ class FString UGFxObject::TranslateString(class FString StringToTranslate, class
 // Parameter Info:
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 // class UObject*                 Context                        (CPF_Parm)
-// struct FName                   fname                          (CPF_Parm)
+// class FName                    fname                          (CPF_Parm)
 
-void UGFxObject::SetFunction(class FString Member, class UObject* Context, struct FName fname)
+void UGFxObject::SetFunction(const class FString& Member, class UObject* Context, const class FName& fname)
 {
 	static UFunction* uFnSetFunction = nullptr;
 
@@ -3836,12 +3608,10 @@ void UGFxObject::SetFunction(class FString Member, class UObject* Context, struc
 	UGFxObject_execSetFunction_Params SetFunction_Params;
 	memset(&SetFunction_Params, 0, sizeof(SetFunction_Params));
 	memcpy_s(&SetFunction_Params.Member, sizeof(SetFunction_Params.Member), &Member, sizeof(Member));
-	memcpy_s(&SetFunction_Params.Context, sizeof(SetFunction_Params.Context), &Context, sizeof(Context));
+	SetFunction_Params.Context = Context;
 	memcpy_s(&SetFunction_Params.fname, sizeof(SetFunction_Params.fname), &fname, sizeof(fname));
 
-	uFnSetFunction->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetFunction, &SetFunction_Params, nullptr);
-	uFnSetFunction->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetObject
@@ -3850,7 +3620,7 @@ void UGFxObject::SetFunction(class FString Member, class UObject* Context, struc
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 // class UGFxObject*              val                            (CPF_Parm)
 
-void UGFxObject::SetObject(class FString Member, class UGFxObject* val)
+void UGFxObject::SetObject(const class FString& Member, class UGFxObject* val)
 {
 	static UFunction* uFnSetObject = nullptr;
 
@@ -3862,11 +3632,9 @@ void UGFxObject::SetObject(class FString Member, class UGFxObject* val)
 	UGFxObject_execSetObject_Params SetObject_Params;
 	memset(&SetObject_Params, 0, sizeof(SetObject_Params));
 	memcpy_s(&SetObject_Params.Member, sizeof(SetObject_Params.Member), &Member, sizeof(Member));
-	memcpy_s(&SetObject_Params.val, sizeof(SetObject_Params.val), &val, sizeof(val));
+	SetObject_Params.val = val;
 
-	uFnSetObject->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetObject, &SetObject_Params, nullptr);
-	uFnSetObject->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetString
@@ -3876,7 +3644,7 @@ void UGFxObject::SetObject(class FString Member, class UGFxObject* val)
 // class FString                  S                              (CPF_Parm | CPF_NeedCtorLink)
 // class UTranslationContext*     InContext                      (CPF_OptionalParm | CPF_Parm)
 
-void UGFxObject::SetString(class FString Member, class FString S, class UTranslationContext* InContext)
+void UGFxObject::SetString(const class FString& Member, const class FString& S, class UTranslationContext* InContext)
 {
 	static UFunction* uFnSetString = nullptr;
 
@@ -3889,11 +3657,9 @@ void UGFxObject::SetString(class FString Member, class FString S, class UTransla
 	memset(&SetString_Params, 0, sizeof(SetString_Params));
 	memcpy_s(&SetString_Params.Member, sizeof(SetString_Params.Member), &Member, sizeof(Member));
 	memcpy_s(&SetString_Params.S, sizeof(SetString_Params.S), &S, sizeof(S));
-	memcpy_s(&SetString_Params.InContext, sizeof(SetString_Params.InContext), &InContext, sizeof(InContext));
+	SetString_Params.InContext = InContext;
 
-	uFnSetString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetString, &SetString_Params, nullptr);
-	uFnSetString->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetInt
@@ -3902,7 +3668,7 @@ void UGFxObject::SetString(class FString Member, class FString S, class UTransla
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        I                              (CPF_Parm)
 
-void UGFxObject::SetInt(class FString Member, int32_t I)
+void UGFxObject::SetInt(const class FString& Member, int32_t I)
 {
 	static UFunction* uFnSetInt = nullptr;
 
@@ -3916,9 +3682,7 @@ void UGFxObject::SetInt(class FString Member, int32_t I)
 	memcpy_s(&SetInt_Params.Member, sizeof(SetInt_Params.Member), &Member, sizeof(Member));
 	memcpy_s(&SetInt_Params.I, sizeof(SetInt_Params.I), &I, sizeof(I));
 
-	uFnSetInt->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetInt, &SetInt_Params, nullptr);
-	uFnSetInt->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetFloat
@@ -3927,7 +3691,7 @@ void UGFxObject::SetInt(class FString Member, int32_t I)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 // float                          F                              (CPF_Parm)
 
-void UGFxObject::SetFloat(class FString Member, float F)
+void UGFxObject::SetFloat(const class FString& Member, float F)
 {
 	static UFunction* uFnSetFloat = nullptr;
 
@@ -3941,18 +3705,16 @@ void UGFxObject::SetFloat(class FString Member, float F)
 	memcpy_s(&SetFloat_Params.Member, sizeof(SetFloat_Params.Member), &Member, sizeof(Member));
 	memcpy_s(&SetFloat_Params.F, sizeof(SetFloat_Params.F), &F, sizeof(F));
 
-	uFnSetFloat->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetFloat, &SetFloat_Params, nullptr);
-	uFnSetFloat->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.SetBool
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
-// bool                           B                              (CPF_Parm)
+// uint32_t                       B                              (CPF_Parm)
 
-void UGFxObject::SetBool(class FString Member, bool B)
+void UGFxObject::SetBool(const class FString& Member, bool B)
 {
 	static UFunction* uFnSetBool = nullptr;
 
@@ -3966,9 +3728,7 @@ void UGFxObject::SetBool(class FString Member, bool B)
 	memcpy_s(&SetBool_Params.Member, sizeof(SetBool_Params.Member), &Member, sizeof(Member));
 	SetBool_Params.B = B;
 
-	uFnSetBool->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetBool, &SetBool_Params, nullptr);
-	uFnSetBool->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.Set
@@ -3977,7 +3737,7 @@ void UGFxObject::SetBool(class FString Member, bool B)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 // struct FASValue                Arg                            (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxObject::Set(class FString Member, struct FASValue Arg)
+void UGFxObject::Set(const class FString& Member, const struct FASValue& Arg)
 {
 	static UFunction* uFnSet = nullptr;
 
@@ -3991,9 +3751,7 @@ void UGFxObject::Set(class FString Member, struct FASValue Arg)
 	memcpy_s(&Set_Params.Member, sizeof(Set_Params.Member), &Member, sizeof(Member));
 	memcpy_s(&Set_Params.Arg, sizeof(Set_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnSet->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSet, &Set_Params, nullptr);
-	uFnSet->FunctionFlags |= 0x400;
 };
 
 // Function GFxUI.GFxObject.GetObject
@@ -4003,7 +3761,7 @@ void UGFxObject::Set(class FString Member, struct FASValue Arg)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 // class UClass*                  Type                           (CPF_OptionalParm | CPF_Parm)
 
-class UGFxObject* UGFxObject::GetObjectW(class FString Member, class UClass* Type)
+class UGFxObject* UGFxObject::GetObjectW(const class FString& Member, class UClass* Type)
 {
 	static UFunction* uFnGetObjectW = nullptr;
 
@@ -4015,11 +3773,9 @@ class UGFxObject* UGFxObject::GetObjectW(class FString Member, class UClass* Typ
 	UGFxObject_execGetObjectW_Params GetObjectW_Params;
 	memset(&GetObjectW_Params, 0, sizeof(GetObjectW_Params));
 	memcpy_s(&GetObjectW_Params.Member, sizeof(GetObjectW_Params.Member), &Member, sizeof(Member));
-	memcpy_s(&GetObjectW_Params.Type, sizeof(GetObjectW_Params.Type), &Type, sizeof(Type));
+	GetObjectW_Params.Type = Type;
 
-	uFnGetObjectW->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetObjectW, &GetObjectW_Params, nullptr);
-	uFnGetObjectW->FunctionFlags |= 0x400;
 
 	return GetObjectW_Params.ReturnValue;
 };
@@ -4030,7 +3786,7 @@ class UGFxObject* UGFxObject::GetObjectW(class FString Member, class UClass* Typ
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UGFxObject::GetString(class FString Member)
+class FString UGFxObject::GetString(const class FString& Member)
 {
 	static UFunction* uFnGetString = nullptr;
 
@@ -4043,9 +3799,7 @@ class FString UGFxObject::GetString(class FString Member)
 	memset(&GetString_Params, 0, sizeof(GetString_Params));
 	memcpy_s(&GetString_Params.Member, sizeof(GetString_Params.Member), &Member, sizeof(Member));
 
-	uFnGetString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetString, &GetString_Params, nullptr);
-	uFnGetString->FunctionFlags |= 0x400;
 
 	return GetString_Params.ReturnValue;
 };
@@ -4056,7 +3810,7 @@ class FString UGFxObject::GetString(class FString Member)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UGFxObject::GetInt(class FString Member)
+int32_t UGFxObject::GetInt(const class FString& Member)
 {
 	static UFunction* uFnGetInt = nullptr;
 
@@ -4069,9 +3823,7 @@ int32_t UGFxObject::GetInt(class FString Member)
 	memset(&GetInt_Params, 0, sizeof(GetInt_Params));
 	memcpy_s(&GetInt_Params.Member, sizeof(GetInt_Params.Member), &Member, sizeof(Member));
 
-	uFnGetInt->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetInt, &GetInt_Params, nullptr);
-	uFnGetInt->FunctionFlags |= 0x400;
 
 	return GetInt_Params.ReturnValue;
 };
@@ -4082,7 +3834,7 @@ int32_t UGFxObject::GetInt(class FString Member)
 // float                          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 
-float UGFxObject::GetFloat(class FString Member)
+float UGFxObject::GetFloat(const class FString& Member)
 {
 	static UFunction* uFnGetFloat = nullptr;
 
@@ -4095,9 +3847,7 @@ float UGFxObject::GetFloat(class FString Member)
 	memset(&GetFloat_Params, 0, sizeof(GetFloat_Params));
 	memcpy_s(&GetFloat_Params.Member, sizeof(GetFloat_Params.Member), &Member, sizeof(Member));
 
-	uFnGetFloat->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetFloat, &GetFloat_Params, nullptr);
-	uFnGetFloat->FunctionFlags |= 0x400;
 
 	return GetFloat_Params.ReturnValue;
 };
@@ -4108,7 +3858,7 @@ float UGFxObject::GetFloat(class FString Member)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 
-bool UGFxObject::GetBool(class FString Member)
+bool UGFxObject::GetBool(const class FString& Member)
 {
 	static UFunction* uFnGetBool = nullptr;
 
@@ -4121,9 +3871,7 @@ bool UGFxObject::GetBool(class FString Member)
 	memset(&GetBool_Params, 0, sizeof(GetBool_Params));
 	memcpy_s(&GetBool_Params.Member, sizeof(GetBool_Params.Member), &Member, sizeof(Member));
 
-	uFnGetBool->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetBool, &GetBool_Params, nullptr);
-	uFnGetBool->FunctionFlags |= 0x400;
 
 	return GetBool_Params.ReturnValue;
 };
@@ -4134,7 +3882,7 @@ bool UGFxObject::GetBool(class FString Member)
 // struct FASValue                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 
-struct FASValue UGFxObject::Get(class FString Member)
+struct FASValue UGFxObject::Get(const class FString& Member)
 {
 	static UFunction* uFnGet = nullptr;
 
@@ -4147,15 +3895,13 @@ struct FASValue UGFxObject::Get(class FString Member)
 	memset(&Get_Params, 0, sizeof(Get_Params));
 	memcpy_s(&Get_Params.Member, sizeof(Get_Params.Member), &Member, sizeof(Member));
 
-	uFnGet->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGet, &Get_Params, nullptr);
-	uFnGet->FunctionFlags |= 0x400;
 
 	return Get_Params.ReturnValue;
 };
 
 // Function GFxUI.GFxAction_CloseMovie.IsValidLevelSequenceObject
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
@@ -4177,7 +3923,7 @@ bool UGFxAction_CloseMovie::eventIsValidLevelSequenceObject()
 };
 
 // Function GFxUI.GFxAction_GetVariable.IsValidLevelSequenceObject
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
@@ -4199,7 +3945,7 @@ bool UGFxAction_GetVariable::eventIsValidLevelSequenceObject()
 };
 
 // Function GFxUI.GFxAction_Invoke.IsValidLevelSequenceObject
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
@@ -4221,7 +3967,7 @@ bool UGFxAction_Invoke::eventIsValidLevelSequenceObject()
 };
 
 // Function GFxUI.GFxAction_OpenMovie.IsValidLevelSequenceObject
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
@@ -4243,7 +3989,7 @@ bool UGFxAction_OpenMovie::eventIsValidLevelSequenceObject()
 };
 
 // Function GFxUI.GFxAction_SetVariable.IsValidLevelSequenceObject
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
@@ -4265,7 +4011,7 @@ bool UGFxAction_SetVariable::eventIsValidLevelSequenceObject()
 };
 
 // Function GFxUI.GFxFSCmdHandler_Kismet.FSCommand
-// [0x400020C00] (FUNC_Native | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020C00] (FUNC_Native | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class UGFxMoviePlayer*         Movie                          (CPF_Parm)
@@ -4273,7 +4019,7 @@ bool UGFxAction_SetVariable::eventIsValidLevelSequenceObject()
 // class FString                  Cmd                            (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Arg                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UGFxFSCmdHandler_Kismet::eventFSCommand(class UGFxMoviePlayer* Movie, class UGFxEvent_FSCommand* Event, class FString Cmd, class FString Arg)
+bool UGFxFSCmdHandler_Kismet::eventFSCommand(class UGFxMoviePlayer* Movie, class UGFxEvent_FSCommand* Event, const class FString& Cmd, const class FString& Arg)
 {
 	static UFunction* uFnFSCommand = nullptr;
 
@@ -4284,14 +4030,12 @@ bool UGFxFSCmdHandler_Kismet::eventFSCommand(class UGFxMoviePlayer* Movie, class
 
 	UGFxFSCmdHandler_Kismet_eventFSCommand_Params FSCommand_Params;
 	memset(&FSCommand_Params, 0, sizeof(FSCommand_Params));
-	memcpy_s(&FSCommand_Params.Movie, sizeof(FSCommand_Params.Movie), &Movie, sizeof(Movie));
-	memcpy_s(&FSCommand_Params.Event, sizeof(FSCommand_Params.Event), &Event, sizeof(Event));
+	FSCommand_Params.Movie = Movie;
+	FSCommand_Params.Event = Event;
 	memcpy_s(&FSCommand_Params.Cmd, sizeof(FSCommand_Params.Cmd), &Cmd, sizeof(Cmd));
 	memcpy_s(&FSCommand_Params.Arg, sizeof(FSCommand_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnFSCommand->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnFSCommand, &FSCommand_Params, nullptr);
-	uFnFSCommand->FunctionFlags |= 0x400;
 
 	return FSCommand_Params.ReturnValue;
 };
@@ -4301,7 +4045,7 @@ bool UGFxFSCmdHandler_Kismet::eventFSCommand(class UGFxMoviePlayer* Movie, class
 // Parameter Info:
 // class FString                  Event                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxClikWidget::ASRemoveAllEventListeners(class FString Event)
+void UGFxClikWidget::ASRemoveAllEventListeners(const class FString& Event)
 {
 	static UFunction* uFnASRemoveAllEventListeners = nullptr;
 
@@ -4322,11 +4066,11 @@ void UGFxClikWidget::ASRemoveAllEventListeners(class FString Event)
 // Parameter Info:
 // class FString                  Type                           (CPF_Parm | CPF_NeedCtorLink)
 // class UGFxObject*              O                              (CPF_Parm)
-// bool                           useCapture                     (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       useCapture                     (CPF_OptionalParm | CPF_Parm)
 // int32_t                        listenerPriority               (CPF_OptionalParm | CPF_Parm)
-// bool                           useWeakReference               (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       useWeakReference               (CPF_OptionalParm | CPF_Parm)
 
-void UGFxClikWidget::AS3AddEventListener(class FString Type, class UGFxObject* O, bool useCapture, int32_t listenerPriority, bool useWeakReference)
+void UGFxClikWidget::AS3AddEventListener(const class FString& Type, class UGFxObject* O, bool useCapture, int32_t listenerPriority, bool useWeakReference)
 {
 	static UFunction* uFnAS3AddEventListener = nullptr;
 
@@ -4338,7 +4082,7 @@ void UGFxClikWidget::AS3AddEventListener(class FString Type, class UGFxObject* O
 	UGFxClikWidget_execAS3AddEventListener_Params AS3AddEventListener_Params;
 	memset(&AS3AddEventListener_Params, 0, sizeof(AS3AddEventListener_Params));
 	memcpy_s(&AS3AddEventListener_Params.Type, sizeof(AS3AddEventListener_Params.Type), &Type, sizeof(Type));
-	memcpy_s(&AS3AddEventListener_Params.O, sizeof(AS3AddEventListener_Params.O), &O, sizeof(O));
+	AS3AddEventListener_Params.O = O;
 	AS3AddEventListener_Params.useCapture = useCapture;
 	memcpy_s(&AS3AddEventListener_Params.listenerPriority, sizeof(AS3AddEventListener_Params.listenerPriority), &listenerPriority, sizeof(listenerPriority));
 	AS3AddEventListener_Params.useWeakReference = useWeakReference;
@@ -4353,7 +4097,7 @@ void UGFxClikWidget::AS3AddEventListener(class FString Type, class UGFxObject* O
 // class UGFxObject*              O                              (CPF_Parm)
 // class FString                  func                           (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxClikWidget::ASAddEventListener(class FString Type, class UGFxObject* O, class FString func)
+void UGFxClikWidget::ASAddEventListener(const class FString& Type, class UGFxObject* O, const class FString& func)
 {
 	static UFunction* uFnASAddEventListener = nullptr;
 
@@ -4365,7 +4109,7 @@ void UGFxClikWidget::ASAddEventListener(class FString Type, class UGFxObject* O,
 	UGFxClikWidget_execASAddEventListener_Params ASAddEventListener_Params;
 	memset(&ASAddEventListener_Params, 0, sizeof(ASAddEventListener_Params));
 	memcpy_s(&ASAddEventListener_Params.Type, sizeof(ASAddEventListener_Params.Type), &Type, sizeof(Type));
-	memcpy_s(&ASAddEventListener_Params.O, sizeof(ASAddEventListener_Params.O), &O, sizeof(O));
+	ASAddEventListener_Params.O = O;
 	memcpy_s(&ASAddEventListener_Params.func, sizeof(ASAddEventListener_Params.func), &func, sizeof(func));
 
 	this->ProcessEvent(uFnASAddEventListener, &ASAddEventListener_Params, nullptr);
@@ -4378,7 +4122,7 @@ void UGFxClikWidget::ASAddEventListener(class FString Type, class UGFxObject* O,
 // class FString                  Member                         (CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         Listener                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxClikWidget::SetListener(class UGFxObject* O, class FString Member, struct FScriptDelegate Listener)
+void UGFxClikWidget::SetListener(class UGFxObject* O, const class FString& Member, const struct FScriptDelegate& Listener)
 {
 	static UFunction* uFnSetListener = nullptr;
 
@@ -4389,7 +4133,7 @@ void UGFxClikWidget::SetListener(class UGFxObject* O, class FString Member, stru
 
 	UGFxClikWidget_execSetListener_Params SetListener_Params;
 	memset(&SetListener_Params, 0, sizeof(SetListener_Params));
-	memcpy_s(&SetListener_Params.O, sizeof(SetListener_Params.O), &O, sizeof(O));
+	SetListener_Params.O = O;
 	memcpy_s(&SetListener_Params.Member, sizeof(SetListener_Params.Member), &Member, sizeof(Member));
 	memcpy_s(&SetListener_Params.Listener, sizeof(SetListener_Params.Listener), &Listener, sizeof(Listener));
 
@@ -4400,9 +4144,9 @@ void UGFxClikWidget::SetListener(class UGFxObject* O, class FString Member, stru
 // [0x00040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
-// struct FName                   Typename                       (CPF_Parm)
+// class FName                    Typename                       (CPF_Parm)
 
-class FString UGFxClikWidget::GetEventStringFromTypename(struct FName Typename)
+class FString UGFxClikWidget::GetEventStringFromTypename(const class FName& Typename)
 {
 	static UFunction* uFnGetEventStringFromTypename = nullptr;
 
@@ -4425,7 +4169,7 @@ class FString UGFxClikWidget::GetEventStringFromTypename(struct FName Typename)
 // Parameter Info:
 // class FString                  Event                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxClikWidget::RemoveAllEventListeners(class FString Event)
+void UGFxClikWidget::RemoveAllEventListeners(const class FString& Event)
 {
 	static UFunction* uFnRemoveAllEventListeners = nullptr;
 
@@ -4444,13 +4188,13 @@ void UGFxClikWidget::RemoveAllEventListeners(class FString Event)
 // Function GFxUI.GFxClikWidget.AddEventListener
 // [0x00024003] (FUNC_Final | FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   Type                           (CPF_Parm)
+// class FName                    Type                           (CPF_Parm)
 // struct FScriptDelegate         Listener                       (CPF_Parm | CPF_NeedCtorLink)
-// bool                           useCapture                     (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       useCapture                     (CPF_OptionalParm | CPF_Parm)
 // int32_t                        listenerPriority               (CPF_OptionalParm | CPF_Parm)
-// bool                           useWeakReference               (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       useWeakReference               (CPF_OptionalParm | CPF_Parm)
 
-void UGFxClikWidget::AddEventListener(struct FName Type, struct FScriptDelegate Listener, bool useCapture, int32_t listenerPriority, bool useWeakReference)
+void UGFxClikWidget::AddEventListener(const class FName& Type, const struct FScriptDelegate& Listener, bool useCapture, int32_t listenerPriority, bool useWeakReference)
 {
 	static UFunction* uFnAddEventListener = nullptr;
 
@@ -4475,7 +4219,7 @@ void UGFxClikWidget::AddEventListener(struct FName Type, struct FScriptDelegate 
 // Parameter Info:
 // struct FEventData              Data                           (CPF_Parm | CPF_NeedCtorLink)
 
-void UGFxClikWidget::EventListener(struct FEventData Data)
+void UGFxClikWidget::EventListener(const struct FEventData& Data)
 {
 	static UFunction* uFnEventListener = nullptr;
 
@@ -4498,5 +4242,5 @@ void UGFxClikWidget::EventListener(struct FEventData Data)
 */
 
 #ifdef _MSC_VER
-	#pragma pack(pop)
+#pragma pack(pop)
 #endif

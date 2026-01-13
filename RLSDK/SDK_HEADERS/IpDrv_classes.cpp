@@ -1,18 +1,21 @@
 /*
 #############################################################################################
-# RocketLeague (1.0.10897.0) SDK
-# Generated with the CodeRedGenerator v1.0.2
+# Rocket League SDK (RLSDK) Season 20 (v2.61)
+# Generated with CodeRedGenerator v1.1.5 on 11/05/2025 07:11PM
 # ========================================================================================= #
 # File: IpDrv_classes.cpp
 # ========================================================================================= #
-# Credits: TheFeckless, ItsBranK
-# Links: www.github.com/CodeRedModding/CodeRed-Generator, www.twitter.com/ItsBranK
+# Psyonix Build ID: 251020.62592.500294
+# Build Date: Oct 20 2025 19:02:19
+# ========================================================================================= #
+# Credits: ItsBranK, TheFeckless, SSLow
+# Links: www.github.com/CodeRedModding/CodeRed-Generator, discord.gg/d5ahhQmJbJ
 #############################################################################################
 */
 #include "../SdkHeaders.hpp"
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+#pragma pack(push, 0x1)
 #endif
 
 /*
@@ -170,7 +173,7 @@ void UAdHocDelegates::EventAdHocError(class UError* Error)
 
 	UAdHocDelegates_execEventAdHocError_Params EventAdHocError_Params;
 	memset(&EventAdHocError_Params, 0, sizeof(EventAdHocError_Params));
-	memcpy_s(&EventAdHocError_Params.Error, sizeof(EventAdHocError_Params.Error), &Error, sizeof(Error));
+	EventAdHocError_Params.Error = Error;
 
 	this->ProcessEvent(uFnEventAdHocError, &EventAdHocError_Params, nullptr);
 };
@@ -178,9 +181,9 @@ void UAdHocDelegates::EventAdHocError(class UError* Error)
 // Function IpDrv.AdHocDelegates.EventAdHocOnNetworkChanged
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// TArray<struct FAdHocAccessPointInfo> Ahapis                         (CPF_Parm | CPF_NeedCtorLink)
+// class TArray<struct FAdHocAccessPointInfo> Ahapis                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UAdHocDelegates::EventAdHocOnNetworkChanged(TArray<struct FAdHocAccessPointInfo> Ahapis)
+void UAdHocDelegates::EventAdHocOnNetworkChanged(const class TArray<struct FAdHocAccessPointInfo>& Ahapis)
 {
 	static UFunction* uFnEventAdHocOnNetworkChanged = nullptr;
 
@@ -199,10 +202,10 @@ void UAdHocDelegates::EventAdHocOnNetworkChanged(TArray<struct FAdHocAccessPoint
 // Function IpDrv.OnlineSubsystemCommonImpl.GetRegisteredPlayers
 // [0x00420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
-// TArray<struct FUniqueNetId>    OutRegisteredPlayers           (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class FName                    SessionName                    (CPF_Parm)
+// class TArray<struct FUniqueNetId> OutRegisteredPlayers           (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineSubsystemCommonImpl::GetRegisteredPlayers(struct FName SessionName, TArray<struct FUniqueNetId>& OutRegisteredPlayers)
+void UOnlineSubsystemCommonImpl::GetRegisteredPlayers(const class FName& SessionName, class TArray<struct FUniqueNetId>& OutRegisteredPlayers)
 {
 	static UFunction* uFnGetRegisteredPlayers = nullptr;
 
@@ -225,10 +228,10 @@ void UOnlineSubsystemCommonImpl::GetRegisteredPlayers(struct FName SessionName, 
 // [0x00020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineSubsystemCommonImpl::IsPlayerInSession(struct FName SessionName, struct FUniqueNetId PlayerID)
+bool UOnlineSubsystemCommonImpl::IsPlayerInSession(const class FName& SessionName, const struct FUniqueNetId& PlayerID)
 {
 	static UFunction* uFnIsPlayerInSession = nullptr;
 
@@ -242,9 +245,7 @@ bool UOnlineSubsystemCommonImpl::IsPlayerInSession(struct FName SessionName, str
 	memcpy_s(&IsPlayerInSession_Params.SessionName, sizeof(IsPlayerInSession_Params.SessionName), &SessionName, sizeof(SessionName));
 	memcpy_s(&IsPlayerInSession_Params.PlayerID, sizeof(IsPlayerInSession_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
-	uFnIsPlayerInSession->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnIsPlayerInSession, &IsPlayerInSession_Params, nullptr);
-	uFnIsPlayerInSession->FunctionFlags |= 0x400;
 
 	return IsPlayerInSession_Params.ReturnValue;
 };
@@ -273,35 +274,12 @@ class FString UOnlineSubsystemCommonImpl::eventGetPlayerNicknameFromIndex(int32_
 	return GetPlayerNicknameFromIndex_Params.ReturnValue;
 };
 
-// Function IpDrv.OnlineSubsystemCommonImpl.OnPlayerCountryRetrieved
-// [0x00120000] (FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
-// Parameter Info:
-// struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
-// class FString                  Country                        (CPF_Parm | CPF_NeedCtorLink)
-
-void UOnlineSubsystemCommonImpl::OnPlayerCountryRetrieved(struct FUniqueNetId PlayerID, class FString Country)
-{
-	static UFunction* uFnOnPlayerCountryRetrieved = nullptr;
-
-	if (!uFnOnPlayerCountryRetrieved)
-	{
-		uFnOnPlayerCountryRetrieved = UFunction::FindFunction("Function IpDrv.OnlineSubsystemCommonImpl.OnPlayerCountryRetrieved");
-	}
-
-	UOnlineSubsystemCommonImpl_execOnPlayerCountryRetrieved_Params OnPlayerCountryRetrieved_Params;
-	memset(&OnPlayerCountryRetrieved_Params, 0, sizeof(OnPlayerCountryRetrieved_Params));
-	memcpy_s(&OnPlayerCountryRetrieved_Params.PlayerID, sizeof(OnPlayerCountryRetrieved_Params.PlayerID), &PlayerID, sizeof(PlayerID));
-	memcpy_s(&OnPlayerCountryRetrieved_Params.Country, sizeof(OnPlayerCountryRetrieved_Params.Country), &Country, sizeof(Country));
-
-	this->ProcessEvent(uFnOnPlayerCountryRetrieved, &OnPlayerCountryRetrieved_Params, nullptr);
-};
-
 // Function IpDrv.OnlineSubsystemCommonImpl.OnSanitizeStringComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // struct FWordFilterResult       Result                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineSubsystemCommonImpl::OnSanitizeStringComplete(struct FWordFilterResult Result)
+void UOnlineSubsystemCommonImpl::OnSanitizeStringComplete(const struct FWordFilterResult& Result)
 {
 	static UFunction* uFnOnSanitizeStringComplete = nullptr;
 
@@ -333,7 +311,7 @@ void UAvatarDownloadComponent::TriggerAvatarCallbacks(class UAvatarDownload* Ava
 
 	UAvatarDownloadComponent_execTriggerAvatarCallbacks_Params TriggerAvatarCallbacks_Params;
 	memset(&TriggerAvatarCallbacks_Params, 0, sizeof(TriggerAvatarCallbacks_Params));
-	memcpy_s(&TriggerAvatarCallbacks_Params.Avatar, sizeof(TriggerAvatarCallbacks_Params.Avatar), &Avatar, sizeof(Avatar));
+	TriggerAvatarCallbacks_Params.Avatar = Avatar;
 
 	this->ProcessEvent(uFnTriggerAvatarCallbacks, &TriggerAvatarCallbacks_Params, nullptr);
 };
@@ -343,7 +321,7 @@ void UAvatarDownloadComponent::TriggerAvatarCallbacks(class UAvatarDownload* Ava
 // Parameter Info:
 // struct FOnlineImageDownload    ImageInfo                      (CPF_Parm | CPF_NeedCtorLink)
 
-void UAvatarDownloadComponent::HandleOnlineImageDownloaded(struct FOnlineImageDownload ImageInfo)
+void UAvatarDownloadComponent::HandleOnlineImageDownloaded(const struct FOnlineImageDownload& ImageInfo)
 {
 	static UFunction* uFnHandleOnlineImageDownloaded = nullptr;
 
@@ -366,7 +344,7 @@ void UAvatarDownloadComponent::HandleOnlineImageDownloaded(struct FOnlineImageDo
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 // EAvatarSize                    Size                           (CPF_Parm)
 
-class UAvatarDownload* UAvatarDownloadComponent::GetAvatar(struct FUniqueNetId PlayerID, EAvatarSize Size)
+class UAvatarDownload* UAvatarDownloadComponent::GetAvatar(const struct FUniqueNetId& PlayerID, EAvatarSize Size)
 {
 	static UFunction* uFnGetAvatar = nullptr;
 
@@ -430,7 +408,7 @@ void UAvatarDownloadComponent::CleanupAvatars()
 // EAvatarSize                    Size                           (CPF_Parm)
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 
-void UAvatarDownloadComponent::DownloadAvatar(struct FUniqueNetId PlayerID, EAvatarSize Size, class FString URL)
+void UAvatarDownloadComponent::DownloadAvatar(const struct FUniqueNetId& PlayerID, EAvatarSize Size, const class FString& URL)
 {
 	static UFunction* uFnDownloadAvatar = nullptr;
 
@@ -453,9 +431,9 @@ void UAvatarDownloadComponent::DownloadAvatar(struct FUniqueNetId PlayerID, EAva
 // Parameter Info:
 // EAvatarSize                    Size                           (CPF_Parm)
 // struct FScriptDelegate         ReadOnlineAvatarCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FUniqueNetId>    NewPlayerIDs                   (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FUniqueNetId> NewPlayerIDs                   (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UAvatarDownloadComponent::StoreNewAvatars(EAvatarSize Size, struct FScriptDelegate ReadOnlineAvatarCompleteDelegate, TArray<struct FUniqueNetId>& NewPlayerIDs)
+void UAvatarDownloadComponent::StoreNewAvatars(EAvatarSize Size, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate, class TArray<struct FUniqueNetId>& NewPlayerIDs)
 {
 	static UFunction* uFnStoreNewAvatars = nullptr;
 
@@ -470,9 +448,7 @@ void UAvatarDownloadComponent::StoreNewAvatars(EAvatarSize Size, struct FScriptD
 	memcpy_s(&StoreNewAvatars_Params.ReadOnlineAvatarCompleteDelegate, sizeof(StoreNewAvatars_Params.ReadOnlineAvatarCompleteDelegate), &ReadOnlineAvatarCompleteDelegate, sizeof(ReadOnlineAvatarCompleteDelegate));
 	memcpy_s(&StoreNewAvatars_Params.NewPlayerIDs, sizeof(StoreNewAvatars_Params.NewPlayerIDs), &NewPlayerIDs, sizeof(NewPlayerIDs));
 
-	uFnStoreNewAvatars->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnStoreNewAvatars, &StoreNewAvatars_Params, nullptr);
-	uFnStoreNewAvatars->FunctionFlags |= 0x400;
 
 	memcpy_s(&NewPlayerIDs, sizeof(NewPlayerIDs), &StoreNewAvatars_Params.NewPlayerIDs, sizeof(StoreNewAvatars_Params.NewPlayerIDs));
 };
@@ -482,10 +458,10 @@ void UAvatarDownloadComponent::StoreNewAvatars(EAvatarSize Size, struct FScriptD
 // Parameter Info:
 // EAvatarSize                    SizeType                       (CPF_Parm)
 // struct FScriptDelegate         ReadOnlineAvatarCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FUniqueNetId>    InPlayerIDs                    (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-// TArray<struct FUniqueNetId>    NewRequestIDs                  (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FUniqueNetId> InPlayerIDs                    (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FUniqueNetId> NewRequestIDs                  (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UAvatarDownloadComponent::ProcessOldRequests(EAvatarSize SizeType, struct FScriptDelegate ReadOnlineAvatarCompleteDelegate, TArray<struct FUniqueNetId>& InPlayerIDs, TArray<struct FUniqueNetId>& NewRequestIDs)
+void UAvatarDownloadComponent::ProcessOldRequests(EAvatarSize SizeType, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate, class TArray<struct FUniqueNetId>& InPlayerIDs, class TArray<struct FUniqueNetId>& NewRequestIDs)
 {
 	static UFunction* uFnProcessOldRequests = nullptr;
 
@@ -501,9 +477,7 @@ void UAvatarDownloadComponent::ProcessOldRequests(EAvatarSize SizeType, struct F
 	memcpy_s(&ProcessOldRequests_Params.InPlayerIDs, sizeof(ProcessOldRequests_Params.InPlayerIDs), &InPlayerIDs, sizeof(InPlayerIDs));
 	memcpy_s(&ProcessOldRequests_Params.NewRequestIDs, sizeof(ProcessOldRequests_Params.NewRequestIDs), &NewRequestIDs, sizeof(NewRequestIDs));
 
-	uFnProcessOldRequests->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnProcessOldRequests, &ProcessOldRequests_Params, nullptr);
-	uFnProcessOldRequests->FunctionFlags |= 0x400;
 
 	memcpy_s(&InPlayerIDs, sizeof(InPlayerIDs), &ProcessOldRequests_Params.InPlayerIDs, sizeof(ProcessOldRequests_Params.InPlayerIDs));
 	memcpy_s(&NewRequestIDs, sizeof(NewRequestIDs), &ProcessOldRequests_Params.NewRequestIDs, sizeof(ProcessOldRequests_Params.NewRequestIDs));
@@ -517,7 +491,7 @@ void UAvatarDownloadComponent::ProcessOldRequests(EAvatarSize SizeType, struct F
 // EAvatarSize                    Size                           (CPF_Parm)
 // struct FScriptDelegate         ReadOnlineAvatarCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-bool UAvatarDownloadComponent::TryAddAvatarTextureCallback(struct FUniqueNetId PlayerNetId, EAvatarSize Size, struct FScriptDelegate ReadOnlineAvatarCompleteDelegate)
+bool UAvatarDownloadComponent::TryAddAvatarTextureCallback(const struct FUniqueNetId& PlayerNetId, EAvatarSize Size, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate)
 {
 	static UFunction* uFnTryAddAvatarTextureCallback = nullptr;
 
@@ -532,9 +506,7 @@ bool UAvatarDownloadComponent::TryAddAvatarTextureCallback(struct FUniqueNetId P
 	memcpy_s(&TryAddAvatarTextureCallback_Params.Size, sizeof(TryAddAvatarTextureCallback_Params.Size), &Size, sizeof(Size));
 	memcpy_s(&TryAddAvatarTextureCallback_Params.ReadOnlineAvatarCompleteDelegate, sizeof(TryAddAvatarTextureCallback_Params.ReadOnlineAvatarCompleteDelegate), &ReadOnlineAvatarCompleteDelegate, sizeof(ReadOnlineAvatarCompleteDelegate));
 
-	uFnTryAddAvatarTextureCallback->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnTryAddAvatarTextureCallback, &TryAddAvatarTextureCallback_Params, nullptr);
-	uFnTryAddAvatarTextureCallback->FunctionFlags |= 0x400;
 
 	return TryAddAvatarTextureCallback_Params.ReturnValue;
 };
@@ -545,7 +517,7 @@ bool UAvatarDownloadComponent::TryAddAvatarTextureCallback(struct FUniqueNetId P
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UAvatarDownloadMap::ContainsImage(class FString Key)
+bool UAvatarDownloadMap::ContainsImage(const class FString& Key)
 {
 	static UFunction* uFnContainsImage = nullptr;
 
@@ -558,9 +530,7 @@ bool UAvatarDownloadMap::ContainsImage(class FString Key)
 	memset(&ContainsImage_Params, 0, sizeof(ContainsImage_Params));
 	memcpy_s(&ContainsImage_Params.Key, sizeof(ContainsImage_Params.Key), &Key, sizeof(Key));
 
-	uFnContainsImage->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnContainsImage, &ContainsImage_Params, nullptr);
-	uFnContainsImage->FunctionFlags |= 0x400;
 
 	return ContainsImage_Params.ReturnValue;
 };
@@ -584,9 +554,7 @@ bool UAvatarDownloadMap::ContainsAvatar(struct FAvatarKey& Key)
 	memset(&ContainsAvatar_Params, 0, sizeof(ContainsAvatar_Params));
 	memcpy_s(&ContainsAvatar_Params.Key, sizeof(ContainsAvatar_Params.Key), &Key, sizeof(Key));
 
-	uFnContainsAvatar->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnContainsAvatar, &ContainsAvatar_Params, nullptr);
-	uFnContainsAvatar->FunctionFlags |= 0x400;
 
 	memcpy_s(&Key, sizeof(Key), &ContainsAvatar_Params.Key, sizeof(ContainsAvatar_Params.Key));
 
@@ -609,11 +577,9 @@ void UAvatarDownloadMap::OnAvatarReceivedImage(class UAvatarDownload* Avatar)
 
 	UAvatarDownloadMap_execOnAvatarReceivedImage_Params OnAvatarReceivedImage_Params;
 	memset(&OnAvatarReceivedImage_Params, 0, sizeof(OnAvatarReceivedImage_Params));
-	memcpy_s(&OnAvatarReceivedImage_Params.Avatar, sizeof(OnAvatarReceivedImage_Params.Avatar), &Avatar, sizeof(Avatar));
+	OnAvatarReceivedImage_Params.Avatar = Avatar;
 
-	uFnOnAvatarReceivedImage->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnOnAvatarReceivedImage, &OnAvatarReceivedImage_Params, nullptr);
-	uFnOnAvatarReceivedImage->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.AvatarDownloadMap.RemoveImage
@@ -621,7 +587,7 @@ void UAvatarDownloadMap::OnAvatarReceivedImage(class UAvatarDownload* Avatar)
 // Parameter Info:
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 
-void UAvatarDownloadMap::RemoveImage(class FString Key)
+void UAvatarDownloadMap::RemoveImage(const class FString& Key)
 {
 	static UFunction* uFnRemoveImage = nullptr;
 
@@ -634,9 +600,7 @@ void UAvatarDownloadMap::RemoveImage(class FString Key)
 	memset(&RemoveImage_Params, 0, sizeof(RemoveImage_Params));
 	memcpy_s(&RemoveImage_Params.Key, sizeof(RemoveImage_Params.Key), &Key, sizeof(Key));
 
-	uFnRemoveImage->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnRemoveImage, &RemoveImage_Params, nullptr);
-	uFnRemoveImage->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.AvatarDownloadMap.RemoveAvatar
@@ -657,9 +621,7 @@ void UAvatarDownloadMap::RemoveAvatar(struct FAvatarKey& Key)
 	memset(&RemoveAvatar_Params, 0, sizeof(RemoveAvatar_Params));
 	memcpy_s(&RemoveAvatar_Params.Key, sizeof(RemoveAvatar_Params.Key), &Key, sizeof(Key));
 
-	uFnRemoveAvatar->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnRemoveAvatar, &RemoveAvatar_Params, nullptr);
-	uFnRemoveAvatar->FunctionFlags |= 0x400;
 
 	memcpy_s(&Key, sizeof(Key), &RemoveAvatar_Params.Key, sizeof(RemoveAvatar_Params.Key));
 };
@@ -682,9 +644,7 @@ void UAvatarDownloadMap::RemoveAllNetIDs(struct FUniqueNetId& PlayerID)
 	memset(&RemoveAllNetIDs_Params, 0, sizeof(RemoveAllNetIDs_Params));
 	memcpy_s(&RemoveAllNetIDs_Params.PlayerID, sizeof(RemoveAllNetIDs_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 
-	uFnRemoveAllNetIDs->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnRemoveAllNetIDs, &RemoveAllNetIDs_Params, nullptr);
-	uFnRemoveAllNetIDs->FunctionFlags |= 0x400;
 
 	memcpy_s(&PlayerID, sizeof(PlayerID), &RemoveAllNetIDs_Params.PlayerID, sizeof(RemoveAllNetIDs_Params.PlayerID));
 };
@@ -705,9 +665,7 @@ void UAvatarDownloadMap::ClearAvatarsPendingImages()
 	UAvatarDownloadMap_execClearAvatarsPendingImages_Params ClearAvatarsPendingImages_Params;
 	memset(&ClearAvatarsPendingImages_Params, 0, sizeof(ClearAvatarsPendingImages_Params));
 
-	uFnClearAvatarsPendingImages->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearAvatarsPendingImages, &ClearAvatarsPendingImages_Params, nullptr);
-	uFnClearAvatarsPendingImages->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.AvatarDownloadMap.ClearImages
@@ -726,9 +684,7 @@ void UAvatarDownloadMap::ClearImages()
 	UAvatarDownloadMap_execClearImages_Params ClearImages_Params;
 	memset(&ClearImages_Params, 0, sizeof(ClearImages_Params));
 
-	uFnClearImages->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearImages, &ClearImages_Params, nullptr);
-	uFnClearImages->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.AvatarDownloadMap.ClearAvatars
@@ -747,9 +703,7 @@ void UAvatarDownloadMap::ClearAvatars()
 	UAvatarDownloadMap_execClearAvatars_Params ClearAvatars_Params;
 	memset(&ClearAvatars_Params, 0, sizeof(ClearAvatars_Params));
 
-	uFnClearAvatars->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearAvatars, &ClearAvatars_Params, nullptr);
-	uFnClearAvatars->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.AvatarDownloadMap.Clear
@@ -768,9 +722,7 @@ void UAvatarDownloadMap::Clear()
 	UAvatarDownloadMap_execClear_Params Clear_Params;
 	memset(&Clear_Params, 0, sizeof(Clear_Params));
 
-	uFnClear->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClear, &Clear_Params, nullptr);
-	uFnClear->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.AvatarDownloadMap.TryGetImage
@@ -780,7 +732,7 @@ void UAvatarDownloadMap::Clear()
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 // class UTexture*                OutValue                       (CPF_Parm | CPF_OutParm)
 
-bool UAvatarDownloadMap::TryGetImage(class FString Key, class UTexture*& OutValue)
+bool UAvatarDownloadMap::TryGetImage(const class FString& Key, class UTexture*& OutValue)
 {
 	static UFunction* uFnTryGetImage = nullptr;
 
@@ -792,13 +744,11 @@ bool UAvatarDownloadMap::TryGetImage(class FString Key, class UTexture*& OutValu
 	UAvatarDownloadMap_execTryGetImage_Params TryGetImage_Params;
 	memset(&TryGetImage_Params, 0, sizeof(TryGetImage_Params));
 	memcpy_s(&TryGetImage_Params.Key, sizeof(TryGetImage_Params.Key), &Key, sizeof(Key));
-	memcpy_s(&TryGetImage_Params.OutValue, sizeof(TryGetImage_Params.OutValue), &OutValue, sizeof(OutValue));
+	TryGetImage_Params.OutValue = OutValue;
 
-	uFnTryGetImage->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnTryGetImage, &TryGetImage_Params, nullptr);
-	uFnTryGetImage->FunctionFlags |= 0x400;
 
-	memcpy_s(&OutValue, sizeof(OutValue), &TryGetImage_Params.OutValue, sizeof(TryGetImage_Params.OutValue));
+	OutValue = TryGetImage_Params.OutValue;
 
 	return TryGetImage_Params.ReturnValue;
 };
@@ -822,14 +772,12 @@ bool UAvatarDownloadMap::TryGetAvatar(struct FAvatarKey& Key, class UAvatarDownl
 	UAvatarDownloadMap_execTryGetAvatar_Params TryGetAvatar_Params;
 	memset(&TryGetAvatar_Params, 0, sizeof(TryGetAvatar_Params));
 	memcpy_s(&TryGetAvatar_Params.Key, sizeof(TryGetAvatar_Params.Key), &Key, sizeof(Key));
-	memcpy_s(&TryGetAvatar_Params.OutValue, sizeof(TryGetAvatar_Params.OutValue), &OutValue, sizeof(OutValue));
+	TryGetAvatar_Params.OutValue = OutValue;
 
-	uFnTryGetAvatar->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnTryGetAvatar, &TryGetAvatar_Params, nullptr);
-	uFnTryGetAvatar->FunctionFlags |= 0x400;
 
 	memcpy_s(&Key, sizeof(Key), &TryGetAvatar_Params.Key, sizeof(TryGetAvatar_Params.Key));
-	memcpy_s(&OutValue, sizeof(OutValue), &TryGetAvatar_Params.OutValue, sizeof(TryGetAvatar_Params.OutValue));
+	OutValue = TryGetAvatar_Params.OutValue;
 
 	return TryGetAvatar_Params.ReturnValue;
 };
@@ -838,9 +786,9 @@ bool UAvatarDownloadMap::TryGetAvatar(struct FAvatarKey& Key, class UAvatarDownl
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class UAvatarDownload*> OutAvatars                     (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class UAvatarDownload*> OutAvatars                     (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UAvatarDownloadMap::GetAvatarsPendingImage(class FString Key, TArray<class UAvatarDownload*>& OutAvatars)
+void UAvatarDownloadMap::GetAvatarsPendingImage(const class FString& Key, class TArray<class UAvatarDownload*>& OutAvatars)
 {
 	static UFunction* uFnGetAvatarsPendingImage = nullptr;
 
@@ -854,9 +802,7 @@ void UAvatarDownloadMap::GetAvatarsPendingImage(class FString Key, TArray<class 
 	memcpy_s(&GetAvatarsPendingImage_Params.Key, sizeof(GetAvatarsPendingImage_Params.Key), &Key, sizeof(Key));
 	memcpy_s(&GetAvatarsPendingImage_Params.OutAvatars, sizeof(GetAvatarsPendingImage_Params.OutAvatars), &OutAvatars, sizeof(OutAvatars));
 
-	uFnGetAvatarsPendingImage->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetAvatarsPendingImage, &GetAvatarsPendingImage_Params, nullptr);
-	uFnGetAvatarsPendingImage->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutAvatars, sizeof(OutAvatars), &GetAvatarsPendingImage_Params.OutAvatars, sizeof(GetAvatarsPendingImage_Params.OutAvatars));
 };
@@ -867,7 +813,7 @@ void UAvatarDownloadMap::GetAvatarsPendingImage(class FString Key, TArray<class 
 // class UTexture*                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 
-class UTexture* UAvatarDownloadMap::GetImage(class FString Key)
+class UTexture* UAvatarDownloadMap::GetImage(const class FString& Key)
 {
 	static UFunction* uFnGetImage = nullptr;
 
@@ -880,9 +826,7 @@ class UTexture* UAvatarDownloadMap::GetImage(class FString Key)
 	memset(&GetImage_Params, 0, sizeof(GetImage_Params));
 	memcpy_s(&GetImage_Params.Key, sizeof(GetImage_Params.Key), &Key, sizeof(Key));
 
-	uFnGetImage->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetImage, &GetImage_Params, nullptr);
-	uFnGetImage->FunctionFlags |= 0x400;
 
 	return GetImage_Params.ReturnValue;
 };
@@ -906,9 +850,7 @@ class UAvatarDownload* UAvatarDownloadMap::GetAvatar(struct FAvatarKey& Key)
 	memset(&GetAvatar_Params, 0, sizeof(GetAvatar_Params));
 	memcpy_s(&GetAvatar_Params.Key, sizeof(GetAvatar_Params.Key), &Key, sizeof(Key));
 
-	uFnGetAvatar->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetAvatar, &GetAvatar_Params, nullptr);
-	uFnGetAvatar->FunctionFlags |= 0x400;
 
 	memcpy_s(&Key, sizeof(Key), &GetAvatar_Params.Key, sizeof(GetAvatar_Params.Key));
 
@@ -931,11 +873,9 @@ void UAvatarDownloadMap::AddAvatarPendingImage(class UAvatarDownload* Avatar)
 
 	UAvatarDownloadMap_execAddAvatarPendingImage_Params AddAvatarPendingImage_Params;
 	memset(&AddAvatarPendingImage_Params, 0, sizeof(AddAvatarPendingImage_Params));
-	memcpy_s(&AddAvatarPendingImage_Params.Avatar, sizeof(AddAvatarPendingImage_Params.Avatar), &Avatar, sizeof(Avatar));
+	AddAvatarPendingImage_Params.Avatar = Avatar;
 
-	uFnAddAvatarPendingImage->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAddAvatarPendingImage, &AddAvatarPendingImage_Params, nullptr);
-	uFnAddAvatarPendingImage->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.AvatarDownloadMap.SetImage
@@ -944,7 +884,7 @@ void UAvatarDownloadMap::AddAvatarPendingImage(class UAvatarDownload* Avatar)
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 // class UTexture*                Value                          (CPF_Parm)
 
-void UAvatarDownloadMap::SetImage(class FString URL, class UTexture* Value)
+void UAvatarDownloadMap::SetImage(const class FString& URL, class UTexture* Value)
 {
 	static UFunction* uFnSetImage = nullptr;
 
@@ -956,11 +896,9 @@ void UAvatarDownloadMap::SetImage(class FString URL, class UTexture* Value)
 	UAvatarDownloadMap_execSetImage_Params SetImage_Params;
 	memset(&SetImage_Params, 0, sizeof(SetImage_Params));
 	memcpy_s(&SetImage_Params.URL, sizeof(SetImage_Params.URL), &URL, sizeof(URL));
-	memcpy_s(&SetImage_Params.Value, sizeof(SetImage_Params.Value), &Value, sizeof(Value));
+	SetImage_Params.Value = Value;
 
-	uFnSetImage->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetImage, &SetImage_Params, nullptr);
-	uFnSetImage->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.AvatarDownloadMap.SetAvatar
@@ -979,11 +917,9 @@ void UAvatarDownloadMap::SetAvatar(class UAvatarDownload* Value)
 
 	UAvatarDownloadMap_execSetAvatar_Params SetAvatar_Params;
 	memset(&SetAvatar_Params, 0, sizeof(SetAvatar_Params));
-	memcpy_s(&SetAvatar_Params.Value, sizeof(SetAvatar_Params.Value), &Value, sizeof(Value));
+	SetAvatar_Params.Value = Value;
 
-	uFnSetAvatar->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetAvatar, &SetAvatar_Params, nullptr);
-	uFnSetAvatar->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.AvatarDownloadMap.CountAvatars
@@ -1003,9 +939,7 @@ int32_t UAvatarDownloadMap::CountAvatars()
 	UAvatarDownloadMap_execCountAvatars_Params CountAvatars_Params;
 	memset(&CountAvatars_Params, 0, sizeof(CountAvatars_Params));
 
-	uFnCountAvatars->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnCountAvatars, &CountAvatars_Params, nullptr);
-	uFnCountAvatars->FunctionFlags |= 0x400;
 
 	return CountAvatars_Params.ReturnValue;
 };
@@ -1030,17 +964,15 @@ void UAvatarDownloadMap::AllValues(int32_t StartIndex, int32_t MaxValues, class 
 	memset(&AllValues_Params, 0, sizeof(AllValues_Params));
 	memcpy_s(&AllValues_Params.StartIndex, sizeof(AllValues_Params.StartIndex), &StartIndex, sizeof(StartIndex));
 	memcpy_s(&AllValues_Params.MaxValues, sizeof(AllValues_Params.MaxValues), &MaxValues, sizeof(MaxValues));
-	memcpy_s(&AllValues_Params.OutAvatar, sizeof(AllValues_Params.OutAvatar), &OutAvatar, sizeof(OutAvatar));
+	AllValues_Params.OutAvatar = OutAvatar;
 
-	uFnAllValues->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAllValues, &AllValues_Params, nullptr);
-	uFnAllValues->FunctionFlags |= 0x400;
 
-	memcpy_s(&OutAvatar, sizeof(OutAvatar), &AllValues_Params.OutAvatar, sizeof(AllValues_Params.OutAvatar));
+	OutAvatar = AllValues_Params.OutAvatar;
 };
 
 // Function IpDrv.HttpRequestCurl.ProcessRequest
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
@@ -1056,21 +988,19 @@ bool UHttpRequestCurl::ProcessRequest()
 	UHttpRequestCurl_execProcessRequest_Params ProcessRequest_Params;
 	memset(&ProcessRequest_Params, 0, sizeof(ProcessRequest_Params));
 
-	uFnProcessRequest->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnProcessRequest, &ProcessRequest_Params, nullptr);
-	uFnProcessRequest->FunctionFlags |= 0x400;
 
 	return ProcessRequest_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpRequestCurl.SetHeader
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UHttpRequestInterface*   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  HeaderName                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  HeaderValue                    (CPF_Parm | CPF_NeedCtorLink)
 
-class UHttpRequestInterface* UHttpRequestCurl::SetHeader(class FString HeaderName, class FString HeaderValue)
+class UHttpRequestInterface* UHttpRequestCurl::SetHeader(const class FString& HeaderName, const class FString& HeaderValue)
 {
 	static UFunction* uFnSetHeader = nullptr;
 
@@ -1084,20 +1014,18 @@ class UHttpRequestInterface* UHttpRequestCurl::SetHeader(class FString HeaderNam
 	memcpy_s(&SetHeader_Params.HeaderName, sizeof(SetHeader_Params.HeaderName), &HeaderName, sizeof(HeaderName));
 	memcpy_s(&SetHeader_Params.HeaderValue, sizeof(SetHeader_Params.HeaderValue), &HeaderValue, sizeof(HeaderValue));
 
-	uFnSetHeader->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetHeader, &SetHeader_Params, nullptr);
-	uFnSetHeader->FunctionFlags |= 0x400;
 
 	return SetHeader_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpRequestCurl.SetContentAsString
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UHttpRequestInterface*   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  ContentString                  (CPF_Parm | CPF_NeedCtorLink)
 
-class UHttpRequestInterface* UHttpRequestCurl::SetContentAsString(class FString ContentString)
+class UHttpRequestInterface* UHttpRequestCurl::SetContentAsString(const class FString& ContentString)
 {
 	static UFunction* uFnSetContentAsString = nullptr;
 
@@ -1110,20 +1038,18 @@ class UHttpRequestInterface* UHttpRequestCurl::SetContentAsString(class FString 
 	memset(&SetContentAsString_Params, 0, sizeof(SetContentAsString_Params));
 	memcpy_s(&SetContentAsString_Params.ContentString, sizeof(SetContentAsString_Params.ContentString), &ContentString, sizeof(ContentString));
 
-	uFnSetContentAsString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetContentAsString, &SetContentAsString_Params, nullptr);
-	uFnSetContentAsString->FunctionFlags |= 0x400;
 
 	return SetContentAsString_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpRequestCurl.SetContent
-// [0x400420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class UHttpRequestInterface*   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// TArray<uint8_t>                ContentPayload                 (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          ContentPayload                 (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-class UHttpRequestInterface* UHttpRequestCurl::SetContent(TArray<uint8_t>& ContentPayload)
+class UHttpRequestInterface* UHttpRequestCurl::SetContent(class TArray<uint8_t>& ContentPayload)
 {
 	static UFunction* uFnSetContent = nullptr;
 
@@ -1136,9 +1062,7 @@ class UHttpRequestInterface* UHttpRequestCurl::SetContent(TArray<uint8_t>& Conte
 	memset(&SetContent_Params, 0, sizeof(SetContent_Params));
 	memcpy_s(&SetContent_Params.ContentPayload, sizeof(SetContent_Params.ContentPayload), &ContentPayload, sizeof(ContentPayload));
 
-	uFnSetContent->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetContent, &SetContent_Params, nullptr);
-	uFnSetContent->FunctionFlags |= 0x400;
 
 	memcpy_s(&ContentPayload, sizeof(ContentPayload), &SetContent_Params.ContentPayload, sizeof(SetContent_Params.ContentPayload));
 
@@ -1146,12 +1070,12 @@ class UHttpRequestInterface* UHttpRequestCurl::SetContent(TArray<uint8_t>& Conte
 };
 
 // Function IpDrv.HttpRequestCurl.SetURL
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UHttpRequestInterface*   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 
-class UHttpRequestInterface* UHttpRequestCurl::SetURL(class FString URL)
+class UHttpRequestInterface* UHttpRequestCurl::SetURL(const class FString& URL)
 {
 	static UFunction* uFnSetURL = nullptr;
 
@@ -1164,20 +1088,18 @@ class UHttpRequestInterface* UHttpRequestCurl::SetURL(class FString URL)
 	memset(&SetURL_Params, 0, sizeof(SetURL_Params));
 	memcpy_s(&SetURL_Params.URL, sizeof(SetURL_Params.URL), &URL, sizeof(URL));
 
-	uFnSetURL->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetURL, &SetURL_Params, nullptr);
-	uFnSetURL->FunctionFlags |= 0x400;
 
 	return SetURL_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpRequestCurl.SetVerb
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UHttpRequestInterface*   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Verb                           (CPF_Parm | CPF_NeedCtorLink)
 
-class UHttpRequestInterface* UHttpRequestCurl::SetVerb(class FString Verb)
+class UHttpRequestInterface* UHttpRequestCurl::SetVerb(const class FString& Verb)
 {
 	static UFunction* uFnSetVerb = nullptr;
 
@@ -1190,15 +1112,13 @@ class UHttpRequestInterface* UHttpRequestCurl::SetVerb(class FString Verb)
 	memset(&SetVerb_Params, 0, sizeof(SetVerb_Params));
 	memcpy_s(&SetVerb_Params.Verb, sizeof(SetVerb_Params.Verb), &Verb, sizeof(Verb));
 
-	uFnSetVerb->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSetVerb, &SetVerb_Params, nullptr);
-	uFnSetVerb->FunctionFlags |= 0x400;
 
 	return SetVerb_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpRequestCurl.GetVerb
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
@@ -1214,19 +1134,17 @@ class FString UHttpRequestCurl::GetVerb()
 	UHttpRequestCurl_execGetVerb_Params GetVerb_Params;
 	memset(&GetVerb_Params, 0, sizeof(GetVerb_Params));
 
-	uFnGetVerb->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVerb, &GetVerb_Params, nullptr);
-	uFnGetVerb->FunctionFlags |= 0x400;
 
 	return GetVerb_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpRequestCurl.GetContent
-// [0x400420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<uint8_t>                Content                        (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          Content                        (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UHttpRequestCurl::GetContent(TArray<uint8_t>& Content)
+void UHttpRequestCurl::GetContent(class TArray<uint8_t>& Content)
 {
 	static UFunction* uFnGetContent = nullptr;
 
@@ -1239,15 +1157,13 @@ void UHttpRequestCurl::GetContent(TArray<uint8_t>& Content)
 	memset(&GetContent_Params, 0, sizeof(GetContent_Params));
 	memcpy_s(&GetContent_Params.Content, sizeof(GetContent_Params.Content), &Content, sizeof(Content));
 
-	uFnGetContent->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetContent, &GetContent_Params, nullptr);
-	uFnGetContent->FunctionFlags |= 0x400;
 
 	memcpy_s(&Content, sizeof(Content), &GetContent_Params.Content, sizeof(GetContent_Params.Content));
 };
 
 // Function IpDrv.HttpRequestCurl.GetURL
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
@@ -1263,15 +1179,13 @@ class FString UHttpRequestCurl::GetURL()
 	UHttpRequestCurl_execGetURL_Params GetURL_Params;
 	memset(&GetURL_Params, 0, sizeof(GetURL_Params));
 
-	uFnGetURL->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetURL, &GetURL_Params, nullptr);
-	uFnGetURL->FunctionFlags |= 0x400;
 
 	return GetURL_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpRequestCurl.GetContentLength
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
@@ -1287,15 +1201,13 @@ int32_t UHttpRequestCurl::GetContentLength()
 	UHttpRequestCurl_execGetContentLength_Params GetContentLength_Params;
 	memset(&GetContentLength_Params, 0, sizeof(GetContentLength_Params));
 
-	uFnGetContentLength->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetContentLength, &GetContentLength_Params, nullptr);
-	uFnGetContentLength->FunctionFlags |= 0x400;
 
 	return GetContentLength_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpRequestCurl.GetContentType
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
@@ -1311,20 +1223,18 @@ class FString UHttpRequestCurl::GetContentType()
 	UHttpRequestCurl_execGetContentType_Params GetContentType_Params;
 	memset(&GetContentType_Params, 0, sizeof(GetContentType_Params));
 
-	uFnGetContentType->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetContentType, &GetContentType_Params, nullptr);
-	uFnGetContentType->FunctionFlags |= 0x400;
 
 	return GetContentType_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpRequestCurl.GetURLParameter
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  ParameterName                  (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UHttpRequestCurl::GetURLParameter(class FString ParameterName)
+class FString UHttpRequestCurl::GetURLParameter(const class FString& ParameterName)
 {
 	static UFunction* uFnGetURLParameter = nullptr;
 
@@ -1337,19 +1247,17 @@ class FString UHttpRequestCurl::GetURLParameter(class FString ParameterName)
 	memset(&GetURLParameter_Params, 0, sizeof(GetURLParameter_Params));
 	memcpy_s(&GetURLParameter_Params.ParameterName, sizeof(GetURLParameter_Params.ParameterName), &ParameterName, sizeof(ParameterName));
 
-	uFnGetURLParameter->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetURLParameter, &GetURLParameter_Params, nullptr);
-	uFnGetURLParameter->FunctionFlags |= 0x400;
 
 	return GetURLParameter_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpRequestCurl.GetHeaders
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// TArray<class FString>          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class TArray<class FString>    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
-TArray<class FString> UHttpRequestCurl::GetHeaders()
+class TArray<class FString> UHttpRequestCurl::GetHeaders()
 {
 	static UFunction* uFnGetHeaders = nullptr;
 
@@ -1361,20 +1269,18 @@ TArray<class FString> UHttpRequestCurl::GetHeaders()
 	UHttpRequestCurl_execGetHeaders_Params GetHeaders_Params;
 	memset(&GetHeaders_Params, 0, sizeof(GetHeaders_Params));
 
-	uFnGetHeaders->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetHeaders, &GetHeaders_Params, nullptr);
-	uFnGetHeaders->FunctionFlags |= 0x400;
 
 	return GetHeaders_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpRequestCurl.GetHeader
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  HeaderName                     (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UHttpRequestCurl::GetHeader(class FString HeaderName)
+class FString UHttpRequestCurl::GetHeader(const class FString& HeaderName)
 {
 	static UFunction* uFnGetHeader = nullptr;
 
@@ -1387,15 +1293,13 @@ class FString UHttpRequestCurl::GetHeader(class FString HeaderName)
 	memset(&GetHeader_Params, 0, sizeof(GetHeader_Params));
 	memcpy_s(&GetHeader_Params.HeaderName, sizeof(GetHeader_Params.HeaderName), &HeaderName, sizeof(HeaderName));
 
-	uFnGetHeader->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetHeader, &GetHeader_Params, nullptr);
-	uFnGetHeader->FunctionFlags |= 0x400;
 
 	return GetHeader_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpResponseCurl.GetResponseCode
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
@@ -1411,15 +1315,13 @@ int32_t UHttpResponseCurl::GetResponseCode()
 	UHttpResponseCurl_execGetResponseCode_Params GetResponseCode_Params;
 	memset(&GetResponseCode_Params, 0, sizeof(GetResponseCode_Params));
 
-	uFnGetResponseCode->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetResponseCode, &GetResponseCode_Params, nullptr);
-	uFnGetResponseCode->FunctionFlags |= 0x400;
 
 	return GetResponseCode_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpResponseCurl.GetContentAsString
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
@@ -1435,19 +1337,17 @@ class FString UHttpResponseCurl::GetContentAsString()
 	UHttpResponseCurl_execGetContentAsString_Params GetContentAsString_Params;
 	memset(&GetContentAsString_Params, 0, sizeof(GetContentAsString_Params));
 
-	uFnGetContentAsString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetContentAsString, &GetContentAsString_Params, nullptr);
-	uFnGetContentAsString->FunctionFlags |= 0x400;
 
 	return GetContentAsString_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpResponseCurl.GetContent
-// [0x400420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<uint8_t>                Content                        (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          Content                        (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UHttpResponseCurl::GetContent(TArray<uint8_t>& Content)
+void UHttpResponseCurl::GetContent(class TArray<uint8_t>& Content)
 {
 	static UFunction* uFnGetContent = nullptr;
 
@@ -1460,15 +1360,13 @@ void UHttpResponseCurl::GetContent(TArray<uint8_t>& Content)
 	memset(&GetContent_Params, 0, sizeof(GetContent_Params));
 	memcpy_s(&GetContent_Params.Content, sizeof(GetContent_Params.Content), &Content, sizeof(Content));
 
-	uFnGetContent->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetContent, &GetContent_Params, nullptr);
-	uFnGetContent->FunctionFlags |= 0x400;
 
 	memcpy_s(&Content, sizeof(Content), &GetContent_Params.Content, sizeof(GetContent_Params.Content));
 };
 
 // Function IpDrv.HttpResponseCurl.GetURL
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
@@ -1484,15 +1382,13 @@ class FString UHttpResponseCurl::GetURL()
 	UHttpResponseCurl_execGetURL_Params GetURL_Params;
 	memset(&GetURL_Params, 0, sizeof(GetURL_Params));
 
-	uFnGetURL->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetURL, &GetURL_Params, nullptr);
-	uFnGetURL->FunctionFlags |= 0x400;
 
 	return GetURL_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpResponseCurl.GetContentLength
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
@@ -1508,15 +1404,13 @@ int32_t UHttpResponseCurl::GetContentLength()
 	UHttpResponseCurl_execGetContentLength_Params GetContentLength_Params;
 	memset(&GetContentLength_Params, 0, sizeof(GetContentLength_Params));
 
-	uFnGetContentLength->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetContentLength, &GetContentLength_Params, nullptr);
-	uFnGetContentLength->FunctionFlags |= 0x400;
 
 	return GetContentLength_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpResponseCurl.GetContentType
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
@@ -1532,20 +1426,18 @@ class FString UHttpResponseCurl::GetContentType()
 	UHttpResponseCurl_execGetContentType_Params GetContentType_Params;
 	memset(&GetContentType_Params, 0, sizeof(GetContentType_Params));
 
-	uFnGetContentType->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetContentType, &GetContentType_Params, nullptr);
-	uFnGetContentType->FunctionFlags |= 0x400;
 
 	return GetContentType_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpResponseCurl.GetURLParameter
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  ParameterName                  (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UHttpResponseCurl::GetURLParameter(class FString ParameterName)
+class FString UHttpResponseCurl::GetURLParameter(const class FString& ParameterName)
 {
 	static UFunction* uFnGetURLParameter = nullptr;
 
@@ -1558,19 +1450,17 @@ class FString UHttpResponseCurl::GetURLParameter(class FString ParameterName)
 	memset(&GetURLParameter_Params, 0, sizeof(GetURLParameter_Params));
 	memcpy_s(&GetURLParameter_Params.ParameterName, sizeof(GetURLParameter_Params.ParameterName), &ParameterName, sizeof(ParameterName));
 
-	uFnGetURLParameter->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetURLParameter, &GetURLParameter_Params, nullptr);
-	uFnGetURLParameter->FunctionFlags |= 0x400;
 
 	return GetURLParameter_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpResponseCurl.GetHeaders
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// TArray<class FString>          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class TArray<class FString>    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
-TArray<class FString> UHttpResponseCurl::GetHeaders()
+class TArray<class FString> UHttpResponseCurl::GetHeaders()
 {
 	static UFunction* uFnGetHeaders = nullptr;
 
@@ -1582,20 +1472,18 @@ TArray<class FString> UHttpResponseCurl::GetHeaders()
 	UHttpResponseCurl_execGetHeaders_Params GetHeaders_Params;
 	memset(&GetHeaders_Params, 0, sizeof(GetHeaders_Params));
 
-	uFnGetHeaders->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetHeaders, &GetHeaders_Params, nullptr);
-	uFnGetHeaders->FunctionFlags |= 0x400;
 
 	return GetHeaders_Params.ReturnValue;
 };
 
 // Function IpDrv.HttpResponseCurl.GetHeader
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  HeaderName                     (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UHttpResponseCurl::GetHeader(class FString HeaderName)
+class FString UHttpResponseCurl::GetHeader(const class FString& HeaderName)
 {
 	static UFunction* uFnGetHeader = nullptr;
 
@@ -1608,9 +1496,7 @@ class FString UHttpResponseCurl::GetHeader(class FString HeaderName)
 	memset(&GetHeader_Params, 0, sizeof(GetHeader_Params));
 	memcpy_s(&GetHeader_Params.HeaderName, sizeof(GetHeader_Params.HeaderName), &HeaderName, sizeof(HeaderName));
 
-	uFnGetHeader->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetHeader, &GetHeader_Params, nullptr);
-	uFnGetHeader->FunctionFlags |= 0x400;
 
 	return GetHeader_Params.ReturnValue;
 };
@@ -1621,9 +1507,9 @@ class FString UHttpResponseCurl::GetHeader(class FString HeaderName)
 // class FString                  RequestURL                     (CPF_Parm | CPF_NeedCtorLink)
 // EImageType                     ImageType                      (CPF_Parm)
 // struct FScriptDelegate         FinishedCallback               (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                ImageData                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          ImageData                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UImageDecoder::RequestDecodeImage(class FString RequestURL, EImageType ImageType, struct FScriptDelegate FinishedCallback, TArray<uint8_t>& ImageData)
+void UImageDecoder::RequestDecodeImage(const class FString& RequestURL, EImageType ImageType, const struct FScriptDelegate& FinishedCallback, class TArray<uint8_t>& ImageData)
 {
 	static UFunction* uFnRequestDecodeImage = nullptr;
 
@@ -1639,9 +1525,7 @@ void UImageDecoder::RequestDecodeImage(class FString RequestURL, EImageType Imag
 	memcpy_s(&RequestDecodeImage_Params.FinishedCallback, sizeof(RequestDecodeImage_Params.FinishedCallback), &FinishedCallback, sizeof(FinishedCallback));
 	memcpy_s(&RequestDecodeImage_Params.ImageData, sizeof(RequestDecodeImage_Params.ImageData), &ImageData, sizeof(ImageData));
 
-	uFnRequestDecodeImage->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnRequestDecodeImage, &RequestDecodeImage_Params, nullptr);
-	uFnRequestDecodeImage->FunctionFlags |= 0x400;
 
 	memcpy_s(&ImageData, sizeof(ImageData), &RequestDecodeImage_Params.ImageData, sizeof(RequestDecodeImage_Params.ImageData));
 };
@@ -1652,7 +1536,7 @@ void UImageDecoder::RequestDecodeImage(class FString RequestURL, EImageType Imag
 // class FString                  RequestURL                     (CPF_Parm | CPF_NeedCtorLink)
 // struct FImageLayout            Image                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UImageDecoder::ImageDecodedDelegate(class FString RequestURL, struct FImageLayout Image)
+void UImageDecoder::ImageDecodedDelegate(const class FString& RequestURL, const struct FImageLayout& Image)
 {
 	static UFunction* uFnImageDecodedDelegate = nullptr;
 
@@ -1693,7 +1577,7 @@ void AInternetLink::eventResolveFailed()
 // Parameter Info:
 // struct FIpAddr                 Addr                           (CPF_Parm)
 
-void AInternetLink::eventResolved(struct FIpAddr Addr)
+void AInternetLink::eventResolved(const struct FIpAddr& Addr)
 {
 	static UFunction* uFnResolved = nullptr;
 
@@ -1727,9 +1611,7 @@ void AInternetLink::GetLocalIP(struct FIpAddr& Arg)
 	memset(&GetLocalIP_Params, 0, sizeof(GetLocalIP_Params));
 	memcpy_s(&GetLocalIP_Params.Arg, sizeof(GetLocalIP_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnGetLocalIP->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetLocalIP, &GetLocalIP_Params, nullptr);
-	uFnGetLocalIP->FunctionFlags |= 0x400;
 
 	memcpy_s(&Arg, sizeof(Arg), &GetLocalIP_Params.Arg, sizeof(GetLocalIP_Params.Arg));
 };
@@ -1741,7 +1623,7 @@ void AInternetLink::GetLocalIP(struct FIpAddr& Arg)
 // class FString                  Str                            (CPF_Parm | CPF_NeedCtorLink)
 // struct FIpAddr                 Addr                           (CPF_Parm | CPF_OutParm)
 
-bool AInternetLink::StringToIpAddr(class FString Str, struct FIpAddr& Addr)
+bool AInternetLink::StringToIpAddr(const class FString& Str, struct FIpAddr& Addr)
 {
 	static UFunction* uFnStringToIpAddr = nullptr;
 
@@ -1755,9 +1637,7 @@ bool AInternetLink::StringToIpAddr(class FString Str, struct FIpAddr& Addr)
 	memcpy_s(&StringToIpAddr_Params.Str, sizeof(StringToIpAddr_Params.Str), &Str, sizeof(Str));
 	memcpy_s(&StringToIpAddr_Params.Addr, sizeof(StringToIpAddr_Params.Addr), &Addr, sizeof(Addr));
 
-	uFnStringToIpAddr->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnStringToIpAddr, &StringToIpAddr_Params, nullptr);
-	uFnStringToIpAddr->FunctionFlags |= 0x400;
 
 	memcpy_s(&Addr, sizeof(Addr), &StringToIpAddr_Params.Addr, sizeof(StringToIpAddr_Params.Addr));
 
@@ -1770,7 +1650,7 @@ bool AInternetLink::StringToIpAddr(class FString Str, struct FIpAddr& Addr)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // struct FIpAddr                 Arg                            (CPF_Parm)
 
-class FString AInternetLink::IpAddrToString(struct FIpAddr Arg)
+class FString AInternetLink::IpAddrToString(const struct FIpAddr& Arg)
 {
 	static UFunction* uFnIpAddrToString = nullptr;
 
@@ -1783,9 +1663,7 @@ class FString AInternetLink::IpAddrToString(struct FIpAddr Arg)
 	memset(&IpAddrToString_Params, 0, sizeof(IpAddrToString_Params));
 	memcpy_s(&IpAddrToString_Params.Arg, sizeof(IpAddrToString_Params.Arg), &Arg, sizeof(Arg));
 
-	uFnIpAddrToString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnIpAddrToString, &IpAddrToString_Params, nullptr);
-	uFnIpAddrToString->FunctionFlags |= 0x400;
 
 	return IpAddrToString_Params.ReturnValue;
 };
@@ -1807,9 +1685,7 @@ int32_t AInternetLink::GetLastError()
 	AInternetLink_execGetLastError_Params GetLastError_Params;
 	memset(&GetLastError_Params, 0, sizeof(GetLastError_Params));
 
-	uFnGetLastError->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetLastError, &GetLastError_Params, nullptr);
-	uFnGetLastError->FunctionFlags |= 0x400;
 
 	return GetLastError_Params.ReturnValue;
 };
@@ -1819,7 +1695,7 @@ int32_t AInternetLink::GetLastError()
 // Parameter Info:
 // class FString                  Domain                         (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-void AInternetLink::Resolve(class FString Domain)
+void AInternetLink::Resolve(const class FString& Domain)
 {
 	static UFunction* uFnResolve = nullptr;
 
@@ -1832,9 +1708,7 @@ void AInternetLink::Resolve(class FString Domain)
 	memset(&Resolve_Params, 0, sizeof(Resolve_Params));
 	memcpy_s(&Resolve_Params.Domain, sizeof(Resolve_Params.Domain), &Domain, sizeof(Domain));
 
-	uFnResolve->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnResolve, &Resolve_Params, nullptr);
-	uFnResolve->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.InternetLink.ParseURL
@@ -1847,7 +1721,7 @@ void AInternetLink::Resolve(class FString Domain)
 // class FString                  LevelName                      (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 // class FString                  EntryName                      (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool AInternetLink::ParseURL(class FString URL, class FString& Addr, int32_t& PortNum, class FString& LevelName, class FString& EntryName)
+bool AInternetLink::ParseURL(const class FString& URL, class FString& Addr, int32_t& PortNum, class FString& LevelName, class FString& EntryName)
 {
 	static UFunction* uFnParseURL = nullptr;
 
@@ -1864,9 +1738,7 @@ bool AInternetLink::ParseURL(class FString URL, class FString& Addr, int32_t& Po
 	memcpy_s(&ParseURL_Params.LevelName, sizeof(ParseURL_Params.LevelName), &LevelName, sizeof(LevelName));
 	memcpy_s(&ParseURL_Params.EntryName, sizeof(ParseURL_Params.EntryName), &EntryName, sizeof(EntryName));
 
-	uFnParseURL->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnParseURL, &ParseURL_Params, nullptr);
-	uFnParseURL->FunctionFlags |= 0x400;
 
 	memcpy_s(&Addr, sizeof(Addr), &ParseURL_Params.Addr, sizeof(ParseURL_Params.Addr));
 	memcpy_s(&PortNum, sizeof(PortNum), &ParseURL_Params.PortNum, sizeof(ParseURL_Params.PortNum));
@@ -1893,9 +1765,7 @@ bool AInternetLink::IsDataPending()
 	AInternetLink_execIsDataPending_Params IsDataPending_Params;
 	memset(&IsDataPending_Params, 0, sizeof(IsDataPending_Params));
 
-	uFnIsDataPending->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnIsDataPending, &IsDataPending_Params, nullptr);
-	uFnIsDataPending->FunctionFlags |= 0x400;
 
 	return IsDataPending_Params.ReturnValue;
 };
@@ -1906,7 +1776,7 @@ bool AInternetLink::IsDataPending()
 // int32_t                        Count                          (CPF_Parm)
 // uint8_t                        B                              (CPF_Parm)
 
-void ATcpLink::eventReceivedBinary(int32_t Count, uint8_t B)
+void ATcpLink::eventReceivedBinary(int32_t Count, uint8_t B[255])
 {
 	static UFunction* uFnReceivedBinary = nullptr;
 
@@ -1928,7 +1798,7 @@ void ATcpLink::eventReceivedBinary(int32_t Count, uint8_t B)
 // Parameter Info:
 // class FString                  Line                           (CPF_Parm | CPF_NeedCtorLink)
 
-void ATcpLink::eventReceivedLine(class FString Line)
+void ATcpLink::eventReceivedLine(const class FString& Line)
 {
 	static UFunction* uFnReceivedLine = nullptr;
 
@@ -1949,7 +1819,7 @@ void ATcpLink::eventReceivedLine(class FString Line)
 // Parameter Info:
 // class FString                  Text                           (CPF_Parm | CPF_NeedCtorLink)
 
-void ATcpLink::eventReceivedText(class FString Text)
+void ATcpLink::eventReceivedText(const class FString& Text)
 {
 	static UFunction* uFnReceivedText = nullptr;
 
@@ -2043,9 +1913,7 @@ int32_t ATcpLink::ReadBinary(int32_t Count, uint8_t& B)
 	memcpy_s(&ReadBinary_Params.Count, sizeof(ReadBinary_Params.Count), &Count, sizeof(Count));
 	memcpy_s(&ReadBinary_Params.B, sizeof(ReadBinary_Params.B), &B, sizeof(B));
 
-	uFnReadBinary->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnReadBinary, &ReadBinary_Params, nullptr);
-	uFnReadBinary->FunctionFlags |= 0x400;
 
 	memcpy_s(&B, sizeof(B), &ReadBinary_Params.B, sizeof(ReadBinary_Params.B));
 
@@ -2071,9 +1939,7 @@ int32_t ATcpLink::ReadText(class FString& Str)
 	memset(&ReadText_Params, 0, sizeof(ReadText_Params));
 	memcpy_s(&ReadText_Params.Str, sizeof(ReadText_Params.Str), &Str, sizeof(Str));
 
-	uFnReadText->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnReadText, &ReadText_Params, nullptr);
-	uFnReadText->FunctionFlags |= 0x400;
 
 	memcpy_s(&Str, sizeof(Str), &ReadText_Params.Str, sizeof(ReadText_Params.Str));
 
@@ -2087,7 +1953,7 @@ int32_t ATcpLink::ReadText(class FString& Str)
 // int32_t                        Count                          (CPF_Parm)
 // uint8_t                        B                              (CPF_Parm)
 
-int32_t ATcpLink::SendBinary(int32_t Count, uint8_t B)
+int32_t ATcpLink::SendBinary(int32_t Count, uint8_t B[255])
 {
 	static UFunction* uFnSendBinary = nullptr;
 
@@ -2101,9 +1967,7 @@ int32_t ATcpLink::SendBinary(int32_t Count, uint8_t B)
 	memcpy_s(&SendBinary_Params.Count, sizeof(SendBinary_Params.Count), &Count, sizeof(Count));
 	memcpy_s(&SendBinary_Params.B, sizeof(SendBinary_Params.B), &B, sizeof(B));
 
-	uFnSendBinary->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSendBinary, &SendBinary_Params, nullptr);
-	uFnSendBinary->FunctionFlags |= 0x400;
 
 	return SendBinary_Params.ReturnValue;
 };
@@ -2114,7 +1978,7 @@ int32_t ATcpLink::SendBinary(int32_t Count, uint8_t B)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Str                            (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-int32_t ATcpLink::SendText(class FString Str)
+int32_t ATcpLink::SendText(const class FString& Str)
 {
 	static UFunction* uFnSendText = nullptr;
 
@@ -2127,9 +1991,7 @@ int32_t ATcpLink::SendText(class FString Str)
 	memset(&SendText_Params, 0, sizeof(SendText_Params));
 	memcpy_s(&SendText_Params.Str, sizeof(SendText_Params.Str), &Str, sizeof(Str));
 
-	uFnSendText->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSendText, &SendText_Params, nullptr);
-	uFnSendText->FunctionFlags |= 0x400;
 
 	return SendText_Params.ReturnValue;
 };
@@ -2151,9 +2013,7 @@ bool ATcpLink::IsConnected()
 	ATcpLink_execIsConnected_Params IsConnected_Params;
 	memset(&IsConnected_Params, 0, sizeof(IsConnected_Params));
 
-	uFnIsConnected->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnIsConnected, &IsConnected_Params, nullptr);
-	uFnIsConnected->FunctionFlags |= 0x400;
 
 	return IsConnected_Params.ReturnValue;
 };
@@ -2175,9 +2035,7 @@ bool ATcpLink::Close()
 	ATcpLink_execClose_Params Close_Params;
 	memset(&Close_Params, 0, sizeof(Close_Params));
 
-	uFnClose->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClose, &Close_Params, nullptr);
-	uFnClose->FunctionFlags |= 0x400;
 
 	return Close_Params.ReturnValue;
 };
@@ -2188,7 +2046,7 @@ bool ATcpLink::Close()
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FIpAddr                 Addr                           (CPF_Parm)
 
-bool ATcpLink::Open(struct FIpAddr Addr)
+bool ATcpLink::Open(const struct FIpAddr& Addr)
 {
 	static UFunction* uFnOpen = nullptr;
 
@@ -2201,9 +2059,7 @@ bool ATcpLink::Open(struct FIpAddr Addr)
 	memset(&Open_Params, 0, sizeof(Open_Params));
 	memcpy_s(&Open_Params.Addr, sizeof(Open_Params.Addr), &Addr, sizeof(Addr));
 
-	uFnOpen->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnOpen, &Open_Params, nullptr);
-	uFnOpen->FunctionFlags |= 0x400;
 
 	return Open_Params.ReturnValue;
 };
@@ -2225,9 +2081,7 @@ bool ATcpLink::Listen()
 	ATcpLink_execListen_Params Listen_Params;
 	memset(&Listen_Params, 0, sizeof(Listen_Params));
 
-	uFnListen->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnListen, &Listen_Params, nullptr);
-	uFnListen->FunctionFlags |= 0x400;
 
 	return Listen_Params.ReturnValue;
 };
@@ -2237,7 +2091,7 @@ bool ATcpLink::Listen()
 // Parameter Info:
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // int32_t                        PortNum                        (CPF_OptionalParm | CPF_Parm)
-// bool                           bUseNextAvailable              (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bUseNextAvailable              (CPF_OptionalParm | CPF_Parm)
 
 int32_t ATcpLink::BindPort(int32_t PortNum, bool bUseNextAvailable)
 {
@@ -2253,9 +2107,7 @@ int32_t ATcpLink::BindPort(int32_t PortNum, bool bUseNextAvailable)
 	memcpy_s(&BindPort_Params.PortNum, sizeof(BindPort_Params.PortNum), &PortNum, sizeof(PortNum));
 	BindPort_Params.bUseNextAvailable = bUseNextAvailable;
 
-	uFnBindPort->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnBindPort, &BindPort_Params, nullptr);
-	uFnBindPort->FunctionFlags |= 0x400;
 
 	return BindPort_Params.ReturnValue;
 };
@@ -2266,7 +2118,7 @@ int32_t ATcpLink::BindPort(int32_t PortNum, bool bUseNextAvailable)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UMcpServiceBase::GetUserAuthURL(class FString McpId)
+class FString UMcpServiceBase::GetUserAuthURL(const class FString& McpId)
 {
 	static UFunction* uFnGetUserAuthURL = nullptr;
 
@@ -2354,7 +2206,7 @@ void UMcpServiceBase::eventInit()
 // struct FUniqueNetId            UniqueId                       (CPF_Parm | CPF_NeedCtorLink)
 // class UOnlineMatchmakingStats* MMStats                        (CPF_Parm)
 
-bool UOnlineEventsInterfaceMcp::UploadMatchmakingStats(struct FUniqueNetId UniqueId, class UOnlineMatchmakingStats* MMStats)
+bool UOnlineEventsInterfaceMcp::UploadMatchmakingStats(const struct FUniqueNetId& UniqueId, class UOnlineMatchmakingStats* MMStats)
 {
 	static UFunction* uFnUploadMatchmakingStats = nullptr;
 
@@ -2366,11 +2218,9 @@ bool UOnlineEventsInterfaceMcp::UploadMatchmakingStats(struct FUniqueNetId Uniqu
 	UOnlineEventsInterfaceMcp_execUploadMatchmakingStats_Params UploadMatchmakingStats_Params;
 	memset(&UploadMatchmakingStats_Params, 0, sizeof(UploadMatchmakingStats_Params));
 	memcpy_s(&UploadMatchmakingStats_Params.UniqueId, sizeof(UploadMatchmakingStats_Params.UniqueId), &UniqueId, sizeof(UniqueId));
-	memcpy_s(&UploadMatchmakingStats_Params.MMStats, sizeof(UploadMatchmakingStats_Params.MMStats), &MMStats, sizeof(MMStats));
+	UploadMatchmakingStats_Params.MMStats = MMStats;
 
-	uFnUploadMatchmakingStats->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnUploadMatchmakingStats, &UploadMatchmakingStats_Params, nullptr);
-	uFnUploadMatchmakingStats->FunctionFlags |= 0x400;
 
 	return UploadMatchmakingStats_Params.ReturnValue;
 };
@@ -2396,9 +2246,7 @@ bool UOnlineEventsInterfaceMcp::UpdatePlaylistPopulation(int32_t PlaylistId, int
 	memcpy_s(&UpdatePlaylistPopulation_Params.PlaylistId, sizeof(UpdatePlaylistPopulation_Params.PlaylistId), &PlaylistId, sizeof(PlaylistId));
 	memcpy_s(&UpdatePlaylistPopulation_Params.NumPlayers, sizeof(UpdatePlaylistPopulation_Params.NumPlayers), &NumPlayers, sizeof(NumPlayers));
 
-	uFnUpdatePlaylistPopulation->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnUpdatePlaylistPopulation, &UpdatePlaylistPopulation_Params, nullptr);
-	uFnUpdatePlaylistPopulation->FunctionFlags |= 0x400;
 
 	return UpdatePlaylistPopulation_Params.ReturnValue;
 };
@@ -2408,9 +2256,9 @@ bool UOnlineEventsInterfaceMcp::UpdatePlaylistPopulation(int32_t PlaylistId, int
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            UniqueId                       (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                Payload                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          Payload                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlineEventsInterfaceMcp::UploadGameplayEventsData(struct FUniqueNetId UniqueId, TArray<uint8_t>& Payload)
+bool UOnlineEventsInterfaceMcp::UploadGameplayEventsData(const struct FUniqueNetId& UniqueId, class TArray<uint8_t>& Payload)
 {
 	static UFunction* uFnUploadGameplayEventsData = nullptr;
 
@@ -2424,9 +2272,7 @@ bool UOnlineEventsInterfaceMcp::UploadGameplayEventsData(struct FUniqueNetId Uni
 	memcpy_s(&UploadGameplayEventsData_Params.UniqueId, sizeof(UploadGameplayEventsData_Params.UniqueId), &UniqueId, sizeof(UniqueId));
 	memcpy_s(&UploadGameplayEventsData_Params.Payload, sizeof(UploadGameplayEventsData_Params.Payload), &Payload, sizeof(Payload));
 
-	uFnUploadGameplayEventsData->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnUploadGameplayEventsData, &UploadGameplayEventsData_Params, nullptr);
-	uFnUploadGameplayEventsData->FunctionFlags |= 0x400;
 
 	memcpy_s(&Payload, sizeof(Payload), &UploadGameplayEventsData_Params.Payload, sizeof(UploadGameplayEventsData_Params.Payload));
 
@@ -2442,7 +2288,7 @@ bool UOnlineEventsInterfaceMcp::UploadGameplayEventsData(struct FUniqueNetId Uni
 // class UOnlineProfileSettings*  ProfileSettings                (CPF_Parm)
 // class UOnlinePlayerStorage*    PlayerStorage                  (CPF_Parm)
 
-bool UOnlineEventsInterfaceMcp::UploadPlayerData(struct FUniqueNetId UniqueId, class FString PlayerNick, class UOnlineProfileSettings* ProfileSettings, class UOnlinePlayerStorage* PlayerStorage)
+bool UOnlineEventsInterfaceMcp::UploadPlayerData(const struct FUniqueNetId& UniqueId, const class FString& PlayerNick, class UOnlineProfileSettings* ProfileSettings, class UOnlinePlayerStorage* PlayerStorage)
 {
 	static UFunction* uFnUploadPlayerData = nullptr;
 
@@ -2455,12 +2301,10 @@ bool UOnlineEventsInterfaceMcp::UploadPlayerData(struct FUniqueNetId UniqueId, c
 	memset(&UploadPlayerData_Params, 0, sizeof(UploadPlayerData_Params));
 	memcpy_s(&UploadPlayerData_Params.UniqueId, sizeof(UploadPlayerData_Params.UniqueId), &UniqueId, sizeof(UniqueId));
 	memcpy_s(&UploadPlayerData_Params.PlayerNick, sizeof(UploadPlayerData_Params.PlayerNick), &PlayerNick, sizeof(PlayerNick));
-	memcpy_s(&UploadPlayerData_Params.ProfileSettings, sizeof(UploadPlayerData_Params.ProfileSettings), &ProfileSettings, sizeof(ProfileSettings));
-	memcpy_s(&UploadPlayerData_Params.PlayerStorage, sizeof(UploadPlayerData_Params.PlayerStorage), &PlayerStorage, sizeof(PlayerStorage));
+	UploadPlayerData_Params.ProfileSettings = ProfileSettings;
+	UploadPlayerData_Params.PlayerStorage = PlayerStorage;
 
-	uFnUploadPlayerData->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnUploadPlayerData, &UploadPlayerData_Params, nullptr);
-	uFnUploadPlayerData->FunctionFlags |= 0x400;
 
 	return UploadPlayerData_Params.ReturnValue;
 };
@@ -2496,7 +2340,7 @@ class FString UOnlineNewsInterfaceMcp::GetNews(uint8_t LocalUserNum, EOnlineNews
 // Parameter Info:
 // struct FScriptDelegate         ReadGameNewsDelegate           (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineNewsInterfaceMcp::ClearReadNewsCompletedDelegate(struct FScriptDelegate ReadGameNewsDelegate)
+void UOnlineNewsInterfaceMcp::ClearReadNewsCompletedDelegate(const struct FScriptDelegate& ReadGameNewsDelegate)
 {
 	static UFunction* uFnClearReadNewsCompletedDelegate = nullptr;
 
@@ -2517,7 +2361,7 @@ void UOnlineNewsInterfaceMcp::ClearReadNewsCompletedDelegate(struct FScriptDeleg
 // Parameter Info:
 // struct FScriptDelegate         ReadNewsDelegate               (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineNewsInterfaceMcp::AddReadNewsCompletedDelegate(struct FScriptDelegate ReadNewsDelegate)
+void UOnlineNewsInterfaceMcp::AddReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate)
 {
 	static UFunction* uFnAddReadNewsCompletedDelegate = nullptr;
 
@@ -2536,7 +2380,7 @@ void UOnlineNewsInterfaceMcp::AddReadNewsCompletedDelegate(struct FScriptDelegat
 // Function IpDrv.OnlineNewsInterfaceMcp.OnReadNewsCompleted
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // EOnlineNewsType                NewsType                       (CPF_Parm)
 
 void UOnlineNewsInterfaceMcp::OnReadNewsCompleted(bool bWasSuccessful, EOnlineNewsType NewsType)
@@ -2577,9 +2421,7 @@ bool UOnlineNewsInterfaceMcp::ReadNews(uint8_t LocalUserNum, EOnlineNewsType New
 	memcpy_s(&ReadNews_Params.LocalUserNum, sizeof(ReadNews_Params.LocalUserNum), &LocalUserNum, sizeof(LocalUserNum));
 	memcpy_s(&ReadNews_Params.NewsType, sizeof(ReadNews_Params.NewsType), &NewsType, sizeof(NewsType));
 
-	uFnReadNews->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnReadNews, &ReadNews_Params, nullptr);
-	uFnReadNews->FunctionFlags |= 0x400;
 
 	return ReadNews_Params.ReturnValue;
 };
@@ -2590,7 +2432,7 @@ bool UOnlineNewsInterfaceMcp::ReadNews(uint8_t LocalUserNum, EOnlineNewsType New
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UOnlineTitleFileDownloadBase::GetUrlForFile(class FString Filename)
+class FString UOnlineTitleFileDownloadBase::GetUrlForFile(const class FString& Filename)
 {
 	static UFunction* uFnGetUrlForFile = nullptr;
 
@@ -2603,9 +2445,7 @@ class FString UOnlineTitleFileDownloadBase::GetUrlForFile(class FString Filename
 	memset(&GetUrlForFile_Params, 0, sizeof(GetUrlForFile_Params));
 	memcpy_s(&GetUrlForFile_Params.Filename, sizeof(GetUrlForFile_Params.Filename), &Filename, sizeof(Filename));
 
-	uFnGetUrlForFile->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetUrlForFile, &GetUrlForFile_Params, nullptr);
-	uFnGetUrlForFile->FunctionFlags |= 0x400;
 
 	return GetUrlForFile_Params.ReturnValue;
 };
@@ -2615,7 +2455,7 @@ class FString UOnlineTitleFileDownloadBase::GetUrlForFile(class FString Filename
 // Parameter Info:
 // struct FScriptDelegate         RequestTitleFileListDelegate   (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineTitleFileDownloadBase::ClearRequestTitleFileListCompleteDelegate(struct FScriptDelegate RequestTitleFileListDelegate)
+void UOnlineTitleFileDownloadBase::ClearRequestTitleFileListCompleteDelegate(const struct FScriptDelegate& RequestTitleFileListDelegate)
 {
 	static UFunction* uFnClearRequestTitleFileListCompleteDelegate = nullptr;
 
@@ -2636,7 +2476,7 @@ void UOnlineTitleFileDownloadBase::ClearRequestTitleFileListCompleteDelegate(str
 // Parameter Info:
 // struct FScriptDelegate         RequestTitleFileListDelegate   (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineTitleFileDownloadBase::AddRequestTitleFileListCompleteDelegate(struct FScriptDelegate RequestTitleFileListDelegate)
+void UOnlineTitleFileDownloadBase::AddRequestTitleFileListCompleteDelegate(const struct FScriptDelegate& RequestTitleFileListDelegate)
 {
 	static UFunction* uFnAddRequestTitleFileListCompleteDelegate = nullptr;
 
@@ -2655,10 +2495,10 @@ void UOnlineTitleFileDownloadBase::AddRequestTitleFileListCompleteDelegate(struc
 // Function IpDrv.OnlineTitleFileDownloadBase.OnRequestTitleFileListComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
-// TArray<class FString>          ResultStr                      (CPF_Parm | CPF_NeedCtorLink)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
+// class TArray<class FString>    ResultStr                      (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineTitleFileDownloadBase::OnRequestTitleFileListComplete(bool bWasSuccessful, TArray<class FString> ResultStr)
+void UOnlineTitleFileDownloadBase::OnRequestTitleFileListComplete(bool bWasSuccessful, const class TArray<class FString>& ResultStr)
 {
 	static UFunction* uFnOnRequestTitleFileListComplete = nullptr;
 
@@ -2703,7 +2543,7 @@ bool UOnlineTitleFileDownloadBase::RequestTitleFileList()
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineTitleFileDownloadBase::ClearDownloadedFile(class FString Filename)
+bool UOnlineTitleFileDownloadBase::ClearDownloadedFile(const class FString& Filename)
 {
 	static UFunction* uFnClearDownloadedFile = nullptr;
 
@@ -2749,7 +2589,7 @@ bool UOnlineTitleFileDownloadBase::ClearDownloadedFiles()
 // EOnlineEnumerationReadState    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-EOnlineEnumerationReadState UOnlineTitleFileDownloadBase::GetTitleFileState(class FString Filename)
+EOnlineEnumerationReadState UOnlineTitleFileDownloadBase::GetTitleFileState(const class FString& Filename)
 {
 	static UFunction* uFnGetTitleFileState = nullptr;
 
@@ -2764,7 +2604,7 @@ EOnlineEnumerationReadState UOnlineTitleFileDownloadBase::GetTitleFileState(clas
 
 	this->ProcessEvent(uFnGetTitleFileState, &GetTitleFileState_Params, nullptr);
 
-	return GetTitleFileState_Params.ReturnValue;
+	return static_cast<EOnlineEnumerationReadState>(GetTitleFileState_Params.ReturnValue);
 };
 
 // Function IpDrv.OnlineTitleFileDownloadBase.GetTitleFileContents
@@ -2772,9 +2612,9 @@ EOnlineEnumerationReadState UOnlineTitleFileDownloadBase::GetTitleFileState(clas
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                FileContents                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          FileContents                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlineTitleFileDownloadBase::GetTitleFileContents(class FString Filename, TArray<uint8_t>& FileContents)
+bool UOnlineTitleFileDownloadBase::GetTitleFileContents(const class FString& Filename, class TArray<uint8_t>& FileContents)
 {
 	static UFunction* uFnGetTitleFileContents = nullptr;
 
@@ -2800,7 +2640,7 @@ bool UOnlineTitleFileDownloadBase::GetTitleFileContents(class FString Filename, 
 // Parameter Info:
 // struct FScriptDelegate         ReadTitleFileCompleteDelegate  (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineTitleFileDownloadBase::ClearReadTitleFileCompleteDelegate(struct FScriptDelegate ReadTitleFileCompleteDelegate)
+void UOnlineTitleFileDownloadBase::ClearReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate)
 {
 	static UFunction* uFnClearReadTitleFileCompleteDelegate = nullptr;
 
@@ -2821,7 +2661,7 @@ void UOnlineTitleFileDownloadBase::ClearReadTitleFileCompleteDelegate(struct FSc
 // Parameter Info:
 // struct FScriptDelegate         ReadTitleFileCompleteDelegate  (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineTitleFileDownloadBase::AddReadTitleFileCompleteDelegate(struct FScriptDelegate ReadTitleFileCompleteDelegate)
+void UOnlineTitleFileDownloadBase::AddReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate)
 {
 	static UFunction* uFnAddReadTitleFileCompleteDelegate = nullptr;
 
@@ -2844,7 +2684,7 @@ void UOnlineTitleFileDownloadBase::AddReadTitleFileCompleteDelegate(struct FScri
 // class FString                  FileToRead                     (CPF_Parm | CPF_NeedCtorLink)
 // EOnlineFileType                FileType                       (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlineTitleFileDownloadBase::ReadTitleFile(class FString FileToRead, EOnlineFileType FileType)
+bool UOnlineTitleFileDownloadBase::ReadTitleFile(const class FString& FileToRead, EOnlineFileType FileType)
 {
 	static UFunction* uFnReadTitleFile = nullptr;
 
@@ -2866,10 +2706,10 @@ bool UOnlineTitleFileDownloadBase::ReadTitleFile(class FString FileToRead, EOnli
 // Function IpDrv.OnlineTitleFileDownloadBase.OnReadTitleFileComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineTitleFileDownloadBase::OnReadTitleFileComplete(bool bWasSuccessful, class FString Filename)
+void UOnlineTitleFileDownloadBase::OnReadTitleFileComplete(bool bWasSuccessful, const class FString& Filename)
 {
 	static UFunction* uFnOnReadTitleFileComplete = nullptr;
 
@@ -2887,12 +2727,12 @@ void UOnlineTitleFileDownloadBase::OnReadTitleFileComplete(bool bWasSuccessful, 
 };
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.ClearDownloadedFile
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineTitleFileDownloadMcp::ClearDownloadedFile(class FString Filename)
+bool UOnlineTitleFileDownloadMcp::ClearDownloadedFile(const class FString& Filename)
 {
 	static UFunction* uFnClearDownloadedFile = nullptr;
 
@@ -2905,15 +2745,13 @@ bool UOnlineTitleFileDownloadMcp::ClearDownloadedFile(class FString Filename)
 	memset(&ClearDownloadedFile_Params, 0, sizeof(ClearDownloadedFile_Params));
 	memcpy_s(&ClearDownloadedFile_Params.Filename, sizeof(ClearDownloadedFile_Params.Filename), &Filename, sizeof(Filename));
 
-	uFnClearDownloadedFile->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearDownloadedFile, &ClearDownloadedFile_Params, nullptr);
-	uFnClearDownloadedFile->FunctionFlags |= 0x400;
 
 	return ClearDownloadedFile_Params.ReturnValue;
 };
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.ClearDownloadedFiles
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
@@ -2929,20 +2767,18 @@ bool UOnlineTitleFileDownloadMcp::ClearDownloadedFiles()
 	UOnlineTitleFileDownloadMcp_execClearDownloadedFiles_Params ClearDownloadedFiles_Params;
 	memset(&ClearDownloadedFiles_Params, 0, sizeof(ClearDownloadedFiles_Params));
 
-	uFnClearDownloadedFiles->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearDownloadedFiles, &ClearDownloadedFiles_Params, nullptr);
-	uFnClearDownloadedFiles->FunctionFlags |= 0x400;
 
 	return ClearDownloadedFiles_Params.ReturnValue;
 };
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.GetTitleFileState
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // EOnlineEnumerationReadState    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-EOnlineEnumerationReadState UOnlineTitleFileDownloadMcp::GetTitleFileState(class FString Filename)
+EOnlineEnumerationReadState UOnlineTitleFileDownloadMcp::GetTitleFileState(const class FString& Filename)
 {
 	static UFunction* uFnGetTitleFileState = nullptr;
 
@@ -2957,17 +2793,17 @@ EOnlineEnumerationReadState UOnlineTitleFileDownloadMcp::GetTitleFileState(class
 
 	this->ProcessEvent(uFnGetTitleFileState, &GetTitleFileState_Params, nullptr);
 
-	return GetTitleFileState_Params.ReturnValue;
+	return static_cast<EOnlineEnumerationReadState>(GetTitleFileState_Params.ReturnValue);
 };
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.GetTitleFileContents
-// [0x400420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                FileContents                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          FileContents                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlineTitleFileDownloadMcp::GetTitleFileContents(class FString Filename, TArray<uint8_t>& FileContents)
+bool UOnlineTitleFileDownloadMcp::GetTitleFileContents(const class FString& Filename, class TArray<uint8_t>& FileContents)
 {
 	static UFunction* uFnGetTitleFileContents = nullptr;
 
@@ -2981,9 +2817,7 @@ bool UOnlineTitleFileDownloadMcp::GetTitleFileContents(class FString Filename, T
 	memcpy_s(&GetTitleFileContents_Params.Filename, sizeof(GetTitleFileContents_Params.Filename), &Filename, sizeof(Filename));
 	memcpy_s(&GetTitleFileContents_Params.FileContents, sizeof(GetTitleFileContents_Params.FileContents), &FileContents, sizeof(FileContents));
 
-	uFnGetTitleFileContents->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetTitleFileContents, &GetTitleFileContents_Params, nullptr);
-	uFnGetTitleFileContents->FunctionFlags |= 0x400;
 
 	memcpy_s(&FileContents, sizeof(FileContents), &GetTitleFileContents_Params.FileContents, sizeof(GetTitleFileContents_Params.FileContents));
 
@@ -2991,13 +2825,13 @@ bool UOnlineTitleFileDownloadMcp::GetTitleFileContents(class FString Filename, T
 };
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.ReadTitleFile
-// [0x400024400] (FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400024400] (FUNC_Native | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  FileToRead                     (CPF_Parm | CPF_NeedCtorLink)
 // EOnlineFileType                FileType                       (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlineTitleFileDownloadMcp::ReadTitleFile(class FString FileToRead, EOnlineFileType FileType)
+bool UOnlineTitleFileDownloadMcp::ReadTitleFile(const class FString& FileToRead, EOnlineFileType FileType)
 {
 	static UFunction* uFnReadTitleFile = nullptr;
 
@@ -3011,20 +2845,18 @@ bool UOnlineTitleFileDownloadMcp::ReadTitleFile(class FString FileToRead, EOnlin
 	memcpy_s(&ReadTitleFile_Params.FileToRead, sizeof(ReadTitleFile_Params.FileToRead), &FileToRead, sizeof(FileToRead));
 	memcpy_s(&ReadTitleFile_Params.FileType, sizeof(ReadTitleFile_Params.FileType), &FileType, sizeof(FileType));
 
-	uFnReadTitleFile->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnReadTitleFile, &ReadTitleFile_Params, nullptr);
-	uFnReadTitleFile->FunctionFlags |= 0x400;
 
 	return ReadTitleFile_Params.ReturnValue;
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.GetUrlForFile
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UOnlineTitleFileDownloadWeb::GetUrlForFile(class FString Filename)
+class FString UOnlineTitleFileDownloadWeb::GetUrlForFile(const class FString& Filename)
 {
 	static UFunction* uFnGetUrlForFile = nullptr;
 
@@ -3047,7 +2879,7 @@ class FString UOnlineTitleFileDownloadWeb::GetUrlForFile(class FString Filename)
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bDidSucceed                    (CPF_Parm)
+// uint32_t                       bDidSucceed                    (CPF_Parm)
 
 void UOnlineTitleFileDownloadWeb::OnFileListReceived(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bDidSucceed)
 {
@@ -3060,15 +2892,15 @@ void UOnlineTitleFileDownloadWeb::OnFileListReceived(class UHttpRequestInterface
 
 	UOnlineTitleFileDownloadWeb_execOnFileListReceived_Params OnFileListReceived_Params;
 	memset(&OnFileListReceived_Params, 0, sizeof(OnFileListReceived_Params));
-	memcpy_s(&OnFileListReceived_Params.Request, sizeof(OnFileListReceived_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnFileListReceived_Params.Response, sizeof(OnFileListReceived_Params.Response), &Response, sizeof(Response));
+	OnFileListReceived_Params.Request = Request;
+	OnFileListReceived_Params.Response = Response;
 	OnFileListReceived_Params.bDidSucceed = bDidSucceed;
 
 	this->ProcessEvent(uFnOnFileListReceived, &OnFileListReceived_Params, nullptr);
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.RequestTitleFileList
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
@@ -3090,12 +2922,12 @@ bool UOnlineTitleFileDownloadWeb::RequestTitleFileList()
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.ClearDownloadedFile
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineTitleFileDownloadWeb::ClearDownloadedFile(class FString Filename)
+bool UOnlineTitleFileDownloadWeb::ClearDownloadedFile(const class FString& Filename)
 {
 	static UFunction* uFnClearDownloadedFile = nullptr;
 
@@ -3108,15 +2940,13 @@ bool UOnlineTitleFileDownloadWeb::ClearDownloadedFile(class FString Filename)
 	memset(&ClearDownloadedFile_Params, 0, sizeof(ClearDownloadedFile_Params));
 	memcpy_s(&ClearDownloadedFile_Params.Filename, sizeof(ClearDownloadedFile_Params.Filename), &Filename, sizeof(Filename));
 
-	uFnClearDownloadedFile->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearDownloadedFile, &ClearDownloadedFile_Params, nullptr);
-	uFnClearDownloadedFile->FunctionFlags |= 0x400;
 
 	return ClearDownloadedFile_Params.ReturnValue;
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.ClearDownloadedFiles
-// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 
@@ -3132,20 +2962,18 @@ bool UOnlineTitleFileDownloadWeb::ClearDownloadedFiles()
 	UOnlineTitleFileDownloadWeb_execClearDownloadedFiles_Params ClearDownloadedFiles_Params;
 	memset(&ClearDownloadedFiles_Params, 0, sizeof(ClearDownloadedFiles_Params));
 
-	uFnClearDownloadedFiles->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearDownloadedFiles, &ClearDownloadedFiles_Params, nullptr);
-	uFnClearDownloadedFiles->FunctionFlags |= 0x400;
 
 	return ClearDownloadedFiles_Params.ReturnValue;
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.GetTitleFileState
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // EOnlineEnumerationReadState    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-EOnlineEnumerationReadState UOnlineTitleFileDownloadWeb::GetTitleFileState(class FString Filename)
+EOnlineEnumerationReadState UOnlineTitleFileDownloadWeb::GetTitleFileState(const class FString& Filename)
 {
 	static UFunction* uFnGetTitleFileState = nullptr;
 
@@ -3160,17 +2988,17 @@ EOnlineEnumerationReadState UOnlineTitleFileDownloadWeb::GetTitleFileState(class
 
 	this->ProcessEvent(uFnGetTitleFileState, &GetTitleFileState_Params, nullptr);
 
-	return GetTitleFileState_Params.ReturnValue;
+	return static_cast<EOnlineEnumerationReadState>(GetTitleFileState_Params.ReturnValue);
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.GetTitleFileContents
-// [0x400420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                FileContents                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          FileContents                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlineTitleFileDownloadWeb::GetTitleFileContents(class FString Filename, TArray<uint8_t>& FileContents)
+bool UOnlineTitleFileDownloadWeb::GetTitleFileContents(const class FString& Filename, class TArray<uint8_t>& FileContents)
 {
 	static UFunction* uFnGetTitleFileContents = nullptr;
 
@@ -3184,9 +3012,7 @@ bool UOnlineTitleFileDownloadWeb::GetTitleFileContents(class FString Filename, T
 	memcpy_s(&GetTitleFileContents_Params.Filename, sizeof(GetTitleFileContents_Params.Filename), &Filename, sizeof(Filename));
 	memcpy_s(&GetTitleFileContents_Params.FileContents, sizeof(GetTitleFileContents_Params.FileContents), &FileContents, sizeof(FileContents));
 
-	uFnGetTitleFileContents->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetTitleFileContents, &GetTitleFileContents_Params, nullptr);
-	uFnGetTitleFileContents->FunctionFlags |= 0x400;
 
 	memcpy_s(&FileContents, sizeof(FileContents), &GetTitleFileContents_Params.FileContents, sizeof(GetTitleFileContents_Params.FileContents));
 
@@ -3196,10 +3022,10 @@ bool UOnlineTitleFileDownloadWeb::GetTitleFileContents(class FString Filename, T
 // Function IpDrv.OnlineTitleFileDownloadWeb.TriggerDelegates
 // [0x00040401] (FUNC_Final | FUNC_Native | FUNC_Private | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bSuccess                       (CPF_Parm)
+// uint32_t                       bSuccess                       (CPF_Parm)
 // class FString                  FileRead                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineTitleFileDownloadWeb::TriggerDelegates(bool bSuccess, class FString FileRead)
+void UOnlineTitleFileDownloadWeb::TriggerDelegates(bool bSuccess, const class FString& FileRead)
 {
 	static UFunction* uFnTriggerDelegates = nullptr;
 
@@ -3213,9 +3039,7 @@ void UOnlineTitleFileDownloadWeb::TriggerDelegates(bool bSuccess, class FString 
 	TriggerDelegates_Params.bSuccess = bSuccess;
 	memcpy_s(&TriggerDelegates_Params.FileRead, sizeof(TriggerDelegates_Params.FileRead), &FileRead, sizeof(FileRead));
 
-	uFnTriggerDelegates->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnTriggerDelegates, &TriggerDelegates_Params, nullptr);
-	uFnTriggerDelegates->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.OnFileDownloadComplete
@@ -3223,7 +3047,7 @@ void UOnlineTitleFileDownloadWeb::TriggerDelegates(bool bSuccess, class FString 
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bDidSucceed                    (CPF_Parm)
+// uint32_t                       bDidSucceed                    (CPF_Parm)
 
 void UOnlineTitleFileDownloadWeb::OnFileDownloadComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bDidSucceed)
 {
@@ -3236,21 +3060,21 @@ void UOnlineTitleFileDownloadWeb::OnFileDownloadComplete(class UHttpRequestInter
 
 	UOnlineTitleFileDownloadWeb_execOnFileDownloadComplete_Params OnFileDownloadComplete_Params;
 	memset(&OnFileDownloadComplete_Params, 0, sizeof(OnFileDownloadComplete_Params));
-	memcpy_s(&OnFileDownloadComplete_Params.Request, sizeof(OnFileDownloadComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnFileDownloadComplete_Params.Response, sizeof(OnFileDownloadComplete_Params.Response), &Response, sizeof(Response));
+	OnFileDownloadComplete_Params.Request = Request;
+	OnFileDownloadComplete_Params.Response = Response;
 	OnFileDownloadComplete_Params.bDidSucceed = bDidSucceed;
 
 	this->ProcessEvent(uFnOnFileDownloadComplete, &OnFileDownloadComplete_Params, nullptr);
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.ReadTitleFile
-// [0x400024002] (FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400024002] (FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  FileToRead                     (CPF_Parm | CPF_NeedCtorLink)
 // EOnlineFileType                FileType                       (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlineTitleFileDownloadWeb::ReadTitleFile(class FString FileToRead, EOnlineFileType FileType)
+bool UOnlineTitleFileDownloadWeb::ReadTitleFile(const class FString& FileToRead, EOnlineFileType FileType)
 {
 	static UFunction* uFnReadTitleFile = nullptr;
 
@@ -3274,10 +3098,10 @@ bool UOnlineTitleFileDownloadWeb::ReadTitleFile(class FString FileToRead, EOnlin
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // EMcpFileCompressionType        FileCompressionType            (CPF_Parm)
-// TArray<uint8_t>                CompressedFileContents         (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-// TArray<uint8_t>                UncompressedFileContents       (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          CompressedFileContents         (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          UncompressedFileContents       (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlineTitleFileDownloadWeb::UncompressTitleFileContents(EMcpFileCompressionType FileCompressionType, TArray<uint8_t>& CompressedFileContents, TArray<uint8_t>& UncompressedFileContents)
+bool UOnlineTitleFileDownloadWeb::UncompressTitleFileContents(EMcpFileCompressionType FileCompressionType, class TArray<uint8_t>& CompressedFileContents, class TArray<uint8_t>& UncompressedFileContents)
 {
 	static UFunction* uFnUncompressTitleFileContents = nullptr;
 
@@ -3292,9 +3116,7 @@ bool UOnlineTitleFileDownloadWeb::UncompressTitleFileContents(EMcpFileCompressio
 	memcpy_s(&UncompressTitleFileContents_Params.CompressedFileContents, sizeof(UncompressTitleFileContents_Params.CompressedFileContents), &CompressedFileContents, sizeof(CompressedFileContents));
 	memcpy_s(&UncompressTitleFileContents_Params.UncompressedFileContents, sizeof(UncompressTitleFileContents_Params.UncompressedFileContents), &UncompressedFileContents, sizeof(UncompressedFileContents));
 
-	uFnUncompressTitleFileContents->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnUncompressTitleFileContents, &UncompressTitleFileContents_Params, nullptr);
-	uFnUncompressTitleFileContents->FunctionFlags |= 0x400;
 
 	memcpy_s(&CompressedFileContents, sizeof(CompressedFileContents), &UncompressTitleFileContents_Params.CompressedFileContents, sizeof(UncompressTitleFileContents_Params.CompressedFileContents));
 	memcpy_s(&UncompressedFileContents, sizeof(UncompressedFileContents), &UncompressTitleFileContents_Params.UncompressedFileContents, sizeof(UncompressTitleFileContents_Params.UncompressedFileContents));
@@ -3308,7 +3130,7 @@ bool UOnlineTitleFileDownloadWeb::UncompressTitleFileContents(EMcpFileCompressio
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UTitleFileDownloadCache::DeleteTitleFile(class FString Filename)
+bool UTitleFileDownloadCache::DeleteTitleFile(const class FString& Filename)
 {
 	static UFunction* uFnDeleteTitleFile = nullptr;
 
@@ -3321,9 +3143,7 @@ bool UTitleFileDownloadCache::DeleteTitleFile(class FString Filename)
 	memset(&DeleteTitleFile_Params, 0, sizeof(DeleteTitleFile_Params));
 	memcpy_s(&DeleteTitleFile_Params.Filename, sizeof(DeleteTitleFile_Params.Filename), &Filename, sizeof(Filename));
 
-	uFnDeleteTitleFile->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDeleteTitleFile, &DeleteTitleFile_Params, nullptr);
-	uFnDeleteTitleFile->FunctionFlags |= 0x400;
 
 	return DeleteTitleFile_Params.ReturnValue;
 };
@@ -3347,9 +3167,7 @@ bool UTitleFileDownloadCache::DeleteTitleFiles(float MaxAgeSeconds)
 	memset(&DeleteTitleFiles_Params, 0, sizeof(DeleteTitleFiles_Params));
 	memcpy_s(&DeleteTitleFiles_Params.MaxAgeSeconds, sizeof(DeleteTitleFiles_Params.MaxAgeSeconds), &MaxAgeSeconds, sizeof(MaxAgeSeconds));
 
-	uFnDeleteTitleFiles->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDeleteTitleFiles, &DeleteTitleFiles_Params, nullptr);
-	uFnDeleteTitleFiles->FunctionFlags |= 0x400;
 
 	return DeleteTitleFiles_Params.ReturnValue;
 };
@@ -3360,7 +3178,7 @@ bool UTitleFileDownloadCache::DeleteTitleFiles(float MaxAgeSeconds)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UTitleFileDownloadCache::ClearCachedFile(class FString Filename)
+bool UTitleFileDownloadCache::ClearCachedFile(const class FString& Filename)
 {
 	static UFunction* uFnClearCachedFile = nullptr;
 
@@ -3373,9 +3191,7 @@ bool UTitleFileDownloadCache::ClearCachedFile(class FString Filename)
 	memset(&ClearCachedFile_Params, 0, sizeof(ClearCachedFile_Params));
 	memcpy_s(&ClearCachedFile_Params.Filename, sizeof(ClearCachedFile_Params.Filename), &Filename, sizeof(Filename));
 
-	uFnClearCachedFile->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearCachedFile, &ClearCachedFile_Params, nullptr);
-	uFnClearCachedFile->FunctionFlags |= 0x400;
 
 	return ClearCachedFile_Params.ReturnValue;
 };
@@ -3397,9 +3213,7 @@ bool UTitleFileDownloadCache::ClearCachedFiles()
 	UTitleFileDownloadCache_execClearCachedFiles_Params ClearCachedFiles_Params;
 	memset(&ClearCachedFiles_Params, 0, sizeof(ClearCachedFiles_Params));
 
-	uFnClearCachedFiles->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearCachedFiles, &ClearCachedFiles_Params, nullptr);
-	uFnClearCachedFiles->FunctionFlags |= 0x400;
 
 	return ClearCachedFiles_Params.ReturnValue;
 };
@@ -3410,7 +3224,7 @@ bool UTitleFileDownloadCache::ClearCachedFiles()
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UTitleFileDownloadCache::GetTitleFileLogicalName(class FString Filename)
+class FString UTitleFileDownloadCache::GetTitleFileLogicalName(const class FString& Filename)
 {
 	static UFunction* uFnGetTitleFileLogicalName = nullptr;
 
@@ -3423,9 +3237,7 @@ class FString UTitleFileDownloadCache::GetTitleFileLogicalName(class FString Fil
 	memset(&GetTitleFileLogicalName_Params, 0, sizeof(GetTitleFileLogicalName_Params));
 	memcpy_s(&GetTitleFileLogicalName_Params.Filename, sizeof(GetTitleFileLogicalName_Params.Filename), &Filename, sizeof(Filename));
 
-	uFnGetTitleFileLogicalName->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetTitleFileLogicalName, &GetTitleFileLogicalName_Params, nullptr);
-	uFnGetTitleFileLogicalName->FunctionFlags |= 0x400;
 
 	return GetTitleFileLogicalName_Params.ReturnValue;
 };
@@ -3436,7 +3248,7 @@ class FString UTitleFileDownloadCache::GetTitleFileLogicalName(class FString Fil
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UTitleFileDownloadCache::GetTitleFileHash(class FString Filename)
+class FString UTitleFileDownloadCache::GetTitleFileHash(const class FString& Filename)
 {
 	static UFunction* uFnGetTitleFileHash = nullptr;
 
@@ -3449,9 +3261,7 @@ class FString UTitleFileDownloadCache::GetTitleFileHash(class FString Filename)
 	memset(&GetTitleFileHash_Params, 0, sizeof(GetTitleFileHash_Params));
 	memcpy_s(&GetTitleFileHash_Params.Filename, sizeof(GetTitleFileHash_Params.Filename), &Filename, sizeof(Filename));
 
-	uFnGetTitleFileHash->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetTitleFileHash, &GetTitleFileHash_Params, nullptr);
-	uFnGetTitleFileHash->FunctionFlags |= 0x400;
 
 	return GetTitleFileHash_Params.ReturnValue;
 };
@@ -3462,7 +3272,7 @@ class FString UTitleFileDownloadCache::GetTitleFileHash(class FString Filename)
 // EOnlineEnumerationReadState    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-EOnlineEnumerationReadState UTitleFileDownloadCache::GetTitleFileState(class FString Filename)
+EOnlineEnumerationReadState UTitleFileDownloadCache::GetTitleFileState(const class FString& Filename)
 {
 	static UFunction* uFnGetTitleFileState = nullptr;
 
@@ -3475,11 +3285,9 @@ EOnlineEnumerationReadState UTitleFileDownloadCache::GetTitleFileState(class FSt
 	memset(&GetTitleFileState_Params, 0, sizeof(GetTitleFileState_Params));
 	memcpy_s(&GetTitleFileState_Params.Filename, sizeof(GetTitleFileState_Params.Filename), &Filename, sizeof(Filename));
 
-	uFnGetTitleFileState->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetTitleFileState, &GetTitleFileState_Params, nullptr);
-	uFnGetTitleFileState->FunctionFlags |= 0x400;
 
-	return GetTitleFileState_Params.ReturnValue;
+	return static_cast<EOnlineEnumerationReadState>(GetTitleFileState_Params.ReturnValue);
 };
 
 // Function IpDrv.TitleFileDownloadCache.GetTitleFileContents
@@ -3487,9 +3295,9 @@ EOnlineEnumerationReadState UTitleFileDownloadCache::GetTitleFileState(class FSt
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                FileContents                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          FileContents                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UTitleFileDownloadCache::GetTitleFileContents(class FString Filename, TArray<uint8_t>& FileContents)
+bool UTitleFileDownloadCache::GetTitleFileContents(const class FString& Filename, class TArray<uint8_t>& FileContents)
 {
 	static UFunction* uFnGetTitleFileContents = nullptr;
 
@@ -3503,9 +3311,7 @@ bool UTitleFileDownloadCache::GetTitleFileContents(class FString Filename, TArra
 	memcpy_s(&GetTitleFileContents_Params.Filename, sizeof(GetTitleFileContents_Params.Filename), &Filename, sizeof(Filename));
 	memcpy_s(&GetTitleFileContents_Params.FileContents, sizeof(GetTitleFileContents_Params.FileContents), &FileContents, sizeof(FileContents));
 
-	uFnGetTitleFileContents->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetTitleFileContents, &GetTitleFileContents_Params, nullptr);
-	uFnGetTitleFileContents->FunctionFlags |= 0x400;
 
 	memcpy_s(&FileContents, sizeof(FileContents), &GetTitleFileContents_Params.FileContents, sizeof(GetTitleFileContents_Params.FileContents));
 
@@ -3517,7 +3323,7 @@ bool UTitleFileDownloadCache::GetTitleFileContents(class FString Filename, TArra
 // Parameter Info:
 // struct FScriptDelegate         SaveCompleteDelegate           (CPF_Parm | CPF_NeedCtorLink)
 
-void UTitleFileDownloadCache::ClearSaveTitleFileCompleteDelegate(struct FScriptDelegate SaveCompleteDelegate)
+void UTitleFileDownloadCache::ClearSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate)
 {
 	static UFunction* uFnClearSaveTitleFileCompleteDelegate = nullptr;
 
@@ -3538,7 +3344,7 @@ void UTitleFileDownloadCache::ClearSaveTitleFileCompleteDelegate(struct FScriptD
 // Parameter Info:
 // struct FScriptDelegate         SaveCompleteDelegate           (CPF_Parm | CPF_NeedCtorLink)
 
-void UTitleFileDownloadCache::AddSaveTitleFileCompleteDelegate(struct FScriptDelegate SaveCompleteDelegate)
+void UTitleFileDownloadCache::AddSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate)
 {
 	static UFunction* uFnAddSaveTitleFileCompleteDelegate = nullptr;
 
@@ -3557,10 +3363,10 @@ void UTitleFileDownloadCache::AddSaveTitleFileCompleteDelegate(struct FScriptDel
 // Function IpDrv.TitleFileDownloadCache.OnSaveTitleFileComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UTitleFileDownloadCache::OnSaveTitleFileComplete(bool bWasSuccessful, class FString Filename)
+void UTitleFileDownloadCache::OnSaveTitleFileComplete(bool bWasSuccessful, const class FString& Filename)
 {
 	static UFunction* uFnOnSaveTitleFileComplete = nullptr;
 
@@ -3583,9 +3389,9 @@ void UTitleFileDownloadCache::OnSaveTitleFileComplete(bool bWasSuccessful, class
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  LogicalName                    (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                FileContents                   (CPF_Parm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          FileContents                   (CPF_Parm | CPF_NeedCtorLink)
 
-bool UTitleFileDownloadCache::SaveTitleFile(class FString Filename, class FString LogicalName, TArray<uint8_t> FileContents)
+bool UTitleFileDownloadCache::SaveTitleFile(const class FString& Filename, const class FString& LogicalName, const class TArray<uint8_t>& FileContents)
 {
 	static UFunction* uFnSaveTitleFile = nullptr;
 
@@ -3600,9 +3406,7 @@ bool UTitleFileDownloadCache::SaveTitleFile(class FString Filename, class FStrin
 	memcpy_s(&SaveTitleFile_Params.LogicalName, sizeof(SaveTitleFile_Params.LogicalName), &LogicalName, sizeof(LogicalName));
 	memcpy_s(&SaveTitleFile_Params.FileContents, sizeof(SaveTitleFile_Params.FileContents), &FileContents, sizeof(FileContents));
 
-	uFnSaveTitleFile->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSaveTitleFile, &SaveTitleFile_Params, nullptr);
-	uFnSaveTitleFile->FunctionFlags |= 0x400;
 
 	return SaveTitleFile_Params.ReturnValue;
 };
@@ -3612,7 +3416,7 @@ bool UTitleFileDownloadCache::SaveTitleFile(class FString Filename, class FStrin
 // Parameter Info:
 // struct FScriptDelegate         LoadCompleteDelegate           (CPF_Parm | CPF_NeedCtorLink)
 
-void UTitleFileDownloadCache::ClearLoadTitleFileCompleteDelegate(struct FScriptDelegate LoadCompleteDelegate)
+void UTitleFileDownloadCache::ClearLoadTitleFileCompleteDelegate(const struct FScriptDelegate& LoadCompleteDelegate)
 {
 	static UFunction* uFnClearLoadTitleFileCompleteDelegate = nullptr;
 
@@ -3633,7 +3437,7 @@ void UTitleFileDownloadCache::ClearLoadTitleFileCompleteDelegate(struct FScriptD
 // Parameter Info:
 // struct FScriptDelegate         LoadCompleteDelegate           (CPF_Parm | CPF_NeedCtorLink)
 
-void UTitleFileDownloadCache::AddLoadTitleFileCompleteDelegate(struct FScriptDelegate LoadCompleteDelegate)
+void UTitleFileDownloadCache::AddLoadTitleFileCompleteDelegate(const struct FScriptDelegate& LoadCompleteDelegate)
 {
 	static UFunction* uFnAddLoadTitleFileCompleteDelegate = nullptr;
 
@@ -3652,10 +3456,10 @@ void UTitleFileDownloadCache::AddLoadTitleFileCompleteDelegate(struct FScriptDel
 // Function IpDrv.TitleFileDownloadCache.OnLoadTitleFileComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UTitleFileDownloadCache::OnLoadTitleFileComplete(bool bWasSuccessful, class FString Filename)
+void UTitleFileDownloadCache::OnLoadTitleFileComplete(bool bWasSuccessful, const class FString& Filename)
 {
 	static UFunction* uFnOnLoadTitleFileComplete = nullptr;
 
@@ -3678,7 +3482,7 @@ void UTitleFileDownloadCache::OnLoadTitleFileComplete(bool bWasSuccessful, class
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UTitleFileDownloadCache::LoadTitleFile(class FString Filename)
+bool UTitleFileDownloadCache::LoadTitleFile(const class FString& Filename)
 {
 	static UFunction* uFnLoadTitleFile = nullptr;
 
@@ -3691,9 +3495,7 @@ bool UTitleFileDownloadCache::LoadTitleFile(class FString Filename)
 	memset(&LoadTitleFile_Params, 0, sizeof(LoadTitleFile_Params));
 	memcpy_s(&LoadTitleFile_Params.Filename, sizeof(LoadTitleFile_Params.Filename), &Filename, sizeof(Filename));
 
-	uFnLoadTitleFile->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnLoadTitleFile, &LoadTitleFile_Params, nullptr);
-	uFnLoadTitleFile->FunctionFlags |= 0x400;
 
 	return LoadTitleFile_Params.ReturnValue;
 };
@@ -3703,9 +3505,9 @@ bool UTitleFileDownloadCache::LoadTitleFile(class FString Filename)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  MessageId                      (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                MessageContents                (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          MessageContents                (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMcpMessageBase::CacheMessageContents(class FString MessageId, TArray<uint8_t>& MessageContents)
+bool UMcpMessageBase::CacheMessageContents(const class FString& MessageId, class TArray<uint8_t>& MessageContents)
 {
 	static UFunction* uFnCacheMessageContents = nullptr;
 
@@ -3731,7 +3533,7 @@ bool UMcpMessageBase::CacheMessageContents(class FString MessageId, TArray<uint8
 // Parameter Info:
 // struct FMcpMessage             Message                        (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpMessageBase::CacheMessage(struct FMcpMessage Message)
+void UMcpMessageBase::CacheMessage(const struct FMcpMessage& Message)
 {
 	static UFunction* uFnCacheMessage = nullptr;
 
@@ -3752,37 +3554,37 @@ void UMcpMessageBase::CacheMessage(struct FMcpMessage Message)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  MessageId                      (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                MessageContents                (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          MessageContents                (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMcpMessageBase::GetMessageContents(class FString MessageId, TArray<uint8_t>& MessageContents)
+bool UMcpMessageBase::GetMessageContentsW(const class FString& MessageId, class TArray<uint8_t>& MessageContents)
 {
-	static UFunction* uFnGetMessageContents = nullptr;
+	static UFunction* uFnGetMessageContentsW = nullptr;
 
-	if (!uFnGetMessageContents)
+	if (!uFnGetMessageContentsW)
 	{
-		uFnGetMessageContents = UFunction::FindFunction("Function IpDrv.McpMessageBase.GetMessageContents");
+		uFnGetMessageContentsW = UFunction::FindFunction("Function IpDrv.McpMessageBase.GetMessageContents");
 	}
 
-	UMcpMessageBase_execGetMessageContents_Params GetMessageContents_Params;
-	memset(&GetMessageContents_Params, 0, sizeof(GetMessageContents_Params));
-	memcpy_s(&GetMessageContents_Params.MessageId, sizeof(GetMessageContents_Params.MessageId), &MessageId, sizeof(MessageId));
-	memcpy_s(&GetMessageContents_Params.MessageContents, sizeof(GetMessageContents_Params.MessageContents), &MessageContents, sizeof(MessageContents));
+	UMcpMessageBase_execGetMessageContentsW_Params GetMessageContentsW_Params;
+	memset(&GetMessageContentsW_Params, 0, sizeof(GetMessageContentsW_Params));
+	memcpy_s(&GetMessageContentsW_Params.MessageId, sizeof(GetMessageContentsW_Params.MessageId), &MessageId, sizeof(MessageId));
+	memcpy_s(&GetMessageContentsW_Params.MessageContents, sizeof(GetMessageContentsW_Params.MessageContents), &MessageContents, sizeof(MessageContents));
 
-	this->ProcessEvent(uFnGetMessageContents, &GetMessageContents_Params, nullptr);
+	this->ProcessEvent(uFnGetMessageContentsW, &GetMessageContentsW_Params, nullptr);
 
-	memcpy_s(&MessageContents, sizeof(MessageContents), &GetMessageContents_Params.MessageContents, sizeof(GetMessageContents_Params.MessageContents));
+	memcpy_s(&MessageContents, sizeof(MessageContents), &GetMessageContentsW_Params.MessageContents, sizeof(GetMessageContentsW_Params.MessageContents));
 
-	return GetMessageContents_Params.ReturnValue;
+	return GetMessageContentsW_Params.ReturnValue;
 };
 
 // Function IpDrv.McpMessageBase.OnQueryMessageContentsComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  MessageId                      (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpMessageBase::OnQueryMessageContentsComplete(class FString MessageId, bool bWasSuccessful, class FString Error)
+void UMcpMessageBase::OnQueryMessageContentsComplete(const class FString& MessageId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnQueryMessageContentsComplete = nullptr;
 
@@ -3805,7 +3607,7 @@ void UMcpMessageBase::OnQueryMessageContentsComplete(class FString MessageId, bo
 // Parameter Info:
 // class FString                  MessageId                      (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpMessageBase::QueryMessageContents(class FString MessageId)
+void UMcpMessageBase::QueryMessageContents(const class FString& MessageId)
 {
 	static UFunction* uFnQueryMessageContents = nullptr;
 
@@ -3827,33 +3629,33 @@ void UMcpMessageBase::QueryMessageContents(class FString MessageId)
 // class FString                  ToUniqueUserId                 (CPF_Parm | CPF_NeedCtorLink)
 // struct FMcpMessageList         MessageList                    (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpMessageBase::GetMessageList(class FString ToUniqueUserId, struct FMcpMessageList& MessageList)
+void UMcpMessageBase::GetMessageListW(const class FString& ToUniqueUserId, struct FMcpMessageList& MessageList)
 {
-	static UFunction* uFnGetMessageList = nullptr;
+	static UFunction* uFnGetMessageListW = nullptr;
 
-	if (!uFnGetMessageList)
+	if (!uFnGetMessageListW)
 	{
-		uFnGetMessageList = UFunction::FindFunction("Function IpDrv.McpMessageBase.GetMessageList");
+		uFnGetMessageListW = UFunction::FindFunction("Function IpDrv.McpMessageBase.GetMessageList");
 	}
 
-	UMcpMessageBase_execGetMessageList_Params GetMessageList_Params;
-	memset(&GetMessageList_Params, 0, sizeof(GetMessageList_Params));
-	memcpy_s(&GetMessageList_Params.ToUniqueUserId, sizeof(GetMessageList_Params.ToUniqueUserId), &ToUniqueUserId, sizeof(ToUniqueUserId));
-	memcpy_s(&GetMessageList_Params.MessageList, sizeof(GetMessageList_Params.MessageList), &MessageList, sizeof(MessageList));
+	UMcpMessageBase_execGetMessageListW_Params GetMessageListW_Params;
+	memset(&GetMessageListW_Params, 0, sizeof(GetMessageListW_Params));
+	memcpy_s(&GetMessageListW_Params.ToUniqueUserId, sizeof(GetMessageListW_Params.ToUniqueUserId), &ToUniqueUserId, sizeof(ToUniqueUserId));
+	memcpy_s(&GetMessageListW_Params.MessageList, sizeof(GetMessageListW_Params.MessageList), &MessageList, sizeof(MessageList));
 
-	this->ProcessEvent(uFnGetMessageList, &GetMessageList_Params, nullptr);
+	this->ProcessEvent(uFnGetMessageListW, &GetMessageListW_Params, nullptr);
 
-	memcpy_s(&MessageList, sizeof(MessageList), &GetMessageList_Params.MessageList, sizeof(GetMessageList_Params.MessageList));
+	memcpy_s(&MessageList, sizeof(MessageList), &GetMessageListW_Params.MessageList, sizeof(GetMessageListW_Params.MessageList));
 };
 
 // Function IpDrv.McpMessageBase.OnQueryMessagesComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpMessageBase::OnQueryMessagesComplete(class FString UserId, bool bWasSuccessful, class FString Error)
+void UMcpMessageBase::OnQueryMessagesComplete(const class FString& UserId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnQueryMessagesComplete = nullptr;
 
@@ -3876,7 +3678,7 @@ void UMcpMessageBase::OnQueryMessagesComplete(class FString UserId, bool bWasSuc
 // Parameter Info:
 // class FString                  ToUniqueUserId                 (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpMessageBase::QueryMessages(class FString ToUniqueUserId)
+void UMcpMessageBase::QueryMessages(const class FString& ToUniqueUserId)
 {
 	static UFunction* uFnQueryMessages = nullptr;
 
@@ -3896,10 +3698,10 @@ void UMcpMessageBase::QueryMessages(class FString ToUniqueUserId)
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  MessageId                      (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpMessageBase::OnDeleteMessageComplete(class FString MessageId, bool bWasSuccessful, class FString Error)
+void UMcpMessageBase::OnDeleteMessageComplete(const class FString& MessageId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnDeleteMessageComplete = nullptr;
 
@@ -3922,7 +3724,7 @@ void UMcpMessageBase::OnDeleteMessageComplete(class FString MessageId, bool bWas
 // Parameter Info:
 // class FString                  MessageId                      (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpMessageBase::DeleteMessage(class FString MessageId)
+void UMcpMessageBase::DeleteMessage(const class FString& MessageId)
 {
 	static UFunction* uFnDeleteMessage = nullptr;
 
@@ -3942,10 +3744,10 @@ void UMcpMessageBase::DeleteMessage(class FString MessageId)
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // struct FMcpMessage             Message                        (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpMessageBase::OnCreateMessageComplete(struct FMcpMessage Message, bool bWasSuccessful, class FString Error)
+void UMcpMessageBase::OnCreateMessageComplete(const struct FMcpMessage& Message, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnCreateMessageComplete = nullptr;
 
@@ -3971,10 +3773,10 @@ void UMcpMessageBase::OnCreateMessageComplete(struct FMcpMessage Message, bool b
 // class FString                  MessageType                    (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  PushMessage                    (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ValidUntil                     (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          ToUniqueUserIds                (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-// TArray<uint8_t>                MessageContents                (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FString>    ToUniqueUserIds                (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          MessageContents                (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpMessageBase::CreateMessage(class FString FromUniqueUserId, class FString FromFriendlyName, class FString MessageType, class FString PushMessage, class FString ValidUntil, TArray<class FString>& ToUniqueUserIds, TArray<uint8_t>& MessageContents)
+void UMcpMessageBase::CreateMessage(const class FString& FromUniqueUserId, const class FString& FromFriendlyName, const class FString& MessageType, const class FString& PushMessage, const class FString& ValidUntil, class TArray<class FString>& ToUniqueUserIds, class TArray<uint8_t>& MessageContents)
 {
 	static UFunction* uFnCreateMessage = nullptr;
 
@@ -4022,13 +3824,13 @@ class UMcpMessageBase* UMcpMessageBase::CreateInstance()
 };
 
 // Function IpDrv.McpMessageManager.CacheMessageContents
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  MessageId                      (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                MessageContents                (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          MessageContents                (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMcpMessageManager::CacheMessageContents(class FString MessageId, TArray<uint8_t>& MessageContents)
+bool UMcpMessageManager::CacheMessageContents(const class FString& MessageId, class TArray<uint8_t>& MessageContents)
 {
 	static UFunction* uFnCacheMessageContents = nullptr;
 
@@ -4056,33 +3858,33 @@ bool UMcpMessageManager::CacheMessageContents(class FString MessageId, TArray<ui
 // class FString                  MessageId                      (CPF_Parm | CPF_NeedCtorLink)
 // struct FMcpMessage             Message                        (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMcpMessageManager::GetMessageById(class FString MessageId, struct FMcpMessage& Message)
+bool UMcpMessageManager::GetMessageByIdW(const class FString& MessageId, struct FMcpMessage& Message)
 {
-	static UFunction* uFnGetMessageById = nullptr;
+	static UFunction* uFnGetMessageByIdW = nullptr;
 
-	if (!uFnGetMessageById)
+	if (!uFnGetMessageByIdW)
 	{
-		uFnGetMessageById = UFunction::FindFunction("Function IpDrv.McpMessageManager.GetMessageById");
+		uFnGetMessageByIdW = UFunction::FindFunction("Function IpDrv.McpMessageManager.GetMessageById");
 	}
 
-	UMcpMessageManager_execGetMessageById_Params GetMessageById_Params;
-	memset(&GetMessageById_Params, 0, sizeof(GetMessageById_Params));
-	memcpy_s(&GetMessageById_Params.MessageId, sizeof(GetMessageById_Params.MessageId), &MessageId, sizeof(MessageId));
-	memcpy_s(&GetMessageById_Params.Message, sizeof(GetMessageById_Params.Message), &Message, sizeof(Message));
+	UMcpMessageManager_execGetMessageByIdW_Params GetMessageByIdW_Params;
+	memset(&GetMessageByIdW_Params, 0, sizeof(GetMessageByIdW_Params));
+	memcpy_s(&GetMessageByIdW_Params.MessageId, sizeof(GetMessageByIdW_Params.MessageId), &MessageId, sizeof(MessageId));
+	memcpy_s(&GetMessageByIdW_Params.Message, sizeof(GetMessageByIdW_Params.Message), &Message, sizeof(Message));
 
-	this->ProcessEvent(uFnGetMessageById, &GetMessageById_Params, nullptr);
+	this->ProcessEvent(uFnGetMessageByIdW, &GetMessageByIdW_Params, nullptr);
 
-	memcpy_s(&Message, sizeof(Message), &GetMessageById_Params.Message, sizeof(GetMessageById_Params.Message));
+	memcpy_s(&Message, sizeof(Message), &GetMessageByIdW_Params.Message, sizeof(GetMessageByIdW_Params.Message));
 
-	return GetMessageById_Params.ReturnValue;
+	return GetMessageByIdW_Params.ReturnValue;
 };
 
 // Function IpDrv.McpMessageManager.CacheMessage
-// [0x400820002] (FUNC_Defined | FUNC_Public | FUNC_HasDefaults | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400820002] (FUNC_Defined | FUNC_Public | FUNC_HasDefaults | FUNC_AllFlags)
 // Parameter Info:
 // struct FMcpMessage             Message                        (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpMessageManager::CacheMessage(struct FMcpMessage Message)
+void UMcpMessageManager::CacheMessage(const struct FMcpMessage& Message)
 {
 	static UFunction* uFnCacheMessage = nullptr;
 
@@ -4099,31 +3901,31 @@ void UMcpMessageManager::CacheMessage(struct FMcpMessage Message)
 };
 
 // Function IpDrv.McpMessageManager.GetMessageContents
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  MessageId                      (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                MessageContents                (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          MessageContents                (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMcpMessageManager::GetMessageContents(class FString MessageId, TArray<uint8_t>& MessageContents)
+bool UMcpMessageManager::GetMessageContentsW(const class FString& MessageId, class TArray<uint8_t>& MessageContents)
 {
-	static UFunction* uFnGetMessageContents = nullptr;
+	static UFunction* uFnGetMessageContentsW = nullptr;
 
-	if (!uFnGetMessageContents)
+	if (!uFnGetMessageContentsW)
 	{
-		uFnGetMessageContents = UFunction::FindFunction("Function IpDrv.McpMessageManager.GetMessageContents");
+		uFnGetMessageContentsW = UFunction::FindFunction("Function IpDrv.McpMessageManager.GetMessageContents");
 	}
 
-	UMcpMessageManager_execGetMessageContents_Params GetMessageContents_Params;
-	memset(&GetMessageContents_Params, 0, sizeof(GetMessageContents_Params));
-	memcpy_s(&GetMessageContents_Params.MessageId, sizeof(GetMessageContents_Params.MessageId), &MessageId, sizeof(MessageId));
-	memcpy_s(&GetMessageContents_Params.MessageContents, sizeof(GetMessageContents_Params.MessageContents), &MessageContents, sizeof(MessageContents));
+	UMcpMessageManager_execGetMessageContentsW_Params GetMessageContentsW_Params;
+	memset(&GetMessageContentsW_Params, 0, sizeof(GetMessageContentsW_Params));
+	memcpy_s(&GetMessageContentsW_Params.MessageId, sizeof(GetMessageContentsW_Params.MessageId), &MessageId, sizeof(MessageId));
+	memcpy_s(&GetMessageContentsW_Params.MessageContents, sizeof(GetMessageContentsW_Params.MessageContents), &MessageContents, sizeof(MessageContents));
 
-	this->ProcessEvent(uFnGetMessageContents, &GetMessageContents_Params, nullptr);
+	this->ProcessEvent(uFnGetMessageContentsW, &GetMessageContentsW_Params, nullptr);
 
-	memcpy_s(&MessageContents, sizeof(MessageContents), &GetMessageContents_Params.MessageContents, sizeof(GetMessageContents_Params.MessageContents));
+	memcpy_s(&MessageContents, sizeof(MessageContents), &GetMessageContentsW_Params.MessageContents, sizeof(GetMessageContentsW_Params.MessageContents));
 
-	return GetMessageContents_Params.ReturnValue;
+	return GetMessageContentsW_Params.ReturnValue;
 };
 
 // Function IpDrv.McpMessageManager.OnQueryMessageContentsRequestComplete
@@ -4131,7 +3933,7 @@ bool UMcpMessageManager::GetMessageContents(class FString MessageId, TArray<uint
 // Parameter Info:
 // class UHttpRequestInterface*   OriginalRequest                (CPF_Parm)
 // class UHttpResponseInterface*  HttpResponse                   (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpMessageManager::OnQueryMessageContentsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful)
 {
@@ -4144,19 +3946,19 @@ void UMcpMessageManager::OnQueryMessageContentsRequestComplete(class UHttpReques
 
 	UMcpMessageManager_execOnQueryMessageContentsRequestComplete_Params OnQueryMessageContentsRequestComplete_Params;
 	memset(&OnQueryMessageContentsRequestComplete_Params, 0, sizeof(OnQueryMessageContentsRequestComplete_Params));
-	memcpy_s(&OnQueryMessageContentsRequestComplete_Params.OriginalRequest, sizeof(OnQueryMessageContentsRequestComplete_Params.OriginalRequest), &OriginalRequest, sizeof(OriginalRequest));
-	memcpy_s(&OnQueryMessageContentsRequestComplete_Params.HttpResponse, sizeof(OnQueryMessageContentsRequestComplete_Params.HttpResponse), &HttpResponse, sizeof(HttpResponse));
+	OnQueryMessageContentsRequestComplete_Params.OriginalRequest = OriginalRequest;
+	OnQueryMessageContentsRequestComplete_Params.HttpResponse = HttpResponse;
 	OnQueryMessageContentsRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnQueryMessageContentsRequestComplete, &OnQueryMessageContentsRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpMessageManager.QueryMessageContents
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  MessageId                      (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpMessageManager::QueryMessageContents(class FString MessageId)
+void UMcpMessageManager::QueryMessageContents(const class FString& MessageId)
 {
 	static UFunction* uFnQueryMessageContents = nullptr;
 
@@ -4173,28 +3975,28 @@ void UMcpMessageManager::QueryMessageContents(class FString MessageId)
 };
 
 // Function IpDrv.McpMessageManager.GetMessageList
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ToUniqueUserId                 (CPF_Parm | CPF_NeedCtorLink)
 // struct FMcpMessageList         MessageList                    (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpMessageManager::GetMessageList(class FString ToUniqueUserId, struct FMcpMessageList& MessageList)
+void UMcpMessageManager::GetMessageListW(const class FString& ToUniqueUserId, struct FMcpMessageList& MessageList)
 {
-	static UFunction* uFnGetMessageList = nullptr;
+	static UFunction* uFnGetMessageListW = nullptr;
 
-	if (!uFnGetMessageList)
+	if (!uFnGetMessageListW)
 	{
-		uFnGetMessageList = UFunction::FindFunction("Function IpDrv.McpMessageManager.GetMessageList");
+		uFnGetMessageListW = UFunction::FindFunction("Function IpDrv.McpMessageManager.GetMessageList");
 	}
 
-	UMcpMessageManager_execGetMessageList_Params GetMessageList_Params;
-	memset(&GetMessageList_Params, 0, sizeof(GetMessageList_Params));
-	memcpy_s(&GetMessageList_Params.ToUniqueUserId, sizeof(GetMessageList_Params.ToUniqueUserId), &ToUniqueUserId, sizeof(ToUniqueUserId));
-	memcpy_s(&GetMessageList_Params.MessageList, sizeof(GetMessageList_Params.MessageList), &MessageList, sizeof(MessageList));
+	UMcpMessageManager_execGetMessageListW_Params GetMessageListW_Params;
+	memset(&GetMessageListW_Params, 0, sizeof(GetMessageListW_Params));
+	memcpy_s(&GetMessageListW_Params.ToUniqueUserId, sizeof(GetMessageListW_Params.ToUniqueUserId), &ToUniqueUserId, sizeof(ToUniqueUserId));
+	memcpy_s(&GetMessageListW_Params.MessageList, sizeof(GetMessageListW_Params.MessageList), &MessageList, sizeof(MessageList));
 
-	this->ProcessEvent(uFnGetMessageList, &GetMessageList_Params, nullptr);
+	this->ProcessEvent(uFnGetMessageListW, &GetMessageListW_Params, nullptr);
 
-	memcpy_s(&MessageList, sizeof(MessageList), &GetMessageList_Params.MessageList, sizeof(GetMessageList_Params.MessageList));
+	memcpy_s(&MessageList, sizeof(MessageList), &GetMessageListW_Params.MessageList, sizeof(GetMessageListW_Params.MessageList));
 };
 
 // Function IpDrv.McpMessageManager.OnQueryMessagesRequestComplete
@@ -4202,7 +4004,7 @@ void UMcpMessageManager::GetMessageList(class FString ToUniqueUserId, struct FMc
 // Parameter Info:
 // class UHttpRequestInterface*   OriginalRequest                (CPF_Parm)
 // class UHttpResponseInterface*  HttpResponse                   (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpMessageManager::OnQueryMessagesRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful)
 {
@@ -4215,19 +4017,19 @@ void UMcpMessageManager::OnQueryMessagesRequestComplete(class UHttpRequestInterf
 
 	UMcpMessageManager_execOnQueryMessagesRequestComplete_Params OnQueryMessagesRequestComplete_Params;
 	memset(&OnQueryMessagesRequestComplete_Params, 0, sizeof(OnQueryMessagesRequestComplete_Params));
-	memcpy_s(&OnQueryMessagesRequestComplete_Params.OriginalRequest, sizeof(OnQueryMessagesRequestComplete_Params.OriginalRequest), &OriginalRequest, sizeof(OriginalRequest));
-	memcpy_s(&OnQueryMessagesRequestComplete_Params.HttpResponse, sizeof(OnQueryMessagesRequestComplete_Params.HttpResponse), &HttpResponse, sizeof(HttpResponse));
+	OnQueryMessagesRequestComplete_Params.OriginalRequest = OriginalRequest;
+	OnQueryMessagesRequestComplete_Params.HttpResponse = HttpResponse;
 	OnQueryMessagesRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnQueryMessagesRequestComplete, &OnQueryMessagesRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpMessageManager.QueryMessages
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ToUniqueUserId                 (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpMessageManager::QueryMessages(class FString ToUniqueUserId)
+void UMcpMessageManager::QueryMessages(const class FString& ToUniqueUserId)
 {
 	static UFunction* uFnQueryMessages = nullptr;
 
@@ -4248,7 +4050,7 @@ void UMcpMessageManager::QueryMessages(class FString ToUniqueUserId)
 // Parameter Info:
 // class UHttpRequestInterface*   OriginalRequest                (CPF_Parm)
 // class UHttpResponseInterface*  HttpResponse                   (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpMessageManager::OnDeleteMessageRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful)
 {
@@ -4261,19 +4063,19 @@ void UMcpMessageManager::OnDeleteMessageRequestComplete(class UHttpRequestInterf
 
 	UMcpMessageManager_execOnDeleteMessageRequestComplete_Params OnDeleteMessageRequestComplete_Params;
 	memset(&OnDeleteMessageRequestComplete_Params, 0, sizeof(OnDeleteMessageRequestComplete_Params));
-	memcpy_s(&OnDeleteMessageRequestComplete_Params.OriginalRequest, sizeof(OnDeleteMessageRequestComplete_Params.OriginalRequest), &OriginalRequest, sizeof(OriginalRequest));
-	memcpy_s(&OnDeleteMessageRequestComplete_Params.HttpResponse, sizeof(OnDeleteMessageRequestComplete_Params.HttpResponse), &HttpResponse, sizeof(HttpResponse));
+	OnDeleteMessageRequestComplete_Params.OriginalRequest = OriginalRequest;
+	OnDeleteMessageRequestComplete_Params.HttpResponse = HttpResponse;
 	OnDeleteMessageRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnDeleteMessageRequestComplete, &OnDeleteMessageRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpMessageManager.DeleteMessage
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  MessageId                      (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpMessageManager::DeleteMessage(class FString MessageId)
+void UMcpMessageManager::DeleteMessage(const class FString& MessageId)
 {
 	static UFunction* uFnDeleteMessage = nullptr;
 
@@ -4294,7 +4096,7 @@ void UMcpMessageManager::DeleteMessage(class FString MessageId)
 // Parameter Info:
 // class UHttpRequestInterface*   CreateMessageRequest           (CPF_Parm)
 // class UHttpResponseInterface*  HttpResponse                   (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpMessageManager::OnCreateMessageRequestComplete(class UHttpRequestInterface* CreateMessageRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful)
 {
@@ -4307,25 +4109,25 @@ void UMcpMessageManager::OnCreateMessageRequestComplete(class UHttpRequestInterf
 
 	UMcpMessageManager_execOnCreateMessageRequestComplete_Params OnCreateMessageRequestComplete_Params;
 	memset(&OnCreateMessageRequestComplete_Params, 0, sizeof(OnCreateMessageRequestComplete_Params));
-	memcpy_s(&OnCreateMessageRequestComplete_Params.CreateMessageRequest, sizeof(OnCreateMessageRequestComplete_Params.CreateMessageRequest), &CreateMessageRequest, sizeof(CreateMessageRequest));
-	memcpy_s(&OnCreateMessageRequestComplete_Params.HttpResponse, sizeof(OnCreateMessageRequestComplete_Params.HttpResponse), &HttpResponse, sizeof(HttpResponse));
+	OnCreateMessageRequestComplete_Params.CreateMessageRequest = CreateMessageRequest;
+	OnCreateMessageRequestComplete_Params.HttpResponse = HttpResponse;
 	OnCreateMessageRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnCreateMessageRequestComplete, &OnCreateMessageRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpMessageManager.CreateMessage
-// [0x400C20002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400C20002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  FromUniqueUserId               (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  FromFriendlyName               (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  MessageType                    (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  PushMessage                    (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ValidUntil                     (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          ToUniqueUserIds                (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-// TArray<uint8_t>                MessageContents                (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FString>    ToUniqueUserIds                (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          MessageContents                (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpMessageManager::CreateMessage(class FString FromUniqueUserId, class FString FromFriendlyName, class FString MessageType, class FString PushMessage, class FString ValidUntil, TArray<class FString>& ToUniqueUserIds, TArray<uint8_t>& MessageContents)
+void UMcpMessageManager::CreateMessage(const class FString& FromUniqueUserId, const class FString& FromFriendlyName, const class FString& MessageType, const class FString& PushMessage, const class FString& ValidUntil, class TArray<class FString>& ToUniqueUserIds, class TArray<uint8_t>& MessageContents)
 {
 	static UFunction* uFnCreateMessage = nullptr;
 
@@ -4353,11 +4155,11 @@ void UMcpMessageManager::CreateMessage(class FString FromUniqueUserId, class FSt
 // Function IpDrv.McpMessageManager.FinishedAsyncUncompression
 // [0x00420803] (FUNC_Final | FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  MessageId                      (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                UncompressedMessageContents    (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          UncompressedMessageContents    (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpMessageManager::eventFinishedAsyncUncompression(bool bWasSuccessful, class FString MessageId, TArray<uint8_t>& UncompressedMessageContents)
+void UMcpMessageManager::eventFinishedAsyncUncompression(bool bWasSuccessful, const class FString& MessageId, class TArray<uint8_t>& UncompressedMessageContents)
 {
 	static UFunction* uFnFinishedAsyncUncompression = nullptr;
 
@@ -4383,9 +4185,9 @@ void UMcpMessageManager::eventFinishedAsyncUncompression(bool bWasSuccessful, cl
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  MessageId                      (CPF_Parm | CPF_NeedCtorLink)
 // EMcpMessageCompressionType     MessageCompressionType         (CPF_Parm)
-// TArray<uint8_t>                MessageContent                 (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          MessageContent                 (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMcpMessageManager::StartAsyncUncompression(class FString MessageId, EMcpMessageCompressionType MessageCompressionType, TArray<uint8_t>& MessageContent)
+bool UMcpMessageManager::StartAsyncUncompression(const class FString& MessageId, EMcpMessageCompressionType MessageCompressionType, class TArray<uint8_t>& MessageContent)
 {
 	static UFunction* uFnStartAsyncUncompression = nullptr;
 
@@ -4400,9 +4202,7 @@ bool UMcpMessageManager::StartAsyncUncompression(class FString MessageId, EMcpMe
 	memcpy_s(&StartAsyncUncompression_Params.MessageCompressionType, sizeof(StartAsyncUncompression_Params.MessageCompressionType), &MessageCompressionType, sizeof(MessageCompressionType));
 	memcpy_s(&StartAsyncUncompression_Params.MessageContent, sizeof(StartAsyncUncompression_Params.MessageContent), &MessageContent, sizeof(MessageContent));
 
-	uFnStartAsyncUncompression->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnStartAsyncUncompression, &StartAsyncUncompression_Params, nullptr);
-	uFnStartAsyncUncompression->FunctionFlags |= 0x400;
 
 	memcpy_s(&MessageContent, sizeof(MessageContent), &StartAsyncUncompression_Params.MessageContent, sizeof(StartAsyncUncompression_Params.MessageContent));
 
@@ -4415,9 +4215,9 @@ bool UMcpMessageManager::StartAsyncUncompression(class FString MessageId, EMcpMe
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // EMcpMessageCompressionType     MessageCompressionType         (CPF_Parm)
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
-// TArray<uint8_t>                MessageContent                 (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          MessageContent                 (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMcpMessageManager::StartAsyncCompression(EMcpMessageCompressionType MessageCompressionType, class UHttpRequestInterface* Request, TArray<uint8_t>& MessageContent)
+bool UMcpMessageManager::StartAsyncCompression(EMcpMessageCompressionType MessageCompressionType, class UHttpRequestInterface* Request, class TArray<uint8_t>& MessageContent)
 {
 	static UFunction* uFnStartAsyncCompression = nullptr;
 
@@ -4429,12 +4229,10 @@ bool UMcpMessageManager::StartAsyncCompression(EMcpMessageCompressionType Messag
 	UMcpMessageManager_execStartAsyncCompression_Params StartAsyncCompression_Params;
 	memset(&StartAsyncCompression_Params, 0, sizeof(StartAsyncCompression_Params));
 	memcpy_s(&StartAsyncCompression_Params.MessageCompressionType, sizeof(StartAsyncCompression_Params.MessageCompressionType), &MessageCompressionType, sizeof(MessageCompressionType));
-	memcpy_s(&StartAsyncCompression_Params.Request, sizeof(StartAsyncCompression_Params.Request), &Request, sizeof(Request));
+	StartAsyncCompression_Params.Request = Request;
 	memcpy_s(&StartAsyncCompression_Params.MessageContent, sizeof(StartAsyncCompression_Params.MessageContent), &MessageContent, sizeof(MessageContent));
 
-	uFnStartAsyncCompression->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnStartAsyncCompression, &StartAsyncCompression_Params, nullptr);
-	uFnStartAsyncCompression->FunctionFlags |= 0x400;
 
 	memcpy_s(&MessageContent, sizeof(MessageContent), &StartAsyncCompression_Params.MessageContent, sizeof(StartAsyncCompression_Params.MessageContent));
 
@@ -4465,7 +4263,7 @@ void UMcpUserCloudFileDownload::ClearAllDelegates()
 // Parameter Info:
 // struct FScriptDelegate         DeleteUserFileCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::ClearDeleteUserFileCompleteDelegate(struct FScriptDelegate DeleteUserFileCompleteDelegate)
+void UMcpUserCloudFileDownload::ClearDeleteUserFileCompleteDelegate(const struct FScriptDelegate& DeleteUserFileCompleteDelegate)
 {
 	static UFunction* uFnClearDeleteUserFileCompleteDelegate = nullptr;
 
@@ -4486,7 +4284,7 @@ void UMcpUserCloudFileDownload::ClearDeleteUserFileCompleteDelegate(struct FScri
 // Parameter Info:
 // struct FScriptDelegate         DeleteUserFileCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::AddDeleteUserFileCompleteDelegate(struct FScriptDelegate DeleteUserFileCompleteDelegate)
+void UMcpUserCloudFileDownload::AddDeleteUserFileCompleteDelegate(const struct FScriptDelegate& DeleteUserFileCompleteDelegate)
 {
 	static UFunction* uFnAddDeleteUserFileCompleteDelegate = nullptr;
 
@@ -4505,11 +4303,11 @@ void UMcpUserCloudFileDownload::AddDeleteUserFileCompleteDelegate(struct FScript
 // Function IpDrv.McpUserCloudFileDownload.CallDeleteUserFileCompleteDelegates
 // [0x00040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::CallDeleteUserFileCompleteDelegates(bool bWasSuccessful, class FString UserId, class FString Filename)
+void UMcpUserCloudFileDownload::CallDeleteUserFileCompleteDelegates(bool bWasSuccessful, const class FString& UserId, const class FString& Filename)
 {
 	static UFunction* uFnCallDeleteUserFileCompleteDelegates = nullptr;
 
@@ -4530,11 +4328,11 @@ void UMcpUserCloudFileDownload::CallDeleteUserFileCompleteDelegates(bool bWasSuc
 // Function IpDrv.McpUserCloudFileDownload.OnDeleteUserFileComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::OnDeleteUserFileComplete(bool bWasSuccessful, class FString UserId, class FString Filename)
+void UMcpUserCloudFileDownload::OnDeleteUserFileComplete(bool bWasSuccessful, const class FString& UserId, const class FString& Filename)
 {
 	static UFunction* uFnOnDeleteUserFileComplete = nullptr;
 
@@ -4557,7 +4355,7 @@ void UMcpUserCloudFileDownload::OnDeleteUserFileComplete(bool bWasSuccessful, cl
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserCloudFileDownload::OnHTTPRequestDeleteUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -4570,8 +4368,8 @@ void UMcpUserCloudFileDownload::OnHTTPRequestDeleteUserFileComplete(class UHttpR
 
 	UMcpUserCloudFileDownload_execOnHTTPRequestDeleteUserFileComplete_Params OnHTTPRequestDeleteUserFileComplete_Params;
 	memset(&OnHTTPRequestDeleteUserFileComplete_Params, 0, sizeof(OnHTTPRequestDeleteUserFileComplete_Params));
-	memcpy_s(&OnHTTPRequestDeleteUserFileComplete_Params.Request, sizeof(OnHTTPRequestDeleteUserFileComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnHTTPRequestDeleteUserFileComplete_Params.Response, sizeof(OnHTTPRequestDeleteUserFileComplete_Params.Response), &Response, sizeof(Response));
+	OnHTTPRequestDeleteUserFileComplete_Params.Request = Request;
+	OnHTTPRequestDeleteUserFileComplete_Params.Response = Response;
 	OnHTTPRequestDeleteUserFileComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnHTTPRequestDeleteUserFileComplete, &OnHTTPRequestDeleteUserFileComplete_Params, nullptr);
@@ -4583,10 +4381,10 @@ void UMcpUserCloudFileDownload::OnHTTPRequestDeleteUserFileComplete(class UHttpR
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bShouldCloudDelete             (CPF_Parm)
-// bool                           bShouldLocallyDelete           (CPF_Parm)
+// uint32_t                       bShouldCloudDelete             (CPF_Parm)
+// uint32_t                       bShouldLocallyDelete           (CPF_Parm)
 
-bool UMcpUserCloudFileDownload::DeleteUserFile(class FString UserId, class FString Filename, bool bShouldCloudDelete, bool bShouldLocallyDelete)
+bool UMcpUserCloudFileDownload::DeleteUserFile(const class FString& UserId, const class FString& Filename, bool bShouldCloudDelete, bool bShouldLocallyDelete)
 {
 	static UFunction* uFnDeleteUserFile = nullptr;
 
@@ -4612,7 +4410,7 @@ bool UMcpUserCloudFileDownload::DeleteUserFile(class FString UserId, class FStri
 // Parameter Info:
 // struct FScriptDelegate         WriteUserFileCompleteDelegate  (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::ClearWriteUserFileCompleteDelegate(struct FScriptDelegate WriteUserFileCompleteDelegate)
+void UMcpUserCloudFileDownload::ClearWriteUserFileCompleteDelegate(const struct FScriptDelegate& WriteUserFileCompleteDelegate)
 {
 	static UFunction* uFnClearWriteUserFileCompleteDelegate = nullptr;
 
@@ -4633,7 +4431,7 @@ void UMcpUserCloudFileDownload::ClearWriteUserFileCompleteDelegate(struct FScrip
 // Parameter Info:
 // struct FScriptDelegate         WriteUserFileCompleteDelegate  (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::AddWriteUserFileCompleteDelegate(struct FScriptDelegate WriteUserFileCompleteDelegate)
+void UMcpUserCloudFileDownload::AddWriteUserFileCompleteDelegate(const struct FScriptDelegate& WriteUserFileCompleteDelegate)
 {
 	static UFunction* uFnAddWriteUserFileCompleteDelegate = nullptr;
 
@@ -4652,11 +4450,11 @@ void UMcpUserCloudFileDownload::AddWriteUserFileCompleteDelegate(struct FScriptD
 // Function IpDrv.McpUserCloudFileDownload.CallWriteUserFileCompleteDelegates
 // [0x00040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::CallWriteUserFileCompleteDelegates(bool bWasSuccessful, class FString UserId, class FString Filename)
+void UMcpUserCloudFileDownload::CallWriteUserFileCompleteDelegates(bool bWasSuccessful, const class FString& UserId, const class FString& Filename)
 {
 	static UFunction* uFnCallWriteUserFileCompleteDelegates = nullptr;
 
@@ -4677,11 +4475,11 @@ void UMcpUserCloudFileDownload::CallWriteUserFileCompleteDelegates(bool bWasSucc
 // Function IpDrv.McpUserCloudFileDownload.OnWriteUserFileComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::OnWriteUserFileComplete(bool bWasSuccessful, class FString UserId, class FString Filename)
+void UMcpUserCloudFileDownload::OnWriteUserFileComplete(bool bWasSuccessful, const class FString& UserId, const class FString& Filename)
 {
 	static UFunction* uFnOnWriteUserFileComplete = nullptr;
 
@@ -4704,7 +4502,7 @@ void UMcpUserCloudFileDownload::OnWriteUserFileComplete(bool bWasSuccessful, cla
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserCloudFileDownload::OnHTTPRequestWriteUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -4717,8 +4515,8 @@ void UMcpUserCloudFileDownload::OnHTTPRequestWriteUserFileComplete(class UHttpRe
 
 	UMcpUserCloudFileDownload_execOnHTTPRequestWriteUserFileComplete_Params OnHTTPRequestWriteUserFileComplete_Params;
 	memset(&OnHTTPRequestWriteUserFileComplete_Params, 0, sizeof(OnHTTPRequestWriteUserFileComplete_Params));
-	memcpy_s(&OnHTTPRequestWriteUserFileComplete_Params.Request, sizeof(OnHTTPRequestWriteUserFileComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnHTTPRequestWriteUserFileComplete_Params.Response, sizeof(OnHTTPRequestWriteUserFileComplete_Params.Response), &Response, sizeof(Response));
+	OnHTTPRequestWriteUserFileComplete_Params.Request = Request;
+	OnHTTPRequestWriteUserFileComplete_Params.Response = Response;
 	OnHTTPRequestWriteUserFileComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnHTTPRequestWriteUserFileComplete, &OnHTTPRequestWriteUserFileComplete_Params, nullptr);
@@ -4742,7 +4540,7 @@ void UMcpUserCloudFileDownload::GetUserFileIndexForRequest(class UHttpRequestInt
 
 	UMcpUserCloudFileDownload_execGetUserFileIndexForRequest_Params GetUserFileIndexForRequest_Params;
 	memset(&GetUserFileIndexForRequest_Params, 0, sizeof(GetUserFileIndexForRequest_Params));
-	memcpy_s(&GetUserFileIndexForRequest_Params.Request, sizeof(GetUserFileIndexForRequest_Params.Request), &Request, sizeof(Request));
+	GetUserFileIndexForRequest_Params.Request = Request;
 	memcpy_s(&GetUserFileIndexForRequest_Params.UserIdx, sizeof(GetUserFileIndexForRequest_Params.UserIdx), &UserIdx, sizeof(UserIdx));
 	memcpy_s(&GetUserFileIndexForRequest_Params.FileIdx, sizeof(GetUserFileIndexForRequest_Params.FileIdx), &FileIdx, sizeof(FileIdx));
 
@@ -4758,9 +4556,9 @@ void UMcpUserCloudFileDownload::GetUserFileIndexForRequest(class UHttpRequestInt
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                FileContents                   (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          FileContents                   (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMcpUserCloudFileDownload::WriteUserFile(class FString UserId, class FString Filename, TArray<uint8_t>& FileContents)
+bool UMcpUserCloudFileDownload::WriteUserFile(const class FString& UserId, const class FString& Filename, class TArray<uint8_t>& FileContents)
 {
 	static UFunction* uFnWriteUserFile = nullptr;
 
@@ -4787,7 +4585,7 @@ bool UMcpUserCloudFileDownload::WriteUserFile(class FString UserId, class FStrin
 // Parameter Info:
 // struct FScriptDelegate         ReadUserFileCompleteDelegate   (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::ClearReadUserFileCompleteDelegate(struct FScriptDelegate ReadUserFileCompleteDelegate)
+void UMcpUserCloudFileDownload::ClearReadUserFileCompleteDelegate(const struct FScriptDelegate& ReadUserFileCompleteDelegate)
 {
 	static UFunction* uFnClearReadUserFileCompleteDelegate = nullptr;
 
@@ -4808,7 +4606,7 @@ void UMcpUserCloudFileDownload::ClearReadUserFileCompleteDelegate(struct FScript
 // Parameter Info:
 // struct FScriptDelegate         ReadUserFileCompleteDelegate   (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::AddReadUserFileCompleteDelegate(struct FScriptDelegate ReadUserFileCompleteDelegate)
+void UMcpUserCloudFileDownload::AddReadUserFileCompleteDelegate(const struct FScriptDelegate& ReadUserFileCompleteDelegate)
 {
 	static UFunction* uFnAddReadUserFileCompleteDelegate = nullptr;
 
@@ -4827,11 +4625,11 @@ void UMcpUserCloudFileDownload::AddReadUserFileCompleteDelegate(struct FScriptDe
 // Function IpDrv.McpUserCloudFileDownload.CallReadUserFileCompleteDelegates
 // [0x00040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::CallReadUserFileCompleteDelegates(bool bWasSuccessful, class FString UserId, class FString Filename)
+void UMcpUserCloudFileDownload::CallReadUserFileCompleteDelegates(bool bWasSuccessful, const class FString& UserId, const class FString& Filename)
 {
 	static UFunction* uFnCallReadUserFileCompleteDelegates = nullptr;
 
@@ -4852,11 +4650,11 @@ void UMcpUserCloudFileDownload::CallReadUserFileCompleteDelegates(bool bWasSucce
 // Function IpDrv.McpUserCloudFileDownload.OnReadUserFileComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::OnReadUserFileComplete(bool bWasSuccessful, class FString UserId, class FString Filename)
+void UMcpUserCloudFileDownload::OnReadUserFileComplete(bool bWasSuccessful, const class FString& UserId, const class FString& Filename)
 {
 	static UFunction* uFnOnReadUserFileComplete = nullptr;
 
@@ -4879,7 +4677,7 @@ void UMcpUserCloudFileDownload::OnReadUserFileComplete(bool bWasSuccessful, clas
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserCloudFileDownload::OnHTTPRequestReadUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -4892,8 +4690,8 @@ void UMcpUserCloudFileDownload::OnHTTPRequestReadUserFileComplete(class UHttpReq
 
 	UMcpUserCloudFileDownload_execOnHTTPRequestReadUserFileComplete_Params OnHTTPRequestReadUserFileComplete_Params;
 	memset(&OnHTTPRequestReadUserFileComplete_Params, 0, sizeof(OnHTTPRequestReadUserFileComplete_Params));
-	memcpy_s(&OnHTTPRequestReadUserFileComplete_Params.Request, sizeof(OnHTTPRequestReadUserFileComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnHTTPRequestReadUserFileComplete_Params.Response, sizeof(OnHTTPRequestReadUserFileComplete_Params.Response), &Response, sizeof(Response));
+	OnHTTPRequestReadUserFileComplete_Params.Request = Request;
+	OnHTTPRequestReadUserFileComplete_Params.Response = Response;
 	OnHTTPRequestReadUserFileComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnHTTPRequestReadUserFileComplete, &OnHTTPRequestReadUserFileComplete_Params, nullptr);
@@ -4906,7 +4704,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestReadUserFileComplete(class UHttpReq
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UMcpUserCloudFileDownload::ReadUserFile(class FString UserId, class FString Filename)
+bool UMcpUserCloudFileDownload::ReadUserFile(const class FString& UserId, const class FString& Filename)
 {
 	static UFunction* uFnReadUserFile = nullptr;
 
@@ -4929,9 +4727,9 @@ bool UMcpUserCloudFileDownload::ReadUserFile(class FString UserId, class FString
 // [0x00420003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FEmsFile>        UserFiles                      (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FEmsFile>  UserFiles                      (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::GetUserFileList(class FString UserId, TArray<struct FEmsFile>& UserFiles)
+void UMcpUserCloudFileDownload::GetUserFileList(const class FString& UserId, class TArray<struct FEmsFile>& UserFiles)
 {
 	static UFunction* uFnGetUserFileList = nullptr;
 
@@ -4955,7 +4753,7 @@ void UMcpUserCloudFileDownload::GetUserFileList(class FString UserId, TArray<str
 // Parameter Info:
 // struct FScriptDelegate         EnumerateUserFileCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::ClearEnumerateUserFileCompleteDelegate(struct FScriptDelegate EnumerateUserFileCompleteDelegate)
+void UMcpUserCloudFileDownload::ClearEnumerateUserFileCompleteDelegate(const struct FScriptDelegate& EnumerateUserFileCompleteDelegate)
 {
 	static UFunction* uFnClearEnumerateUserFileCompleteDelegate = nullptr;
 
@@ -4976,7 +4774,7 @@ void UMcpUserCloudFileDownload::ClearEnumerateUserFileCompleteDelegate(struct FS
 // Parameter Info:
 // struct FScriptDelegate         EnumerateUserFileCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::AddEnumerateUserFileCompleteDelegate(struct FScriptDelegate EnumerateUserFileCompleteDelegate)
+void UMcpUserCloudFileDownload::AddEnumerateUserFileCompleteDelegate(const struct FScriptDelegate& EnumerateUserFileCompleteDelegate)
 {
 	static UFunction* uFnAddEnumerateUserFileCompleteDelegate = nullptr;
 
@@ -4995,10 +4793,10 @@ void UMcpUserCloudFileDownload::AddEnumerateUserFileCompleteDelegate(struct FScr
 // Function IpDrv.McpUserCloudFileDownload.CallEnumerateUserFileCompleteDelegates
 // [0x00040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::CallEnumerateUserFileCompleteDelegates(bool bWasSuccessful, class FString UserId)
+void UMcpUserCloudFileDownload::CallEnumerateUserFileCompleteDelegates(bool bWasSuccessful, const class FString& UserId)
 {
 	static UFunction* uFnCallEnumerateUserFileCompleteDelegates = nullptr;
 
@@ -5018,10 +4816,10 @@ void UMcpUserCloudFileDownload::CallEnumerateUserFileCompleteDelegates(bool bWas
 // Function IpDrv.McpUserCloudFileDownload.OnEnumerateUserFilesComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::OnEnumerateUserFilesComplete(bool bWasSuccessful, class FString UserId)
+void UMcpUserCloudFileDownload::OnEnumerateUserFilesComplete(bool bWasSuccessful, const class FString& UserId)
 {
 	static UFunction* uFnOnEnumerateUserFilesComplete = nullptr;
 
@@ -5043,7 +4841,7 @@ void UMcpUserCloudFileDownload::OnEnumerateUserFilesComplete(bool bWasSuccessful
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserCloudFileDownload::OnHTTPRequestEnumerateUserFilesComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -5056,8 +4854,8 @@ void UMcpUserCloudFileDownload::OnHTTPRequestEnumerateUserFilesComplete(class UH
 
 	UMcpUserCloudFileDownload_execOnHTTPRequestEnumerateUserFilesComplete_Params OnHTTPRequestEnumerateUserFilesComplete_Params;
 	memset(&OnHTTPRequestEnumerateUserFilesComplete_Params, 0, sizeof(OnHTTPRequestEnumerateUserFilesComplete_Params));
-	memcpy_s(&OnHTTPRequestEnumerateUserFilesComplete_Params.Request, sizeof(OnHTTPRequestEnumerateUserFilesComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnHTTPRequestEnumerateUserFilesComplete_Params.Response, sizeof(OnHTTPRequestEnumerateUserFilesComplete_Params.Response), &Response, sizeof(Response));
+	OnHTTPRequestEnumerateUserFilesComplete_Params.Request = Request;
+	OnHTTPRequestEnumerateUserFilesComplete_Params.Response = Response;
 	OnHTTPRequestEnumerateUserFilesComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnHTTPRequestEnumerateUserFilesComplete, &OnHTTPRequestEnumerateUserFilesComplete_Params, nullptr);
@@ -5068,7 +4866,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestEnumerateUserFilesComplete(class UH
 // Parameter Info:
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserCloudFileDownload::EnumerateUserFiles(class FString UserId)
+void UMcpUserCloudFileDownload::EnumerateUserFiles(const class FString& UserId)
 {
 	static UFunction* uFnEnumerateUserFiles = nullptr;
 
@@ -5091,7 +4889,7 @@ void UMcpUserCloudFileDownload::EnumerateUserFiles(class FString UserId)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UMcpUserCloudFileDownload::ClearFile(class FString UserId, class FString Filename)
+bool UMcpUserCloudFileDownload::ClearFile(const class FString& UserId, const class FString& Filename)
 {
 	static UFunction* uFnClearFile = nullptr;
 
@@ -5116,7 +4914,7 @@ bool UMcpUserCloudFileDownload::ClearFile(class FString UserId, class FString Fi
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 
-bool UMcpUserCloudFileDownload::ClearFiles(class FString UserId)
+bool UMcpUserCloudFileDownload::ClearFiles(const class FString& UserId)
 {
 	static UFunction* uFnClearFiles = nullptr;
 
@@ -5140,9 +4938,9 @@ bool UMcpUserCloudFileDownload::ClearFiles(class FString UserId)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                FileContents                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          FileContents                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMcpUserCloudFileDownload::GetFileContents(class FString UserId, class FString Filename, TArray<uint8_t>& FileContents)
+bool UMcpUserCloudFileDownload::GetFileContents(const class FString& UserId, const class FString& Filename, class TArray<uint8_t>& FileContents)
 {
 	static UFunction* uFnGetFileContents = nullptr;
 
@@ -5180,21 +4978,19 @@ void UMeshBeacon::eventDestroyBeacon()
 	UMeshBeacon_eventDestroyBeacon_Params DestroyBeacon_Params;
 	memset(&DestroyBeacon_Params, 0, sizeof(DestroyBeacon_Params));
 
-	uFnDestroyBeacon->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDestroyBeacon, &DestroyBeacon_Params, nullptr);
-	uFnDestroyBeacon->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.MeshBeaconClient.SendHostNewGameSessionResponse
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// bool                           bSuccess                       (CPF_Parm)
-// struct FName                   SessionName                    (CPF_Parm)
+// uint32_t                       bSuccess                       (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // class UClass*                  SearchClass                    (CPF_Parm)
 // uint8_t                        PlatformSpecificInfo           (CPF_Const | CPF_Parm | CPF_OutParm)
 
-bool UMeshBeaconClient::SendHostNewGameSessionResponse(bool bSuccess, struct FName SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo)
+bool UMeshBeaconClient::SendHostNewGameSessionResponse(bool bSuccess, const class FName& SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo)
 {
 	static UFunction* uFnSendHostNewGameSessionResponse = nullptr;
 
@@ -5207,12 +5003,10 @@ bool UMeshBeaconClient::SendHostNewGameSessionResponse(bool bSuccess, struct FNa
 	memset(&SendHostNewGameSessionResponse_Params, 0, sizeof(SendHostNewGameSessionResponse_Params));
 	SendHostNewGameSessionResponse_Params.bSuccess = bSuccess;
 	memcpy_s(&SendHostNewGameSessionResponse_Params.SessionName, sizeof(SendHostNewGameSessionResponse_Params.SessionName), &SessionName, sizeof(SessionName));
-	memcpy_s(&SendHostNewGameSessionResponse_Params.SearchClass, sizeof(SendHostNewGameSessionResponse_Params.SearchClass), &SearchClass, sizeof(SearchClass));
+	SendHostNewGameSessionResponse_Params.SearchClass = SearchClass;
 	memcpy_s(&SendHostNewGameSessionResponse_Params.PlatformSpecificInfo, sizeof(SendHostNewGameSessionResponse_Params.PlatformSpecificInfo), &PlatformSpecificInfo, sizeof(PlatformSpecificInfo));
 
-	uFnSendHostNewGameSessionResponse->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSendHostNewGameSessionResponse, &SendHostNewGameSessionResponse_Params, nullptr);
-	uFnSendHostNewGameSessionResponse->FunctionFlags |= 0x400;
 
 	memcpy_s(&PlatformSpecificInfo, sizeof(PlatformSpecificInfo), &SendHostNewGameSessionResponse_Params.PlatformSpecificInfo, sizeof(SendHostNewGameSessionResponse_Params.PlatformSpecificInfo));
 
@@ -5222,11 +5016,11 @@ bool UMeshBeaconClient::SendHostNewGameSessionResponse(bool bSuccess, struct FNa
 // Function IpDrv.MeshBeaconClient.OnCreateNewSessionRequestReceived
 // [0x00520001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // class UClass*                  SearchClass                    (CPF_Parm)
-// TArray<struct FPlayerMember>   Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FPlayerMember> Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMeshBeaconClient::OnCreateNewSessionRequestReceived(struct FName SessionName, class UClass* SearchClass, TArray<struct FPlayerMember>& Players)
+void UMeshBeaconClient::OnCreateNewSessionRequestReceived(const class FName& SessionName, class UClass* SearchClass, class TArray<struct FPlayerMember>& Players)
 {
 	static UFunction* uFnOnCreateNewSessionRequestReceived = nullptr;
 
@@ -5238,7 +5032,7 @@ void UMeshBeaconClient::OnCreateNewSessionRequestReceived(struct FName SessionNa
 	UMeshBeaconClient_execOnCreateNewSessionRequestReceived_Params OnCreateNewSessionRequestReceived_Params;
 	memset(&OnCreateNewSessionRequestReceived_Params, 0, sizeof(OnCreateNewSessionRequestReceived_Params));
 	memcpy_s(&OnCreateNewSessionRequestReceived_Params.SessionName, sizeof(OnCreateNewSessionRequestReceived_Params.SessionName), &SessionName, sizeof(SessionName));
-	memcpy_s(&OnCreateNewSessionRequestReceived_Params.SearchClass, sizeof(OnCreateNewSessionRequestReceived_Params.SearchClass), &SearchClass, sizeof(SearchClass));
+	OnCreateNewSessionRequestReceived_Params.SearchClass = SearchClass;
 	memcpy_s(&OnCreateNewSessionRequestReceived_Params.Players, sizeof(OnCreateNewSessionRequestReceived_Params.Players), &Players, sizeof(Players));
 
 	this->ProcessEvent(uFnOnCreateNewSessionRequestReceived, &OnCreateNewSessionRequestReceived_Params, nullptr);
@@ -5249,11 +5043,11 @@ void UMeshBeaconClient::OnCreateNewSessionRequestReceived(struct FName SessionNa
 // Function IpDrv.MeshBeaconClient.OnTravelRequestReceived
 // [0x00520001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // class UClass*                  SearchClass                    (CPF_Parm)
 // uint8_t                        PlatformSpecificInfo           (CPF_Const | CPF_Parm | CPF_OutParm)
 
-void UMeshBeaconClient::OnTravelRequestReceived(struct FName SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo)
+void UMeshBeaconClient::OnTravelRequestReceived(const class FName& SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo)
 {
 	static UFunction* uFnOnTravelRequestReceived = nullptr;
 
@@ -5265,7 +5059,7 @@ void UMeshBeaconClient::OnTravelRequestReceived(struct FName SessionName, class 
 	UMeshBeaconClient_execOnTravelRequestReceived_Params OnTravelRequestReceived_Params;
 	memset(&OnTravelRequestReceived_Params, 0, sizeof(OnTravelRequestReceived_Params));
 	memcpy_s(&OnTravelRequestReceived_Params.SessionName, sizeof(OnTravelRequestReceived_Params.SessionName), &SessionName, sizeof(SessionName));
-	memcpy_s(&OnTravelRequestReceived_Params.SearchClass, sizeof(OnTravelRequestReceived_Params.SearchClass), &SearchClass, sizeof(SearchClass));
+	OnTravelRequestReceived_Params.SearchClass = SearchClass;
 	memcpy_s(&OnTravelRequestReceived_Params.PlatformSpecificInfo, sizeof(OnTravelRequestReceived_Params.PlatformSpecificInfo), &PlatformSpecificInfo, sizeof(PlatformSpecificInfo));
 
 	this->ProcessEvent(uFnOnTravelRequestReceived, &OnTravelRequestReceived_Params, nullptr);
@@ -5363,9 +5157,7 @@ bool UMeshBeaconClient::BeginBandwidthTest(EMeshBeaconBandwidthTestType TestType
 	memcpy_s(&BeginBandwidthTest_Params.TestType, sizeof(BeginBandwidthTest_Params.TestType), &TestType, sizeof(TestType));
 	memcpy_s(&BeginBandwidthTest_Params.TestBufferSize, sizeof(BeginBandwidthTest_Params.TestBufferSize), &TestBufferSize, sizeof(TestBufferSize));
 
-	uFnBeginBandwidthTest->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnBeginBandwidthTest, &BeginBandwidthTest_Params, nullptr);
-	uFnBeginBandwidthTest->FunctionFlags |= 0x400;
 
 	return BeginBandwidthTest_Params.ReturnValue;
 };
@@ -5374,7 +5166,7 @@ bool UMeshBeaconClient::BeginBandwidthTest(EMeshBeaconBandwidthTestType TestType
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// bool                           bRegisterSecureAddress         (CPF_Parm)
+// uint32_t                       bRegisterSecureAddress         (CPF_Parm)
 // struct FOnlineGameSearchResult DesiredHost                    (CPF_Const | CPF_Parm | CPF_OutParm)
 // struct FClientConnectionRequest ClientRequest                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
@@ -5393,9 +5185,7 @@ bool UMeshBeaconClient::RequestConnection(bool bRegisterSecureAddress, struct FO
 	memcpy_s(&RequestConnection_Params.DesiredHost, sizeof(RequestConnection_Params.DesiredHost), &DesiredHost, sizeof(DesiredHost));
 	memcpy_s(&RequestConnection_Params.ClientRequest, sizeof(RequestConnection_Params.ClientRequest), &ClientRequest, sizeof(ClientRequest));
 
-	uFnRequestConnection->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnRequestConnection, &RequestConnection_Params, nullptr);
-	uFnRequestConnection->FunctionFlags |= 0x400;
 
 	memcpy_s(&DesiredHost, sizeof(DesiredHost), &RequestConnection_Params.DesiredHost, sizeof(RequestConnection_Params.DesiredHost));
 	memcpy_s(&ClientRequest, sizeof(ClientRequest), &RequestConnection_Params.ClientRequest, sizeof(RequestConnection_Params.ClientRequest));
@@ -5404,7 +5194,7 @@ bool UMeshBeaconClient::RequestConnection(bool bRegisterSecureAddress, struct FO
 };
 
 // Function IpDrv.MeshBeaconClient.DestroyBeacon
-// [0x400020C00] (FUNC_Native | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020C00] (FUNC_Native | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void UMeshBeaconClient::eventDestroyBeacon()
@@ -5419,20 +5209,18 @@ void UMeshBeaconClient::eventDestroyBeacon()
 	UMeshBeaconClient_eventDestroyBeacon_Params DestroyBeacon_Params;
 	memset(&DestroyBeacon_Params, 0, sizeof(DestroyBeacon_Params));
 
-	uFnDestroyBeacon->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDestroyBeacon, &DestroyBeacon_Params, nullptr);
-	uFnDestroyBeacon->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.MeshBeaconHost.OnReceivedClientCreateNewSessionResult
 // [0x00520001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bSucceeded                     (CPF_Parm)
-// struct FName                   SessionName                    (CPF_Parm)
+// uint32_t                       bSucceeded                     (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // class UClass*                  SearchClass                    (CPF_Parm)
 // uint8_t                        PlatformSpecificInfo           (CPF_Const | CPF_Parm | CPF_OutParm)
 
-void UMeshBeaconHost::OnReceivedClientCreateNewSessionResult(bool bSucceeded, struct FName SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo)
+void UMeshBeaconHost::OnReceivedClientCreateNewSessionResult(bool bSucceeded, const class FName& SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo)
 {
 	static UFunction* uFnOnReceivedClientCreateNewSessionResult = nullptr;
 
@@ -5445,7 +5233,7 @@ void UMeshBeaconHost::OnReceivedClientCreateNewSessionResult(bool bSucceeded, st
 	memset(&OnReceivedClientCreateNewSessionResult_Params, 0, sizeof(OnReceivedClientCreateNewSessionResult_Params));
 	OnReceivedClientCreateNewSessionResult_Params.bSucceeded = bSucceeded;
 	memcpy_s(&OnReceivedClientCreateNewSessionResult_Params.SessionName, sizeof(OnReceivedClientCreateNewSessionResult_Params.SessionName), &SessionName, sizeof(SessionName));
-	memcpy_s(&OnReceivedClientCreateNewSessionResult_Params.SearchClass, sizeof(OnReceivedClientCreateNewSessionResult_Params.SearchClass), &SearchClass, sizeof(SearchClass));
+	OnReceivedClientCreateNewSessionResult_Params.SearchClass = SearchClass;
 	memcpy_s(&OnReceivedClientCreateNewSessionResult_Params.PlatformSpecificInfo, sizeof(OnReceivedClientCreateNewSessionResult_Params.PlatformSpecificInfo), &PlatformSpecificInfo, sizeof(PlatformSpecificInfo));
 
 	this->ProcessEvent(uFnOnReceivedClientCreateNewSessionResult, &OnReceivedClientCreateNewSessionResult_Params, nullptr);
@@ -5458,11 +5246,11 @@ void UMeshBeaconHost::OnReceivedClientCreateNewSessionResult(bool bSucceeded, st
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PlayerNetId                    (CPF_Parm | CPF_NeedCtorLink)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // class UClass*                  SearchClass                    (CPF_Parm)
-// TArray<struct FPlayerMember>   Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FPlayerMember> Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMeshBeaconHost::RequestClientCreateNewSession(struct FUniqueNetId PlayerNetId, struct FName SessionName, class UClass* SearchClass, TArray<struct FPlayerMember>& Players)
+bool UMeshBeaconHost::RequestClientCreateNewSession(const struct FUniqueNetId& PlayerNetId, const class FName& SessionName, class UClass* SearchClass, class TArray<struct FPlayerMember>& Players)
 {
 	static UFunction* uFnRequestClientCreateNewSession = nullptr;
 
@@ -5475,12 +5263,10 @@ bool UMeshBeaconHost::RequestClientCreateNewSession(struct FUniqueNetId PlayerNe
 	memset(&RequestClientCreateNewSession_Params, 0, sizeof(RequestClientCreateNewSession_Params));
 	memcpy_s(&RequestClientCreateNewSession_Params.PlayerNetId, sizeof(RequestClientCreateNewSession_Params.PlayerNetId), &PlayerNetId, sizeof(PlayerNetId));
 	memcpy_s(&RequestClientCreateNewSession_Params.SessionName, sizeof(RequestClientCreateNewSession_Params.SessionName), &SessionName, sizeof(SessionName));
-	memcpy_s(&RequestClientCreateNewSession_Params.SearchClass, sizeof(RequestClientCreateNewSession_Params.SearchClass), &SearchClass, sizeof(SearchClass));
+	RequestClientCreateNewSession_Params.SearchClass = SearchClass;
 	memcpy_s(&RequestClientCreateNewSession_Params.Players, sizeof(RequestClientCreateNewSession_Params.Players), &Players, sizeof(Players));
 
-	uFnRequestClientCreateNewSession->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnRequestClientCreateNewSession, &RequestClientCreateNewSession_Params, nullptr);
-	uFnRequestClientCreateNewSession->FunctionFlags |= 0x400;
 
 	memcpy_s(&Players, sizeof(Players), &RequestClientCreateNewSession_Params.Players, sizeof(RequestClientCreateNewSession_Params.Players));
 
@@ -5490,11 +5276,11 @@ bool UMeshBeaconHost::RequestClientCreateNewSession(struct FUniqueNetId PlayerNe
 // Function IpDrv.MeshBeaconHost.TellClientsToTravel
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // class UClass*                  SearchClass                    (CPF_Parm)
 // uint8_t                        PlatformSpecificInfo           (CPF_Const | CPF_Parm | CPF_OutParm)
 
-void UMeshBeaconHost::TellClientsToTravel(struct FName SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo)
+void UMeshBeaconHost::TellClientsToTravel(const class FName& SessionName, class UClass* SearchClass, uint8_t& PlatformSpecificInfo)
 {
 	static UFunction* uFnTellClientsToTravel = nullptr;
 
@@ -5506,12 +5292,10 @@ void UMeshBeaconHost::TellClientsToTravel(struct FName SessionName, class UClass
 	UMeshBeaconHost_execTellClientsToTravel_Params TellClientsToTravel_Params;
 	memset(&TellClientsToTravel_Params, 0, sizeof(TellClientsToTravel_Params));
 	memcpy_s(&TellClientsToTravel_Params.SessionName, sizeof(TellClientsToTravel_Params.SessionName), &SessionName, sizeof(SessionName));
-	memcpy_s(&TellClientsToTravel_Params.SearchClass, sizeof(TellClientsToTravel_Params.SearchClass), &SearchClass, sizeof(SearchClass));
+	TellClientsToTravel_Params.SearchClass = SearchClass;
 	memcpy_s(&TellClientsToTravel_Params.PlatformSpecificInfo, sizeof(TellClientsToTravel_Params.PlatformSpecificInfo), &PlatformSpecificInfo, sizeof(PlatformSpecificInfo));
 
-	uFnTellClientsToTravel->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnTellClientsToTravel, &TellClientsToTravel_Params, nullptr);
-	uFnTellClientsToTravel->FunctionFlags |= 0x400;
 
 	memcpy_s(&PlatformSpecificInfo, sizeof(PlatformSpecificInfo), &TellClientsToTravel_Params.PlatformSpecificInfo, sizeof(TellClientsToTravel_Params.PlatformSpecificInfo));
 };
@@ -5539,9 +5323,9 @@ void UMeshBeaconHost::OnAllPendingPlayersConnected()
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// TArray<struct FUniqueNetId>    Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FUniqueNetId> Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMeshBeaconHost::AllPlayersConnected(TArray<struct FUniqueNetId>& Players)
+bool UMeshBeaconHost::AllPlayersConnected(class TArray<struct FUniqueNetId>& Players)
 {
 	static UFunction* uFnAllPlayersConnected = nullptr;
 
@@ -5554,9 +5338,7 @@ bool UMeshBeaconHost::AllPlayersConnected(TArray<struct FUniqueNetId>& Players)
 	memset(&AllPlayersConnected_Params, 0, sizeof(AllPlayersConnected_Params));
 	memcpy_s(&AllPlayersConnected_Params.Players, sizeof(AllPlayersConnected_Params.Players), &Players, sizeof(Players));
 
-	uFnAllPlayersConnected->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAllPlayersConnected, &AllPlayersConnected_Params, nullptr);
-	uFnAllPlayersConnected->FunctionFlags |= 0x400;
 
 	memcpy_s(&Players, sizeof(Players), &AllPlayersConnected_Params.Players, sizeof(AllPlayersConnected_Params.Players));
 
@@ -5569,7 +5351,7 @@ bool UMeshBeaconHost::AllPlayersConnected(TArray<struct FUniqueNetId>& Players)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PlayerNetId                    (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UMeshBeaconHost::GetConnectionIndexForPlayer(struct FUniqueNetId PlayerNetId)
+int32_t UMeshBeaconHost::GetConnectionIndexForPlayer(const struct FUniqueNetId& PlayerNetId)
 {
 	static UFunction* uFnGetConnectionIndexForPlayer = nullptr;
 
@@ -5582,9 +5364,7 @@ int32_t UMeshBeaconHost::GetConnectionIndexForPlayer(struct FUniqueNetId PlayerN
 	memset(&GetConnectionIndexForPlayer_Params, 0, sizeof(GetConnectionIndexForPlayer_Params));
 	memcpy_s(&GetConnectionIndexForPlayer_Params.PlayerNetId, sizeof(GetConnectionIndexForPlayer_Params.PlayerNetId), &PlayerNetId, sizeof(PlayerNetId));
 
-	uFnGetConnectionIndexForPlayer->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetConnectionIndexForPlayer, &GetConnectionIndexForPlayer_Params, nullptr);
-	uFnGetConnectionIndexForPlayer->FunctionFlags |= 0x400;
 
 	return GetConnectionIndexForPlayer_Params.ReturnValue;
 };
@@ -5592,9 +5372,9 @@ int32_t UMeshBeaconHost::GetConnectionIndexForPlayer(struct FUniqueNetId PlayerN
 // Function IpDrv.MeshBeaconHost.SetPendingPlayerConnections
 // [0x00420003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<struct FUniqueNetId>    Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FUniqueNetId> Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMeshBeaconHost::SetPendingPlayerConnections(TArray<struct FUniqueNetId>& Players)
+void UMeshBeaconHost::SetPendingPlayerConnections(class TArray<struct FUniqueNetId>& Players)
 {
 	static UFunction* uFnSetPendingPlayerConnections = nullptr;
 
@@ -5620,7 +5400,7 @@ void UMeshBeaconHost::SetPendingPlayerConnections(TArray<struct FUniqueNetId>& P
 // EMeshBeaconBandwidthTestResult TestResult                     (CPF_Parm)
 // struct FConnectionBandwidthStats BandwidthStats                 (CPF_Const | CPF_Parm | CPF_OutParm)
 
-void UMeshBeaconHost::OnFinishedBandwidthTest(struct FUniqueNetId PlayerNetId, EMeshBeaconBandwidthTestType TestType, EMeshBeaconBandwidthTestResult TestResult, struct FConnectionBandwidthStats& BandwidthStats)
+void UMeshBeaconHost::OnFinishedBandwidthTest(const struct FUniqueNetId& PlayerNetId, EMeshBeaconBandwidthTestType TestType, EMeshBeaconBandwidthTestResult TestResult, struct FConnectionBandwidthStats& BandwidthStats)
 {
 	static UFunction* uFnOnFinishedBandwidthTest = nullptr;
 
@@ -5647,7 +5427,7 @@ void UMeshBeaconHost::OnFinishedBandwidthTest(struct FUniqueNetId PlayerNetId, E
 // struct FUniqueNetId            PlayerNetId                    (CPF_Parm | CPF_NeedCtorLink)
 // EMeshBeaconBandwidthTestType   TestType                       (CPF_Parm)
 
-void UMeshBeaconHost::OnStartedBandwidthTest(struct FUniqueNetId PlayerNetId, EMeshBeaconBandwidthTestType TestType)
+void UMeshBeaconHost::OnStartedBandwidthTest(const struct FUniqueNetId& PlayerNetId, EMeshBeaconBandwidthTestType TestType)
 {
 	static UFunction* uFnOnStartedBandwidthTest = nullptr;
 
@@ -5690,7 +5470,7 @@ void UMeshBeaconHost::OnReceivedClientConnectionRequest(struct FClientMeshBeacon
 // Function IpDrv.MeshBeaconHost.AllowBandwidthTesting
 // [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bEnabled                       (CPF_Parm)
+// uint32_t                       bEnabled                       (CPF_Parm)
 
 void UMeshBeaconHost::AllowBandwidthTesting(bool bEnabled)
 {
@@ -5724,9 +5504,7 @@ void UMeshBeaconHost::CancelPendingBandwidthTests()
 	UMeshBeaconHost_execCancelPendingBandwidthTests_Params CancelPendingBandwidthTests_Params;
 	memset(&CancelPendingBandwidthTests_Params, 0, sizeof(CancelPendingBandwidthTests_Params));
 
-	uFnCancelPendingBandwidthTests->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnCancelPendingBandwidthTests, &CancelPendingBandwidthTests_Params, nullptr);
-	uFnCancelPendingBandwidthTests->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.MeshBeaconHost.HasPendingBandwidthTest
@@ -5746,9 +5524,7 @@ bool UMeshBeaconHost::HasPendingBandwidthTest()
 	UMeshBeaconHost_execHasPendingBandwidthTest_Params HasPendingBandwidthTest_Params;
 	memset(&HasPendingBandwidthTest_Params, 0, sizeof(HasPendingBandwidthTest_Params));
 
-	uFnHasPendingBandwidthTest->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnHasPendingBandwidthTest, &HasPendingBandwidthTest_Params, nullptr);
-	uFnHasPendingBandwidthTest->FunctionFlags |= 0x400;
 
 	return HasPendingBandwidthTest_Params.ReturnValue;
 };
@@ -5769,9 +5545,7 @@ void UMeshBeaconHost::CancelInProgressBandwidthTests()
 	UMeshBeaconHost_execCancelInProgressBandwidthTests_Params CancelInProgressBandwidthTests_Params;
 	memset(&CancelInProgressBandwidthTests_Params, 0, sizeof(CancelInProgressBandwidthTests_Params));
 
-	uFnCancelInProgressBandwidthTests->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnCancelInProgressBandwidthTests, &CancelInProgressBandwidthTests_Params, nullptr);
-	uFnCancelInProgressBandwidthTests->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.MeshBeaconHost.HasInProgressBandwidthTest
@@ -5791,9 +5565,7 @@ bool UMeshBeaconHost::HasInProgressBandwidthTest()
 	UMeshBeaconHost_execHasInProgressBandwidthTest_Params HasInProgressBandwidthTest_Params;
 	memset(&HasInProgressBandwidthTest_Params, 0, sizeof(HasInProgressBandwidthTest_Params));
 
-	uFnHasInProgressBandwidthTest->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnHasInProgressBandwidthTest, &HasInProgressBandwidthTest_Params, nullptr);
-	uFnHasInProgressBandwidthTest->FunctionFlags |= 0x400;
 
 	return HasInProgressBandwidthTest_Params.ReturnValue;
 };
@@ -5806,7 +5578,7 @@ bool UMeshBeaconHost::HasInProgressBandwidthTest()
 // EMeshBeaconBandwidthTestType   TestType                       (CPF_Parm)
 // int32_t                        TestBufferSize                 (CPF_Parm)
 
-bool UMeshBeaconHost::RequestClientBandwidthTest(struct FUniqueNetId PlayerNetId, EMeshBeaconBandwidthTestType TestType, int32_t TestBufferSize)
+bool UMeshBeaconHost::RequestClientBandwidthTest(const struct FUniqueNetId& PlayerNetId, EMeshBeaconBandwidthTestType TestType, int32_t TestBufferSize)
 {
 	static UFunction* uFnRequestClientBandwidthTest = nullptr;
 
@@ -5821,15 +5593,13 @@ bool UMeshBeaconHost::RequestClientBandwidthTest(struct FUniqueNetId PlayerNetId
 	memcpy_s(&RequestClientBandwidthTest_Params.TestType, sizeof(RequestClientBandwidthTest_Params.TestType), &TestType, sizeof(TestType));
 	memcpy_s(&RequestClientBandwidthTest_Params.TestBufferSize, sizeof(RequestClientBandwidthTest_Params.TestBufferSize), &TestBufferSize, sizeof(TestBufferSize));
 
-	uFnRequestClientBandwidthTest->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnRequestClientBandwidthTest, &RequestClientBandwidthTest_Params, nullptr);
-	uFnRequestClientBandwidthTest->FunctionFlags |= 0x400;
 
 	return RequestClientBandwidthTest_Params.ReturnValue;
 };
 
 // Function IpDrv.MeshBeaconHost.DestroyBeacon
-// [0x400020C00] (FUNC_Native | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020C00] (FUNC_Native | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void UMeshBeaconHost::eventDestroyBeacon()
@@ -5844,9 +5614,7 @@ void UMeshBeaconHost::eventDestroyBeacon()
 	UMeshBeaconHost_eventDestroyBeacon_Params DestroyBeacon_Params;
 	memset(&DestroyBeacon_Params, 0, sizeof(DestroyBeacon_Params));
 
-	uFnDestroyBeacon->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDestroyBeacon, &DestroyBeacon_Params, nullptr);
-	uFnDestroyBeacon->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.MeshBeaconHost.InitHostBeacon
@@ -5855,7 +5623,7 @@ void UMeshBeaconHost::eventDestroyBeacon()
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            InOwningPlayerId               (CPF_Parm | CPF_NeedCtorLink)
 
-bool UMeshBeaconHost::InitHostBeacon(struct FUniqueNetId InOwningPlayerId)
+bool UMeshBeaconHost::InitHostBeacon(const struct FUniqueNetId& InOwningPlayerId)
 {
 	static UFunction* uFnInitHostBeacon = nullptr;
 
@@ -5868,9 +5636,7 @@ bool UMeshBeaconHost::InitHostBeacon(struct FUniqueNetId InOwningPlayerId)
 	memset(&InitHostBeacon_Params, 0, sizeof(InitHostBeacon_Params));
 	memcpy_s(&InitHostBeacon_Params.InOwningPlayerId, sizeof(InitHostBeacon_Params.InOwningPlayerId), &InOwningPlayerId, sizeof(InOwningPlayerId));
 
-	uFnInitHostBeacon->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnInitHostBeacon, &InitHostBeacon_Params, nullptr);
-	uFnInitHostBeacon->FunctionFlags |= 0x400;
 
 	return InitHostBeacon_Params.ReturnValue;
 };
@@ -5882,7 +5648,7 @@ bool UMeshBeaconHost::InitHostBeacon(struct FUniqueNetId InOwningPlayerId)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 
-class UAsyncTask* UOnlineAuthInterfaceImpl::RequestAccountAuthorization(struct FUniqueNetId PlayerID, struct FScriptDelegate Callback)
+class UAsyncTask* UOnlineAuthInterfaceImpl::RequestAccountAuthorization(const struct FUniqueNetId& PlayerID, const struct FScriptDelegate& Callback)
 {
 	static UFunction* uFnRequestAccountAuthorization = nullptr;
 
@@ -5906,7 +5672,7 @@ class UAsyncTask* UOnlineAuthInterfaceImpl::RequestAccountAuthorization(struct F
 // Parameter Info:
 // class FString                  Token                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::OnAccountAuthorization(class FString Token)
+void UOnlineAuthInterfaceImpl::OnAccountAuthorization(const class FString& Token)
 {
 	static UFunction* uFnOnAccountAuthorization = nullptr;
 
@@ -5925,7 +5691,7 @@ void UOnlineAuthInterfaceImpl::OnAccountAuthorization(class FString Token)
 // Function IpDrv.OnlineAuthInterfaceImpl.OnLoginChanged
 // [0x00020000] (FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bLoggedIn                      (CPF_Parm)
+// uint32_t                       bLoggedIn                      (CPF_Parm)
 
 void UOnlineAuthInterfaceImpl::OnLoginChanged(bool bLoggedIn)
 {
@@ -5950,7 +5716,7 @@ void UOnlineAuthInterfaceImpl::OnLoginChanged(bool bLoggedIn)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineAuthInterfaceImpl::RequestMtxCode(struct FUniqueNetId PlayerID, struct FScriptDelegate Callback)
+bool UOnlineAuthInterfaceImpl::RequestMtxCode(const struct FUniqueNetId& PlayerID, const struct FScriptDelegate& Callback)
 {
 	static UFunction* uFnRequestMtxCode = nullptr;
 
@@ -5976,7 +5742,7 @@ bool UOnlineAuthInterfaceImpl::RequestMtxCode(struct FUniqueNetId PlayerID, stru
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineAuthInterfaceImpl::RequestAuthTicket(struct FUniqueNetId PlayerID, struct FScriptDelegate Callback)
+bool UOnlineAuthInterfaceImpl::RequestAuthTicket(const struct FUniqueNetId& PlayerID, const struct FScriptDelegate& Callback)
 {
 	static UFunction* uFnRequestAuthTicket = nullptr;
 
@@ -6020,10 +5786,10 @@ bool UOnlineAuthInterfaceImpl::RequiresAuthTicket()
 // Function IpDrv.OnlineAuthInterfaceImpl.OnReceivedAuthCode
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bSuccess                       (CPF_Parm)
+// uint32_t                       bSuccess                       (CPF_Parm)
 // class FString                  Code                           (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::OnReceivedAuthCode(bool bSuccess, class FString Code)
+void UOnlineAuthInterfaceImpl::OnReceivedAuthCode(bool bSuccess, const class FString& Code)
 {
 	static UFunction* uFnOnReceivedAuthCode = nullptr;
 
@@ -6113,12 +5879,10 @@ bool UOnlineAuthInterfaceImpl::FindLocalServerAuthSession(class UPlayer* ClientC
 
 	UOnlineAuthInterfaceImpl_execFindLocalServerAuthSession_Params FindLocalServerAuthSession_Params;
 	memset(&FindLocalServerAuthSession_Params, 0, sizeof(FindLocalServerAuthSession_Params));
-	memcpy_s(&FindLocalServerAuthSession_Params.ClientConnection, sizeof(FindLocalServerAuthSession_Params.ClientConnection), &ClientConnection, sizeof(ClientConnection));
+	FindLocalServerAuthSession_Params.ClientConnection = ClientConnection;
 	memcpy_s(&FindLocalServerAuthSession_Params.OutSessionInfo, sizeof(FindLocalServerAuthSession_Params.OutSessionInfo), &OutSessionInfo, sizeof(OutSessionInfo));
 
-	uFnFindLocalServerAuthSession->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnFindLocalServerAuthSession, &FindLocalServerAuthSession_Params, nullptr);
-	uFnFindLocalServerAuthSession->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutSessionInfo, sizeof(OutSessionInfo), &FindLocalServerAuthSession_Params.OutSessionInfo, sizeof(FindLocalServerAuthSession_Params.OutSessionInfo));
 
@@ -6143,12 +5907,10 @@ bool UOnlineAuthInterfaceImpl::FindServerAuthSession(class UPlayer* ServerConnec
 
 	UOnlineAuthInterfaceImpl_execFindServerAuthSession_Params FindServerAuthSession_Params;
 	memset(&FindServerAuthSession_Params, 0, sizeof(FindServerAuthSession_Params));
-	memcpy_s(&FindServerAuthSession_Params.ServerConnection, sizeof(FindServerAuthSession_Params.ServerConnection), &ServerConnection, sizeof(ServerConnection));
+	FindServerAuthSession_Params.ServerConnection = ServerConnection;
 	memcpy_s(&FindServerAuthSession_Params.OutSessionInfo, sizeof(FindServerAuthSession_Params.OutSessionInfo), &OutSessionInfo, sizeof(OutSessionInfo));
 
-	uFnFindServerAuthSession->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnFindServerAuthSession, &FindServerAuthSession_Params, nullptr);
-	uFnFindServerAuthSession->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutSessionInfo, sizeof(OutSessionInfo), &FindServerAuthSession_Params.OutSessionInfo, sizeof(FindServerAuthSession_Params.OutSessionInfo));
 
@@ -6173,12 +5935,10 @@ bool UOnlineAuthInterfaceImpl::FindLocalClientAuthSession(class UPlayer* ServerC
 
 	UOnlineAuthInterfaceImpl_execFindLocalClientAuthSession_Params FindLocalClientAuthSession_Params;
 	memset(&FindLocalClientAuthSession_Params, 0, sizeof(FindLocalClientAuthSession_Params));
-	memcpy_s(&FindLocalClientAuthSession_Params.ServerConnection, sizeof(FindLocalClientAuthSession_Params.ServerConnection), &ServerConnection, sizeof(ServerConnection));
+	FindLocalClientAuthSession_Params.ServerConnection = ServerConnection;
 	memcpy_s(&FindLocalClientAuthSession_Params.OutSessionInfo, sizeof(FindLocalClientAuthSession_Params.OutSessionInfo), &OutSessionInfo, sizeof(OutSessionInfo));
 
-	uFnFindLocalClientAuthSession->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnFindLocalClientAuthSession, &FindLocalClientAuthSession_Params, nullptr);
-	uFnFindLocalClientAuthSession->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutSessionInfo, sizeof(OutSessionInfo), &FindLocalClientAuthSession_Params.OutSessionInfo, sizeof(FindLocalClientAuthSession_Params.OutSessionInfo));
 
@@ -6203,12 +5963,10 @@ bool UOnlineAuthInterfaceImpl::FindClientAuthSession(class UPlayer* ClientConnec
 
 	UOnlineAuthInterfaceImpl_execFindClientAuthSession_Params FindClientAuthSession_Params;
 	memset(&FindClientAuthSession_Params, 0, sizeof(FindClientAuthSession_Params));
-	memcpy_s(&FindClientAuthSession_Params.ClientConnection, sizeof(FindClientAuthSession_Params.ClientConnection), &ClientConnection, sizeof(ClientConnection));
+	FindClientAuthSession_Params.ClientConnection = ClientConnection;
 	memcpy_s(&FindClientAuthSession_Params.OutSessionInfo, sizeof(FindClientAuthSession_Params.OutSessionInfo), &OutSessionInfo, sizeof(OutSessionInfo));
 
-	uFnFindClientAuthSession->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnFindClientAuthSession, &FindClientAuthSession_Params, nullptr);
-	uFnFindClientAuthSession->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutSessionInfo, sizeof(OutSessionInfo), &FindClientAuthSession_Params.OutSessionInfo, sizeof(FindClientAuthSession_Params.OutSessionInfo));
 
@@ -6233,9 +5991,7 @@ void UOnlineAuthInterfaceImpl::AllLocalServerAuthSessions(struct FLocalAuthSessi
 	memset(&AllLocalServerAuthSessions_Params, 0, sizeof(AllLocalServerAuthSessions_Params));
 	memcpy_s(&AllLocalServerAuthSessions_Params.OutSessionInfo, sizeof(AllLocalServerAuthSessions_Params.OutSessionInfo), &OutSessionInfo, sizeof(OutSessionInfo));
 
-	uFnAllLocalServerAuthSessions->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAllLocalServerAuthSessions, &AllLocalServerAuthSessions_Params, nullptr);
-	uFnAllLocalServerAuthSessions->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutSessionInfo, sizeof(OutSessionInfo), &AllLocalServerAuthSessions_Params.OutSessionInfo, sizeof(AllLocalServerAuthSessions_Params.OutSessionInfo));
 };
@@ -6258,9 +6014,7 @@ void UOnlineAuthInterfaceImpl::AllServerAuthSessions(struct FAuthSession& OutSes
 	memset(&AllServerAuthSessions_Params, 0, sizeof(AllServerAuthSessions_Params));
 	memcpy_s(&AllServerAuthSessions_Params.OutSessionInfo, sizeof(AllServerAuthSessions_Params.OutSessionInfo), &OutSessionInfo, sizeof(OutSessionInfo));
 
-	uFnAllServerAuthSessions->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAllServerAuthSessions, &AllServerAuthSessions_Params, nullptr);
-	uFnAllServerAuthSessions->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutSessionInfo, sizeof(OutSessionInfo), &AllServerAuthSessions_Params.OutSessionInfo, sizeof(AllServerAuthSessions_Params.OutSessionInfo));
 };
@@ -6283,9 +6037,7 @@ void UOnlineAuthInterfaceImpl::AllLocalClientAuthSessions(struct FLocalAuthSessi
 	memset(&AllLocalClientAuthSessions_Params, 0, sizeof(AllLocalClientAuthSessions_Params));
 	memcpy_s(&AllLocalClientAuthSessions_Params.OutSessionInfo, sizeof(AllLocalClientAuthSessions_Params.OutSessionInfo), &OutSessionInfo, sizeof(OutSessionInfo));
 
-	uFnAllLocalClientAuthSessions->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAllLocalClientAuthSessions, &AllLocalClientAuthSessions_Params, nullptr);
-	uFnAllLocalClientAuthSessions->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutSessionInfo, sizeof(OutSessionInfo), &AllLocalClientAuthSessions_Params.OutSessionInfo, sizeof(AllLocalClientAuthSessions_Params.OutSessionInfo));
 };
@@ -6308,9 +6060,7 @@ void UOnlineAuthInterfaceImpl::AllClientAuthSessions(struct FAuthSession& OutSes
 	memset(&AllClientAuthSessions_Params, 0, sizeof(AllClientAuthSessions_Params));
 	memcpy_s(&AllClientAuthSessions_Params.OutSessionInfo, sizeof(AllClientAuthSessions_Params.OutSessionInfo), &OutSessionInfo, sizeof(OutSessionInfo));
 
-	uFnAllClientAuthSessions->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAllClientAuthSessions, &AllClientAuthSessions_Params, nullptr);
-	uFnAllClientAuthSessions->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutSessionInfo, sizeof(OutSessionInfo), &AllClientAuthSessions_Params.OutSessionInfo, sizeof(AllClientAuthSessions_Params.OutSessionInfo));
 };
@@ -6331,9 +6081,7 @@ void UOnlineAuthInterfaceImpl::EndAllRemoteServerAuthSessions()
 	UOnlineAuthInterfaceImpl_execEndAllRemoteServerAuthSessions_Params EndAllRemoteServerAuthSessions_Params;
 	memset(&EndAllRemoteServerAuthSessions_Params, 0, sizeof(EndAllRemoteServerAuthSessions_Params));
 
-	uFnEndAllRemoteServerAuthSessions->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnEndAllRemoteServerAuthSessions, &EndAllRemoteServerAuthSessions_Params, nullptr);
-	uFnEndAllRemoteServerAuthSessions->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndAllLocalServerAuthSessions
@@ -6352,9 +6100,7 @@ void UOnlineAuthInterfaceImpl::EndAllLocalServerAuthSessions()
 	UOnlineAuthInterfaceImpl_execEndAllLocalServerAuthSessions_Params EndAllLocalServerAuthSessions_Params;
 	memset(&EndAllLocalServerAuthSessions_Params, 0, sizeof(EndAllLocalServerAuthSessions_Params));
 
-	uFnEndAllLocalServerAuthSessions->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnEndAllLocalServerAuthSessions, &EndAllLocalServerAuthSessions_Params, nullptr);
-	uFnEndAllLocalServerAuthSessions->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndRemoteServerAuthSession
@@ -6363,7 +6109,7 @@ void UOnlineAuthInterfaceImpl::EndAllLocalServerAuthSessions()
 // struct FUniqueNetId            ServerUID                      (CPF_Parm | CPF_NeedCtorLink)
 // struct FIpAddr                 ServerIP                       (CPF_Parm)
 
-void UOnlineAuthInterfaceImpl::EndRemoteServerAuthSession(struct FUniqueNetId ServerUID, struct FIpAddr ServerIP)
+void UOnlineAuthInterfaceImpl::EndRemoteServerAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP)
 {
 	static UFunction* uFnEndRemoteServerAuthSession = nullptr;
 
@@ -6377,9 +6123,7 @@ void UOnlineAuthInterfaceImpl::EndRemoteServerAuthSession(struct FUniqueNetId Se
 	memcpy_s(&EndRemoteServerAuthSession_Params.ServerUID, sizeof(EndRemoteServerAuthSession_Params.ServerUID), &ServerUID, sizeof(ServerUID));
 	memcpy_s(&EndRemoteServerAuthSession_Params.ServerIP, sizeof(EndRemoteServerAuthSession_Params.ServerIP), &ServerIP, sizeof(ServerIP));
 
-	uFnEndRemoteServerAuthSession->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnEndRemoteServerAuthSession, &EndRemoteServerAuthSession_Params, nullptr);
-	uFnEndRemoteServerAuthSession->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndLocalServerAuthSession
@@ -6388,7 +6132,7 @@ void UOnlineAuthInterfaceImpl::EndRemoteServerAuthSession(struct FUniqueNetId Se
 // struct FUniqueNetId            ClientUID                      (CPF_Parm | CPF_NeedCtorLink)
 // struct FIpAddr                 ClientIP                       (CPF_Parm)
 
-void UOnlineAuthInterfaceImpl::EndLocalServerAuthSession(struct FUniqueNetId ClientUID, struct FIpAddr ClientIP)
+void UOnlineAuthInterfaceImpl::EndLocalServerAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP)
 {
 	static UFunction* uFnEndLocalServerAuthSession = nullptr;
 
@@ -6402,9 +6146,7 @@ void UOnlineAuthInterfaceImpl::EndLocalServerAuthSession(struct FUniqueNetId Cli
 	memcpy_s(&EndLocalServerAuthSession_Params.ClientUID, sizeof(EndLocalServerAuthSession_Params.ClientUID), &ClientUID, sizeof(ClientUID));
 	memcpy_s(&EndLocalServerAuthSession_Params.ClientIP, sizeof(EndLocalServerAuthSession_Params.ClientIP), &ClientIP, sizeof(ClientIP));
 
-	uFnEndLocalServerAuthSession->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnEndLocalServerAuthSession, &EndLocalServerAuthSession_Params, nullptr);
-	uFnEndLocalServerAuthSession->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.VerifyServerAuthSession
@@ -6415,7 +6157,7 @@ void UOnlineAuthInterfaceImpl::EndLocalServerAuthSession(struct FUniqueNetId Cli
 // struct FIpAddr                 ServerIP                       (CPF_Parm)
 // int32_t                        AuthTicketUID                  (CPF_Parm)
 
-bool UOnlineAuthInterfaceImpl::VerifyServerAuthSession(struct FUniqueNetId ServerUID, struct FIpAddr ServerIP, int32_t AuthTicketUID)
+bool UOnlineAuthInterfaceImpl::VerifyServerAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int32_t AuthTicketUID)
 {
 	static UFunction* uFnVerifyServerAuthSession = nullptr;
 
@@ -6444,7 +6186,7 @@ bool UOnlineAuthInterfaceImpl::VerifyServerAuthSession(struct FUniqueNetId Serve
 // int32_t                        ClientPort                     (CPF_Parm)
 // int32_t                        OutAuthTicketUID               (CPF_Parm | CPF_OutParm)
 
-bool UOnlineAuthInterfaceImpl::CreateServerAuthSession(struct FUniqueNetId ClientUID, struct FIpAddr ClientIP, int32_t ClientPort, int32_t& OutAuthTicketUID)
+bool UOnlineAuthInterfaceImpl::CreateServerAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int32_t ClientPort, int32_t& OutAuthTicketUID)
 {
 	static UFunction* uFnCreateServerAuthSession = nullptr;
 
@@ -6483,9 +6225,7 @@ void UOnlineAuthInterfaceImpl::EndAllRemoteClientAuthSessions()
 	UOnlineAuthInterfaceImpl_execEndAllRemoteClientAuthSessions_Params EndAllRemoteClientAuthSessions_Params;
 	memset(&EndAllRemoteClientAuthSessions_Params, 0, sizeof(EndAllRemoteClientAuthSessions_Params));
 
-	uFnEndAllRemoteClientAuthSessions->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnEndAllRemoteClientAuthSessions, &EndAllRemoteClientAuthSessions_Params, nullptr);
-	uFnEndAllRemoteClientAuthSessions->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndAllLocalClientAuthSessions
@@ -6504,9 +6244,7 @@ void UOnlineAuthInterfaceImpl::EndAllLocalClientAuthSessions()
 	UOnlineAuthInterfaceImpl_execEndAllLocalClientAuthSessions_Params EndAllLocalClientAuthSessions_Params;
 	memset(&EndAllLocalClientAuthSessions_Params, 0, sizeof(EndAllLocalClientAuthSessions_Params));
 
-	uFnEndAllLocalClientAuthSessions->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnEndAllLocalClientAuthSessions, &EndAllLocalClientAuthSessions_Params, nullptr);
-	uFnEndAllLocalClientAuthSessions->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndRemoteClientAuthSession
@@ -6515,7 +6253,7 @@ void UOnlineAuthInterfaceImpl::EndAllLocalClientAuthSessions()
 // struct FUniqueNetId            ClientUID                      (CPF_Parm | CPF_NeedCtorLink)
 // struct FIpAddr                 ClientIP                       (CPF_Parm)
 
-void UOnlineAuthInterfaceImpl::EndRemoteClientAuthSession(struct FUniqueNetId ClientUID, struct FIpAddr ClientIP)
+void UOnlineAuthInterfaceImpl::EndRemoteClientAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP)
 {
 	static UFunction* uFnEndRemoteClientAuthSession = nullptr;
 
@@ -6529,9 +6267,7 @@ void UOnlineAuthInterfaceImpl::EndRemoteClientAuthSession(struct FUniqueNetId Cl
 	memcpy_s(&EndRemoteClientAuthSession_Params.ClientUID, sizeof(EndRemoteClientAuthSession_Params.ClientUID), &ClientUID, sizeof(ClientUID));
 	memcpy_s(&EndRemoteClientAuthSession_Params.ClientIP, sizeof(EndRemoteClientAuthSession_Params.ClientIP), &ClientIP, sizeof(ClientIP));
 
-	uFnEndRemoteClientAuthSession->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnEndRemoteClientAuthSession, &EndRemoteClientAuthSession_Params, nullptr);
-	uFnEndRemoteClientAuthSession->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndLocalClientAuthSession
@@ -6541,7 +6277,7 @@ void UOnlineAuthInterfaceImpl::EndRemoteClientAuthSession(struct FUniqueNetId Cl
 // struct FIpAddr                 ServerIP                       (CPF_Parm)
 // int32_t                        ServerPort                     (CPF_Parm)
 
-void UOnlineAuthInterfaceImpl::EndLocalClientAuthSession(struct FUniqueNetId ServerUID, struct FIpAddr ServerIP, int32_t ServerPort)
+void UOnlineAuthInterfaceImpl::EndLocalClientAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int32_t ServerPort)
 {
 	static UFunction* uFnEndLocalClientAuthSession = nullptr;
 
@@ -6556,9 +6292,7 @@ void UOnlineAuthInterfaceImpl::EndLocalClientAuthSession(struct FUniqueNetId Ser
 	memcpy_s(&EndLocalClientAuthSession_Params.ServerIP, sizeof(EndLocalClientAuthSession_Params.ServerIP), &ServerIP, sizeof(ServerIP));
 	memcpy_s(&EndLocalClientAuthSession_Params.ServerPort, sizeof(EndLocalClientAuthSession_Params.ServerPort), &ServerPort, sizeof(ServerPort));
 
-	uFnEndLocalClientAuthSession->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnEndLocalClientAuthSession, &EndLocalClientAuthSession_Params, nullptr);
-	uFnEndLocalClientAuthSession->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.VerifyClientAuthSession
@@ -6570,7 +6304,7 @@ void UOnlineAuthInterfaceImpl::EndLocalClientAuthSession(struct FUniqueNetId Ser
 // int32_t                        ClientPort                     (CPF_Parm)
 // int32_t                        AuthTicketUID                  (CPF_Parm)
 
-bool UOnlineAuthInterfaceImpl::VerifyClientAuthSession(struct FUniqueNetId ClientUID, struct FIpAddr ClientIP, int32_t ClientPort, int32_t AuthTicketUID)
+bool UOnlineAuthInterfaceImpl::VerifyClientAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int32_t ClientPort, int32_t AuthTicketUID)
 {
 	static UFunction* uFnVerifyClientAuthSession = nullptr;
 
@@ -6598,10 +6332,10 @@ bool UOnlineAuthInterfaceImpl::VerifyClientAuthSession(struct FUniqueNetId Clien
 // struct FUniqueNetId            ServerUID                      (CPF_Parm | CPF_NeedCtorLink)
 // struct FIpAddr                 ServerIP                       (CPF_Parm)
 // int32_t                        ServerPort                     (CPF_Parm)
-// bool                           bSecure                        (CPF_Parm)
+// uint32_t                       bSecure                        (CPF_Parm)
 // int32_t                        OutAuthTicketUID               (CPF_Parm | CPF_OutParm)
 
-bool UOnlineAuthInterfaceImpl::CreateClientAuthSession(struct FUniqueNetId ServerUID, struct FIpAddr ServerIP, int32_t ServerPort, bool bSecure, int32_t& OutAuthTicketUID)
+bool UOnlineAuthInterfaceImpl::CreateClientAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int32_t ServerPort, bool bSecure, int32_t& OutAuthTicketUID)
 {
 	static UFunction* uFnCreateClientAuthSession = nullptr;
 
@@ -6642,9 +6376,7 @@ bool UOnlineAuthInterfaceImpl::SendServerAuthRetryRequest()
 	UOnlineAuthInterfaceImpl_execSendServerAuthRetryRequest_Params SendServerAuthRetryRequest_Params;
 	memset(&SendServerAuthRetryRequest_Params, 0, sizeof(SendServerAuthRetryRequest_Params));
 
-	uFnSendServerAuthRetryRequest->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSendServerAuthRetryRequest, &SendServerAuthRetryRequest_Params, nullptr);
-	uFnSendServerAuthRetryRequest->FunctionFlags |= 0x400;
 
 	return SendServerAuthRetryRequest_Params.ReturnValue;
 };
@@ -6666,11 +6398,9 @@ bool UOnlineAuthInterfaceImpl::SendClientAuthEndSessionRequest(class UPlayer* Cl
 
 	UOnlineAuthInterfaceImpl_execSendClientAuthEndSessionRequest_Params SendClientAuthEndSessionRequest_Params;
 	memset(&SendClientAuthEndSessionRequest_Params, 0, sizeof(SendClientAuthEndSessionRequest_Params));
-	memcpy_s(&SendClientAuthEndSessionRequest_Params.ClientConnection, sizeof(SendClientAuthEndSessionRequest_Params.ClientConnection), &ClientConnection, sizeof(ClientConnection));
+	SendClientAuthEndSessionRequest_Params.ClientConnection = ClientConnection;
 
-	uFnSendClientAuthEndSessionRequest->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSendClientAuthEndSessionRequest, &SendClientAuthEndSessionRequest_Params, nullptr);
-	uFnSendClientAuthEndSessionRequest->FunctionFlags |= 0x400;
 
 	return SendClientAuthEndSessionRequest_Params.ReturnValue;
 };
@@ -6693,12 +6423,10 @@ bool UOnlineAuthInterfaceImpl::SendServerAuthResponse(class UPlayer* ClientConne
 
 	UOnlineAuthInterfaceImpl_execSendServerAuthResponse_Params SendServerAuthResponse_Params;
 	memset(&SendServerAuthResponse_Params, 0, sizeof(SendServerAuthResponse_Params));
-	memcpy_s(&SendServerAuthResponse_Params.ClientConnection, sizeof(SendServerAuthResponse_Params.ClientConnection), &ClientConnection, sizeof(ClientConnection));
+	SendServerAuthResponse_Params.ClientConnection = ClientConnection;
 	memcpy_s(&SendServerAuthResponse_Params.AuthTicketUID, sizeof(SendServerAuthResponse_Params.AuthTicketUID), &AuthTicketUID, sizeof(AuthTicketUID));
 
-	uFnSendServerAuthResponse->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSendServerAuthResponse, &SendServerAuthResponse_Params, nullptr);
-	uFnSendServerAuthResponse->FunctionFlags |= 0x400;
 
 	return SendServerAuthResponse_Params.ReturnValue;
 };
@@ -6722,9 +6450,7 @@ bool UOnlineAuthInterfaceImpl::SendClientAuthResponse(int32_t AuthTicketUID)
 	memset(&SendClientAuthResponse_Params, 0, sizeof(SendClientAuthResponse_Params));
 	memcpy_s(&SendClientAuthResponse_Params.AuthTicketUID, sizeof(SendClientAuthResponse_Params.AuthTicketUID), &AuthTicketUID, sizeof(AuthTicketUID));
 
-	uFnSendClientAuthResponse->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSendClientAuthResponse, &SendClientAuthResponse_Params, nullptr);
-	uFnSendClientAuthResponse->FunctionFlags |= 0x400;
 
 	return SendClientAuthResponse_Params.ReturnValue;
 };
@@ -6735,7 +6461,7 @@ bool UOnlineAuthInterfaceImpl::SendClientAuthResponse(int32_t AuthTicketUID)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            ServerUID                      (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineAuthInterfaceImpl::SendServerAuthRequest(struct FUniqueNetId ServerUID)
+bool UOnlineAuthInterfaceImpl::SendServerAuthRequest(const struct FUniqueNetId& ServerUID)
 {
 	static UFunction* uFnSendServerAuthRequest = nullptr;
 
@@ -6760,7 +6486,7 @@ bool UOnlineAuthInterfaceImpl::SendServerAuthRequest(struct FUniqueNetId ServerU
 // class UPlayer*                 ClientConnection               (CPF_Parm)
 // struct FUniqueNetId            ClientUID                      (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineAuthInterfaceImpl::SendClientAuthRequest(class UPlayer* ClientConnection, struct FUniqueNetId ClientUID)
+bool UOnlineAuthInterfaceImpl::SendClientAuthRequest(class UPlayer* ClientConnection, const struct FUniqueNetId& ClientUID)
 {
 	static UFunction* uFnSendClientAuthRequest = nullptr;
 
@@ -6771,7 +6497,7 @@ bool UOnlineAuthInterfaceImpl::SendClientAuthRequest(class UPlayer* ClientConnec
 
 	UOnlineAuthInterfaceImpl_execSendClientAuthRequest_Params SendClientAuthRequest_Params;
 	memset(&SendClientAuthRequest_Params, 0, sizeof(SendClientAuthRequest_Params));
-	memcpy_s(&SendClientAuthRequest_Params.ClientConnection, sizeof(SendClientAuthRequest_Params.ClientConnection), &ClientConnection, sizeof(ClientConnection));
+	SendClientAuthRequest_Params.ClientConnection = ClientConnection;
 	memcpy_s(&SendClientAuthRequest_Params.ClientUID, sizeof(SendClientAuthRequest_Params.ClientUID), &ClientUID, sizeof(ClientUID));
 
 	this->ProcessEvent(uFnSendClientAuthRequest, &SendClientAuthRequest_Params, nullptr);
@@ -6784,7 +6510,7 @@ bool UOnlineAuthInterfaceImpl::SendClientAuthRequest(class UPlayer* ClientConnec
 // Parameter Info:
 // struct FScriptDelegate         ServerConnectionCloseDelegate  (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::ClearServerConnectionCloseDelegate(struct FScriptDelegate ServerConnectionCloseDelegate)
+void UOnlineAuthInterfaceImpl::ClearServerConnectionCloseDelegate(const struct FScriptDelegate& ServerConnectionCloseDelegate)
 {
 	static UFunction* uFnClearServerConnectionCloseDelegate = nullptr;
 
@@ -6805,7 +6531,7 @@ void UOnlineAuthInterfaceImpl::ClearServerConnectionCloseDelegate(struct FScript
 // Parameter Info:
 // struct FScriptDelegate         ServerConnectionCloseDelegate  (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddServerConnectionCloseDelegate(struct FScriptDelegate ServerConnectionCloseDelegate)
+void UOnlineAuthInterfaceImpl::AddServerConnectionCloseDelegate(const struct FScriptDelegate& ServerConnectionCloseDelegate)
 {
 	static UFunction* uFnAddServerConnectionCloseDelegate = nullptr;
 
@@ -6837,7 +6563,7 @@ void UOnlineAuthInterfaceImpl::OnServerConnectionClose(class UPlayer* ServerConn
 
 	UOnlineAuthInterfaceImpl_execOnServerConnectionClose_Params OnServerConnectionClose_Params;
 	memset(&OnServerConnectionClose_Params, 0, sizeof(OnServerConnectionClose_Params));
-	memcpy_s(&OnServerConnectionClose_Params.ServerConnection, sizeof(OnServerConnectionClose_Params.ServerConnection), &ServerConnection, sizeof(ServerConnection));
+	OnServerConnectionClose_Params.ServerConnection = ServerConnection;
 
 	this->ProcessEvent(uFnOnServerConnectionClose, &OnServerConnectionClose_Params, nullptr);
 };
@@ -6847,7 +6573,7 @@ void UOnlineAuthInterfaceImpl::OnServerConnectionClose(class UPlayer* ServerConn
 // Parameter Info:
 // struct FScriptDelegate         ClientConnectionCloseDelegate  (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::ClearClientConnectionCloseDelegate(struct FScriptDelegate ClientConnectionCloseDelegate)
+void UOnlineAuthInterfaceImpl::ClearClientConnectionCloseDelegate(const struct FScriptDelegate& ClientConnectionCloseDelegate)
 {
 	static UFunction* uFnClearClientConnectionCloseDelegate = nullptr;
 
@@ -6868,7 +6594,7 @@ void UOnlineAuthInterfaceImpl::ClearClientConnectionCloseDelegate(struct FScript
 // Parameter Info:
 // struct FScriptDelegate         ClientConnectionCloseDelegate  (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddClientConnectionCloseDelegate(struct FScriptDelegate ClientConnectionCloseDelegate)
+void UOnlineAuthInterfaceImpl::AddClientConnectionCloseDelegate(const struct FScriptDelegate& ClientConnectionCloseDelegate)
 {
 	static UFunction* uFnAddClientConnectionCloseDelegate = nullptr;
 
@@ -6900,7 +6626,7 @@ void UOnlineAuthInterfaceImpl::OnClientConnectionClose(class UPlayer* ClientConn
 
 	UOnlineAuthInterfaceImpl_execOnClientConnectionClose_Params OnClientConnectionClose_Params;
 	memset(&OnClientConnectionClose_Params, 0, sizeof(OnClientConnectionClose_Params));
-	memcpy_s(&OnClientConnectionClose_Params.ClientConnection, sizeof(OnClientConnectionClose_Params.ClientConnection), &ClientConnection, sizeof(ClientConnection));
+	OnClientConnectionClose_Params.ClientConnection = ClientConnection;
 
 	this->ProcessEvent(uFnOnClientConnectionClose, &OnClientConnectionClose_Params, nullptr);
 };
@@ -6910,7 +6636,7 @@ void UOnlineAuthInterfaceImpl::OnClientConnectionClose(class UPlayer* ClientConn
 // Parameter Info:
 // struct FScriptDelegate         ServerAuthRetryRequestDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::ClearServerAuthRetryRequestDelegate(struct FScriptDelegate ServerAuthRetryRequestDelegate)
+void UOnlineAuthInterfaceImpl::ClearServerAuthRetryRequestDelegate(const struct FScriptDelegate& ServerAuthRetryRequestDelegate)
 {
 	static UFunction* uFnClearServerAuthRetryRequestDelegate = nullptr;
 
@@ -6931,7 +6657,7 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthRetryRequestDelegate(struct FScrip
 // Parameter Info:
 // struct FScriptDelegate         ServerAuthRetryRequestDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddServerAuthRetryRequestDelegate(struct FScriptDelegate ServerAuthRetryRequestDelegate)
+void UOnlineAuthInterfaceImpl::AddServerAuthRetryRequestDelegate(const struct FScriptDelegate& ServerAuthRetryRequestDelegate)
 {
 	static UFunction* uFnAddServerAuthRetryRequestDelegate = nullptr;
 
@@ -6963,7 +6689,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthRetryRequest(class UPlayer* ClientCon
 
 	UOnlineAuthInterfaceImpl_execOnServerAuthRetryRequest_Params OnServerAuthRetryRequest_Params;
 	memset(&OnServerAuthRetryRequest_Params, 0, sizeof(OnServerAuthRetryRequest_Params));
-	memcpy_s(&OnServerAuthRetryRequest_Params.ClientConnection, sizeof(OnServerAuthRetryRequest_Params.ClientConnection), &ClientConnection, sizeof(ClientConnection));
+	OnServerAuthRetryRequest_Params.ClientConnection = ClientConnection;
 
 	this->ProcessEvent(uFnOnServerAuthRetryRequest, &OnServerAuthRetryRequest_Params, nullptr);
 };
@@ -6973,7 +6699,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthRetryRequest(class UPlayer* ClientCon
 // Parameter Info:
 // struct FScriptDelegate         ClientAuthEndSessionRequestDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::ClearClientAuthEndSessionRequestDelegate(struct FScriptDelegate ClientAuthEndSessionRequestDelegate)
+void UOnlineAuthInterfaceImpl::ClearClientAuthEndSessionRequestDelegate(const struct FScriptDelegate& ClientAuthEndSessionRequestDelegate)
 {
 	static UFunction* uFnClearClientAuthEndSessionRequestDelegate = nullptr;
 
@@ -6994,7 +6720,7 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthEndSessionRequestDelegate(struct F
 // Parameter Info:
 // struct FScriptDelegate         ClientAuthEndSessionRequestDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddClientAuthEndSessionRequestDelegate(struct FScriptDelegate ClientAuthEndSessionRequestDelegate)
+void UOnlineAuthInterfaceImpl::AddClientAuthEndSessionRequestDelegate(const struct FScriptDelegate& ClientAuthEndSessionRequestDelegate)
 {
 	static UFunction* uFnAddClientAuthEndSessionRequestDelegate = nullptr;
 
@@ -7026,7 +6752,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthEndSessionRequest(class UPlayer* Serv
 
 	UOnlineAuthInterfaceImpl_execOnClientAuthEndSessionRequest_Params OnClientAuthEndSessionRequest_Params;
 	memset(&OnClientAuthEndSessionRequest_Params, 0, sizeof(OnClientAuthEndSessionRequest_Params));
-	memcpy_s(&OnClientAuthEndSessionRequest_Params.ServerConnection, sizeof(OnClientAuthEndSessionRequest_Params.ServerConnection), &ServerConnection, sizeof(ServerConnection));
+	OnClientAuthEndSessionRequest_Params.ServerConnection = ServerConnection;
 
 	this->ProcessEvent(uFnOnClientAuthEndSessionRequest, &OnClientAuthEndSessionRequest_Params, nullptr);
 };
@@ -7036,7 +6762,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthEndSessionRequest(class UPlayer* Serv
 // Parameter Info:
 // struct FScriptDelegate         ServerAuthCompleteDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::ClearServerAuthCompleteDelegate(struct FScriptDelegate ServerAuthCompleteDelegate)
+void UOnlineAuthInterfaceImpl::ClearServerAuthCompleteDelegate(const struct FScriptDelegate& ServerAuthCompleteDelegate)
 {
 	static UFunction* uFnClearServerAuthCompleteDelegate = nullptr;
 
@@ -7057,7 +6783,7 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthCompleteDelegate(struct FScriptDel
 // Parameter Info:
 // struct FScriptDelegate         ServerAuthCompleteDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddServerAuthCompleteDelegate(struct FScriptDelegate ServerAuthCompleteDelegate)
+void UOnlineAuthInterfaceImpl::AddServerAuthCompleteDelegate(const struct FScriptDelegate& ServerAuthCompleteDelegate)
 {
 	static UFunction* uFnAddServerAuthCompleteDelegate = nullptr;
 
@@ -7076,12 +6802,12 @@ void UOnlineAuthInterfaceImpl::AddServerAuthCompleteDelegate(struct FScriptDeleg
 // Function IpDrv.OnlineAuthInterfaceImpl.OnServerAuthComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bSuccess                       (CPF_Parm)
+// uint32_t                       bSuccess                       (CPF_Parm)
 // struct FUniqueNetId            ServerUID                      (CPF_Parm | CPF_NeedCtorLink)
 // class UPlayer*                 ServerConnection               (CPF_Parm)
 // class FString                  ExtraInfo                      (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::OnServerAuthComplete(bool bSuccess, struct FUniqueNetId ServerUID, class UPlayer* ServerConnection, class FString ExtraInfo)
+void UOnlineAuthInterfaceImpl::OnServerAuthComplete(bool bSuccess, const struct FUniqueNetId& ServerUID, class UPlayer* ServerConnection, const class FString& ExtraInfo)
 {
 	static UFunction* uFnOnServerAuthComplete = nullptr;
 
@@ -7094,7 +6820,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthComplete(bool bSuccess, struct FUniqu
 	memset(&OnServerAuthComplete_Params, 0, sizeof(OnServerAuthComplete_Params));
 	OnServerAuthComplete_Params.bSuccess = bSuccess;
 	memcpy_s(&OnServerAuthComplete_Params.ServerUID, sizeof(OnServerAuthComplete_Params.ServerUID), &ServerUID, sizeof(ServerUID));
-	memcpy_s(&OnServerAuthComplete_Params.ServerConnection, sizeof(OnServerAuthComplete_Params.ServerConnection), &ServerConnection, sizeof(ServerConnection));
+	OnServerAuthComplete_Params.ServerConnection = ServerConnection;
 	memcpy_s(&OnServerAuthComplete_Params.ExtraInfo, sizeof(OnServerAuthComplete_Params.ExtraInfo), &ExtraInfo, sizeof(ExtraInfo));
 
 	this->ProcessEvent(uFnOnServerAuthComplete, &OnServerAuthComplete_Params, nullptr);
@@ -7105,7 +6831,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthComplete(bool bSuccess, struct FUniqu
 // Parameter Info:
 // struct FScriptDelegate         ClientAuthCompleteDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::ClearClientAuthCompleteDelegate(struct FScriptDelegate ClientAuthCompleteDelegate)
+void UOnlineAuthInterfaceImpl::ClearClientAuthCompleteDelegate(const struct FScriptDelegate& ClientAuthCompleteDelegate)
 {
 	static UFunction* uFnClearClientAuthCompleteDelegate = nullptr;
 
@@ -7126,7 +6852,7 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthCompleteDelegate(struct FScriptDel
 // Parameter Info:
 // struct FScriptDelegate         ClientAuthCompleteDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddClientAuthCompleteDelegate(struct FScriptDelegate ClientAuthCompleteDelegate)
+void UOnlineAuthInterfaceImpl::AddClientAuthCompleteDelegate(const struct FScriptDelegate& ClientAuthCompleteDelegate)
 {
 	static UFunction* uFnAddClientAuthCompleteDelegate = nullptr;
 
@@ -7145,12 +6871,12 @@ void UOnlineAuthInterfaceImpl::AddClientAuthCompleteDelegate(struct FScriptDeleg
 // Function IpDrv.OnlineAuthInterfaceImpl.OnClientAuthComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bSuccess                       (CPF_Parm)
+// uint32_t                       bSuccess                       (CPF_Parm)
 // struct FUniqueNetId            ClientUID                      (CPF_Parm | CPF_NeedCtorLink)
 // class UPlayer*                 ClientConnection               (CPF_Parm)
 // class FString                  ExtraInfo                      (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::OnClientAuthComplete(bool bSuccess, struct FUniqueNetId ClientUID, class UPlayer* ClientConnection, class FString ExtraInfo)
+void UOnlineAuthInterfaceImpl::OnClientAuthComplete(bool bSuccess, const struct FUniqueNetId& ClientUID, class UPlayer* ClientConnection, const class FString& ExtraInfo)
 {
 	static UFunction* uFnOnClientAuthComplete = nullptr;
 
@@ -7163,7 +6889,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthComplete(bool bSuccess, struct FUniqu
 	memset(&OnClientAuthComplete_Params, 0, sizeof(OnClientAuthComplete_Params));
 	OnClientAuthComplete_Params.bSuccess = bSuccess;
 	memcpy_s(&OnClientAuthComplete_Params.ClientUID, sizeof(OnClientAuthComplete_Params.ClientUID), &ClientUID, sizeof(ClientUID));
-	memcpy_s(&OnClientAuthComplete_Params.ClientConnection, sizeof(OnClientAuthComplete_Params.ClientConnection), &ClientConnection, sizeof(ClientConnection));
+	OnClientAuthComplete_Params.ClientConnection = ClientConnection;
 	memcpy_s(&OnClientAuthComplete_Params.ExtraInfo, sizeof(OnClientAuthComplete_Params.ExtraInfo), &ExtraInfo, sizeof(ExtraInfo));
 
 	this->ProcessEvent(uFnOnClientAuthComplete, &OnClientAuthComplete_Params, nullptr);
@@ -7174,7 +6900,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthComplete(bool bSuccess, struct FUniqu
 // Parameter Info:
 // struct FScriptDelegate         ServerAuthResponseDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::ClearServerAuthResponseDelegate(struct FScriptDelegate ServerAuthResponseDelegate)
+void UOnlineAuthInterfaceImpl::ClearServerAuthResponseDelegate(const struct FScriptDelegate& ServerAuthResponseDelegate)
 {
 	static UFunction* uFnClearServerAuthResponseDelegate = nullptr;
 
@@ -7195,7 +6921,7 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthResponseDelegate(struct FScriptDel
 // Parameter Info:
 // struct FScriptDelegate         ServerAuthResponseDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddServerAuthResponseDelegate(struct FScriptDelegate ServerAuthResponseDelegate)
+void UOnlineAuthInterfaceImpl::AddServerAuthResponseDelegate(const struct FScriptDelegate& ServerAuthResponseDelegate)
 {
 	static UFunction* uFnAddServerAuthResponseDelegate = nullptr;
 
@@ -7218,7 +6944,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthResponseDelegate(struct FScriptDeleg
 // struct FIpAddr                 ServerIP                       (CPF_Parm)
 // int32_t                        AuthTicketUID                  (CPF_Parm)
 
-void UOnlineAuthInterfaceImpl::OnServerAuthResponse(struct FUniqueNetId ServerUID, struct FIpAddr ServerIP, int32_t AuthTicketUID)
+void UOnlineAuthInterfaceImpl::OnServerAuthResponse(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int32_t AuthTicketUID)
 {
 	static UFunction* uFnOnServerAuthResponse = nullptr;
 
@@ -7241,7 +6967,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthResponse(struct FUniqueNetId ServerUI
 // Parameter Info:
 // struct FScriptDelegate         ClientAuthResponseDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::ClearClientAuthResponseDelegate(struct FScriptDelegate ClientAuthResponseDelegate)
+void UOnlineAuthInterfaceImpl::ClearClientAuthResponseDelegate(const struct FScriptDelegate& ClientAuthResponseDelegate)
 {
 	static UFunction* uFnClearClientAuthResponseDelegate = nullptr;
 
@@ -7262,7 +6988,7 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthResponseDelegate(struct FScriptDel
 // Parameter Info:
 // struct FScriptDelegate         ClientAuthResponseDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddClientAuthResponseDelegate(struct FScriptDelegate ClientAuthResponseDelegate)
+void UOnlineAuthInterfaceImpl::AddClientAuthResponseDelegate(const struct FScriptDelegate& ClientAuthResponseDelegate)
 {
 	static UFunction* uFnAddClientAuthResponseDelegate = nullptr;
 
@@ -7285,7 +7011,7 @@ void UOnlineAuthInterfaceImpl::AddClientAuthResponseDelegate(struct FScriptDeleg
 // struct FIpAddr                 ClientIP                       (CPF_Parm)
 // int32_t                        AuthTicketUID                  (CPF_Parm)
 
-void UOnlineAuthInterfaceImpl::OnClientAuthResponse(struct FUniqueNetId ClientUID, struct FIpAddr ClientIP, int32_t AuthTicketUID)
+void UOnlineAuthInterfaceImpl::OnClientAuthResponse(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int32_t AuthTicketUID)
 {
 	static UFunction* uFnOnClientAuthResponse = nullptr;
 
@@ -7308,7 +7034,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthResponse(struct FUniqueNetId ClientUI
 // Parameter Info:
 // struct FScriptDelegate         ServerAuthRequestDelegate      (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::ClearServerAuthRequestDelegate(struct FScriptDelegate ServerAuthRequestDelegate)
+void UOnlineAuthInterfaceImpl::ClearServerAuthRequestDelegate(const struct FScriptDelegate& ServerAuthRequestDelegate)
 {
 	static UFunction* uFnClearServerAuthRequestDelegate = nullptr;
 
@@ -7329,7 +7055,7 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthRequestDelegate(struct FScriptDele
 // Parameter Info:
 // struct FScriptDelegate         ServerAuthRequestDelegate      (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddServerAuthRequestDelegate(struct FScriptDelegate ServerAuthRequestDelegate)
+void UOnlineAuthInterfaceImpl::AddServerAuthRequestDelegate(const struct FScriptDelegate& ServerAuthRequestDelegate)
 {
 	static UFunction* uFnAddServerAuthRequestDelegate = nullptr;
 
@@ -7353,7 +7079,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthRequestDelegate(struct FScriptDelega
 // struct FIpAddr                 ClientIP                       (CPF_Parm)
 // int32_t                        ClientPort                     (CPF_Parm)
 
-void UOnlineAuthInterfaceImpl::OnServerAuthRequest(class UPlayer* ClientConnection, struct FUniqueNetId ClientUID, struct FIpAddr ClientIP, int32_t ClientPort)
+void UOnlineAuthInterfaceImpl::OnServerAuthRequest(class UPlayer* ClientConnection, const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int32_t ClientPort)
 {
 	static UFunction* uFnOnServerAuthRequest = nullptr;
 
@@ -7364,7 +7090,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthRequest(class UPlayer* ClientConnecti
 
 	UOnlineAuthInterfaceImpl_execOnServerAuthRequest_Params OnServerAuthRequest_Params;
 	memset(&OnServerAuthRequest_Params, 0, sizeof(OnServerAuthRequest_Params));
-	memcpy_s(&OnServerAuthRequest_Params.ClientConnection, sizeof(OnServerAuthRequest_Params.ClientConnection), &ClientConnection, sizeof(ClientConnection));
+	OnServerAuthRequest_Params.ClientConnection = ClientConnection;
 	memcpy_s(&OnServerAuthRequest_Params.ClientUID, sizeof(OnServerAuthRequest_Params.ClientUID), &ClientUID, sizeof(ClientUID));
 	memcpy_s(&OnServerAuthRequest_Params.ClientIP, sizeof(OnServerAuthRequest_Params.ClientIP), &ClientIP, sizeof(ClientIP));
 	memcpy_s(&OnServerAuthRequest_Params.ClientPort, sizeof(OnServerAuthRequest_Params.ClientPort), &ClientPort, sizeof(ClientPort));
@@ -7377,7 +7103,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthRequest(class UPlayer* ClientConnecti
 // Parameter Info:
 // struct FScriptDelegate         ClientAuthRequestDelegate      (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::ClearClientAuthRequestDelegate(struct FScriptDelegate ClientAuthRequestDelegate)
+void UOnlineAuthInterfaceImpl::ClearClientAuthRequestDelegate(const struct FScriptDelegate& ClientAuthRequestDelegate)
 {
 	static UFunction* uFnClearClientAuthRequestDelegate = nullptr;
 
@@ -7398,7 +7124,7 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthRequestDelegate(struct FScriptDele
 // Parameter Info:
 // struct FScriptDelegate         ClientAuthRequestDelegate      (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddClientAuthRequestDelegate(struct FScriptDelegate ClientAuthRequestDelegate)
+void UOnlineAuthInterfaceImpl::AddClientAuthRequestDelegate(const struct FScriptDelegate& ClientAuthRequestDelegate)
 {
 	static UFunction* uFnAddClientAuthRequestDelegate = nullptr;
 
@@ -7420,9 +7146,9 @@ void UOnlineAuthInterfaceImpl::AddClientAuthRequestDelegate(struct FScriptDelega
 // struct FUniqueNetId            ServerUID                      (CPF_Parm | CPF_NeedCtorLink)
 // struct FIpAddr                 ServerIP                       (CPF_Parm)
 // int32_t                        ServerPort                     (CPF_Parm)
-// bool                           bSecure                        (CPF_Parm)
+// uint32_t                       bSecure                        (CPF_Parm)
 
-void UOnlineAuthInterfaceImpl::OnClientAuthRequest(struct FUniqueNetId ServerUID, struct FIpAddr ServerIP, int32_t ServerPort, bool bSecure)
+void UOnlineAuthInterfaceImpl::OnClientAuthRequest(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int32_t ServerPort, bool bSecure)
 {
 	static UFunction* uFnOnClientAuthRequest = nullptr;
 
@@ -7446,7 +7172,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthRequest(struct FUniqueNetId ServerUID
 // Parameter Info:
 // struct FScriptDelegate         AuthReadyDelegate              (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::ClearAuthReadyDelegate(struct FScriptDelegate AuthReadyDelegate)
+void UOnlineAuthInterfaceImpl::ClearAuthReadyDelegate(const struct FScriptDelegate& AuthReadyDelegate)
 {
 	static UFunction* uFnClearAuthReadyDelegate = nullptr;
 
@@ -7467,7 +7193,7 @@ void UOnlineAuthInterfaceImpl::ClearAuthReadyDelegate(struct FScriptDelegate Aut
 // Parameter Info:
 // struct FScriptDelegate         AuthReadyDelegate              (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddAuthReadyDelegate(struct FScriptDelegate AuthReadyDelegate)
+void UOnlineAuthInterfaceImpl::AddAuthReadyDelegate(const struct FScriptDelegate& AuthReadyDelegate)
 {
 	static UFunction* uFnAddAuthReadyDelegate = nullptr;
 
@@ -7532,7 +7258,7 @@ bool UOnlineAuthInterfaceImpl::IsReady()
 // struct FUniqueNetId            AccountId                      (CPF_Const | CPF_Parm | CPF_NeedCtorLink)
 // struct FUniqueNetId            PlatformId                     (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlineFriendsInterfaceImpl::GetActivePlatformId(uint8_t LocalUserNum, struct FUniqueNetId AccountId, struct FUniqueNetId& PlatformId)
+bool UOnlineFriendsInterfaceImpl::GetActivePlatformId(uint8_t LocalUserNum, const struct FUniqueNetId& AccountId, struct FUniqueNetId& PlatformId)
 {
 	static UFunction* uFnGetActivePlatformId = nullptr;
 
@@ -7559,10 +7285,10 @@ bool UOnlineFriendsInterfaceImpl::GetActivePlatformId(uint8_t LocalUserNum, stru
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// TArray<struct FUniqueNetId>    AccountIds                     (CPF_Const | CPF_Parm | CPF_NeedCtorLink)
+// class TArray<struct FUniqueNetId> AccountIds                     (CPF_Const | CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineFriendsInterfaceImpl::RequestLinkedAccounts(uint8_t LocalUserNum, TArray<struct FUniqueNetId> AccountIds, struct FScriptDelegate Callback)
+bool UOnlineFriendsInterfaceImpl::RequestLinkedAccounts(uint8_t LocalUserNum, const class TArray<struct FUniqueNetId>& AccountIds, const struct FScriptDelegate& Callback)
 {
 	static UFunction* uFnRequestLinkedAccounts = nullptr;
 
@@ -7585,10 +7311,10 @@ bool UOnlineFriendsInterfaceImpl::RequestLinkedAccounts(uint8_t LocalUserNum, TA
 // Function IpDrv.OnlineFriendsInterfaceImpl.OnReceivedLinkedAccount
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bSuccess                       (CPF_Parm)
-// TArray<struct FLinkedAccountData> LinkedAccountData              (CPF_Parm | CPF_NeedCtorLink)
+// uint32_t                       bSuccess                       (CPF_Parm)
+// class TArray<struct FLinkedAccountData> LinkedAccountData              (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineFriendsInterfaceImpl::OnReceivedLinkedAccount(bool bSuccess, TArray<struct FLinkedAccountData> LinkedAccountData)
+void UOnlineFriendsInterfaceImpl::OnReceivedLinkedAccount(bool bSuccess, const class TArray<struct FLinkedAccountData>& LinkedAccountData)
 {
 	static UFunction* uFnOnReceivedLinkedAccount = nullptr;
 
@@ -7610,7 +7336,7 @@ void UOnlineFriendsInterfaceImpl::OnReceivedLinkedAccount(bool bSuccess, TArray<
 // Parameter Info:
 // struct FScriptDelegate         GamePlayersChangedDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearGamePlayersChangedDelegate(struct FScriptDelegate GamePlayersChangedDelegate)
+void UOnlineGameInterfaceImpl::ClearGamePlayersChangedDelegate(const struct FScriptDelegate& GamePlayersChangedDelegate)
 {
 	static UFunction* uFnClearGamePlayersChangedDelegate = nullptr;
 
@@ -7631,7 +7357,7 @@ void UOnlineGameInterfaceImpl::ClearGamePlayersChangedDelegate(struct FScriptDel
 // Parameter Info:
 // struct FScriptDelegate         GamePlayersChangedDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddGamePlayersChangedDelegate(struct FScriptDelegate GamePlayersChangedDelegate)
+void UOnlineGameInterfaceImpl::AddGamePlayersChangedDelegate(const struct FScriptDelegate& GamePlayersChangedDelegate)
 {
 	static UFunction* uFnAddGamePlayersChangedDelegate = nullptr;
 
@@ -7650,10 +7376,10 @@ void UOnlineGameInterfaceImpl::AddGamePlayersChangedDelegate(struct FScriptDeleg
 // Function IpDrv.OnlineGameInterfaceImpl.OnGamePlayersChanged
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
-// TArray<struct FUniqueNetId>    Players                        (CPF_Parm | CPF_NeedCtorLink)
+// class FName                    SessionName                    (CPF_Parm)
+// class TArray<struct FUniqueNetId> Players                        (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::OnGamePlayersChanged(struct FName SessionName, TArray<struct FUniqueNetId> Players)
+void UOnlineGameInterfaceImpl::OnGamePlayersChanged(const class FName& SessionName, const class TArray<struct FUniqueNetId>& Players)
 {
 	static UFunction* uFnOnGamePlayersChanged = nullptr;
 
@@ -7677,7 +7403,7 @@ void UOnlineGameInterfaceImpl::OnGamePlayersChanged(struct FName SessionName, TA
 // class FString                  ServerAddress                  (CPF_Parm | CPF_NeedCtorLink)
 // ELobbyVisibility               Visibility                     (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::SetFriendJoinLocation(struct FUniqueNetId JoinablePlayerID, class FString ServerAddress, ELobbyVisibility Visibility)
+void UOnlineGameInterfaceImpl::SetFriendJoinLocation(const struct FUniqueNetId& JoinablePlayerID, const class FString& ServerAddress, ELobbyVisibility Visibility)
 {
 	static UFunction* uFnSetFriendJoinLocation = nullptr;
 
@@ -7700,7 +7426,7 @@ void UOnlineGameInterfaceImpl::SetFriendJoinLocation(struct FUniqueNetId Joinabl
 // Parameter Info:
 // struct FScriptDelegate         OldDelegate                    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearReportMatchmakingInfoDelegate(struct FScriptDelegate OldDelegate)
+void UOnlineGameInterfaceImpl::ClearReportMatchmakingInfoDelegate(const struct FScriptDelegate& OldDelegate)
 {
 	static UFunction* uFnClearReportMatchmakingInfoDelegate = nullptr;
 
@@ -7721,7 +7447,7 @@ void UOnlineGameInterfaceImpl::ClearReportMatchmakingInfoDelegate(struct FScript
 // Parameter Info:
 // struct FScriptDelegate         NewDelegate                    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddReportMatchmakingInfoDelegate(struct FScriptDelegate NewDelegate)
+void UOnlineGameInterfaceImpl::AddReportMatchmakingInfoDelegate(const struct FScriptDelegate& NewDelegate)
 {
 	static UFunction* uFnAddReportMatchmakingInfoDelegate = nullptr;
 
@@ -7742,7 +7468,7 @@ void UOnlineGameInterfaceImpl::AddReportMatchmakingInfoDelegate(struct FScriptDe
 // Parameter Info:
 // class FString                  NewInfo                        (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::EventReportMatchmakingInfo(class FString NewInfo)
+void UOnlineGameInterfaceImpl::EventReportMatchmakingInfo(const class FString& NewInfo)
 {
 	static UFunction* uFnEventReportMatchmakingInfo = nullptr;
 
@@ -7763,7 +7489,7 @@ void UOnlineGameInterfaceImpl::EventReportMatchmakingInfo(class FString NewInfo)
 // Parameter Info:
 // struct FScriptDelegate         QosStatusChangedDelegate       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearQosStatusChangedDelegate(struct FScriptDelegate QosStatusChangedDelegate)
+void UOnlineGameInterfaceImpl::ClearQosStatusChangedDelegate(const struct FScriptDelegate& QosStatusChangedDelegate)
 {
 	static UFunction* uFnClearQosStatusChangedDelegate = nullptr;
 
@@ -7784,7 +7510,7 @@ void UOnlineGameInterfaceImpl::ClearQosStatusChangedDelegate(struct FScriptDeleg
 // Parameter Info:
 // struct FScriptDelegate         QosStatusChangedDelegate       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddQosStatusChangedDelegate(struct FScriptDelegate QosStatusChangedDelegate)
+void UOnlineGameInterfaceImpl::AddQosStatusChangedDelegate(const struct FScriptDelegate& QosStatusChangedDelegate)
 {
 	static UFunction* uFnAddQosStatusChangedDelegate = nullptr;
 
@@ -7831,7 +7557,7 @@ void UOnlineGameInterfaceImpl::OnQosStatusChanged(int32_t NumComplete, int32_t N
 // class UOnlineGameSearch*       SearchSettings                 (CPF_Parm)
 // uint8_t                        PlatformSpecificInfo           (CPF_Parm)
 
-bool UOnlineGameInterfaceImpl::BindPlatformSpecificSessionToSearch(uint8_t SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, uint8_t PlatformSpecificInfo)
+bool UOnlineGameInterfaceImpl::BindPlatformSpecificSessionToSearch(uint8_t SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, uint8_t PlatformSpecificInfo[80])
 {
 	static UFunction* uFnBindPlatformSpecificSessionToSearch = nullptr;
 
@@ -7843,12 +7569,10 @@ bool UOnlineGameInterfaceImpl::BindPlatformSpecificSessionToSearch(uint8_t Searc
 	UOnlineGameInterfaceImpl_execBindPlatformSpecificSessionToSearch_Params BindPlatformSpecificSessionToSearch_Params;
 	memset(&BindPlatformSpecificSessionToSearch_Params, 0, sizeof(BindPlatformSpecificSessionToSearch_Params));
 	memcpy_s(&BindPlatformSpecificSessionToSearch_Params.SearchingPlayerNum, sizeof(BindPlatformSpecificSessionToSearch_Params.SearchingPlayerNum), &SearchingPlayerNum, sizeof(SearchingPlayerNum));
-	memcpy_s(&BindPlatformSpecificSessionToSearch_Params.SearchSettings, sizeof(BindPlatformSpecificSessionToSearch_Params.SearchSettings), &SearchSettings, sizeof(SearchSettings));
+	BindPlatformSpecificSessionToSearch_Params.SearchSettings = SearchSettings;
 	memcpy_s(&BindPlatformSpecificSessionToSearch_Params.PlatformSpecificInfo, sizeof(BindPlatformSpecificSessionToSearch_Params.PlatformSpecificInfo), &PlatformSpecificInfo, sizeof(PlatformSpecificInfo));
 
-	uFnBindPlatformSpecificSessionToSearch->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnBindPlatformSpecificSessionToSearch, &BindPlatformSpecificSessionToSearch_Params, nullptr);
-	uFnBindPlatformSpecificSessionToSearch->FunctionFlags |= 0x400;
 
 	return BindPlatformSpecificSessionToSearch_Params.ReturnValue;
 };
@@ -7857,10 +7581,10 @@ bool UOnlineGameInterfaceImpl::BindPlatformSpecificSessionToSearch(uint8_t Searc
 // [0x00420000] (FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // uint8_t                        PlatformSpecificInfo           (CPF_Parm | CPF_OutParm)
 
-bool UOnlineGameInterfaceImpl::ReadPlatformSpecificSessionInfoBySessionName(struct FName SessionName, uint8_t& PlatformSpecificInfo)
+bool UOnlineGameInterfaceImpl::ReadPlatformSpecificSessionInfoBySessionName(const class FName& SessionName, uint8_t& PlatformSpecificInfo)
 {
 	static UFunction* uFnReadPlatformSpecificSessionInfoBySessionName = nullptr;
 
@@ -7902,9 +7626,7 @@ bool UOnlineGameInterfaceImpl::ReadPlatformSpecificSessionInfo(struct FOnlineGam
 	memcpy_s(&ReadPlatformSpecificSessionInfo_Params.DesiredGame, sizeof(ReadPlatformSpecificSessionInfo_Params.DesiredGame), &DesiredGame, sizeof(DesiredGame));
 	memcpy_s(&ReadPlatformSpecificSessionInfo_Params.PlatformSpecificInfo, sizeof(ReadPlatformSpecificSessionInfo_Params.PlatformSpecificInfo), &PlatformSpecificInfo, sizeof(PlatformSpecificInfo));
 
-	uFnReadPlatformSpecificSessionInfo->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnReadPlatformSpecificSessionInfo, &ReadPlatformSpecificSessionInfo_Params, nullptr);
-	uFnReadPlatformSpecificSessionInfo->FunctionFlags |= 0x400;
 
 	memcpy_s(&DesiredGame, sizeof(DesiredGame), &ReadPlatformSpecificSessionInfo_Params.DesiredGame, sizeof(ReadPlatformSpecificSessionInfo_Params.DesiredGame));
 	memcpy_s(&PlatformSpecificInfo, sizeof(PlatformSpecificInfo), &ReadPlatformSpecificSessionInfo_Params.PlatformSpecificInfo, sizeof(ReadPlatformSpecificSessionInfo_Params.PlatformSpecificInfo));
@@ -7943,7 +7665,7 @@ bool UOnlineGameInterfaceImpl::QueryNonAdvertisedData(int32_t StartAt, int32_t N
 // Parameter Info:
 // struct FScriptDelegate         JoinMigratedOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearJoinMigratedOnlineGameCompleteDelegate(struct FScriptDelegate JoinMigratedOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearJoinMigratedOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinMigratedOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnClearJoinMigratedOnlineGameCompleteDelegate = nullptr;
 
@@ -7964,7 +7686,7 @@ void UOnlineGameInterfaceImpl::ClearJoinMigratedOnlineGameCompleteDelegate(struc
 // Parameter Info:
 // struct FScriptDelegate         JoinMigratedOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddJoinMigratedOnlineGameCompleteDelegate(struct FScriptDelegate JoinMigratedOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddJoinMigratedOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinMigratedOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnAddJoinMigratedOnlineGameCompleteDelegate = nullptr;
 
@@ -7983,10 +7705,10 @@ void UOnlineGameInterfaceImpl::AddJoinMigratedOnlineGameCompleteDelegate(struct 
 // Function IpDrv.OnlineGameInterfaceImpl.OnJoinMigratedOnlineGameComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::OnJoinMigratedOnlineGameComplete(struct FName SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnJoinMigratedOnlineGameComplete(const class FName& SessionName, bool bWasSuccessful)
 {
 	static UFunction* uFnOnJoinMigratedOnlineGameComplete = nullptr;
 
@@ -8008,10 +7730,10 @@ void UOnlineGameInterfaceImpl::OnJoinMigratedOnlineGameComplete(struct FName Ses
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        PlayerNum                      (CPF_Parm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // struct FOnlineGameSearchResult DesiredGame                    (CPF_Const | CPF_Parm | CPF_OutParm)
 
-bool UOnlineGameInterfaceImpl::JoinMigratedOnlineGame(uint8_t PlayerNum, struct FName SessionName, struct FOnlineGameSearchResult& DesiredGame)
+bool UOnlineGameInterfaceImpl::JoinMigratedOnlineGame(uint8_t PlayerNum, const class FName& SessionName, struct FOnlineGameSearchResult& DesiredGame)
 {
 	static UFunction* uFnJoinMigratedOnlineGame = nullptr;
 
@@ -8038,7 +7760,7 @@ bool UOnlineGameInterfaceImpl::JoinMigratedOnlineGame(uint8_t PlayerNum, struct 
 // Parameter Info:
 // struct FScriptDelegate         MigrateOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearMigrateOnlineGameCompleteDelegate(struct FScriptDelegate MigrateOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearMigrateOnlineGameCompleteDelegate(const struct FScriptDelegate& MigrateOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnClearMigrateOnlineGameCompleteDelegate = nullptr;
 
@@ -8059,7 +7781,7 @@ void UOnlineGameInterfaceImpl::ClearMigrateOnlineGameCompleteDelegate(struct FSc
 // Parameter Info:
 // struct FScriptDelegate         MigrateOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddMigrateOnlineGameCompleteDelegate(struct FScriptDelegate MigrateOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddMigrateOnlineGameCompleteDelegate(const struct FScriptDelegate& MigrateOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnAddMigrateOnlineGameCompleteDelegate = nullptr;
 
@@ -8078,10 +7800,10 @@ void UOnlineGameInterfaceImpl::AddMigrateOnlineGameCompleteDelegate(struct FScri
 // Function IpDrv.OnlineGameInterfaceImpl.OnMigrateOnlineGameComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::OnMigrateOnlineGameComplete(struct FName SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnMigrateOnlineGameComplete(const class FName& SessionName, bool bWasSuccessful)
 {
 	static UFunction* uFnOnMigrateOnlineGameComplete = nullptr;
 
@@ -8103,9 +7825,9 @@ void UOnlineGameInterfaceImpl::OnMigrateOnlineGameComplete(struct FName SessionN
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        HostingPlayerNum               (CPF_Parm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 
-bool UOnlineGameInterfaceImpl::MigrateOnlineGame(uint8_t HostingPlayerNum, struct FName SessionName)
+bool UOnlineGameInterfaceImpl::MigrateOnlineGame(uint8_t HostingPlayerNum, const class FName& SessionName)
 {
 	static UFunction* uFnMigrateOnlineGame = nullptr;
 
@@ -8129,7 +7851,7 @@ bool UOnlineGameInterfaceImpl::MigrateOnlineGame(uint8_t HostingPlayerNum, struc
 // Parameter Info:
 // struct FScriptDelegate         RecalculateSkillRatingGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearRecalculateSkillRatingCompleteDelegate(struct FScriptDelegate RecalculateSkillRatingGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearRecalculateSkillRatingCompleteDelegate(const struct FScriptDelegate& RecalculateSkillRatingGameCompleteDelegate)
 {
 	static UFunction* uFnClearRecalculateSkillRatingCompleteDelegate = nullptr;
 
@@ -8150,7 +7872,7 @@ void UOnlineGameInterfaceImpl::ClearRecalculateSkillRatingCompleteDelegate(struc
 // Parameter Info:
 // struct FScriptDelegate         RecalculateSkillRatingCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddRecalculateSkillRatingCompleteDelegate(struct FScriptDelegate RecalculateSkillRatingCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddRecalculateSkillRatingCompleteDelegate(const struct FScriptDelegate& RecalculateSkillRatingCompleteDelegate)
 {
 	static UFunction* uFnAddRecalculateSkillRatingCompleteDelegate = nullptr;
 
@@ -8169,10 +7891,10 @@ void UOnlineGameInterfaceImpl::AddRecalculateSkillRatingCompleteDelegate(struct 
 // Function IpDrv.OnlineGameInterfaceImpl.OnRecalculateSkillRatingComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::OnRecalculateSkillRatingComplete(struct FName SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnRecalculateSkillRatingComplete(const class FName& SessionName, bool bWasSuccessful)
 {
 	static UFunction* uFnOnRecalculateSkillRatingComplete = nullptr;
 
@@ -8193,10 +7915,10 @@ void UOnlineGameInterfaceImpl::OnRecalculateSkillRatingComplete(struct FName Ses
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
-// TArray<struct FUniqueNetId>    Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class FName                    SessionName                    (CPF_Parm)
+// class TArray<struct FUniqueNetId> Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlineGameInterfaceImpl::RecalculateSkillRating(struct FName SessionName, TArray<struct FUniqueNetId>& Players)
+bool UOnlineGameInterfaceImpl::RecalculateSkillRating(const class FName& SessionName, class TArray<struct FUniqueNetId>& Players)
 {
 	static UFunction* uFnRecalculateSkillRating = nullptr;
 
@@ -8222,9 +7944,9 @@ bool UOnlineGameInterfaceImpl::RecalculateSkillRating(struct FName SessionName, 
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        LocalUserNum                   (CPF_Parm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 
-bool UOnlineGameInterfaceImpl::AcceptGameInvite(uint8_t LocalUserNum, struct FName SessionName)
+bool UOnlineGameInterfaceImpl::AcceptGameInvite(uint8_t LocalUserNum, const class FName& SessionName)
 {
 	static UFunction* uFnAcceptGameInvite = nullptr;
 
@@ -8249,7 +7971,7 @@ bool UOnlineGameInterfaceImpl::AcceptGameInvite(uint8_t LocalUserNum, struct FNa
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         GameInviteAcceptedDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearGameInviteAcceptedDelegate(uint8_t LocalUserNum, struct FScriptDelegate GameInviteAcceptedDelegate)
+void UOnlineGameInterfaceImpl::ClearGameInviteAcceptedDelegate(uint8_t LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate)
 {
 	static UFunction* uFnClearGameInviteAcceptedDelegate = nullptr;
 
@@ -8272,7 +7994,7 @@ void UOnlineGameInterfaceImpl::ClearGameInviteAcceptedDelegate(uint8_t LocalUser
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         GameInviteAcceptedDelegate     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddGameInviteAcceptedDelegate(uint8_t LocalUserNum, struct FScriptDelegate GameInviteAcceptedDelegate)
+void UOnlineGameInterfaceImpl::AddGameInviteAcceptedDelegate(uint8_t LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate)
 {
 	static UFunction* uFnAddGameInviteAcceptedDelegate = nullptr;
 
@@ -8295,7 +8017,7 @@ void UOnlineGameInterfaceImpl::AddGameInviteAcceptedDelegate(uint8_t LocalUserNu
 // class FString                  ErrorString                    (CPF_Parm | CPF_NeedCtorLink)
 // struct FOnlineGameSearchResult InviteResult                   (CPF_Const | CPF_Parm | CPF_OutParm)
 
-void UOnlineGameInterfaceImpl::OnGameInviteAccepted(class FString ErrorString, struct FOnlineGameSearchResult& InviteResult)
+void UOnlineGameInterfaceImpl::OnGameInviteAccepted(const class FString& ErrorString, struct FOnlineGameSearchResult& InviteResult)
 {
 	static UFunction* uFnOnGameInviteAccepted = nullptr;
 
@@ -8317,10 +8039,10 @@ void UOnlineGameInterfaceImpl::OnGameInviteAccepted(class FString ErrorString, s
 // Function IpDrv.OnlineGameInterfaceImpl.GetArbitratedPlayers
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// TArray<struct FOnlineArbitrationRegistrant> ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
-// struct FName                   SessionName                    (CPF_Parm)
+// class TArray<struct FOnlineArbitrationRegistrant> ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class FName                    SessionName                    (CPF_Parm)
 
-TArray<struct FOnlineArbitrationRegistrant> UOnlineGameInterfaceImpl::GetArbitratedPlayers(struct FName SessionName)
+class TArray<struct FOnlineArbitrationRegistrant> UOnlineGameInterfaceImpl::GetArbitratedPlayers(const class FName& SessionName)
 {
 	static UFunction* uFnGetArbitratedPlayers = nullptr;
 
@@ -8343,7 +8065,7 @@ TArray<struct FOnlineArbitrationRegistrant> UOnlineGameInterfaceImpl::GetArbitra
 // Parameter Info:
 // struct FScriptDelegate         ArbitrationRegistrationCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearArbitrationRegistrationCompleteDelegate(struct FScriptDelegate ArbitrationRegistrationCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate)
 {
 	static UFunction* uFnClearArbitrationRegistrationCompleteDelegate = nullptr;
 
@@ -8364,7 +8086,7 @@ void UOnlineGameInterfaceImpl::ClearArbitrationRegistrationCompleteDelegate(stru
 // Parameter Info:
 // struct FScriptDelegate         ArbitrationRegistrationCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddArbitrationRegistrationCompleteDelegate(struct FScriptDelegate ArbitrationRegistrationCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate)
 {
 	static UFunction* uFnAddArbitrationRegistrationCompleteDelegate = nullptr;
 
@@ -8383,10 +8105,10 @@ void UOnlineGameInterfaceImpl::AddArbitrationRegistrationCompleteDelegate(struct
 // Function IpDrv.OnlineGameInterfaceImpl.OnArbitrationRegistrationComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::OnArbitrationRegistrationComplete(struct FName SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnArbitrationRegistrationComplete(const class FName& SessionName, bool bWasSuccessful)
 {
 	static UFunction* uFnOnArbitrationRegistrationComplete = nullptr;
 
@@ -8407,9 +8129,9 @@ void UOnlineGameInterfaceImpl::OnArbitrationRegistrationComplete(struct FName Se
 // [0x00020001] (FUNC_Final | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 
-bool UOnlineGameInterfaceImpl::RegisterForArbitration(struct FName SessionName)
+bool UOnlineGameInterfaceImpl::RegisterForArbitration(const class FName& SessionName)
 {
 	static UFunction* uFnRegisterForArbitration = nullptr;
 
@@ -8432,7 +8154,7 @@ bool UOnlineGameInterfaceImpl::RegisterForArbitration(struct FName SessionName)
 // Parameter Info:
 // struct FScriptDelegate         EndOnlineGameCompleteDelegate  (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearEndOnlineGameCompleteDelegate(struct FScriptDelegate EndOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnClearEndOnlineGameCompleteDelegate = nullptr;
 
@@ -8453,7 +8175,7 @@ void UOnlineGameInterfaceImpl::ClearEndOnlineGameCompleteDelegate(struct FScript
 // Parameter Info:
 // struct FScriptDelegate         EndOnlineGameCompleteDelegate  (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddEndOnlineGameCompleteDelegate(struct FScriptDelegate EndOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnAddEndOnlineGameCompleteDelegate = nullptr;
 
@@ -8472,10 +8194,10 @@ void UOnlineGameInterfaceImpl::AddEndOnlineGameCompleteDelegate(struct FScriptDe
 // Function IpDrv.OnlineGameInterfaceImpl.OnEndOnlineGameComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::OnEndOnlineGameComplete(struct FName SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnEndOnlineGameComplete(const class FName& SessionName, bool bWasSuccessful)
 {
 	static UFunction* uFnOnEndOnlineGameComplete = nullptr;
 
@@ -8496,9 +8218,9 @@ void UOnlineGameInterfaceImpl::OnEndOnlineGameComplete(struct FName SessionName,
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 
-bool UOnlineGameInterfaceImpl::EndOnlineGame(struct FName SessionName)
+bool UOnlineGameInterfaceImpl::EndOnlineGame(const class FName& SessionName)
 {
 	static UFunction* uFnEndOnlineGame = nullptr;
 
@@ -8511,9 +8233,7 @@ bool UOnlineGameInterfaceImpl::EndOnlineGame(struct FName SessionName)
 	memset(&EndOnlineGame_Params, 0, sizeof(EndOnlineGame_Params));
 	memcpy_s(&EndOnlineGame_Params.SessionName, sizeof(EndOnlineGame_Params.SessionName), &SessionName, sizeof(SessionName));
 
-	uFnEndOnlineGame->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnEndOnlineGame, &EndOnlineGame_Params, nullptr);
-	uFnEndOnlineGame->FunctionFlags |= 0x400;
 
 	return EndOnlineGame_Params.ReturnValue;
 };
@@ -8523,7 +8243,7 @@ bool UOnlineGameInterfaceImpl::EndOnlineGame(struct FName SessionName)
 // Parameter Info:
 // struct FScriptDelegate         StartOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearStartOnlineGameCompleteDelegate(struct FScriptDelegate StartOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnClearStartOnlineGameCompleteDelegate = nullptr;
 
@@ -8544,7 +8264,7 @@ void UOnlineGameInterfaceImpl::ClearStartOnlineGameCompleteDelegate(struct FScri
 // Parameter Info:
 // struct FScriptDelegate         StartOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddStartOnlineGameCompleteDelegate(struct FScriptDelegate StartOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnAddStartOnlineGameCompleteDelegate = nullptr;
 
@@ -8563,10 +8283,10 @@ void UOnlineGameInterfaceImpl::AddStartOnlineGameCompleteDelegate(struct FScript
 // Function IpDrv.OnlineGameInterfaceImpl.OnStartOnlineGameComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::OnStartOnlineGameComplete(struct FName SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnStartOnlineGameComplete(const class FName& SessionName, bool bWasSuccessful)
 {
 	static UFunction* uFnOnStartOnlineGameComplete = nullptr;
 
@@ -8587,9 +8307,9 @@ void UOnlineGameInterfaceImpl::OnStartOnlineGameComplete(struct FName SessionNam
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 
-bool UOnlineGameInterfaceImpl::StartOnlineGame(struct FName SessionName)
+bool UOnlineGameInterfaceImpl::StartOnlineGame(const class FName& SessionName)
 {
 	static UFunction* uFnStartOnlineGame = nullptr;
 
@@ -8602,9 +8322,7 @@ bool UOnlineGameInterfaceImpl::StartOnlineGame(struct FName SessionName)
 	memset(&StartOnlineGame_Params, 0, sizeof(StartOnlineGame_Params));
 	memcpy_s(&StartOnlineGame_Params.SessionName, sizeof(StartOnlineGame_Params.SessionName), &SessionName, sizeof(SessionName));
 
-	uFnStartOnlineGame->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnStartOnlineGame, &StartOnlineGame_Params, nullptr);
-	uFnStartOnlineGame->FunctionFlags |= 0x400;
 
 	return StartOnlineGame_Params.ReturnValue;
 };
@@ -8614,7 +8332,7 @@ bool UOnlineGameInterfaceImpl::StartOnlineGame(struct FName SessionName)
 // Parameter Info:
 // struct FScriptDelegate         UnregisterPlayerCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearUnregisterPlayerCompleteDelegate(struct FScriptDelegate UnregisterPlayerCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate)
 {
 	static UFunction* uFnClearUnregisterPlayerCompleteDelegate = nullptr;
 
@@ -8635,7 +8353,7 @@ void UOnlineGameInterfaceImpl::ClearUnregisterPlayerCompleteDelegate(struct FScr
 // Parameter Info:
 // struct FScriptDelegate         UnregisterPlayerCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddUnregisterPlayerCompleteDelegate(struct FScriptDelegate UnregisterPlayerCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate)
 {
 	static UFunction* uFnAddUnregisterPlayerCompleteDelegate = nullptr;
 
@@ -8654,11 +8372,11 @@ void UOnlineGameInterfaceImpl::AddUnregisterPlayerCompleteDelegate(struct FScrip
 // Function IpDrv.OnlineGameInterfaceImpl.OnUnregisterPlayerComplete
 // [0x00120000] (FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::OnUnregisterPlayerComplete(struct FName SessionName, struct FUniqueNetId PlayerID, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnUnregisterPlayerComplete(const class FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful)
 {
 	static UFunction* uFnOnUnregisterPlayerComplete = nullptr;
 
@@ -8680,10 +8398,10 @@ void UOnlineGameInterfaceImpl::OnUnregisterPlayerComplete(struct FName SessionNa
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
-// TArray<struct FUniqueNetId>    Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class FName                    SessionName                    (CPF_Parm)
+// class TArray<struct FUniqueNetId> Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlineGameInterfaceImpl::UnregisterPlayers(struct FName SessionName, TArray<struct FUniqueNetId>& Players)
+bool UOnlineGameInterfaceImpl::UnregisterPlayers(const class FName& SessionName, class TArray<struct FUniqueNetId>& Players)
 {
 	static UFunction* uFnUnregisterPlayers = nullptr;
 
@@ -8708,10 +8426,10 @@ bool UOnlineGameInterfaceImpl::UnregisterPlayers(struct FName SessionName, TArra
 // [0x00020000] (FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineGameInterfaceImpl::UnregisterPlayer(struct FName SessionName, struct FUniqueNetId PlayerID)
+bool UOnlineGameInterfaceImpl::UnregisterPlayer(const class FName& SessionName, const struct FUniqueNetId& PlayerID)
 {
 	static UFunction* uFnUnregisterPlayer = nullptr;
 
@@ -8735,7 +8453,7 @@ bool UOnlineGameInterfaceImpl::UnregisterPlayer(struct FName SessionName, struct
 // Parameter Info:
 // struct FScriptDelegate         RegisterPlayerCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearRegisterPlayerCompleteDelegate(struct FScriptDelegate RegisterPlayerCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate)
 {
 	static UFunction* uFnClearRegisterPlayerCompleteDelegate = nullptr;
 
@@ -8756,7 +8474,7 @@ void UOnlineGameInterfaceImpl::ClearRegisterPlayerCompleteDelegate(struct FScrip
 // Parameter Info:
 // struct FScriptDelegate         RegisterPlayerCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddRegisterPlayerCompleteDelegate(struct FScriptDelegate RegisterPlayerCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate)
 {
 	static UFunction* uFnAddRegisterPlayerCompleteDelegate = nullptr;
 
@@ -8775,11 +8493,11 @@ void UOnlineGameInterfaceImpl::AddRegisterPlayerCompleteDelegate(struct FScriptD
 // Function IpDrv.OnlineGameInterfaceImpl.OnRegisterPlayerComplete
 // [0x00120000] (FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::OnRegisterPlayerComplete(struct FName SessionName, struct FUniqueNetId PlayerID, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnRegisterPlayerComplete(const class FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful)
 {
 	static UFunction* uFnOnRegisterPlayerComplete = nullptr;
 
@@ -8801,10 +8519,10 @@ void UOnlineGameInterfaceImpl::OnRegisterPlayerComplete(struct FName SessionName
 // [0x00420001] (FUNC_Final | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
-// TArray<struct FUniqueNetId>    Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class FName                    SessionName                    (CPF_Parm)
+// class TArray<struct FUniqueNetId> Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlineGameInterfaceImpl::RegisterPlayers(struct FName SessionName, TArray<struct FUniqueNetId>& Players)
+bool UOnlineGameInterfaceImpl::RegisterPlayers(const class FName& SessionName, class TArray<struct FUniqueNetId>& Players)
 {
 	static UFunction* uFnRegisterPlayers = nullptr;
 
@@ -8829,11 +8547,11 @@ bool UOnlineGameInterfaceImpl::RegisterPlayers(struct FName SessionName, TArray<
 // [0x00020000] (FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasInvited                    (CPF_Parm)
+// uint32_t                       bWasInvited                    (CPF_Parm)
 
-bool UOnlineGameInterfaceImpl::RegisterPlayer(struct FName SessionName, struct FUniqueNetId PlayerID, bool bWasInvited)
+bool UOnlineGameInterfaceImpl::RegisterPlayer(const class FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasInvited)
 {
 	static UFunction* uFnRegisterPlayer = nullptr;
 
@@ -8857,10 +8575,10 @@ bool UOnlineGameInterfaceImpl::RegisterPlayer(struct FName SessionName, struct F
 // [0x00420400] (FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // class FString                  ConnectInfo                    (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlineGameInterfaceImpl::GetResolvedConnectString(struct FName SessionName, class FString& ConnectInfo)
+bool UOnlineGameInterfaceImpl::GetResolvedConnectString(const class FName& SessionName, class FString& ConnectInfo)
 {
 	static UFunction* uFnGetResolvedConnectString = nullptr;
 
@@ -8874,9 +8592,7 @@ bool UOnlineGameInterfaceImpl::GetResolvedConnectString(struct FName SessionName
 	memcpy_s(&GetResolvedConnectString_Params.SessionName, sizeof(GetResolvedConnectString_Params.SessionName), &SessionName, sizeof(SessionName));
 	memcpy_s(&GetResolvedConnectString_Params.ConnectInfo, sizeof(GetResolvedConnectString_Params.ConnectInfo), &ConnectInfo, sizeof(ConnectInfo));
 
-	uFnGetResolvedConnectString->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetResolvedConnectString, &GetResolvedConnectString_Params, nullptr);
-	uFnGetResolvedConnectString->FunctionFlags |= 0x400;
 
 	memcpy_s(&ConnectInfo, sizeof(ConnectInfo), &GetResolvedConnectString_Params.ConnectInfo, sizeof(GetResolvedConnectString_Params.ConnectInfo));
 
@@ -8888,7 +8604,7 @@ bool UOnlineGameInterfaceImpl::GetResolvedConnectString(struct FName SessionName
 // Parameter Info:
 // struct FScriptDelegate         JoinOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearJoinOnlineGameCompleteDelegate(struct FScriptDelegate JoinOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnClearJoinOnlineGameCompleteDelegate = nullptr;
 
@@ -8909,7 +8625,7 @@ void UOnlineGameInterfaceImpl::ClearJoinOnlineGameCompleteDelegate(struct FScrip
 // Parameter Info:
 // struct FScriptDelegate         JoinOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddJoinOnlineGameCompleteDelegate(struct FScriptDelegate JoinOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnAddJoinOnlineGameCompleteDelegate = nullptr;
 
@@ -8928,10 +8644,10 @@ void UOnlineGameInterfaceImpl::AddJoinOnlineGameCompleteDelegate(struct FScriptD
 // Function IpDrv.OnlineGameInterfaceImpl.OnJoinOnlineGameComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::OnJoinOnlineGameComplete(struct FName SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnJoinOnlineGameComplete(const class FName& SessionName, bool bWasSuccessful)
 {
 	static UFunction* uFnOnJoinOnlineGameComplete = nullptr;
 
@@ -8953,10 +8669,10 @@ void UOnlineGameInterfaceImpl::OnJoinOnlineGameComplete(struct FName SessionName
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        PlayerNum                      (CPF_Parm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // struct FOnlineGameSearchResult DesiredGame                    (CPF_Const | CPF_Parm | CPF_OutParm)
 
-bool UOnlineGameInterfaceImpl::JoinOnlineGame(uint8_t PlayerNum, struct FName SessionName, struct FOnlineGameSearchResult& DesiredGame)
+bool UOnlineGameInterfaceImpl::JoinOnlineGame(uint8_t PlayerNum, const class FName& SessionName, struct FOnlineGameSearchResult& DesiredGame)
 {
 	static UFunction* uFnJoinOnlineGame = nullptr;
 
@@ -8971,9 +8687,7 @@ bool UOnlineGameInterfaceImpl::JoinOnlineGame(uint8_t PlayerNum, struct FName Se
 	memcpy_s(&JoinOnlineGame_Params.SessionName, sizeof(JoinOnlineGame_Params.SessionName), &SessionName, sizeof(SessionName));
 	memcpy_s(&JoinOnlineGame_Params.DesiredGame, sizeof(JoinOnlineGame_Params.DesiredGame), &DesiredGame, sizeof(DesiredGame));
 
-	uFnJoinOnlineGame->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnJoinOnlineGame, &JoinOnlineGame_Params, nullptr);
-	uFnJoinOnlineGame->FunctionFlags |= 0x400;
 
 	memcpy_s(&DesiredGame, sizeof(DesiredGame), &JoinOnlineGame_Params.DesiredGame, sizeof(JoinOnlineGame_Params.DesiredGame));
 
@@ -8997,11 +8711,9 @@ bool UOnlineGameInterfaceImpl::FreeSearchResults(class UOnlineGameSearch* Search
 
 	UOnlineGameInterfaceImpl_execFreeSearchResults_Params FreeSearchResults_Params;
 	memset(&FreeSearchResults_Params, 0, sizeof(FreeSearchResults_Params));
-	memcpy_s(&FreeSearchResults_Params.Search, sizeof(FreeSearchResults_Params.Search), &Search, sizeof(Search));
+	FreeSearchResults_Params.Search = Search;
 
-	uFnFreeSearchResults->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnFreeSearchResults, &FreeSearchResults_Params, nullptr);
-	uFnFreeSearchResults->FunctionFlags |= 0x400;
 
 	return FreeSearchResults_Params.ReturnValue;
 };
@@ -9011,7 +8723,7 @@ bool UOnlineGameInterfaceImpl::FreeSearchResults(class UOnlineGameSearch* Search
 // Parameter Info:
 // struct FScriptDelegate         CancelFindOnlineGamesCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearCancelFindOnlineGamesCompleteDelegate(struct FScriptDelegate CancelFindOnlineGamesCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate)
 {
 	static UFunction* uFnClearCancelFindOnlineGamesCompleteDelegate = nullptr;
 
@@ -9032,7 +8744,7 @@ void UOnlineGameInterfaceImpl::ClearCancelFindOnlineGamesCompleteDelegate(struct
 // Parameter Info:
 // struct FScriptDelegate         CancelFindOnlineGamesCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddCancelFindOnlineGamesCompleteDelegate(struct FScriptDelegate CancelFindOnlineGamesCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate)
 {
 	static UFunction* uFnAddCancelFindOnlineGamesCompleteDelegate = nullptr;
 
@@ -9051,7 +8763,7 @@ void UOnlineGameInterfaceImpl::AddCancelFindOnlineGamesCompleteDelegate(struct F
 // Function IpDrv.OnlineGameInterfaceImpl.OnCancelFindOnlineGamesComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UOnlineGameInterfaceImpl::OnCancelFindOnlineGamesComplete(bool bWasSuccessful)
 {
@@ -9086,9 +8798,7 @@ bool UOnlineGameInterfaceImpl::CancelFindOnlineGames()
 	UOnlineGameInterfaceImpl_execCancelFindOnlineGames_Params CancelFindOnlineGames_Params;
 	memset(&CancelFindOnlineGames_Params, 0, sizeof(CancelFindOnlineGames_Params));
 
-	uFnCancelFindOnlineGames->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnCancelFindOnlineGames, &CancelFindOnlineGames_Params, nullptr);
-	uFnCancelFindOnlineGames->FunctionFlags |= 0x400;
 
 	return CancelFindOnlineGames_Params.ReturnValue;
 };
@@ -9098,7 +8808,7 @@ bool UOnlineGameInterfaceImpl::CancelFindOnlineGames()
 // Parameter Info:
 // struct FScriptDelegate         FindOnlineGamesCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearFindOnlineGamesCompleteDelegate(struct FScriptDelegate FindOnlineGamesCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate)
 {
 	static UFunction* uFnClearFindOnlineGamesCompleteDelegate = nullptr;
 
@@ -9119,7 +8829,7 @@ void UOnlineGameInterfaceImpl::ClearFindOnlineGamesCompleteDelegate(struct FScri
 // Parameter Info:
 // struct FScriptDelegate         FindOnlineGamesCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddFindOnlineGamesCompleteDelegate(struct FScriptDelegate FindOnlineGamesCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate)
 {
 	static UFunction* uFnAddFindOnlineGamesCompleteDelegate = nullptr;
 
@@ -9154,11 +8864,9 @@ bool UOnlineGameInterfaceImpl::FindOnlineGames(uint8_t SearchingPlayerNum, class
 	UOnlineGameInterfaceImpl_execFindOnlineGames_Params FindOnlineGames_Params;
 	memset(&FindOnlineGames_Params, 0, sizeof(FindOnlineGames_Params));
 	memcpy_s(&FindOnlineGames_Params.SearchingPlayerNum, sizeof(FindOnlineGames_Params.SearchingPlayerNum), &SearchingPlayerNum, sizeof(SearchingPlayerNum));
-	memcpy_s(&FindOnlineGames_Params.SearchSettings, sizeof(FindOnlineGames_Params.SearchSettings), &SearchSettings, sizeof(SearchSettings));
+	FindOnlineGames_Params.SearchSettings = SearchSettings;
 
-	uFnFindOnlineGames->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnFindOnlineGames, &FindOnlineGames_Params, nullptr);
-	uFnFindOnlineGames->FunctionFlags |= 0x400;
 
 	return FindOnlineGames_Params.ReturnValue;
 };
@@ -9168,7 +8876,7 @@ bool UOnlineGameInterfaceImpl::FindOnlineGames(uint8_t SearchingPlayerNum, class
 // Parameter Info:
 // struct FScriptDelegate         DestroyOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearDestroyOnlineGameCompleteDelegate(struct FScriptDelegate DestroyOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnClearDestroyOnlineGameCompleteDelegate = nullptr;
 
@@ -9189,7 +8897,7 @@ void UOnlineGameInterfaceImpl::ClearDestroyOnlineGameCompleteDelegate(struct FSc
 // Parameter Info:
 // struct FScriptDelegate         DestroyOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddDestroyOnlineGameCompleteDelegate(struct FScriptDelegate DestroyOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnAddDestroyOnlineGameCompleteDelegate = nullptr;
 
@@ -9208,10 +8916,10 @@ void UOnlineGameInterfaceImpl::AddDestroyOnlineGameCompleteDelegate(struct FScri
 // Function IpDrv.OnlineGameInterfaceImpl.OnDestroyOnlineGameComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::OnDestroyOnlineGameComplete(struct FName SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnDestroyOnlineGameComplete(const class FName& SessionName, bool bWasSuccessful)
 {
 	static UFunction* uFnOnDestroyOnlineGameComplete = nullptr;
 
@@ -9232,9 +8940,9 @@ void UOnlineGameInterfaceImpl::OnDestroyOnlineGameComplete(struct FName SessionN
 // [0x00020400] (FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 
-bool UOnlineGameInterfaceImpl::DestroyOnlineGame(struct FName SessionName)
+bool UOnlineGameInterfaceImpl::DestroyOnlineGame(const class FName& SessionName)
 {
 	static UFunction* uFnDestroyOnlineGame = nullptr;
 
@@ -9247,9 +8955,7 @@ bool UOnlineGameInterfaceImpl::DestroyOnlineGame(struct FName SessionName)
 	memset(&DestroyOnlineGame_Params, 0, sizeof(DestroyOnlineGame_Params));
 	memcpy_s(&DestroyOnlineGame_Params.SessionName, sizeof(DestroyOnlineGame_Params.SessionName), &SessionName, sizeof(SessionName));
 
-	uFnDestroyOnlineGame->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDestroyOnlineGame, &DestroyOnlineGame_Params, nullptr);
-	uFnDestroyOnlineGame->FunctionFlags |= 0x400;
 
 	return DestroyOnlineGame_Params.ReturnValue;
 };
@@ -9259,7 +8965,7 @@ bool UOnlineGameInterfaceImpl::DestroyOnlineGame(struct FName SessionName)
 // Parameter Info:
 // struct FScriptDelegate         UpdateOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearUpdateOnlineGameCompleteDelegate(struct FScriptDelegate UpdateOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnClearUpdateOnlineGameCompleteDelegate = nullptr;
 
@@ -9280,7 +8986,7 @@ void UOnlineGameInterfaceImpl::ClearUpdateOnlineGameCompleteDelegate(struct FScr
 // Parameter Info:
 // struct FScriptDelegate         UpdateOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddUpdateOnlineGameCompleteDelegate(struct FScriptDelegate UpdateOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnAddUpdateOnlineGameCompleteDelegate = nullptr;
 
@@ -9299,10 +9005,10 @@ void UOnlineGameInterfaceImpl::AddUpdateOnlineGameCompleteDelegate(struct FScrip
 // Function IpDrv.OnlineGameInterfaceImpl.OnUpdateOnlineGameComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::OnUpdateOnlineGameComplete(struct FName SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnUpdateOnlineGameComplete(const class FName& SessionName, bool bWasSuccessful)
 {
 	static UFunction* uFnOnUpdateOnlineGameComplete = nullptr;
 
@@ -9323,11 +9029,11 @@ void UOnlineGameInterfaceImpl::OnUpdateOnlineGameComplete(struct FName SessionNa
 // [0x00024000] (FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // class UOnlineGameSettings*     UpdatedGameSettings            (CPF_Parm)
-// bool                           bShouldRefreshOnlineData       (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bShouldRefreshOnlineData       (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlineGameInterfaceImpl::UpdateOnlineGame(struct FName SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool bShouldRefreshOnlineData)
+bool UOnlineGameInterfaceImpl::UpdateOnlineGame(const class FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool bShouldRefreshOnlineData)
 {
 	static UFunction* uFnUpdateOnlineGame = nullptr;
 
@@ -9339,7 +9045,7 @@ bool UOnlineGameInterfaceImpl::UpdateOnlineGame(struct FName SessionName, class 
 	UOnlineGameInterfaceImpl_execUpdateOnlineGame_Params UpdateOnlineGame_Params;
 	memset(&UpdateOnlineGame_Params, 0, sizeof(UpdateOnlineGame_Params));
 	memcpy_s(&UpdateOnlineGame_Params.SessionName, sizeof(UpdateOnlineGame_Params.SessionName), &SessionName, sizeof(SessionName));
-	memcpy_s(&UpdateOnlineGame_Params.UpdatedGameSettings, sizeof(UpdateOnlineGame_Params.UpdatedGameSettings), &UpdatedGameSettings, sizeof(UpdatedGameSettings));
+	UpdateOnlineGame_Params.UpdatedGameSettings = UpdatedGameSettings;
 	UpdateOnlineGame_Params.bShouldRefreshOnlineData = bShouldRefreshOnlineData;
 
 	this->ProcessEvent(uFnUpdateOnlineGame, &UpdateOnlineGame_Params, nullptr);
@@ -9352,7 +9058,7 @@ bool UOnlineGameInterfaceImpl::UpdateOnlineGame(struct FName SessionName, class 
 // Parameter Info:
 // struct FScriptDelegate         CreateOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::ClearCreateOnlineGameCompleteDelegate(struct FScriptDelegate CreateOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::ClearCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnClearCreateOnlineGameCompleteDelegate = nullptr;
 
@@ -9373,7 +9079,7 @@ void UOnlineGameInterfaceImpl::ClearCreateOnlineGameCompleteDelegate(struct FScr
 // Parameter Info:
 // struct FScriptDelegate         CreateOnlineGameCompleteDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddCreateOnlineGameCompleteDelegate(struct FScriptDelegate CreateOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::AddCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate)
 {
 	static UFunction* uFnAddCreateOnlineGameCompleteDelegate = nullptr;
 
@@ -9392,10 +9098,10 @@ void UOnlineGameInterfaceImpl::AddCreateOnlineGameCompleteDelegate(struct FScrip
 // Function IpDrv.OnlineGameInterfaceImpl.OnCreateOnlineGameComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::OnCreateOnlineGameComplete(struct FName SessionName, bool bWasSuccessful)
+void UOnlineGameInterfaceImpl::OnCreateOnlineGameComplete(const class FName& SessionName, bool bWasSuccessful)
 {
 	static UFunction* uFnOnCreateOnlineGameComplete = nullptr;
 
@@ -9417,10 +9123,10 @@ void UOnlineGameInterfaceImpl::OnCreateOnlineGameComplete(struct FName SessionNa
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // uint8_t                        HostingPlayerNum               (CPF_Parm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // class UOnlineGameSettings*     NewGameSettings                (CPF_Parm)
 
-bool UOnlineGameInterfaceImpl::CreateOnlineGame(uint8_t HostingPlayerNum, struct FName SessionName, class UOnlineGameSettings* NewGameSettings)
+bool UOnlineGameInterfaceImpl::CreateOnlineGame(uint8_t HostingPlayerNum, const class FName& SessionName, class UOnlineGameSettings* NewGameSettings)
 {
 	static UFunction* uFnCreateOnlineGame = nullptr;
 
@@ -9433,11 +9139,9 @@ bool UOnlineGameInterfaceImpl::CreateOnlineGame(uint8_t HostingPlayerNum, struct
 	memset(&CreateOnlineGame_Params, 0, sizeof(CreateOnlineGame_Params));
 	memcpy_s(&CreateOnlineGame_Params.HostingPlayerNum, sizeof(CreateOnlineGame_Params.HostingPlayerNum), &HostingPlayerNum, sizeof(HostingPlayerNum));
 	memcpy_s(&CreateOnlineGame_Params.SessionName, sizeof(CreateOnlineGame_Params.SessionName), &SessionName, sizeof(SessionName));
-	memcpy_s(&CreateOnlineGame_Params.NewGameSettings, sizeof(CreateOnlineGame_Params.NewGameSettings), &NewGameSettings, sizeof(NewGameSettings));
+	CreateOnlineGame_Params.NewGameSettings = NewGameSettings;
 
-	uFnCreateOnlineGame->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnCreateOnlineGame, &CreateOnlineGame_Params, nullptr);
-	uFnCreateOnlineGame->FunctionFlags |= 0x400;
 
 	return CreateOnlineGame_Params.ReturnValue;
 };
@@ -9468,9 +9172,9 @@ class UOnlineGameSearch* UOnlineGameInterfaceImpl::GetGameSearch()
 // [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UOnlineGameSettings*     ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 
-class UOnlineGameSettings* UOnlineGameInterfaceImpl::GetGameSettings(struct FName SessionName)
+class UOnlineGameSettings* UOnlineGameInterfaceImpl::GetGameSettings(const class FName& SessionName)
 {
 	static UFunction* uFnGetGameSettings = nullptr;
 
@@ -9491,7 +9195,7 @@ class UOnlineGameSettings* UOnlineGameInterfaceImpl::GetGameSettings(struct FNam
 // Function IpDrv.OnlineGameInterfaceImpl.OnFindOnlineGamesComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UOnlineGameInterfaceImpl::OnFindOnlineGamesComplete(bool bWasSuccessful)
 {
@@ -9515,7 +9219,7 @@ void UOnlineGameInterfaceImpl::OnFindOnlineGamesComplete(bool bWasSuccessful)
 // EImageType                     ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  ContentType                    (CPF_Parm | CPF_NeedCtorLink)
 
-EImageType UOnlineImageDownloaderWeb::GetImageType(class FString ContentType)
+EImageType UOnlineImageDownloaderWeb::GetImageType(const class FString& ContentType)
 {
 	static UFunction* uFnGetImageType = nullptr;
 
@@ -9528,11 +9232,9 @@ EImageType UOnlineImageDownloaderWeb::GetImageType(class FString ContentType)
 	memset(&GetImageType_Params, 0, sizeof(GetImageType_Params));
 	memcpy_s(&GetImageType_Params.ContentType, sizeof(GetImageType_Params.ContentType), &ContentType, sizeof(ContentType));
 
-	uFnGetImageType->FunctionFlags &= ~0x400;
 	UOnlineImageDownloaderWeb::StaticClass()->ProcessEvent(uFnGetImageType, &GetImageType_Params, nullptr);
-	uFnGetImageType->FunctionFlags |= 0x400;
 
-	return GetImageType_Params.ReturnValue;
+	return static_cast<EImageType>(GetImageType_Params.ReturnValue);
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.QueueURLForDownload
@@ -9541,9 +9243,9 @@ EImageType UOnlineImageDownloaderWeb::GetImageType(class FString ContentType)
 // class FString                  NewURL                         (CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         InternalCallbackOnComplete     (CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         ExternalCallback               (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bSupportSRGB                   (CPF_Parm)
+// uint32_t                       bSupportSRGB                   (CPF_Parm)
 
-void UOnlineImageDownloaderWeb::QueueURLForDownload(class FString NewURL, struct FScriptDelegate InternalCallbackOnComplete, struct FScriptDelegate ExternalCallback, bool bSupportSRGB)
+void UOnlineImageDownloaderWeb::QueueURLForDownload(const class FString& NewURL, const struct FScriptDelegate& InternalCallbackOnComplete, const struct FScriptDelegate& ExternalCallback, bool bSupportSRGB)
 {
 	static UFunction* uFnQueueURLForDownload = nullptr;
 
@@ -9578,7 +9280,7 @@ void UOnlineImageDownloaderWeb::DebugDraw(class UCanvas* Canvas)
 
 	UOnlineImageDownloaderWeb_execDebugDraw_Params DebugDraw_Params;
 	memset(&DebugDraw_Params, 0, sizeof(DebugDraw_Params));
-	memcpy_s(&DebugDraw_Params.Canvas, sizeof(DebugDraw_Params.Canvas), &Canvas, sizeof(Canvas));
+	DebugDraw_Params.Canvas = Canvas;
 
 	this->ProcessEvent(uFnDebugDraw, &DebugDraw_Params, nullptr);
 };
@@ -9588,7 +9290,7 @@ void UOnlineImageDownloaderWeb::DebugDraw(class UCanvas* Canvas)
 // Parameter Info:
 // class UHttpRequestInterface*   OriginalRequest                (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bDidSucceed                    (CPF_Parm)
+// uint32_t                       bDidSucceed                    (CPF_Parm)
 
 void UOnlineImageDownloaderWeb::OnDownloadComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* Response, bool bDidSucceed)
 {
@@ -9601,8 +9303,8 @@ void UOnlineImageDownloaderWeb::OnDownloadComplete(class UHttpRequestInterface* 
 
 	UOnlineImageDownloaderWeb_execOnDownloadComplete_Params OnDownloadComplete_Params;
 	memset(&OnDownloadComplete_Params, 0, sizeof(OnDownloadComplete_Params));
-	memcpy_s(&OnDownloadComplete_Params.OriginalRequest, sizeof(OnDownloadComplete_Params.OriginalRequest), &OriginalRequest, sizeof(OriginalRequest));
-	memcpy_s(&OnDownloadComplete_Params.Response, sizeof(OnDownloadComplete_Params.Response), &Response, sizeof(Response));
+	OnDownloadComplete_Params.OriginalRequest = OriginalRequest;
+	OnDownloadComplete_Params.Response = Response;
 	OnDownloadComplete_Params.bDidSucceed = bDidSucceed;
 
 	this->ProcessEvent(uFnOnDownloadComplete, &OnDownloadComplete_Params, nullptr);
@@ -9631,10 +9333,10 @@ void UOnlineImageDownloaderWeb::DownloadNextImage()
 // [0x00424002] (FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // struct FScriptDelegate         FinishedCallback               (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bSupportSRGB                   (CPF_OptionalParm | CPF_Parm)
-// TArray<class FString>          URLs                           (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// uint32_t                       bSupportSRGB                   (CPF_OptionalParm | CPF_Parm)
+// class TArray<class FString>    URLs                           (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineImageDownloaderWeb::RequestOnlineImages(struct FScriptDelegate FinishedCallback, bool bSupportSRGB, TArray<class FString>& URLs)
+void UOnlineImageDownloaderWeb::RequestOnlineImages(const struct FScriptDelegate& FinishedCallback, bool bSupportSRGB, class TArray<class FString>& URLs)
 {
 	static UFunction* uFnRequestOnlineImages = nullptr;
 
@@ -9660,7 +9362,7 @@ void UOnlineImageDownloaderWeb::RequestOnlineImages(struct FScriptDelegate Finis
 // class UTexture*                ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 
-class UTexture* UOnlineImageDownloaderWeb::GetOnlineImageTexture(class FString URL)
+class UTexture* UOnlineImageDownloaderWeb::GetOnlineImageTexture(const class FString& URL)
 {
 	static UFunction* uFnGetOnlineImageTexture = nullptr;
 
@@ -9694,9 +9396,7 @@ void UOnlineImageDownloaderWeb::ClearQueue()
 	UOnlineImageDownloaderWeb_execClearQueue_Params ClearQueue_Params;
 	memset(&ClearQueue_Params, 0, sizeof(ClearQueue_Params));
 
-	uFnClearQueue->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearQueue, &ClearQueue_Params, nullptr);
-	uFnClearQueue->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.Dequeue
@@ -9716,9 +9416,7 @@ class FString UOnlineImageDownloaderWeb::Dequeue()
 	UOnlineImageDownloaderWeb_execDequeue_Params Dequeue_Params;
 	memset(&Dequeue_Params, 0, sizeof(Dequeue_Params));
 
-	uFnDequeue->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDequeue, &Dequeue_Params, nullptr);
-	uFnDequeue->FunctionFlags |= 0x400;
 
 	return Dequeue_Params.ReturnValue;
 };
@@ -9728,7 +9426,7 @@ class FString UOnlineImageDownloaderWeb::Dequeue()
 // Parameter Info:
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineImageDownloaderWeb::Enqueue(class FString URL)
+void UOnlineImageDownloaderWeb::Enqueue(const class FString& URL)
 {
 	static UFunction* uFnEnqueue = nullptr;
 
@@ -9741,9 +9439,7 @@ void UOnlineImageDownloaderWeb::Enqueue(class FString URL)
 	memset(&Enqueue_Params, 0, sizeof(Enqueue_Params));
 	memcpy_s(&Enqueue_Params.URL, sizeof(Enqueue_Params.URL), &URL, sizeof(URL));
 
-	uFnEnqueue->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnEnqueue, &Enqueue_Params, nullptr);
-	uFnEnqueue->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.ClearActiveDownloads
@@ -9762,9 +9458,7 @@ void UOnlineImageDownloaderWeb::ClearActiveDownloads()
 	UOnlineImageDownloaderWeb_execClearActiveDownloads_Params ClearActiveDownloads_Params;
 	memset(&ClearActiveDownloads_Params, 0, sizeof(ClearActiveDownloads_Params));
 
-	uFnClearActiveDownloads->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearActiveDownloads, &ClearActiveDownloads_Params, nullptr);
-	uFnClearActiveDownloads->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.ClearCompletedDownloads
@@ -9783,9 +9477,7 @@ void UOnlineImageDownloaderWeb::ClearCompletedDownloads()
 	UOnlineImageDownloaderWeb_execClearCompletedDownloads_Params ClearCompletedDownloads_Params;
 	memset(&ClearCompletedDownloads_Params, 0, sizeof(ClearCompletedDownloads_Params));
 
-	uFnClearCompletedDownloads->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearCompletedDownloads, &ClearCompletedDownloads_Params, nullptr);
-	uFnClearCompletedDownloads->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.HandleImageDecoded_Native
@@ -9794,7 +9486,7 @@ void UOnlineImageDownloaderWeb::ClearCompletedDownloads()
 // class FString                  RequestedURL                   (CPF_Parm | CPF_NeedCtorLink)
 // struct FImageLayout            DecodedImage                   (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineImageDownloaderWeb::HandleImageDecoded_Native(class FString RequestedURL, struct FImageLayout& DecodedImage)
+void UOnlineImageDownloaderWeb::HandleImageDecoded_Native(const class FString& RequestedURL, struct FImageLayout& DecodedImage)
 {
 	static UFunction* uFnHandleImageDecoded_Native = nullptr;
 
@@ -9808,9 +9500,7 @@ void UOnlineImageDownloaderWeb::HandleImageDecoded_Native(class FString Requeste
 	memcpy_s(&HandleImageDecoded_Native_Params.RequestedURL, sizeof(HandleImageDecoded_Native_Params.RequestedURL), &RequestedURL, sizeof(RequestedURL));
 	memcpy_s(&HandleImageDecoded_Native_Params.DecodedImage, sizeof(HandleImageDecoded_Native_Params.DecodedImage), &DecodedImage, sizeof(DecodedImage));
 
-	uFnHandleImageDecoded_Native->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnHandleImageDecoded_Native, &HandleImageDecoded_Native_Params, nullptr);
-	uFnHandleImageDecoded_Native->FunctionFlags |= 0x400;
 
 	memcpy_s(&DecodedImage, sizeof(DecodedImage), &HandleImageDecoded_Native_Params.DecodedImage, sizeof(HandleImageDecoded_Native_Params.DecodedImage));
 };
@@ -9821,7 +9511,7 @@ void UOnlineImageDownloaderWeb::HandleImageDecoded_Native(class FString Requeste
 // class FString                  RequestedURL                   (CPF_Parm | CPF_NeedCtorLink)
 // struct FImageLayout            DecodedImage                   (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineImageDownloaderWeb::HandleImageDecoded(class FString RequestedURL, struct FImageLayout& DecodedImage)
+void UOnlineImageDownloaderWeb::HandleImageDecoded(const class FString& RequestedURL, struct FImageLayout& DecodedImage)
 {
 	static UFunction* uFnHandleImageDecoded = nullptr;
 
@@ -9845,7 +9535,7 @@ void UOnlineImageDownloaderWeb::HandleImageDecoded(class FString RequestedURL, s
 // Parameter Info:
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineImageDownloaderWeb::RequeueFailedURL(class FString URL)
+void UOnlineImageDownloaderWeb::RequeueFailedURL(const class FString& URL)
 {
 	static UFunction* uFnRequeueFailedURL = nullptr;
 
@@ -9858,9 +9548,7 @@ void UOnlineImageDownloaderWeb::RequeueFailedURL(class FString URL)
 	memset(&RequeueFailedURL_Params, 0, sizeof(RequeueFailedURL_Params));
 	memcpy_s(&RequeueFailedURL_Params.URL, sizeof(RequeueFailedURL_Params.URL), &URL, sizeof(URL));
 
-	uFnRequeueFailedURL->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnRequeueFailedURL, &RequeueFailedURL_Params, nullptr);
-	uFnRequeueFailedURL->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.DownloadNextQueuedURL
@@ -9879,9 +9567,7 @@ void UOnlineImageDownloaderWeb::DownloadNextQueuedURL()
 	UOnlineImageDownloaderWeb_execDownloadNextQueuedURL_Params DownloadNextQueuedURL_Params;
 	memset(&DownloadNextQueuedURL_Params, 0, sizeof(DownloadNextQueuedURL_Params));
 
-	uFnDownloadNextQueuedURL->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDownloadNextQueuedURL, &DownloadNextQueuedURL_Params, nullptr);
-	uFnDownloadNextQueuedURL->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.UpdateActiveDownloadFromResponse
@@ -9891,7 +9577,7 @@ void UOnlineImageDownloaderWeb::DownloadNextQueuedURL()
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
 // struct FScriptDelegate         OnDecodedCallback              (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineImageDownloaderWeb::UpdateActiveDownloadFromResponse(class FString URL, class UHttpResponseInterface* Response, struct FScriptDelegate OnDecodedCallback)
+void UOnlineImageDownloaderWeb::UpdateActiveDownloadFromResponse(const class FString& URL, class UHttpResponseInterface* Response, const struct FScriptDelegate& OnDecodedCallback)
 {
 	static UFunction* uFnUpdateActiveDownloadFromResponse = nullptr;
 
@@ -9903,12 +9589,10 @@ void UOnlineImageDownloaderWeb::UpdateActiveDownloadFromResponse(class FString U
 	UOnlineImageDownloaderWeb_execUpdateActiveDownloadFromResponse_Params UpdateActiveDownloadFromResponse_Params;
 	memset(&UpdateActiveDownloadFromResponse_Params, 0, sizeof(UpdateActiveDownloadFromResponse_Params));
 	memcpy_s(&UpdateActiveDownloadFromResponse_Params.URL, sizeof(UpdateActiveDownloadFromResponse_Params.URL), &URL, sizeof(URL));
-	memcpy_s(&UpdateActiveDownloadFromResponse_Params.Response, sizeof(UpdateActiveDownloadFromResponse_Params.Response), &Response, sizeof(Response));
+	UpdateActiveDownloadFromResponse_Params.Response = Response;
 	memcpy_s(&UpdateActiveDownloadFromResponse_Params.OnDecodedCallback, sizeof(UpdateActiveDownloadFromResponse_Params.OnDecodedCallback), &OnDecodedCallback, sizeof(OnDecodedCallback));
 
-	uFnUpdateActiveDownloadFromResponse->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnUpdateActiveDownloadFromResponse, &UpdateActiveDownloadFromResponse_Params, nullptr);
-	uFnUpdateActiveDownloadFromResponse->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.MarkActiveDownloadFailed
@@ -9916,7 +9600,7 @@ void UOnlineImageDownloaderWeb::UpdateActiveDownloadFromResponse(class FString U
 // Parameter Info:
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineImageDownloaderWeb::MarkActiveDownloadFailed(class FString URL)
+void UOnlineImageDownloaderWeb::MarkActiveDownloadFailed(const class FString& URL)
 {
 	static UFunction* uFnMarkActiveDownloadFailed = nullptr;
 
@@ -9929,9 +9613,7 @@ void UOnlineImageDownloaderWeb::MarkActiveDownloadFailed(class FString URL)
 	memset(&MarkActiveDownloadFailed_Params, 0, sizeof(MarkActiveDownloadFailed_Params));
 	memcpy_s(&MarkActiveDownloadFailed_Params.URL, sizeof(MarkActiveDownloadFailed_Params.URL), &URL, sizeof(URL));
 
-	uFnMarkActiveDownloadFailed->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnMarkActiveDownloadFailed, &MarkActiveDownloadFailed_Params, nullptr);
-	uFnMarkActiveDownloadFailed->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.QueueURLForDownloadInternal
@@ -9942,7 +9624,7 @@ void UOnlineImageDownloaderWeb::MarkActiveDownloadFailed(class FString URL)
 // class UTexture2DDynamic*       TextureHolder                  (CPF_Parm)
 // struct FScriptDelegate         OnDecodedCallback              (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineImageDownloaderWeb::QueueURLForDownloadInternal(class FString NewURL, class UHttpRequestInterface* Request, class UTexture2DDynamic* TextureHolder, struct FScriptDelegate OnDecodedCallback)
+void UOnlineImageDownloaderWeb::QueueURLForDownloadInternal(const class FString& NewURL, class UHttpRequestInterface* Request, class UTexture2DDynamic* TextureHolder, const struct FScriptDelegate& OnDecodedCallback)
 {
 	static UFunction* uFnQueueURLForDownloadInternal = nullptr;
 
@@ -9954,13 +9636,11 @@ void UOnlineImageDownloaderWeb::QueueURLForDownloadInternal(class FString NewURL
 	UOnlineImageDownloaderWeb_execQueueURLForDownloadInternal_Params QueueURLForDownloadInternal_Params;
 	memset(&QueueURLForDownloadInternal_Params, 0, sizeof(QueueURLForDownloadInternal_Params));
 	memcpy_s(&QueueURLForDownloadInternal_Params.NewURL, sizeof(QueueURLForDownloadInternal_Params.NewURL), &NewURL, sizeof(NewURL));
-	memcpy_s(&QueueURLForDownloadInternal_Params.Request, sizeof(QueueURLForDownloadInternal_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&QueueURLForDownloadInternal_Params.TextureHolder, sizeof(QueueURLForDownloadInternal_Params.TextureHolder), &TextureHolder, sizeof(TextureHolder));
+	QueueURLForDownloadInternal_Params.Request = Request;
+	QueueURLForDownloadInternal_Params.TextureHolder = TextureHolder;
 	memcpy_s(&QueueURLForDownloadInternal_Params.OnDecodedCallback, sizeof(QueueURLForDownloadInternal_Params.OnDecodedCallback), &OnDecodedCallback, sizeof(OnDecodedCallback));
 
-	uFnQueueURLForDownloadInternal->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnQueueURLForDownloadInternal, &QueueURLForDownloadInternal_Params, nullptr);
-	uFnQueueURLForDownloadInternal->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.AddCallbackToDownload
@@ -9969,7 +9649,7 @@ void UOnlineImageDownloaderWeb::QueueURLForDownloadInternal(class FString NewURL
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 // struct FScriptDelegate         NewCallback                    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineImageDownloaderWeb::AddCallbackToDownload(class FString URL, struct FScriptDelegate NewCallback)
+void UOnlineImageDownloaderWeb::AddCallbackToDownload(const class FString& URL, const struct FScriptDelegate& NewCallback)
 {
 	static UFunction* uFnAddCallbackToDownload = nullptr;
 
@@ -9983,9 +9663,7 @@ void UOnlineImageDownloaderWeb::AddCallbackToDownload(class FString URL, struct 
 	memcpy_s(&AddCallbackToDownload_Params.URL, sizeof(AddCallbackToDownload_Params.URL), &URL, sizeof(URL));
 	memcpy_s(&AddCallbackToDownload_Params.NewCallback, sizeof(AddCallbackToDownload_Params.NewCallback), &NewCallback, sizeof(NewCallback));
 
-	uFnAddCallbackToDownload->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAddCallbackToDownload, &AddCallbackToDownload_Params, nullptr);
-	uFnAddCallbackToDownload->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.GetDownload
@@ -9994,7 +9672,7 @@ void UOnlineImageDownloaderWeb::AddCallbackToDownload(class FString URL, struct 
 // struct FOnlineImageDownload    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 
-struct FOnlineImageDownload UOnlineImageDownloaderWeb::GetDownload(class FString URL)
+struct FOnlineImageDownload UOnlineImageDownloaderWeb::GetDownload(const class FString& URL)
 {
 	static UFunction* uFnGetDownload = nullptr;
 
@@ -10007,9 +9685,7 @@ struct FOnlineImageDownload UOnlineImageDownloaderWeb::GetDownload(class FString
 	memset(&GetDownload_Params, 0, sizeof(GetDownload_Params));
 	memcpy_s(&GetDownload_Params.URL, sizeof(GetDownload_Params.URL), &URL, sizeof(URL));
 
-	uFnGetDownload->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetDownload, &GetDownload_Params, nullptr);
-	uFnGetDownload->FunctionFlags |= 0x400;
 
 	return GetDownload_Params.ReturnValue;
 };
@@ -10020,7 +9696,7 @@ struct FOnlineImageDownload UOnlineImageDownloaderWeb::GetDownload(class FString
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineImageDownloaderWeb::IsURLQueued(class FString URL)
+bool UOnlineImageDownloaderWeb::IsURLQueued(const class FString& URL)
 {
 	static UFunction* uFnIsURLQueued = nullptr;
 
@@ -10033,9 +9709,7 @@ bool UOnlineImageDownloaderWeb::IsURLQueued(class FString URL)
 	memset(&IsURLQueued_Params, 0, sizeof(IsURLQueued_Params));
 	memcpy_s(&IsURLQueued_Params.URL, sizeof(IsURLQueued_Params.URL), &URL, sizeof(URL));
 
-	uFnIsURLQueued->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnIsURLQueued, &IsURLQueued_Params, nullptr);
-	uFnIsURLQueued->FunctionFlags |= 0x400;
 
 	return IsURLQueued_Params.ReturnValue;
 };
@@ -10046,7 +9720,7 @@ bool UOnlineImageDownloaderWeb::IsURLQueued(class FString URL)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineImageDownloaderWeb::IsURLActive(class FString URL)
+bool UOnlineImageDownloaderWeb::IsURLActive(const class FString& URL)
 {
 	static UFunction* uFnIsURLActive = nullptr;
 
@@ -10059,9 +9733,7 @@ bool UOnlineImageDownloaderWeb::IsURLActive(class FString URL)
 	memset(&IsURLActive_Params, 0, sizeof(IsURLActive_Params));
 	memcpy_s(&IsURLActive_Params.URL, sizeof(IsURLActive_Params.URL), &URL, sizeof(URL));
 
-	uFnIsURLActive->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnIsURLActive, &IsURLActive_Params, nullptr);
-	uFnIsURLActive->FunctionFlags |= 0x400;
 
 	return IsURLActive_Params.ReturnValue;
 };
@@ -10072,7 +9744,7 @@ bool UOnlineImageDownloaderWeb::IsURLActive(class FString URL)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineImageDownloaderWeb::DidURLFail(class FString URL)
+bool UOnlineImageDownloaderWeb::DidURLFail(const class FString& URL)
 {
 	static UFunction* uFnDidURLFail = nullptr;
 
@@ -10085,9 +9757,7 @@ bool UOnlineImageDownloaderWeb::DidURLFail(class FString URL)
 	memset(&DidURLFail_Params, 0, sizeof(DidURLFail_Params));
 	memcpy_s(&DidURLFail_Params.URL, sizeof(DidURLFail_Params.URL), &URL, sizeof(URL));
 
-	uFnDidURLFail->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDidURLFail, &DidURLFail_Params, nullptr);
-	uFnDidURLFail->FunctionFlags |= 0x400;
 
 	return DidURLFail_Params.ReturnValue;
 };
@@ -10098,7 +9768,7 @@ bool UOnlineImageDownloaderWeb::DidURLFail(class FString URL)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineImageDownloaderWeb::DidURLSucceed(class FString URL)
+bool UOnlineImageDownloaderWeb::DidURLSucceed(const class FString& URL)
 {
 	static UFunction* uFnDidURLSucceed = nullptr;
 
@@ -10111,9 +9781,7 @@ bool UOnlineImageDownloaderWeb::DidURLSucceed(class FString URL)
 	memset(&DidURLSucceed_Params, 0, sizeof(DidURLSucceed_Params));
 	memcpy_s(&DidURLSucceed_Params.URL, sizeof(DidURLSucceed_Params.URL), &URL, sizeof(URL));
 
-	uFnDidURLSucceed->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDidURLSucceed, &DidURLSucceed_Params, nullptr);
-	uFnDidURLSucceed->FunctionFlags |= 0x400;
 
 	return DidURLSucceed_Params.ReturnValue;
 };
@@ -10124,7 +9792,7 @@ bool UOnlineImageDownloaderWeb::DidURLSucceed(class FString URL)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineImageDownloaderWeb::IsURLTracked(class FString URL)
+bool UOnlineImageDownloaderWeb::IsURLTracked(const class FString& URL)
 {
 	static UFunction* uFnIsURLTracked = nullptr;
 
@@ -10137,9 +9805,7 @@ bool UOnlineImageDownloaderWeb::IsURLTracked(class FString URL)
 	memset(&IsURLTracked_Params, 0, sizeof(IsURLTracked_Params));
 	memcpy_s(&IsURLTracked_Params.URL, sizeof(IsURLTracked_Params.URL), &URL, sizeof(URL));
 
-	uFnIsURLTracked->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnIsURLTracked, &IsURLTracked_Params, nullptr);
-	uFnIsURLTracked->FunctionFlags |= 0x400;
 
 	return IsURLTracked_Params.ReturnValue;
 };
@@ -10166,9 +9832,7 @@ void UOnlineImageDownloaderWeb::AllValues(int32_t StartIndex, int32_t MaxValues,
 	memcpy_s(&AllValues_Params.MaxValues, sizeof(AllValues_Params.MaxValues), &MaxValues, sizeof(MaxValues));
 	memcpy_s(&AllValues_Params.OutImage, sizeof(AllValues_Params.OutImage), &OutImage, sizeof(OutImage));
 
-	uFnAllValues->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAllValues, &AllValues_Params, nullptr);
-	uFnAllValues->FunctionFlags |= 0x400;
 
 	memcpy_s(&OutImage, sizeof(OutImage), &AllValues_Params.OutImage, sizeof(AllValues_Params.OutImage));
 };
@@ -10189,9 +9853,7 @@ void UOnlineImageDownloaderWeb::ClearPendingDownloads()
 	UOnlineImageDownloaderWeb_execClearPendingDownloads_Params ClearPendingDownloads_Params;
 	memset(&ClearPendingDownloads_Params, 0, sizeof(ClearPendingDownloads_Params));
 
-	uFnClearPendingDownloads->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearPendingDownloads, &ClearPendingDownloads_Params, nullptr);
-	uFnClearPendingDownloads->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.ClearAllDownloads
@@ -10210,9 +9872,7 @@ void UOnlineImageDownloaderWeb::ClearAllDownloads()
 	UOnlineImageDownloaderWeb_execClearAllDownloads_Params ClearAllDownloads_Params;
 	memset(&ClearAllDownloads_Params, 0, sizeof(ClearAllDownloads_Params));
 
-	uFnClearAllDownloads->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearAllDownloads, &ClearAllDownloads_Params, nullptr);
-	uFnClearAllDownloads->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.EventImageDecoded
@@ -10221,7 +9881,7 @@ void UOnlineImageDownloaderWeb::ClearAllDownloads()
 // class FString                  RequestURL                     (CPF_Parm | CPF_NeedCtorLink)
 // struct FImageLayout            Image                          (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineImageDownloaderWeb::EventImageDecoded(class FString RequestURL, struct FImageLayout& Image)
+void UOnlineImageDownloaderWeb::EventImageDecoded(const class FString& RequestURL, struct FImageLayout& Image)
 {
 	static UFunction* uFnEventImageDecoded = nullptr;
 
@@ -10245,7 +9905,7 @@ void UOnlineImageDownloaderWeb::EventImageDecoded(class FString RequestURL, stru
 // Parameter Info:
 // struct FOnlineImageDownload    ImageInfo                      (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineImageDownloaderWeb::OnOnlineImageFinished(struct FOnlineImageDownload ImageInfo)
+void UOnlineImageDownloaderWeb::OnOnlineImageFinished(const struct FOnlineImageDownload& ImageInfo)
 {
 	static UFunction* uFnOnOnlineImageFinished = nullptr;
 
@@ -10262,7 +9922,7 @@ void UOnlineImageDownloaderWeb::OnOnlineImageFinished(struct FOnlineImageDownloa
 };
 
 // Function IpDrv.OnlineImageDownloaderWeb.Construct
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void UOnlineImageDownloaderWeb::eventConstruct()
@@ -10285,7 +9945,7 @@ void UOnlineImageDownloaderWeb::eventConstruct()
 // Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearHostStartPlayTogetherDelegate(struct FScriptDelegate InDelegate)
+void UOnlineLobbyInterfaceImpl::ClearHostStartPlayTogetherDelegate(const struct FScriptDelegate& InDelegate)
 {
 	static UFunction* uFnClearHostStartPlayTogetherDelegate = nullptr;
 
@@ -10306,7 +9966,7 @@ void UOnlineLobbyInterfaceImpl::ClearHostStartPlayTogetherDelegate(struct FScrip
 // Parameter Info:
 // struct FScriptDelegate         InDelegate                     (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddHostStartPlayTogetherDelegate(struct FScriptDelegate InDelegate)
+void UOnlineLobbyInterfaceImpl::AddHostStartPlayTogetherDelegate(const struct FScriptDelegate& InDelegate)
 {
 	static UFunction* uFnAddHostStartPlayTogetherDelegate = nullptr;
 
@@ -10348,7 +10008,7 @@ void UOnlineLobbyInterfaceImpl::OnHostStartPlayTogether(uint8_t LocalUserNum)
 // Parameter Info:
 // struct FScriptDelegate         LobbyErrorDelegate             (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearLobbyErrorDelegate(struct FScriptDelegate LobbyErrorDelegate)
+void UOnlineLobbyInterfaceImpl::ClearLobbyErrorDelegate(const struct FScriptDelegate& LobbyErrorDelegate)
 {
 	static UFunction* uFnClearLobbyErrorDelegate = nullptr;
 
@@ -10369,7 +10029,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyErrorDelegate(struct FScriptDelegate L
 // Parameter Info:
 // struct FScriptDelegate         LobbyErrorDelegate             (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddLobbyErrorDelegate(struct FScriptDelegate LobbyErrorDelegate)
+void UOnlineLobbyInterfaceImpl::AddLobbyErrorDelegate(const struct FScriptDelegate& LobbyErrorDelegate)
 {
 	static UFunction* uFnAddLobbyErrorDelegate = nullptr;
 
@@ -10390,7 +10050,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbyErrorDelegate(struct FScriptDelegate Lob
 // Parameter Info:
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::OnLobbyError(class FString Error)
+void UOnlineLobbyInterfaceImpl::OnLobbyError(const class FString& Error)
 {
 	static UFunction* uFnOnLobbyError = nullptr;
 
@@ -10411,9 +10071,9 @@ void UOnlineLobbyInterfaceImpl::OnLobbyError(class FString Error)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const | CPF_Parm | CPF_OutParm)
-// TArray<struct FLobbyMember>    Members                        (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FLobbyMember> Members                        (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlineLobbyInterfaceImpl::eventGetLobbyMembers(struct FUniqueLobbyId& LobbyId, TArray<struct FLobbyMember>& Members)
+bool UOnlineLobbyInterfaceImpl::eventGetLobbyMembers(struct FUniqueLobbyId& LobbyId, class TArray<struct FLobbyMember>& Members)
 {
 	static UFunction* uFnGetLobbyMembers = nullptr;
 
@@ -10440,7 +10100,7 @@ bool UOnlineLobbyInterfaceImpl::eventGetLobbyMembers(struct FUniqueLobbyId& Lobb
 // Parameter Info:
 // struct FScriptDelegate         LobbySessionCreatedDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearLobbySessionCretedeDelegate(struct FScriptDelegate LobbySessionCreatedDelegate)
+void UOnlineLobbyInterfaceImpl::ClearLobbySessionCretedeDelegate(const struct FScriptDelegate& LobbySessionCreatedDelegate)
 {
 	static UFunction* uFnClearLobbySessionCretedeDelegate = nullptr;
 
@@ -10461,7 +10121,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbySessionCretedeDelegate(struct FScriptD
 // Parameter Info:
 // struct FScriptDelegate         LobbySessionCreatedDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearLobbySessionCreatedDelegate(struct FScriptDelegate LobbySessionCreatedDelegate)
+void UOnlineLobbyInterfaceImpl::ClearLobbySessionCreatedDelegate(const struct FScriptDelegate& LobbySessionCreatedDelegate)
 {
 	static UFunction* uFnClearLobbySessionCreatedDelegate = nullptr;
 
@@ -10482,7 +10142,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbySessionCreatedDelegate(struct FScriptD
 // Parameter Info:
 // struct FScriptDelegate         LobbySessionCreatedDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddLobbySessionCreatedDelegate(struct FScriptDelegate LobbySessionCreatedDelegate)
+void UOnlineLobbyInterfaceImpl::AddLobbySessionCreatedDelegate(const struct FScriptDelegate& LobbySessionCreatedDelegate)
 {
 	static UFunction* uFnAddLobbySessionCreatedDelegate = nullptr;
 
@@ -10695,7 +10355,7 @@ void UOnlineLobbyInterfaceImpl::eventTriggerLobbyDestroyedDelegates(int32_t Lobb
 // Parameter Info:
 // struct FScriptDelegate         LobbyDestroyedDelegate         (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearLobbyDestroyedDelegate(struct FScriptDelegate LobbyDestroyedDelegate)
+void UOnlineLobbyInterfaceImpl::ClearLobbyDestroyedDelegate(const struct FScriptDelegate& LobbyDestroyedDelegate)
 {
 	static UFunction* uFnClearLobbyDestroyedDelegate = nullptr;
 
@@ -10716,7 +10376,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyDestroyedDelegate(struct FScriptDelega
 // Parameter Info:
 // struct FScriptDelegate         LobbyDestroyedDelegate         (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddLobbyDestroyedDelegate(struct FScriptDelegate LobbyDestroyedDelegate)
+void UOnlineLobbyInterfaceImpl::AddLobbyDestroyedDelegate(const struct FScriptDelegate& LobbyDestroyedDelegate)
 {
 	static UFunction* uFnAddLobbyDestroyedDelegate = nullptr;
 
@@ -10762,7 +10422,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbyDestroyed(ELobbyKickReason Reason, struct
 // Parameter Info:
 // struct FScriptDelegate         LobbyInviteDelegate            (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearLobbyInviteDelegate(struct FScriptDelegate LobbyInviteDelegate)
+void UOnlineLobbyInterfaceImpl::ClearLobbyInviteDelegate(const struct FScriptDelegate& LobbyInviteDelegate)
 {
 	static UFunction* uFnClearLobbyInviteDelegate = nullptr;
 
@@ -10783,7 +10443,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyInviteDelegate(struct FScriptDelegate 
 // Parameter Info:
 // struct FScriptDelegate         LobbyInviteDelegate            (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddLobbyInviteDelegate(struct FScriptDelegate LobbyInviteDelegate)
+void UOnlineLobbyInterfaceImpl::AddLobbyInviteDelegate(const struct FScriptDelegate& LobbyInviteDelegate)
 {
 	static UFunction* uFnAddLobbyInviteDelegate = nullptr;
 
@@ -10802,7 +10462,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbyInviteDelegate(struct FScriptDelegate Lo
 // Function IpDrv.OnlineLobbyInterfaceImpl.OnLobbyInvite
 // [0x00520001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bAccepted                      (CPF_Parm)
+// uint32_t                       bAccepted                      (CPF_Parm)
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const | CPF_Parm | CPF_OutParm)
 // struct FUniqueNetId            FriendId                       (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
@@ -10918,7 +10578,7 @@ bool UOnlineLobbyInterfaceImpl::SetLobbyOwner(struct FUniqueLobbyId& LobbyId, st
 // [0x00420000] (FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// bool                           bLocked                        (CPF_Parm)
+// uint32_t                       bLocked                        (CPF_Parm)
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const | CPF_Parm | CPF_OutParm)
 
 bool UOnlineLobbyInterfaceImpl::SetLobbyLock(bool bLocked, struct FUniqueLobbyId& LobbyId)
@@ -10950,7 +10610,7 @@ bool UOnlineLobbyInterfaceImpl::SetLobbyLock(bool bLocked, struct FUniqueLobbyId
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const | CPF_Parm | CPF_OutParm)
 // struct FUniqueNetId            ServerUID                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlineLobbyInterfaceImpl::SetLobbyServer(class FString ServerIP, struct FUniqueLobbyId& LobbyId, struct FUniqueNetId& ServerUID)
+bool UOnlineLobbyInterfaceImpl::SetLobbyServer(const class FString& ServerIP, struct FUniqueLobbyId& LobbyId, struct FUniqueNetId& ServerUID)
 {
 	static UFunction* uFnSetLobbyServer = nullptr;
 
@@ -10980,7 +10640,7 @@ bool UOnlineLobbyInterfaceImpl::SetLobbyServer(class FString ServerIP, struct FU
 // class FString                  Key                            (CPF_Parm | CPF_NeedCtorLink)
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const | CPF_Parm | CPF_OutParm)
 
-bool UOnlineLobbyInterfaceImpl::RemoveLobbySetting(class FString Key, struct FUniqueLobbyId& LobbyId)
+bool UOnlineLobbyInterfaceImpl::RemoveLobbySetting(const class FString& Key, struct FUniqueLobbyId& LobbyId)
 {
 	static UFunction* uFnRemoveLobbySetting = nullptr;
 
@@ -11009,7 +10669,7 @@ bool UOnlineLobbyInterfaceImpl::RemoveLobbySetting(class FString Key, struct FUn
 // class FString                  Value                          (CPF_Parm | CPF_NeedCtorLink)
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const | CPF_Parm | CPF_OutParm)
 
-bool UOnlineLobbyInterfaceImpl::SetLobbySetting(class FString Key, class FString Value, struct FUniqueLobbyId& LobbyId)
+bool UOnlineLobbyInterfaceImpl::SetLobbySetting(const class FString& Key, const class FString& Value, struct FUniqueLobbyId& LobbyId)
 {
 	static UFunction* uFnSetLobbySetting = nullptr;
 
@@ -11065,7 +10725,7 @@ bool UOnlineLobbyInterfaceImpl::GetLobbyAdmin(struct FUniqueLobbyId& LobbyId, st
 // Parameter Info:
 // struct FScriptDelegate         LobbyJoinGameDelegate          (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearLobbyJoinGameDelegate(struct FScriptDelegate LobbyJoinGameDelegate)
+void UOnlineLobbyInterfaceImpl::ClearLobbyJoinGameDelegate(const struct FScriptDelegate& LobbyJoinGameDelegate)
 {
 	static UFunction* uFnClearLobbyJoinGameDelegate = nullptr;
 
@@ -11086,7 +10746,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyJoinGameDelegate(struct FScriptDelegat
 // Parameter Info:
 // struct FScriptDelegate         LobbyJoinGameDelegate          (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddLobbyJoinGameDelegate(struct FScriptDelegate LobbyJoinGameDelegate)
+void UOnlineLobbyInterfaceImpl::AddLobbyJoinGameDelegate(const struct FScriptDelegate& LobbyJoinGameDelegate)
 {
 	static UFunction* uFnAddLobbyJoinGameDelegate = nullptr;
 
@@ -11109,7 +10769,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbyJoinGameDelegate(struct FScriptDelegate 
 // class FString                  ServerIP                       (CPF_Parm | CPF_NeedCtorLink)
 // struct FUniqueNetId            ServerId                       (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::eventTriggerLobbyJoinGameDelegates(int32_t LobbyIndex, class FString ServerIP, struct FUniqueNetId& ServerId)
+void UOnlineLobbyInterfaceImpl::eventTriggerLobbyJoinGameDelegates(int32_t LobbyIndex, const class FString& ServerIP, struct FUniqueNetId& ServerId)
 {
 	static UFunction* uFnTriggerLobbyJoinGameDelegates = nullptr;
 
@@ -11136,7 +10796,7 @@ void UOnlineLobbyInterfaceImpl::eventTriggerLobbyJoinGameDelegates(int32_t Lobby
 // struct FActiveLobbyInfo        LobbyInfo                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 // struct FUniqueNetId            ServerId                       (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::OnLobbyJoinGame(class FString ServerIP, struct FActiveLobbyInfo& LobbyInfo, struct FUniqueNetId& ServerId)
+void UOnlineLobbyInterfaceImpl::OnLobbyJoinGame(const class FString& ServerIP, struct FActiveLobbyInfo& LobbyInfo, struct FUniqueNetId& ServerId)
 {
 	static UFunction* uFnOnLobbyJoinGame = nullptr;
 
@@ -11162,7 +10822,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbyJoinGame(class FString ServerIP, struct F
 // Parameter Info:
 // struct FScriptDelegate         LobbyReceiveBinaryDataDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearLobbyReceiveBinaryDataDelegate(struct FScriptDelegate LobbyReceiveBinaryDataDelegate)
+void UOnlineLobbyInterfaceImpl::ClearLobbyReceiveBinaryDataDelegate(const struct FScriptDelegate& LobbyReceiveBinaryDataDelegate)
 {
 	static UFunction* uFnClearLobbyReceiveBinaryDataDelegate = nullptr;
 
@@ -11183,7 +10843,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyReceiveBinaryDataDelegate(struct FScri
 // Parameter Info:
 // struct FScriptDelegate         LobbyReceiveBinaryDataDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddLobbyReceiveBinaryDataDelegate(struct FScriptDelegate LobbyReceiveBinaryDataDelegate)
+void UOnlineLobbyInterfaceImpl::AddLobbyReceiveBinaryDataDelegate(const struct FScriptDelegate& LobbyReceiveBinaryDataDelegate)
 {
 	static UFunction* uFnAddLobbyReceiveBinaryDataDelegate = nullptr;
 
@@ -11227,9 +10887,9 @@ void UOnlineLobbyInterfaceImpl::eventTriggerLobbyReceiveBinaryDataDelegates(int3
 // Parameter Info:
 // int32_t                        MemberIndex                    (CPF_Parm)
 // struct FActiveLobbyInfo        LobbyInfo                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-// TArray<uint8_t>                Data                           (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          Data                           (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::OnLobbyReceiveBinaryData(int32_t MemberIndex, struct FActiveLobbyInfo& LobbyInfo, TArray<uint8_t>& Data)
+void UOnlineLobbyInterfaceImpl::OnLobbyReceiveBinaryData(int32_t MemberIndex, struct FActiveLobbyInfo& LobbyInfo, class TArray<uint8_t>& Data)
 {
 	static UFunction* uFnOnLobbyReceiveBinaryData = nullptr;
 
@@ -11255,9 +10915,9 @@ void UOnlineLobbyInterfaceImpl::OnLobbyReceiveBinaryData(int32_t MemberIndex, st
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const | CPF_Parm | CPF_OutParm)
-// TArray<uint8_t>                Data                           (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          Data                           (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlineLobbyInterfaceImpl::SendLobbyBinaryData(struct FUniqueLobbyId& LobbyId, TArray<uint8_t>& Data)
+bool UOnlineLobbyInterfaceImpl::SendLobbyBinaryData(struct FUniqueLobbyId& LobbyId, class TArray<uint8_t>& Data)
 {
 	static UFunction* uFnSendLobbyBinaryData = nullptr;
 
@@ -11284,7 +10944,7 @@ bool UOnlineLobbyInterfaceImpl::SendLobbyBinaryData(struct FUniqueLobbyId& Lobby
 // Parameter Info:
 // struct FScriptDelegate         LobbyReceiveMessageDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearLobbyReceiveMessageDelegate(struct FScriptDelegate LobbyReceiveMessageDelegate)
+void UOnlineLobbyInterfaceImpl::ClearLobbyReceiveMessageDelegate(const struct FScriptDelegate& LobbyReceiveMessageDelegate)
 {
 	static UFunction* uFnClearLobbyReceiveMessageDelegate = nullptr;
 
@@ -11305,7 +10965,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyReceiveMessageDelegate(struct FScriptD
 // Parameter Info:
 // struct FScriptDelegate         LobbyReceiveMessageDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddLobbyReceiveMessageDelegate(struct FScriptDelegate LobbyReceiveMessageDelegate)
+void UOnlineLobbyInterfaceImpl::AddLobbyReceiveMessageDelegate(const struct FScriptDelegate& LobbyReceiveMessageDelegate)
 {
 	static UFunction* uFnAddLobbyReceiveMessageDelegate = nullptr;
 
@@ -11329,7 +10989,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbyReceiveMessageDelegate(struct FScriptDel
 // class FString                  Type                           (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Message                        (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::eventTriggerLobbyReceiveMessageDelegates(int32_t LobbyIndex, int32_t MemberIndex, class FString Type, class FString Message)
+void UOnlineLobbyInterfaceImpl::eventTriggerLobbyReceiveMessageDelegates(int32_t LobbyIndex, int32_t MemberIndex, const class FString& Type, const class FString& Message)
 {
 	static UFunction* uFnTriggerLobbyReceiveMessageDelegates = nullptr;
 
@@ -11356,7 +11016,7 @@ void UOnlineLobbyInterfaceImpl::eventTriggerLobbyReceiveMessageDelegates(int32_t
 // class FString                  Message                        (CPF_Parm | CPF_NeedCtorLink)
 // struct FActiveLobbyInfo        LobbyInfo                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::OnLobbyReceiveMessage(int32_t MemberIndex, class FString Type, class FString Message, struct FActiveLobbyInfo& LobbyInfo)
+void UOnlineLobbyInterfaceImpl::OnLobbyReceiveMessage(int32_t MemberIndex, const class FString& Type, const class FString& Message, struct FActiveLobbyInfo& LobbyInfo)
 {
 	static UFunction* uFnOnLobbyReceiveMessage = nullptr;
 
@@ -11384,7 +11044,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbyReceiveMessage(int32_t MemberIndex, class
 // class FString                  Message                        (CPF_Parm | CPF_NeedCtorLink)
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const | CPF_Parm | CPF_OutParm)
 
-bool UOnlineLobbyInterfaceImpl::SendLobbyMessage(class FString Message, struct FUniqueLobbyId& LobbyId)
+bool UOnlineLobbyInterfaceImpl::SendLobbyMessage(const class FString& Message, struct FUniqueLobbyId& LobbyId)
 {
 	static UFunction* uFnSendLobbyMessage = nullptr;
 
@@ -11410,7 +11070,7 @@ bool UOnlineLobbyInterfaceImpl::SendLobbyMessage(class FString Message, struct F
 // Parameter Info:
 // struct FScriptDelegate         LobbyMemberStatusUpdateDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearLobbyMemberStatusUpdateDelegate(struct FScriptDelegate LobbyMemberStatusUpdateDelegate)
+void UOnlineLobbyInterfaceImpl::ClearLobbyMemberStatusUpdateDelegate(const struct FScriptDelegate& LobbyMemberStatusUpdateDelegate)
 {
 	static UFunction* uFnClearLobbyMemberStatusUpdateDelegate = nullptr;
 
@@ -11431,7 +11091,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyMemberStatusUpdateDelegate(struct FScr
 // Parameter Info:
 // struct FScriptDelegate         LobbyMemberStatusUpdateDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddLobbyMemberStatusUpdateDelegate(struct FScriptDelegate LobbyMemberStatusUpdateDelegate)
+void UOnlineLobbyInterfaceImpl::AddLobbyMemberStatusUpdateDelegate(const struct FScriptDelegate& LobbyMemberStatusUpdateDelegate)
 {
 	static UFunction* uFnAddLobbyMemberStatusUpdateDelegate = nullptr;
 
@@ -11455,7 +11115,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbyMemberStatusUpdateDelegate(struct FScrip
 // int32_t                        InstigatorIndex                (CPF_Parm)
 // class FString                  Status                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::eventTriggerLobbyMemberStatusUpdateDelegates(int32_t LobbyIndex, int32_t MemberIndex, int32_t InstigatorIndex, class FString Status)
+void UOnlineLobbyInterfaceImpl::eventTriggerLobbyMemberStatusUpdateDelegates(int32_t LobbyIndex, int32_t MemberIndex, int32_t InstigatorIndex, const class FString& Status)
 {
 	static UFunction* uFnTriggerLobbyMemberStatusUpdateDelegates = nullptr;
 
@@ -11482,7 +11142,7 @@ void UOnlineLobbyInterfaceImpl::eventTriggerLobbyMemberStatusUpdateDelegates(int
 // class FString                  Status                         (CPF_Parm | CPF_NeedCtorLink)
 // struct FActiveLobbyInfo        LobbyInfo                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::OnLobbyMemberStatusUpdate(int32_t MemberIndex, int32_t InstigatorIndex, class FString Status, struct FActiveLobbyInfo& LobbyInfo)
+void UOnlineLobbyInterfaceImpl::OnLobbyMemberStatusUpdate(int32_t MemberIndex, int32_t InstigatorIndex, const class FString& Status, struct FActiveLobbyInfo& LobbyInfo)
 {
 	static UFunction* uFnOnLobbyMemberStatusUpdate = nullptr;
 
@@ -11508,7 +11168,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbyMemberStatusUpdate(int32_t MemberIndex, i
 // Parameter Info:
 // struct FScriptDelegate         LobbyMemberSettingsUpdateDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearLobbyMemberSettingsUpdateDelegate(struct FScriptDelegate LobbyMemberSettingsUpdateDelegate)
+void UOnlineLobbyInterfaceImpl::ClearLobbyMemberSettingsUpdateDelegate(const struct FScriptDelegate& LobbyMemberSettingsUpdateDelegate)
 {
 	static UFunction* uFnClearLobbyMemberSettingsUpdateDelegate = nullptr;
 
@@ -11529,7 +11189,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyMemberSettingsUpdateDelegate(struct FS
 // Parameter Info:
 // struct FScriptDelegate         LobbyMemberSettingsUpdateDelegate (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddLobbyMemberSettingsUpdateDelegate(struct FScriptDelegate LobbyMemberSettingsUpdateDelegate)
+void UOnlineLobbyInterfaceImpl::AddLobbyMemberSettingsUpdateDelegate(const struct FScriptDelegate& LobbyMemberSettingsUpdateDelegate)
 {
 	static UFunction* uFnAddLobbyMemberSettingsUpdateDelegate = nullptr;
 
@@ -11598,7 +11258,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbyMemberSettingsUpdate(int32_t MemberIndex,
 // Parameter Info:
 // struct FScriptDelegate         LobbySettingsUpdateDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearLobbySettingsUpdateDelegate(struct FScriptDelegate LobbySettingsUpdateDelegate)
+void UOnlineLobbyInterfaceImpl::ClearLobbySettingsUpdateDelegate(const struct FScriptDelegate& LobbySettingsUpdateDelegate)
 {
 	static UFunction* uFnClearLobbySettingsUpdateDelegate = nullptr;
 
@@ -11619,7 +11279,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbySettingsUpdateDelegate(struct FScriptD
 // Parameter Info:
 // struct FScriptDelegate         LobbySettingsUpdateDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddLobbySettingsUpdateDelegate(struct FScriptDelegate LobbySettingsUpdateDelegate)
+void UOnlineLobbyInterfaceImpl::AddLobbySettingsUpdateDelegate(const struct FScriptDelegate& LobbySettingsUpdateDelegate)
 {
 	static UFunction* uFnAddLobbySettingsUpdateDelegate = nullptr;
 
@@ -11687,7 +11347,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbySettingsUpdate(struct FActiveLobbyInfo& L
 // class FString                  Value                          (CPF_Parm | CPF_NeedCtorLink)
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const | CPF_Parm | CPF_OutParm)
 
-bool UOnlineLobbyInterfaceImpl::SetLobbyUserSetting(class FString Key, class FString Value, struct FUniqueLobbyId& LobbyId)
+bool UOnlineLobbyInterfaceImpl::SetLobbyUserSetting(const class FString& Key, const class FString& Value, struct FUniqueLobbyId& LobbyId)
 {
 	static UFunction* uFnSetLobbyUserSetting = nullptr;
 
@@ -11740,7 +11400,7 @@ bool UOnlineLobbyInterfaceImpl::LeaveLobby(struct FUniqueLobbyId& LobbyId)
 // Parameter Info:
 // struct FScriptDelegate         JoinLobbyCompleteDelegate      (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearJoinLobbyCompleteDelegate(struct FScriptDelegate JoinLobbyCompleteDelegate)
+void UOnlineLobbyInterfaceImpl::ClearJoinLobbyCompleteDelegate(const struct FScriptDelegate& JoinLobbyCompleteDelegate)
 {
 	static UFunction* uFnClearJoinLobbyCompleteDelegate = nullptr;
 
@@ -11761,7 +11421,7 @@ void UOnlineLobbyInterfaceImpl::ClearJoinLobbyCompleteDelegate(struct FScriptDel
 // Parameter Info:
 // struct FScriptDelegate         JoinLobbyCompleteDelegate      (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddJoinLobbyCompleteDelegate(struct FScriptDelegate JoinLobbyCompleteDelegate)
+void UOnlineLobbyInterfaceImpl::AddJoinLobbyCompleteDelegate(const struct FScriptDelegate& JoinLobbyCompleteDelegate)
 {
 	static UFunction* uFnAddJoinLobbyCompleteDelegate = nullptr;
 
@@ -11780,12 +11440,12 @@ void UOnlineLobbyInterfaceImpl::AddJoinLobbyCompleteDelegate(struct FScriptDeleg
 // Function IpDrv.OnlineLobbyInterfaceImpl.TriggerJoinLobbyCompleteDelegates
 // [0x00420803] (FUNC_Final | FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 // struct FActiveLobbyInfo        LobbyInfo                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 // struct FUniqueLobbyId          LobbyUID                       (CPF_Const | CPF_Parm | CPF_OutParm)
 
-void UOnlineLobbyInterfaceImpl::eventTriggerJoinLobbyCompleteDelegates(bool bWasSuccessful, class FString Error, struct FActiveLobbyInfo& LobbyInfo, struct FUniqueLobbyId& LobbyUID)
+void UOnlineLobbyInterfaceImpl::eventTriggerJoinLobbyCompleteDelegates(bool bWasSuccessful, const class FString& Error, struct FActiveLobbyInfo& LobbyInfo, struct FUniqueLobbyId& LobbyUID)
 {
 	static UFunction* uFnTriggerJoinLobbyCompleteDelegates = nullptr;
 
@@ -11810,12 +11470,12 @@ void UOnlineLobbyInterfaceImpl::eventTriggerJoinLobbyCompleteDelegates(bool bWas
 // Function IpDrv.OnlineLobbyInterfaceImpl.OnJoinLobbyComplete
 // [0x00520001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 // struct FActiveLobbyInfo        LobbyInfo                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 // struct FUniqueLobbyId          LobbyUID                       (CPF_Const | CPF_Parm | CPF_OutParm)
 
-void UOnlineLobbyInterfaceImpl::OnJoinLobbyComplete(bool bWasSuccessful, class FString Error, struct FActiveLobbyInfo& LobbyInfo, struct FUniqueLobbyId& LobbyUID)
+void UOnlineLobbyInterfaceImpl::OnJoinLobbyComplete(bool bWasSuccessful, const class FString& Error, struct FActiveLobbyInfo& LobbyInfo, struct FUniqueLobbyId& LobbyUID)
 {
 	static UFunction* uFnOnJoinLobbyComplete = nullptr;
 
@@ -11870,7 +11530,7 @@ bool UOnlineLobbyInterfaceImpl::JoinLobby(int32_t LocalPlayerNum, struct FUnique
 // Parameter Info:
 // struct FScriptDelegate         FindLobbiesCompleteDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearFindLobbiesCompleteDelegate(struct FScriptDelegate FindLobbiesCompleteDelegate)
+void UOnlineLobbyInterfaceImpl::ClearFindLobbiesCompleteDelegate(const struct FScriptDelegate& FindLobbiesCompleteDelegate)
 {
 	static UFunction* uFnClearFindLobbiesCompleteDelegate = nullptr;
 
@@ -11891,7 +11551,7 @@ void UOnlineLobbyInterfaceImpl::ClearFindLobbiesCompleteDelegate(struct FScriptD
 // Parameter Info:
 // struct FScriptDelegate         FindLobbiesCompleteDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddFindLobbiesCompleteDelegate(struct FScriptDelegate FindLobbiesCompleteDelegate)
+void UOnlineLobbyInterfaceImpl::AddFindLobbiesCompleteDelegate(const struct FScriptDelegate& FindLobbiesCompleteDelegate)
 {
 	static UFunction* uFnAddFindLobbiesCompleteDelegate = nullptr;
 
@@ -11910,7 +11570,7 @@ void UOnlineLobbyInterfaceImpl::AddFindLobbiesCompleteDelegate(struct FScriptDel
 // Function IpDrv.OnlineLobbyInterfaceImpl.TriggerFindLobbiesCompleteDelegates
 // [0x00020803] (FUNC_Final | FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UOnlineLobbyInterfaceImpl::eventTriggerFindLobbiesCompleteDelegates(bool bWasSuccessful)
 {
@@ -11931,10 +11591,10 @@ void UOnlineLobbyInterfaceImpl::eventTriggerFindLobbiesCompleteDelegates(bool bW
 // Function IpDrv.OnlineLobbyInterfaceImpl.OnFindLobbiesComplete
 // [0x00520001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
-// TArray<struct FBasicLobbyInfo> LobbyList                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
+// class TArray<struct FBasicLobbyInfo> LobbyList                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::OnFindLobbiesComplete(bool bWasSuccessful, TArray<struct FBasicLobbyInfo>& LobbyList)
+void UOnlineLobbyInterfaceImpl::OnFindLobbiesComplete(bool bWasSuccessful, class TArray<struct FBasicLobbyInfo>& LobbyList)
 {
 	static UFunction* uFnOnFindLobbiesComplete = nullptr;
 
@@ -11959,7 +11619,7 @@ void UOnlineLobbyInterfaceImpl::OnFindLobbiesComplete(bool bWasSuccessful, TArra
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueLobbyId          LobbyId                        (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlineLobbyInterfaceImpl::UpdateFoundLobbies(struct FUniqueLobbyId LobbyId)
+bool UOnlineLobbyInterfaceImpl::UpdateFoundLobbies(const struct FUniqueLobbyId& LobbyId)
 {
 	static UFunction* uFnUpdateFoundLobbies = nullptr;
 
@@ -11982,12 +11642,12 @@ bool UOnlineLobbyInterfaceImpl::UpdateFoundLobbies(struct FUniqueLobbyId LobbyId
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // int32_t                        MaxResults                     (CPF_OptionalParm | CPF_Parm)
-// TArray<struct FLobbyFilter>    Filters                        (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FLobbySortFilter> SortFilters                    (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
+// class TArray<struct FLobbyFilter> Filters                        (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
+// class TArray<struct FLobbySortFilter> SortFilters                    (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        MinSlots                       (CPF_OptionalParm | CPF_Parm)
 // ELobbyDistance                 Distance                       (CPF_OptionalParm | CPF_Parm)
 
-bool UOnlineLobbyInterfaceImpl::FindLobbies(int32_t MaxResults, TArray<struct FLobbyFilter> Filters, TArray<struct FLobbySortFilter> SortFilters, int32_t MinSlots, ELobbyDistance Distance)
+bool UOnlineLobbyInterfaceImpl::FindLobbies(int32_t MaxResults, const class TArray<struct FLobbyFilter>& Filters, const class TArray<struct FLobbySortFilter>& SortFilters, int32_t MinSlots, ELobbyDistance Distance)
 {
 	static UFunction* uFnFindLobbies = nullptr;
 
@@ -12014,7 +11674,7 @@ bool UOnlineLobbyInterfaceImpl::FindLobbies(int32_t MaxResults, TArray<struct FL
 // Parameter Info:
 // struct FScriptDelegate         CreateLobbyCompleteDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::ClearCreateLobbyCompleteDelegate(struct FScriptDelegate CreateLobbyCompleteDelegate)
+void UOnlineLobbyInterfaceImpl::ClearCreateLobbyCompleteDelegate(const struct FScriptDelegate& CreateLobbyCompleteDelegate)
 {
 	static UFunction* uFnClearCreateLobbyCompleteDelegate = nullptr;
 
@@ -12035,7 +11695,7 @@ void UOnlineLobbyInterfaceImpl::ClearCreateLobbyCompleteDelegate(struct FScriptD
 // Parameter Info:
 // struct FScriptDelegate         CreateLobbyCompleteDelegate    (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlineLobbyInterfaceImpl::AddCreateLobbyCompleteDelegate(struct FScriptDelegate CreateLobbyCompleteDelegate)
+void UOnlineLobbyInterfaceImpl::AddCreateLobbyCompleteDelegate(const struct FScriptDelegate& CreateLobbyCompleteDelegate)
 {
 	static UFunction* uFnAddCreateLobbyCompleteDelegate = nullptr;
 
@@ -12054,11 +11714,11 @@ void UOnlineLobbyInterfaceImpl::AddCreateLobbyCompleteDelegate(struct FScriptDel
 // Function IpDrv.OnlineLobbyInterfaceImpl.OnCreateLobbyComplete
 // [0x00520001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const | CPF_Parm | CPF_OutParm)
 
-void UOnlineLobbyInterfaceImpl::OnCreateLobbyComplete(bool bWasSuccessful, class FString Error, struct FUniqueLobbyId& LobbyId)
+void UOnlineLobbyInterfaceImpl::OnCreateLobbyComplete(bool bWasSuccessful, const class FString& Error, struct FUniqueLobbyId& LobbyId)
 {
 	static UFunction* uFnOnCreateLobbyComplete = nullptr;
 
@@ -12085,9 +11745,9 @@ void UOnlineLobbyInterfaceImpl::OnCreateLobbyComplete(bool bWasSuccessful, class
 // int32_t                        LocalPlayerNum                 (CPF_Parm)
 // int32_t                        MaxPlayers                     (CPF_Parm)
 // ELobbyVisibility               Type                           (CPF_OptionalParm | CPF_Parm)
-// TArray<struct FLobbyMetaData>  InitialSettings                (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
+// class TArray<struct FLobbyMetaData> InitialSettings                (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlineLobbyInterfaceImpl::CreateLobby(int32_t LocalPlayerNum, int32_t MaxPlayers, ELobbyVisibility Type, TArray<struct FLobbyMetaData> InitialSettings)
+bool UOnlineLobbyInterfaceImpl::CreateLobby(int32_t LocalPlayerNum, int32_t MaxPlayers, ELobbyVisibility Type, const class TArray<struct FLobbyMetaData>& InitialSettings)
 {
 	static UFunction* uFnCreateLobby = nullptr;
 
@@ -12305,7 +11965,7 @@ class FString UOnlinePersistentAuthInterfaceImpl::GetContinuanceToken(uint8_t Lo
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  RefreshToken                   (CPF_Parm | CPF_NeedCtorLink)
 
-bool UOnlinePersistentAuthInterfaceImpl::UseRefreshToken(uint8_t LocalUserNum, class FString RefreshToken)
+bool UOnlinePersistentAuthInterfaceImpl::UseRefreshToken(uint8_t LocalUserNum, const class FString& RefreshToken)
 {
 	static UFunction* uFnUseRefreshToken = nullptr;
 
@@ -12377,7 +12037,7 @@ bool UOnlinePersistentAuthInterfaceImpl::RequestPinGrantCode(uint8_t LocalUserNu
 // Parameter Info:
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePersistentAuthInterfaceImpl::ClearUnderageUserDetectedDelegate(struct FScriptDelegate Callback)
+void UOnlinePersistentAuthInterfaceImpl::ClearUnderageUserDetectedDelegate(const struct FScriptDelegate& Callback)
 {
 	static UFunction* uFnClearUnderageUserDetectedDelegate = nullptr;
 
@@ -12398,7 +12058,7 @@ void UOnlinePersistentAuthInterfaceImpl::ClearUnderageUserDetectedDelegate(struc
 // Parameter Info:
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePersistentAuthInterfaceImpl::AddUnderageUserDetectedDelegate(struct FScriptDelegate Callback)
+void UOnlinePersistentAuthInterfaceImpl::AddUnderageUserDetectedDelegate(const struct FScriptDelegate& Callback)
 {
 	static UFunction* uFnAddUnderageUserDetectedDelegate = nullptr;
 
@@ -12420,7 +12080,7 @@ void UOnlinePersistentAuthInterfaceImpl::AddUnderageUserDetectedDelegate(struct 
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // class FString                  ParentalConsentURL             (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePersistentAuthInterfaceImpl::OnUnderageUserDetected(uint8_t LocalUserNum, class FString ParentalConsentURL)
+void UOnlinePersistentAuthInterfaceImpl::OnUnderageUserDetected(uint8_t LocalUserNum, const class FString& ParentalConsentURL)
 {
 	static UFunction* uFnOnUnderageUserDetected = nullptr;
 
@@ -12443,7 +12103,7 @@ void UOnlinePersistentAuthInterfaceImpl::OnUnderageUserDetected(uint8_t LocalUse
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePersistentAuthInterfaceImpl::ClearRequestPinGrantCodeDelegate(uint8_t LocalUserNum, struct FScriptDelegate Callback)
+void UOnlinePersistentAuthInterfaceImpl::ClearRequestPinGrantCodeDelegate(uint8_t LocalUserNum, const struct FScriptDelegate& Callback)
 {
 	static UFunction* uFnClearRequestPinGrantCodeDelegate = nullptr;
 
@@ -12466,7 +12126,7 @@ void UOnlinePersistentAuthInterfaceImpl::ClearRequestPinGrantCodeDelegate(uint8_
 // uint8_t                        LocalUserNum                   (CPF_Parm)
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePersistentAuthInterfaceImpl::AddRequestPinGrantCodeDelegate(uint8_t LocalUserNum, struct FScriptDelegate Callback)
+void UOnlinePersistentAuthInterfaceImpl::AddRequestPinGrantCodeDelegate(uint8_t LocalUserNum, const struct FScriptDelegate& Callback)
 {
 	static UFunction* uFnAddRequestPinGrantCodeDelegate = nullptr;
 
@@ -12492,7 +12152,7 @@ void UOnlinePersistentAuthInterfaceImpl::AddRequestPinGrantCodeDelegate(uint8_t 
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        SecondsUntilExpiration         (CPF_Parm)
 
-void UOnlinePersistentAuthInterfaceImpl::OnReceievedPinGrantCode(EPinGrantResult Result, uint8_t LocalUserNum, class FString Code, class FString URL, int32_t SecondsUntilExpiration)
+void UOnlinePersistentAuthInterfaceImpl::OnReceievedPinGrantCode(EPinGrantResult Result, uint8_t LocalUserNum, const class FString& Code, const class FString& URL, int32_t SecondsUntilExpiration)
 {
 	static UFunction* uFnOnReceievedPinGrantCode = nullptr;
 
@@ -12515,9 +12175,9 @@ void UOnlinePersistentAuthInterfaceImpl::OnReceievedPinGrantCode(EPinGrantResult
 // Function IpDrv.OnlinePlaylistManager.ParseDataCenterId
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<uint8_t>                Data                           (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          Data                           (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlinePlaylistManager::ParseDataCenterId(TArray<uint8_t>& Data)
+void UOnlinePlaylistManager::ParseDataCenterId(class TArray<uint8_t>& Data)
 {
 	static UFunction* uFnParseDataCenterId = nullptr;
 
@@ -12530,9 +12190,7 @@ void UOnlinePlaylistManager::ParseDataCenterId(TArray<uint8_t>& Data)
 	memset(&ParseDataCenterId_Params, 0, sizeof(ParseDataCenterId_Params));
 	memcpy_s(&ParseDataCenterId_Params.Data, sizeof(ParseDataCenterId_Params.Data), &Data, sizeof(Data));
 
-	uFnParseDataCenterId->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnParseDataCenterId, &ParseDataCenterId_Params, nullptr);
-	uFnParseDataCenterId->FunctionFlags |= 0x400;
 
 	memcpy_s(&Data, sizeof(Data), &ParseDataCenterId_Params.Data, sizeof(ParseDataCenterId_Params.Data));
 };
@@ -12540,10 +12198,10 @@ void UOnlinePlaylistManager::ParseDataCenterId(TArray<uint8_t>& Data)
 // Function IpDrv.OnlinePlaylistManager.OnReadDataCenterIdComplete
 // [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePlaylistManager::OnReadDataCenterIdComplete(bool bWasSuccessful, class FString Filename)
+void UOnlinePlaylistManager::OnReadDataCenterIdComplete(bool bWasSuccessful, const class FString& Filename)
 {
 	static UFunction* uFnOnReadDataCenterIdComplete = nullptr;
 
@@ -12631,9 +12289,9 @@ void UOnlinePlaylistManager::GetPopulationInfoFromPlaylist(int32_t PlaylistId, i
 // Function IpDrv.OnlinePlaylistManager.ParsePlaylistPopulationData
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<uint8_t>                Data                           (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          Data                           (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlinePlaylistManager::ParsePlaylistPopulationData(TArray<uint8_t>& Data)
+void UOnlinePlaylistManager::ParsePlaylistPopulationData(class TArray<uint8_t>& Data)
 {
 	static UFunction* uFnParsePlaylistPopulationData = nullptr;
 
@@ -12646,9 +12304,7 @@ void UOnlinePlaylistManager::ParsePlaylistPopulationData(TArray<uint8_t>& Data)
 	memset(&ParsePlaylistPopulationData_Params, 0, sizeof(ParsePlaylistPopulationData_Params));
 	memcpy_s(&ParsePlaylistPopulationData_Params.Data, sizeof(ParsePlaylistPopulationData_Params.Data), &Data, sizeof(Data));
 
-	uFnParsePlaylistPopulationData->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnParsePlaylistPopulationData, &ParsePlaylistPopulationData_Params, nullptr);
-	uFnParsePlaylistPopulationData->FunctionFlags |= 0x400;
 
 	memcpy_s(&Data, sizeof(Data), &ParsePlaylistPopulationData_Params.Data, sizeof(ParsePlaylistPopulationData_Params.Data));
 };
@@ -12675,10 +12331,10 @@ void UOnlinePlaylistManager::OnPlaylistPopulationDataUpdated()
 // Function IpDrv.OnlinePlaylistManager.OnReadPlaylistPopulationComplete
 // [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePlaylistManager::OnReadPlaylistPopulationComplete(bool bWasSuccessful, class FString Filename)
+void UOnlinePlaylistManager::OnReadPlaylistPopulationComplete(bool bWasSuccessful, const class FString& Filename)
 {
 	static UFunction* uFnOnReadPlaylistPopulationComplete = nullptr;
 
@@ -12737,9 +12393,9 @@ void UOnlinePlaylistManager::Reset()
 // [0x00420003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        PlaylistId                     (CPF_Parm)
-// TArray<int32_t>                ContentIds                     (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<int32_t>          ContentIds                     (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlinePlaylistManager::GetContentIdsFromPlaylist(int32_t PlaylistId, TArray<int32_t>& ContentIds)
+void UOnlinePlaylistManager::GetContentIdsFromPlaylist(int32_t PlaylistId, class TArray<int32_t>& ContentIds)
 {
 	static UFunction* uFnGetContentIdsFromPlaylist = nullptr;
 
@@ -12762,9 +12418,9 @@ void UOnlinePlaylistManager::GetContentIdsFromPlaylist(int32_t PlaylistId, TArra
 // [0x00420003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        PlaylistId                     (CPF_Parm)
-// TArray<struct FName>           MapCycle                       (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FName>      MapCycle                       (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UOnlinePlaylistManager::GetMapCycleFromPlaylist(int32_t PlaylistId, TArray<struct FName>& MapCycle)
+void UOnlinePlaylistManager::GetMapCycleFromPlaylist(int32_t PlaylistId, class TArray<class FName>& MapCycle)
 {
 	static UFunction* uFnGetMapCycleFromPlaylist = nullptr;
 
@@ -13001,18 +12657,16 @@ void UOnlinePlaylistManager::FinalizePlaylistObjects()
 	UOnlinePlaylistManager_execFinalizePlaylistObjects_Params FinalizePlaylistObjects_Params;
 	memset(&FinalizePlaylistObjects_Params, 0, sizeof(FinalizePlaylistObjects_Params));
 
-	uFnFinalizePlaylistObjects->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnFinalizePlaylistObjects, &FinalizePlaylistObjects_Params, nullptr);
-	uFnFinalizePlaylistObjects->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlinePlaylistManager.OnReadTitleFileComplete
 // [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePlaylistManager::OnReadTitleFileComplete(bool bWasSuccessful, class FString Filename)
+void UOnlinePlaylistManager::OnReadTitleFileComplete(bool bWasSuccessful, const class FString& Filename)
 {
 	static UFunction* uFnOnReadTitleFileComplete = nullptr;
 
@@ -13046,9 +12700,7 @@ bool UOnlinePlaylistManager::ShouldRefreshPlaylists()
 	UOnlinePlaylistManager_execShouldRefreshPlaylists_Params ShouldRefreshPlaylists_Params;
 	memset(&ShouldRefreshPlaylists_Params, 0, sizeof(ShouldRefreshPlaylists_Params));
 
-	uFnShouldRefreshPlaylists->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnShouldRefreshPlaylists, &ShouldRefreshPlaylists_Params, nullptr);
-	uFnShouldRefreshPlaylists->FunctionFlags |= 0x400;
 
 	return ShouldRefreshPlaylists_Params.ReturnValue;
 };
@@ -13069,9 +12721,7 @@ void UOnlinePlaylistManager::DetermineFilesToDownload()
 	UOnlinePlaylistManager_execDetermineFilesToDownload_Params DetermineFilesToDownload_Params;
 	memset(&DetermineFilesToDownload_Params, 0, sizeof(DetermineFilesToDownload_Params));
 
-	uFnDetermineFilesToDownload->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDetermineFilesToDownload, &DetermineFilesToDownload_Params, nullptr);
-	uFnDetermineFilesToDownload->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.OnlinePlaylistManager.DownloadPlaylist
@@ -13096,7 +12746,7 @@ void UOnlinePlaylistManager::DownloadPlaylist()
 // Function IpDrv.OnlinePlaylistManager.OnReadPlaylistComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UOnlinePlaylistManager::OnReadPlaylistComplete(bool bWasSuccessful)
 {
@@ -13119,7 +12769,7 @@ void UOnlinePlaylistManager::OnReadPlaylistComplete(bool bWasSuccessful)
 // Parameter Info:
 // struct FScriptDelegate         ResponseMicroTxnDelegate       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePurchaseInterfaceImpl::ClearMicroTxnResponseDelegate(struct FScriptDelegate ResponseMicroTxnDelegate)
+void UOnlinePurchaseInterfaceImpl::ClearMicroTxnResponseDelegate(const struct FScriptDelegate& ResponseMicroTxnDelegate)
 {
 	static UFunction* uFnClearMicroTxnResponseDelegate = nullptr;
 
@@ -13140,7 +12790,7 @@ void UOnlinePurchaseInterfaceImpl::ClearMicroTxnResponseDelegate(struct FScriptD
 // Parameter Info:
 // struct FScriptDelegate         ResponseMicroTxnDelegate       (CPF_Parm | CPF_NeedCtorLink)
 
-void UOnlinePurchaseInterfaceImpl::AddMicroTxnResponseDelegate(struct FScriptDelegate ResponseMicroTxnDelegate)
+void UOnlinePurchaseInterfaceImpl::AddMicroTxnResponseDelegate(const struct FScriptDelegate& ResponseMicroTxnDelegate)
 {
 	static UFunction* uFnAddMicroTxnResponseDelegate = nullptr;
 
@@ -13159,7 +12809,7 @@ void UOnlinePurchaseInterfaceImpl::AddMicroTxnResponseDelegate(struct FScriptDel
 // Function IpDrv.OnlinePurchaseInterfaceImpl.OnMicroTxnResponse
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bAuthorized                    (CPF_Parm)
+// uint32_t                       bAuthorized                    (CPF_Parm)
 // uint64_t                       OrderId                        (CPF_Parm)
 
 void UOnlinePurchaseInterfaceImpl::OnMicroTxnResponse(bool bAuthorized, uint64_t OrderId)
@@ -13174,7 +12824,7 @@ void UOnlinePurchaseInterfaceImpl::OnMicroTxnResponse(bool bAuthorized, uint64_t
 	UOnlinePurchaseInterfaceImpl_execOnMicroTxnResponse_Params OnMicroTxnResponse_Params;
 	memset(&OnMicroTxnResponse_Params, 0, sizeof(OnMicroTxnResponse_Params));
 	OnMicroTxnResponse_Params.bAuthorized = bAuthorized;
-	OnMicroTxnResponse_Params.OrderId = OrderId;
+	memcpy_s(&OnMicroTxnResponse_Params.OrderId, sizeof(OnMicroTxnResponse_Params.OrderId), &OrderId, sizeof(OrderId));
 
 	this->ProcessEvent(uFnOnMicroTxnResponse, &OnMicroTxnResponse_Params, nullptr);
 };
@@ -13186,7 +12836,7 @@ void UOnlinePurchaseInterfaceImpl::OnMicroTxnResponse(bool bAuthorized, uint64_t
 // class FString                  Currency                       (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Price                          (CPF_Parm)
 
-class FString UOnlinePurchaseInterfaceImpl::FormatCurrency(class FString Currency, int32_t Price)
+class FString UOnlinePurchaseInterfaceImpl::FormatCurrency(const class FString& Currency, int32_t Price)
 {
 	static UFunction* uFnFormatCurrency = nullptr;
 
@@ -13211,9 +12861,9 @@ class FString UOnlinePurchaseInterfaceImpl::FormatCurrency(class FString Currenc
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FScriptDelegate         Callback                       (CPF_Parm | CPF_NeedCtorLink)
 // struct FUniqueNetId            PlayerID                       (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
-// TArray<struct FName>           AppNames                       (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FName>      AppNames                       (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UOnlinePurchaseInterfaceImpl::GetAppPriceInfo(struct FScriptDelegate Callback, struct FUniqueNetId& PlayerID, TArray<struct FName>& AppNames)
+bool UOnlinePurchaseInterfaceImpl::GetAppPriceInfo(const struct FScriptDelegate& Callback, struct FUniqueNetId& PlayerID, class TArray<class FName>& AppNames)
 {
 	static UFunction* uFnGetAppPriceInfo = nullptr;
 
@@ -13239,12 +12889,12 @@ bool UOnlinePurchaseInterfaceImpl::GetAppPriceInfo(struct FScriptDelegate Callba
 // Function IpDrv.OnlinePurchaseInterfaceImpl.EventGetAppPriceInfoComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   AppName                        (CPF_Parm)
+// class FName                    AppName                        (CPF_Parm)
 // class FString                  Price                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DiscountPrice                  (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        DiscountPercentage             (CPF_Parm)
 
-void UOnlinePurchaseInterfaceImpl::EventGetAppPriceInfoComplete(struct FName AppName, class FString Price, class FString DiscountPrice, int32_t DiscountPercentage)
+void UOnlinePurchaseInterfaceImpl::EventGetAppPriceInfoComplete(const class FName& AppName, const class FString& Price, const class FString& DiscountPrice, int32_t DiscountPercentage)
 {
 	static UFunction* uFnEventGetAppPriceInfoComplete = nullptr;
 
@@ -13298,13 +12948,11 @@ void UPartyBeacon::eventDestroyBeacon()
 	UPartyBeacon_eventDestroyBeacon_Params DestroyBeacon_Params;
 	memset(&DestroyBeacon_Params, 0, sizeof(DestroyBeacon_Params));
 
-	uFnDestroyBeacon->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDestroyBeacon, &DestroyBeacon_Params, nullptr);
-	uFnDestroyBeacon->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.PartyBeaconClient.DestroyBeacon
-// [0x400020C00] (FUNC_Native | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020C00] (FUNC_Native | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void UPartyBeaconClient::eventDestroyBeacon()
@@ -13319,9 +12967,7 @@ void UPartyBeaconClient::eventDestroyBeacon()
 	UPartyBeaconClient_eventDestroyBeacon_Params DestroyBeacon_Params;
 	memset(&DestroyBeacon_Params, 0, sizeof(DestroyBeacon_Params));
 
-	uFnDestroyBeacon->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDestroyBeacon, &DestroyBeacon_Params, nullptr);
-	uFnDestroyBeacon->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.PartyBeaconClient.CancelReservation
@@ -13330,7 +12976,7 @@ void UPartyBeaconClient::eventDestroyBeacon()
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            CancellingPartyLeader          (CPF_Parm | CPF_NeedCtorLink)
 
-bool UPartyBeaconClient::CancelReservation(struct FUniqueNetId CancellingPartyLeader)
+bool UPartyBeaconClient::CancelReservation(const struct FUniqueNetId& CancellingPartyLeader)
 {
 	static UFunction* uFnCancelReservation = nullptr;
 
@@ -13343,9 +12989,7 @@ bool UPartyBeaconClient::CancelReservation(struct FUniqueNetId CancellingPartyLe
 	memset(&CancelReservation_Params, 0, sizeof(CancelReservation_Params));
 	memcpy_s(&CancelReservation_Params.CancellingPartyLeader, sizeof(CancelReservation_Params.CancellingPartyLeader), &CancellingPartyLeader, sizeof(CancellingPartyLeader));
 
-	uFnCancelReservation->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnCancelReservation, &CancelReservation_Params, nullptr);
-	uFnCancelReservation->FunctionFlags |= 0x400;
 
 	return CancelReservation_Params.ReturnValue;
 };
@@ -13356,9 +13000,9 @@ bool UPartyBeaconClient::CancelReservation(struct FUniqueNetId CancellingPartyLe
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            RequestingPartyLeader          (CPF_Parm | CPF_NeedCtorLink)
 // struct FOnlineGameSearchResult DesiredHost                    (CPF_Const | CPF_Parm | CPF_OutParm)
-// TArray<struct FPlayerReservation> PlayersToAdd                   (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FPlayerReservation> PlayersToAdd                   (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UPartyBeaconClient::RequestReservationUpdate(struct FUniqueNetId RequestingPartyLeader, struct FOnlineGameSearchResult& DesiredHost, TArray<struct FPlayerReservation>& PlayersToAdd)
+bool UPartyBeaconClient::RequestReservationUpdate(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult& DesiredHost, class TArray<struct FPlayerReservation>& PlayersToAdd)
 {
 	static UFunction* uFnRequestReservationUpdate = nullptr;
 
@@ -13373,9 +13017,7 @@ bool UPartyBeaconClient::RequestReservationUpdate(struct FUniqueNetId Requesting
 	memcpy_s(&RequestReservationUpdate_Params.DesiredHost, sizeof(RequestReservationUpdate_Params.DesiredHost), &DesiredHost, sizeof(DesiredHost));
 	memcpy_s(&RequestReservationUpdate_Params.PlayersToAdd, sizeof(RequestReservationUpdate_Params.PlayersToAdd), &PlayersToAdd, sizeof(PlayersToAdd));
 
-	uFnRequestReservationUpdate->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnRequestReservationUpdate, &RequestReservationUpdate_Params, nullptr);
-	uFnRequestReservationUpdate->FunctionFlags |= 0x400;
 
 	memcpy_s(&DesiredHost, sizeof(DesiredHost), &RequestReservationUpdate_Params.DesiredHost, sizeof(RequestReservationUpdate_Params.DesiredHost));
 	memcpy_s(&PlayersToAdd, sizeof(PlayersToAdd), &RequestReservationUpdate_Params.PlayersToAdd, sizeof(RequestReservationUpdate_Params.PlayersToAdd));
@@ -13389,9 +13031,9 @@ bool UPartyBeaconClient::RequestReservationUpdate(struct FUniqueNetId Requesting
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            RequestingPartyLeader          (CPF_Parm | CPF_NeedCtorLink)
 // struct FOnlineGameSearchResult DesiredHost                    (CPF_Const | CPF_Parm | CPF_OutParm)
-// TArray<struct FPlayerReservation> Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FPlayerReservation> Players                        (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UPartyBeaconClient::RequestReservation(struct FUniqueNetId RequestingPartyLeader, struct FOnlineGameSearchResult& DesiredHost, TArray<struct FPlayerReservation>& Players)
+bool UPartyBeaconClient::RequestReservation(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult& DesiredHost, class TArray<struct FPlayerReservation>& Players)
 {
 	static UFunction* uFnRequestReservation = nullptr;
 
@@ -13406,9 +13048,7 @@ bool UPartyBeaconClient::RequestReservation(struct FUniqueNetId RequestingPartyL
 	memcpy_s(&RequestReservation_Params.DesiredHost, sizeof(RequestReservation_Params.DesiredHost), &DesiredHost, sizeof(DesiredHost));
 	memcpy_s(&RequestReservation_Params.Players, sizeof(RequestReservation_Params.Players), &Players, sizeof(Players));
 
-	uFnRequestReservation->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnRequestReservation, &RequestReservation_Params, nullptr);
-	uFnRequestReservation->FunctionFlags |= 0x400;
 
 	memcpy_s(&DesiredHost, sizeof(DesiredHost), &RequestReservation_Params.DesiredHost, sizeof(RequestReservation_Params.DesiredHost));
 	memcpy_s(&Players, sizeof(Players), &RequestReservation_Params.Players, sizeof(RequestReservation_Params.Players));
@@ -13457,11 +13097,11 @@ void UPartyBeaconClient::OnHostIsReady()
 // Function IpDrv.PartyBeaconClient.OnTravelRequestReceived
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // class UClass*                  SearchClass                    (CPF_Parm)
 // uint8_t                        PlatformSpecificInfo           (CPF_Parm)
 
-void UPartyBeaconClient::OnTravelRequestReceived(struct FName SessionName, class UClass* SearchClass, uint8_t PlatformSpecificInfo)
+void UPartyBeaconClient::OnTravelRequestReceived(const class FName& SessionName, class UClass* SearchClass, uint8_t PlatformSpecificInfo[80])
 {
 	static UFunction* uFnOnTravelRequestReceived = nullptr;
 
@@ -13473,7 +13113,7 @@ void UPartyBeaconClient::OnTravelRequestReceived(struct FName SessionName, class
 	UPartyBeaconClient_execOnTravelRequestReceived_Params OnTravelRequestReceived_Params;
 	memset(&OnTravelRequestReceived_Params, 0, sizeof(OnTravelRequestReceived_Params));
 	memcpy_s(&OnTravelRequestReceived_Params.SessionName, sizeof(OnTravelRequestReceived_Params.SessionName), &SessionName, sizeof(SessionName));
-	memcpy_s(&OnTravelRequestReceived_Params.SearchClass, sizeof(OnTravelRequestReceived_Params.SearchClass), &SearchClass, sizeof(SearchClass));
+	OnTravelRequestReceived_Params.SearchClass = SearchClass;
 	memcpy_s(&OnTravelRequestReceived_Params.PlatformSpecificInfo, sizeof(OnTravelRequestReceived_Params.PlatformSpecificInfo), &PlatformSpecificInfo, sizeof(PlatformSpecificInfo));
 
 	this->ProcessEvent(uFnOnTravelRequestReceived, &OnTravelRequestReceived_Params, nullptr);
@@ -13538,9 +13178,7 @@ int32_t UPartyBeaconHost::GetMaxAvailableTeamSize()
 	UPartyBeaconHost_execGetMaxAvailableTeamSize_Params GetMaxAvailableTeamSize_Params;
 	memset(&GetMaxAvailableTeamSize_Params, 0, sizeof(GetMaxAvailableTeamSize_Params));
 
-	uFnGetMaxAvailableTeamSize->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetMaxAvailableTeamSize, &GetMaxAvailableTeamSize_Params, nullptr);
-	uFnGetMaxAvailableTeamSize->FunctionFlags |= 0x400;
 
 	return GetMaxAvailableTeamSize_Params.ReturnValue;
 };
@@ -13548,9 +13186,9 @@ int32_t UPartyBeaconHost::GetMaxAvailableTeamSize()
 // Function IpDrv.PartyBeaconHost.GetPartyLeaders
 // [0x00420003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<struct FUniqueNetId>    PartyLeaders                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FUniqueNetId> PartyLeaders                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UPartyBeaconHost::GetPartyLeaders(TArray<struct FUniqueNetId>& PartyLeaders)
+void UPartyBeaconHost::GetPartyLeaders(class TArray<struct FUniqueNetId>& PartyLeaders)
 {
 	static UFunction* uFnGetPartyLeaders = nullptr;
 
@@ -13571,9 +13209,9 @@ void UPartyBeaconHost::GetPartyLeaders(TArray<struct FUniqueNetId>& PartyLeaders
 // Function IpDrv.PartyBeaconHost.GetPlayers
 // [0x00C20003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_AllFlags)
 // Parameter Info:
-// TArray<struct FUniqueNetId>    Players                        (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FUniqueNetId> Players                        (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UPartyBeaconHost::GetPlayers(TArray<struct FUniqueNetId>& Players)
+void UPartyBeaconHost::GetPlayers(class TArray<struct FUniqueNetId>& Players)
 {
 	static UFunction* uFnGetPlayers = nullptr;
 
@@ -13607,11 +13245,9 @@ void UPartyBeaconHost::AppendReservationSkillsToSearch(class UOnlineGameSearch* 
 
 	UPartyBeaconHost_execAppendReservationSkillsToSearch_Params AppendReservationSkillsToSearch_Params;
 	memset(&AppendReservationSkillsToSearch_Params, 0, sizeof(AppendReservationSkillsToSearch_Params));
-	memcpy_s(&AppendReservationSkillsToSearch_Params.Search, sizeof(AppendReservationSkillsToSearch_Params.Search), &Search, sizeof(Search));
+	AppendReservationSkillsToSearch_Params.Search = Search;
 
-	uFnAppendReservationSkillsToSearch->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAppendReservationSkillsToSearch, &AppendReservationSkillsToSearch_Params, nullptr);
-	uFnAppendReservationSkillsToSearch->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.PartyBeaconHost.UnregisterParty
@@ -13619,7 +13255,7 @@ void UPartyBeaconHost::AppendReservationSkillsToSearch(class UOnlineGameSearch* 
 // Parameter Info:
 // struct FUniqueNetId            PartyLeader                    (CPF_Parm | CPF_NeedCtorLink)
 
-void UPartyBeaconHost::eventUnregisterParty(struct FUniqueNetId PartyLeader)
+void UPartyBeaconHost::eventUnregisterParty(const struct FUniqueNetId& PartyLeader)
 {
 	static UFunction* uFnUnregisterParty = nullptr;
 
@@ -13711,9 +13347,7 @@ void UPartyBeaconHost::TellClientsHostHasCancelled()
 	UPartyBeaconHost_execTellClientsHostHasCancelled_Params TellClientsHostHasCancelled_Params;
 	memset(&TellClientsHostHasCancelled_Params, 0, sizeof(TellClientsHostHasCancelled_Params));
 
-	uFnTellClientsHostHasCancelled->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnTellClientsHostHasCancelled, &TellClientsHostHasCancelled_Params, nullptr);
-	uFnTellClientsHostHasCancelled->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.PartyBeaconHost.TellClientsHostIsReady
@@ -13732,19 +13366,17 @@ void UPartyBeaconHost::TellClientsHostIsReady()
 	UPartyBeaconHost_execTellClientsHostIsReady_Params TellClientsHostIsReady_Params;
 	memset(&TellClientsHostIsReady_Params, 0, sizeof(TellClientsHostIsReady_Params));
 
-	uFnTellClientsHostIsReady->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnTellClientsHostIsReady, &TellClientsHostIsReady_Params, nullptr);
-	uFnTellClientsHostIsReady->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.PartyBeaconHost.TellClientsToTravel
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// struct FName                   SessionName                    (CPF_Parm)
+// class FName                    SessionName                    (CPF_Parm)
 // class UClass*                  SearchClass                    (CPF_Parm)
 // uint8_t                        PlatformSpecificInfo           (CPF_Parm)
 
-void UPartyBeaconHost::TellClientsToTravel(struct FName SessionName, class UClass* SearchClass, uint8_t PlatformSpecificInfo)
+void UPartyBeaconHost::TellClientsToTravel(const class FName& SessionName, class UClass* SearchClass, uint8_t PlatformSpecificInfo[80])
 {
 	static UFunction* uFnTellClientsToTravel = nullptr;
 
@@ -13756,16 +13388,14 @@ void UPartyBeaconHost::TellClientsToTravel(struct FName SessionName, class UClas
 	UPartyBeaconHost_execTellClientsToTravel_Params TellClientsToTravel_Params;
 	memset(&TellClientsToTravel_Params, 0, sizeof(TellClientsToTravel_Params));
 	memcpy_s(&TellClientsToTravel_Params.SessionName, sizeof(TellClientsToTravel_Params.SessionName), &SessionName, sizeof(SessionName));
-	memcpy_s(&TellClientsToTravel_Params.SearchClass, sizeof(TellClientsToTravel_Params.SearchClass), &SearchClass, sizeof(SearchClass));
+	TellClientsToTravel_Params.SearchClass = SearchClass;
 	memcpy_s(&TellClientsToTravel_Params.PlatformSpecificInfo, sizeof(TellClientsToTravel_Params.PlatformSpecificInfo), &PlatformSpecificInfo, sizeof(PlatformSpecificInfo));
 
-	uFnTellClientsToTravel->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnTellClientsToTravel, &TellClientsToTravel_Params, nullptr);
-	uFnTellClientsToTravel->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.PartyBeaconHost.DestroyBeacon
-// [0x400020C00] (FUNC_Native | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020C00] (FUNC_Native | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void UPartyBeaconHost::eventDestroyBeacon()
@@ -13780,9 +13410,7 @@ void UPartyBeaconHost::eventDestroyBeacon()
 	UPartyBeaconHost_eventDestroyBeacon_Params DestroyBeacon_Params;
 	memset(&DestroyBeacon_Params, 0, sizeof(DestroyBeacon_Params));
 
-	uFnDestroyBeacon->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDestroyBeacon, &DestroyBeacon_Params, nullptr);
-	uFnDestroyBeacon->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.PartyBeaconHost.OnClientCancellationReceived
@@ -13790,7 +13418,7 @@ void UPartyBeaconHost::eventDestroyBeacon()
 // Parameter Info:
 // struct FUniqueNetId            PartyLeader                    (CPF_Parm | CPF_NeedCtorLink)
 
-void UPartyBeaconHost::OnClientCancellationReceived(struct FUniqueNetId PartyLeader)
+void UPartyBeaconHost::OnClientCancellationReceived(const struct FUniqueNetId& PartyLeader)
 {
 	static UFunction* uFnOnClientCancellationReceived = nullptr;
 
@@ -13848,9 +13476,9 @@ void UPartyBeaconHost::OnReservationChange()
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // struct FUniqueNetId            PlayerID                       (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bMaintainParty                 (CPF_Parm)
+// uint32_t                       bMaintainParty                 (CPF_Parm)
 
-void UPartyBeaconHost::HandlePlayerLogout(struct FUniqueNetId PlayerID, bool bMaintainParty)
+void UPartyBeaconHost::HandlePlayerLogout(const struct FUniqueNetId& PlayerID, bool bMaintainParty)
 {
 	static UFunction* uFnHandlePlayerLogout = nullptr;
 
@@ -13864,9 +13492,7 @@ void UPartyBeaconHost::HandlePlayerLogout(struct FUniqueNetId PlayerID, bool bMa
 	memcpy_s(&HandlePlayerLogout_Params.PlayerID, sizeof(HandlePlayerLogout_Params.PlayerID), &PlayerID, sizeof(PlayerID));
 	HandlePlayerLogout_Params.bMaintainParty = bMaintainParty;
 
-	uFnHandlePlayerLogout->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnHandlePlayerLogout, &HandlePlayerLogout_Params, nullptr);
-	uFnHandlePlayerLogout->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.PartyBeaconHost.GetExistingReservation
@@ -13888,9 +13514,7 @@ int32_t UPartyBeaconHost::GetExistingReservation(struct FUniqueNetId& PartyLeade
 	memset(&GetExistingReservation_Params, 0, sizeof(GetExistingReservation_Params));
 	memcpy_s(&GetExistingReservation_Params.PartyLeader, sizeof(GetExistingReservation_Params.PartyLeader), &PartyLeader, sizeof(PartyLeader));
 
-	uFnGetExistingReservation->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetExistingReservation, &GetExistingReservation_Params, nullptr);
-	uFnGetExistingReservation->FunctionFlags |= 0x400;
 
 	memcpy_s(&PartyLeader, sizeof(PartyLeader), &GetExistingReservation_Params.PartyLeader, sizeof(GetExistingReservation_Params.PartyLeader));
 
@@ -13902,9 +13526,9 @@ int32_t UPartyBeaconHost::GetExistingReservation(struct FUniqueNetId& PartyLeade
 // Parameter Info:
 // EPartyReservationResult        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PartyLeader                    (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FPlayerReservation> PlayerMembers                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FPlayerReservation> PlayerMembers                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-EPartyReservationResult UPartyBeaconHost::UpdatePartyReservationEntry(struct FUniqueNetId PartyLeader, TArray<struct FPlayerReservation>& PlayerMembers)
+EPartyReservationResult UPartyBeaconHost::UpdatePartyReservationEntry(const struct FUniqueNetId& PartyLeader, class TArray<struct FPlayerReservation>& PlayerMembers)
 {
 	static UFunction* uFnUpdatePartyReservationEntry = nullptr;
 
@@ -13918,13 +13542,11 @@ EPartyReservationResult UPartyBeaconHost::UpdatePartyReservationEntry(struct FUn
 	memcpy_s(&UpdatePartyReservationEntry_Params.PartyLeader, sizeof(UpdatePartyReservationEntry_Params.PartyLeader), &PartyLeader, sizeof(PartyLeader));
 	memcpy_s(&UpdatePartyReservationEntry_Params.PlayerMembers, sizeof(UpdatePartyReservationEntry_Params.PlayerMembers), &PlayerMembers, sizeof(PlayerMembers));
 
-	uFnUpdatePartyReservationEntry->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnUpdatePartyReservationEntry, &UpdatePartyReservationEntry_Params, nullptr);
-	uFnUpdatePartyReservationEntry->FunctionFlags |= 0x400;
 
 	memcpy_s(&PlayerMembers, sizeof(PlayerMembers), &UpdatePartyReservationEntry_Params.PlayerMembers, sizeof(UpdatePartyReservationEntry_Params.PlayerMembers));
 
-	return UpdatePartyReservationEntry_Params.ReturnValue;
+	return static_cast<EPartyReservationResult>(UpdatePartyReservationEntry_Params.ReturnValue);
 };
 
 // Function IpDrv.PartyBeaconHost.AddPartyReservationEntry
@@ -13933,10 +13555,10 @@ EPartyReservationResult UPartyBeaconHost::UpdatePartyReservationEntry(struct FUn
 // EPartyReservationResult        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // struct FUniqueNetId            PartyLeader                    (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        TeamNum                        (CPF_Parm)
-// bool                           bIsHost                        (CPF_Parm)
-// TArray<struct FPlayerReservation> PlayerMembers                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// uint32_t                       bIsHost                        (CPF_Parm)
+// class TArray<struct FPlayerReservation> PlayerMembers                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-EPartyReservationResult UPartyBeaconHost::AddPartyReservationEntry(struct FUniqueNetId PartyLeader, int32_t TeamNum, bool bIsHost, TArray<struct FPlayerReservation>& PlayerMembers)
+EPartyReservationResult UPartyBeaconHost::AddPartyReservationEntry(const struct FUniqueNetId& PartyLeader, int32_t TeamNum, bool bIsHost, class TArray<struct FPlayerReservation>& PlayerMembers)
 {
 	static UFunction* uFnAddPartyReservationEntry = nullptr;
 
@@ -13952,13 +13574,11 @@ EPartyReservationResult UPartyBeaconHost::AddPartyReservationEntry(struct FUniqu
 	AddPartyReservationEntry_Params.bIsHost = bIsHost;
 	memcpy_s(&AddPartyReservationEntry_Params.PlayerMembers, sizeof(AddPartyReservationEntry_Params.PlayerMembers), &PlayerMembers, sizeof(PlayerMembers));
 
-	uFnAddPartyReservationEntry->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAddPartyReservationEntry, &AddPartyReservationEntry_Params, nullptr);
-	uFnAddPartyReservationEntry->FunctionFlags |= 0x400;
 
 	memcpy_s(&PlayerMembers, sizeof(PlayerMembers), &AddPartyReservationEntry_Params.PlayerMembers, sizeof(AddPartyReservationEntry_Params.PlayerMembers));
 
-	return AddPartyReservationEntry_Params.ReturnValue;
+	return static_cast<EPartyReservationResult>(AddPartyReservationEntry_Params.ReturnValue);
 };
 
 // Function IpDrv.PartyBeaconHost.InitHostBeacon
@@ -13968,10 +13588,10 @@ EPartyReservationResult UPartyBeaconHost::AddPartyReservationEntry(struct FUniqu
 // int32_t                        InNumTeams                     (CPF_Parm)
 // int32_t                        InNumPlayersPerTeam            (CPF_Parm)
 // int32_t                        InNumReservations              (CPF_Parm)
-// struct FName                   InSessionName                  (CPF_Parm)
+// class FName                    InSessionName                  (CPF_Parm)
 // int32_t                        InForceTeamNum                 (CPF_OptionalParm | CPF_Parm)
 
-bool UPartyBeaconHost::InitHostBeacon(int32_t InNumTeams, int32_t InNumPlayersPerTeam, int32_t InNumReservations, struct FName InSessionName, int32_t InForceTeamNum)
+bool UPartyBeaconHost::InitHostBeacon(int32_t InNumTeams, int32_t InNumPlayersPerTeam, int32_t InNumReservations, const class FName& InSessionName, int32_t InForceTeamNum)
 {
 	static UFunction* uFnInitHostBeacon = nullptr;
 
@@ -13988,9 +13608,7 @@ bool UPartyBeaconHost::InitHostBeacon(int32_t InNumTeams, int32_t InNumPlayersPe
 	memcpy_s(&InitHostBeacon_Params.InSessionName, sizeof(InitHostBeacon_Params.InSessionName), &InSessionName, sizeof(InSessionName));
 	memcpy_s(&InitHostBeacon_Params.InForceTeamNum, sizeof(InitHostBeacon_Params.InForceTeamNum), &InForceTeamNum, sizeof(InForceTeamNum));
 
-	uFnInitHostBeacon->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnInitHostBeacon, &InitHostBeacon_Params, nullptr);
-	uFnInitHostBeacon->FunctionFlags |= 0x400;
 
 	return InitHostBeacon_Params.ReturnValue;
 };
@@ -13998,7 +13616,7 @@ bool UPartyBeaconHost::InitHostBeacon(int32_t InNumTeams, int32_t InNumPlayersPe
 // Function IpDrv.PartyBeaconHost.PauseReservationRequests
 // [0x00020401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bPause                         (CPF_Parm)
+// uint32_t                       bPause                         (CPF_Parm)
 
 void UPartyBeaconHost::PauseReservationRequests(bool bPause)
 {
@@ -14013,9 +13631,7 @@ void UPartyBeaconHost::PauseReservationRequests(bool bPause)
 	memset(&PauseReservationRequests_Params, 0, sizeof(PauseReservationRequests_Params));
 	PauseReservationRequests_Params.bPause = bPause;
 
-	uFnPauseReservationRequests->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnPauseReservationRequests, &PauseReservationRequests_Params, nullptr);
-	uFnPauseReservationRequests->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.WebRequest.GetHexDigit
@@ -14024,7 +13640,7 @@ void UPartyBeaconHost::PauseReservationRequests(bool bPause)
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  D                              (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UWebRequest::GetHexDigit(class FString D)
+int32_t UWebRequest::GetHexDigit(const class FString& D)
 {
 	static UFunction* uFnGetHexDigit = nullptr;
 
@@ -14047,7 +13663,7 @@ int32_t UWebRequest::GetHexDigit(class FString D)
 // Parameter Info:
 // class FString                  Data                           (CPF_Parm | CPF_NeedCtorLink)
 
-void UWebRequest::DecodeFormData(class FString Data)
+void UWebRequest::DecodeFormData(const class FString& Data)
 {
 	static UFunction* uFnDecodeFormData = nullptr;
 
@@ -14068,7 +13684,7 @@ void UWebRequest::DecodeFormData(class FString Data)
 // Parameter Info:
 // class FString                  S                              (CPF_Parm | CPF_NeedCtorLink)
 
-void UWebRequest::ProcessHeaderString(class FString S)
+void UWebRequest::ProcessHeaderString(const class FString& S)
 {
 	static UFunction* uFnProcessHeaderString = nullptr;
 
@@ -14100,17 +13716,15 @@ void UWebRequest::Dump()
 	UWebRequest_execDump_Params Dump_Params;
 	memset(&Dump_Params, 0, sizeof(Dump_Params));
 
-	uFnDump->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDump, &Dump_Params, nullptr);
-	uFnDump->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.WebRequest.GetVariables
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<class FString>          varNames                       (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FString>    varNames                       (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UWebRequest::GetVariables(TArray<class FString>& varNames)
+void UWebRequest::GetVariables(class TArray<class FString>& varNames)
 {
 	static UFunction* uFnGetVariables = nullptr;
 
@@ -14123,9 +13737,7 @@ void UWebRequest::GetVariables(TArray<class FString>& varNames)
 	memset(&GetVariables_Params, 0, sizeof(GetVariables_Params));
 	memcpy_s(&GetVariables_Params.varNames, sizeof(GetVariables_Params.varNames), &varNames, sizeof(varNames));
 
-	uFnGetVariables->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariables, &GetVariables_Params, nullptr);
-	uFnGetVariables->FunctionFlags |= 0x400;
 
 	memcpy_s(&varNames, sizeof(varNames), &GetVariables_Params.varNames, sizeof(GetVariables_Params.varNames));
 };
@@ -14138,7 +13750,7 @@ void UWebRequest::GetVariables(TArray<class FString>& varNames)
 // int32_t                        Number                         (CPF_Parm)
 // class FString                  DefaultValue                   (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 
-class FString UWebRequest::GetVariableNumber(class FString VariableName, int32_t Number, class FString DefaultValue)
+class FString UWebRequest::GetVariableNumber(const class FString& VariableName, int32_t Number, const class FString& DefaultValue)
 {
 	static UFunction* uFnGetVariableNumber = nullptr;
 
@@ -14153,9 +13765,7 @@ class FString UWebRequest::GetVariableNumber(class FString VariableName, int32_t
 	memcpy_s(&GetVariableNumber_Params.Number, sizeof(GetVariableNumber_Params.Number), &Number, sizeof(Number));
 	memcpy_s(&GetVariableNumber_Params.DefaultValue, sizeof(GetVariableNumber_Params.DefaultValue), &DefaultValue, sizeof(DefaultValue));
 
-	uFnGetVariableNumber->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariableNumber, &GetVariableNumber_Params, nullptr);
-	uFnGetVariableNumber->FunctionFlags |= 0x400;
 
 	return GetVariableNumber_Params.ReturnValue;
 };
@@ -14166,7 +13776,7 @@ class FString UWebRequest::GetVariableNumber(class FString VariableName, int32_t
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  VariableName                   (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UWebRequest::GetVariableCount(class FString VariableName)
+int32_t UWebRequest::GetVariableCount(const class FString& VariableName)
 {
 	static UFunction* uFnGetVariableCount = nullptr;
 
@@ -14179,9 +13789,7 @@ int32_t UWebRequest::GetVariableCount(class FString VariableName)
 	memset(&GetVariableCount_Params, 0, sizeof(GetVariableCount_Params));
 	memcpy_s(&GetVariableCount_Params.VariableName, sizeof(GetVariableCount_Params.VariableName), &VariableName, sizeof(VariableName));
 
-	uFnGetVariableCount->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariableCount, &GetVariableCount_Params, nullptr);
-	uFnGetVariableCount->FunctionFlags |= 0x400;
 
 	return GetVariableCount_Params.ReturnValue;
 };
@@ -14193,7 +13801,7 @@ int32_t UWebRequest::GetVariableCount(class FString VariableName)
 // class FString                  VariableName                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DefaultValue                   (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 
-class FString UWebRequest::GetVariable(class FString VariableName, class FString DefaultValue)
+class FString UWebRequest::GetVariable(const class FString& VariableName, const class FString& DefaultValue)
 {
 	static UFunction* uFnGetVariable = nullptr;
 
@@ -14207,9 +13815,7 @@ class FString UWebRequest::GetVariable(class FString VariableName, class FString
 	memcpy_s(&GetVariable_Params.VariableName, sizeof(GetVariable_Params.VariableName), &VariableName, sizeof(VariableName));
 	memcpy_s(&GetVariable_Params.DefaultValue, sizeof(GetVariable_Params.DefaultValue), &DefaultValue, sizeof(DefaultValue));
 
-	uFnGetVariable->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetVariable, &GetVariable_Params, nullptr);
-	uFnGetVariable->FunctionFlags |= 0x400;
 
 	return GetVariable_Params.ReturnValue;
 };
@@ -14220,7 +13826,7 @@ class FString UWebRequest::GetVariable(class FString VariableName, class FString
 // class FString                  VariableName                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Value                          (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-void UWebRequest::AddVariable(class FString VariableName, class FString Value)
+void UWebRequest::AddVariable(const class FString& VariableName, const class FString& Value)
 {
 	static UFunction* uFnAddVariable = nullptr;
 
@@ -14234,17 +13840,15 @@ void UWebRequest::AddVariable(class FString VariableName, class FString Value)
 	memcpy_s(&AddVariable_Params.VariableName, sizeof(AddVariable_Params.VariableName), &VariableName, sizeof(VariableName));
 	memcpy_s(&AddVariable_Params.Value, sizeof(AddVariable_Params.Value), &Value, sizeof(Value));
 
-	uFnAddVariable->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAddVariable, &AddVariable_Params, nullptr);
-	uFnAddVariable->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.WebRequest.GetHeaders
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<class FString>          Headers                        (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FString>    Headers                        (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UWebRequest::GetHeaders(TArray<class FString>& Headers)
+void UWebRequest::GetHeaders(class TArray<class FString>& Headers)
 {
 	static UFunction* uFnGetHeaders = nullptr;
 
@@ -14257,9 +13861,7 @@ void UWebRequest::GetHeaders(TArray<class FString>& Headers)
 	memset(&GetHeaders_Params, 0, sizeof(GetHeaders_Params));
 	memcpy_s(&GetHeaders_Params.Headers, sizeof(GetHeaders_Params.Headers), &Headers, sizeof(Headers));
 
-	uFnGetHeaders->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetHeaders, &GetHeaders_Params, nullptr);
-	uFnGetHeaders->FunctionFlags |= 0x400;
 
 	memcpy_s(&Headers, sizeof(Headers), &GetHeaders_Params.Headers, sizeof(GetHeaders_Params.Headers));
 };
@@ -14271,7 +13873,7 @@ void UWebRequest::GetHeaders(TArray<class FString>& Headers)
 // class FString                  HeaderName                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DefaultValue                   (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 
-class FString UWebRequest::GetHeader(class FString HeaderName, class FString DefaultValue)
+class FString UWebRequest::GetHeader(const class FString& HeaderName, const class FString& DefaultValue)
 {
 	static UFunction* uFnGetHeader = nullptr;
 
@@ -14285,9 +13887,7 @@ class FString UWebRequest::GetHeader(class FString HeaderName, class FString Def
 	memcpy_s(&GetHeader_Params.HeaderName, sizeof(GetHeader_Params.HeaderName), &HeaderName, sizeof(HeaderName));
 	memcpy_s(&GetHeader_Params.DefaultValue, sizeof(GetHeader_Params.DefaultValue), &DefaultValue, sizeof(DefaultValue));
 
-	uFnGetHeader->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetHeader, &GetHeader_Params, nullptr);
-	uFnGetHeader->FunctionFlags |= 0x400;
 
 	return GetHeader_Params.ReturnValue;
 };
@@ -14298,7 +13898,7 @@ class FString UWebRequest::GetHeader(class FString HeaderName, class FString Def
 // class FString                  HeaderName                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Value                          (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
 
-void UWebRequest::AddHeader(class FString HeaderName, class FString Value)
+void UWebRequest::AddHeader(const class FString& HeaderName, const class FString& Value)
 {
 	static UFunction* uFnAddHeader = nullptr;
 
@@ -14312,9 +13912,7 @@ void UWebRequest::AddHeader(class FString HeaderName, class FString Value)
 	memcpy_s(&AddHeader_Params.HeaderName, sizeof(AddHeader_Params.HeaderName), &HeaderName, sizeof(HeaderName));
 	memcpy_s(&AddHeader_Params.Value, sizeof(AddHeader_Params.Value), &Value, sizeof(Value));
 
-	uFnAddHeader->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnAddHeader, &AddHeader_Params, nullptr);
-	uFnAddHeader->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.WebRequest.EncodeBase64
@@ -14323,7 +13921,7 @@ void UWebRequest::AddHeader(class FString HeaderName, class FString Value)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Decoded                        (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UWebRequest::EncodeBase64(class FString Decoded)
+class FString UWebRequest::EncodeBase64(const class FString& Decoded)
 {
 	static UFunction* uFnEncodeBase64 = nullptr;
 
@@ -14336,9 +13934,7 @@ class FString UWebRequest::EncodeBase64(class FString Decoded)
 	memset(&EncodeBase64_Params, 0, sizeof(EncodeBase64_Params));
 	memcpy_s(&EncodeBase64_Params.Decoded, sizeof(EncodeBase64_Params.Decoded), &Decoded, sizeof(Decoded));
 
-	uFnEncodeBase64->FunctionFlags &= ~0x400;
 	UWebRequest::StaticClass()->ProcessEvent(uFnEncodeBase64, &EncodeBase64_Params, nullptr);
-	uFnEncodeBase64->FunctionFlags |= 0x400;
 
 	return EncodeBase64_Params.ReturnValue;
 };
@@ -14349,7 +13945,7 @@ class FString UWebRequest::EncodeBase64(class FString Decoded)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Encoded                        (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UWebRequest::DecodeBase64(class FString Encoded)
+class FString UWebRequest::DecodeBase64(const class FString& Encoded)
 {
 	static UFunction* uFnDecodeBase64 = nullptr;
 
@@ -14362,9 +13958,7 @@ class FString UWebRequest::DecodeBase64(class FString Encoded)
 	memset(&DecodeBase64_Params, 0, sizeof(DecodeBase64_Params));
 	memcpy_s(&DecodeBase64_Params.Encoded, sizeof(DecodeBase64_Params.Encoded), &Encoded, sizeof(Encoded));
 
-	uFnDecodeBase64->FunctionFlags &= ~0x400;
 	UWebRequest::StaticClass()->ProcessEvent(uFnDecodeBase64, &DecodeBase64_Params, nullptr);
-	uFnDecodeBase64->FunctionFlags |= 0x400;
 
 	return DecodeBase64_Params.ReturnValue;
 };
@@ -14418,7 +14012,7 @@ bool UWebResponse::SentText()
 // Parameter Info:
 // class FString                  URL                            (CPF_Parm | CPF_NeedCtorLink)
 
-void UWebResponse::Redirect(class FString URL)
+void UWebResponse::Redirect(const class FString& URL)
 {
 	static UFunction* uFnRedirect = nullptr;
 
@@ -14438,9 +14032,9 @@ void UWebResponse::Redirect(class FString URL)
 // [0x00024003] (FUNC_Final | FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ContentType                    (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
-// bool                           bCache                         (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bCache                         (CPF_OptionalParm | CPF_Parm)
 
-void UWebResponse::SendStandardHeaders(class FString ContentType, bool bCache)
+void UWebResponse::SendStandardHeaders(const class FString& ContentType, bool bCache)
 {
 	static UFunction* uFnSendStandardHeaders = nullptr;
 
@@ -14463,7 +14057,7 @@ void UWebResponse::SendStandardHeaders(class FString ContentType, bool bCache)
 // int32_t                        ErrorNum                       (CPF_Parm)
 // class FString                  Data                           (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 
-void UWebResponse::HTTPError(int32_t ErrorNum, class FString Data)
+void UWebResponse::HTTPError(int32_t ErrorNum, const class FString& Data)
 {
 	static UFunction* uFnHTTPError = nullptr;
 
@@ -14503,9 +14097,9 @@ void UWebResponse::SendHeaders()
 // [0x00024003] (FUNC_Final | FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  Header                         (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bReplace                       (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bReplace                       (CPF_OptionalParm | CPF_Parm)
 
-void UWebResponse::AddHeader(class FString Header, bool bReplace)
+void UWebResponse::AddHeader(const class FString& Header, bool bReplace)
 {
 	static UFunction* uFnAddHeader = nullptr;
 
@@ -14527,7 +14121,7 @@ void UWebResponse::AddHeader(class FString Header, bool bReplace)
 // Parameter Info:
 // class FString                  Header                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UWebResponse::HTTPHeader(class FString Header)
+void UWebResponse::HTTPHeader(const class FString& Header)
 {
 	static UFunction* uFnHTTPHeader = nullptr;
 
@@ -14548,7 +14142,7 @@ void UWebResponse::HTTPHeader(class FString Header)
 // Parameter Info:
 // class FString                  Header                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UWebResponse::HttpResponse(class FString Header)
+void UWebResponse::HttpResponse(const class FString& Header)
 {
 	static UFunction* uFnHttpResponse = nullptr;
 
@@ -14569,7 +14163,7 @@ void UWebResponse::HttpResponse(class FString Header)
 // Parameter Info:
 // class FString                  Realm                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UWebResponse::FailAuthentication(class FString Realm)
+void UWebResponse::FailAuthentication(const class FString& Realm)
 {
 	static UFunction* uFnFailAuthentication = nullptr;
 
@@ -14592,7 +14186,7 @@ void UWebResponse::FailAuthentication(class FString Realm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ContentType                    (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 
-bool UWebResponse::SendCachedFile(class FString Filename, class FString ContentType)
+bool UWebResponse::SendCachedFile(const class FString& Filename, const class FString& ContentType)
 {
 	static UFunction* uFnSendCachedFile = nullptr;
 
@@ -14617,7 +14211,7 @@ bool UWebResponse::SendCachedFile(class FString Filename, class FString ContentT
 // int32_t                        Count                          (CPF_Parm)
 // uint8_t                        B                              (CPF_Parm)
 
-void UWebResponse::eventSendBinary(int32_t Count, uint8_t B)
+void UWebResponse::eventSendBinary(int32_t Count, uint8_t B[255])
 {
 	static UFunction* uFnSendBinary = nullptr;
 
@@ -14638,9 +14232,9 @@ void UWebResponse::eventSendBinary(int32_t Count, uint8_t B)
 // [0x00024803] (FUNC_Final | FUNC_Defined | FUNC_Event | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  Text                           (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bNoCRLF                        (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bNoCRLF                        (CPF_OptionalParm | CPF_Parm)
 
-void UWebResponse::eventSendText(class FString Text, bool bNoCRLF)
+void UWebResponse::eventSendText(const class FString& Text, bool bNoCRLF)
 {
 	static UFunction* uFnSendText = nullptr;
 
@@ -14673,9 +14267,7 @@ void UWebResponse::Dump()
 	UWebResponse_execDump_Params Dump_Params;
 	memset(&Dump_Params, 0, sizeof(Dump_Params));
 
-	uFnDump->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnDump, &Dump_Params, nullptr);
-	uFnDump->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.WebResponse.GetHTTPExpiration
@@ -14697,9 +14289,7 @@ class FString UWebResponse::GetHTTPExpiration(int32_t OffsetSeconds)
 	memset(&GetHTTPExpiration_Params, 0, sizeof(GetHTTPExpiration_Params));
 	memcpy_s(&GetHTTPExpiration_Params.OffsetSeconds, sizeof(GetHTTPExpiration_Params.OffsetSeconds), &OffsetSeconds, sizeof(OffsetSeconds));
 
-	uFnGetHTTPExpiration->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetHTTPExpiration, &GetHTTPExpiration_Params, nullptr);
-	uFnGetHTTPExpiration->FunctionFlags |= 0x400;
 
 	return GetHTTPExpiration_Params.ReturnValue;
 };
@@ -14710,7 +14300,7 @@ class FString UWebResponse::GetHTTPExpiration(int32_t OffsetSeconds)
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UWebResponse::LoadParsedUHTM(class FString Filename)
+class FString UWebResponse::LoadParsedUHTM(const class FString& Filename)
 {
 	static UFunction* uFnLoadParsedUHTM = nullptr;
 
@@ -14723,9 +14313,7 @@ class FString UWebResponse::LoadParsedUHTM(class FString Filename)
 	memset(&LoadParsedUHTM_Params, 0, sizeof(LoadParsedUHTM_Params));
 	memcpy_s(&LoadParsedUHTM_Params.Filename, sizeof(LoadParsedUHTM_Params.Filename), &Filename, sizeof(Filename));
 
-	uFnLoadParsedUHTM->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnLoadParsedUHTM, &LoadParsedUHTM_Params, nullptr);
-	uFnLoadParsedUHTM->FunctionFlags |= 0x400;
 
 	return LoadParsedUHTM_Params.ReturnValue;
 };
@@ -14736,7 +14324,7 @@ class FString UWebResponse::LoadParsedUHTM(class FString Filename)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UWebResponse::IncludeBinaryFile(class FString Filename)
+bool UWebResponse::IncludeBinaryFile(const class FString& Filename)
 {
 	static UFunction* uFnIncludeBinaryFile = nullptr;
 
@@ -14749,9 +14337,7 @@ bool UWebResponse::IncludeBinaryFile(class FString Filename)
 	memset(&IncludeBinaryFile_Params, 0, sizeof(IncludeBinaryFile_Params));
 	memcpy_s(&IncludeBinaryFile_Params.Filename, sizeof(IncludeBinaryFile_Params.Filename), &Filename, sizeof(Filename));
 
-	uFnIncludeBinaryFile->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnIncludeBinaryFile, &IncludeBinaryFile_Params, nullptr);
-	uFnIncludeBinaryFile->FunctionFlags |= 0x400;
 
 	return IncludeBinaryFile_Params.ReturnValue;
 };
@@ -14762,7 +14348,7 @@ bool UWebResponse::IncludeBinaryFile(class FString Filename)
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UWebResponse::IncludeUHTM(class FString Filename)
+bool UWebResponse::IncludeUHTM(const class FString& Filename)
 {
 	static UFunction* uFnIncludeUHTM = nullptr;
 
@@ -14775,9 +14361,7 @@ bool UWebResponse::IncludeUHTM(class FString Filename)
 	memset(&IncludeUHTM_Params, 0, sizeof(IncludeUHTM_Params));
 	memcpy_s(&IncludeUHTM_Params.Filename, sizeof(IncludeUHTM_Params.Filename), &Filename, sizeof(Filename));
 
-	uFnIncludeUHTM->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnIncludeUHTM, &IncludeUHTM_Params, nullptr);
-	uFnIncludeUHTM->FunctionFlags |= 0x400;
 
 	return IncludeUHTM_Params.ReturnValue;
 };
@@ -14798,9 +14382,7 @@ void UWebResponse::ClearSubst()
 	UWebResponse_execClearSubst_Params ClearSubst_Params;
 	memset(&ClearSubst_Params, 0, sizeof(ClearSubst_Params));
 
-	uFnClearSubst->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnClearSubst, &ClearSubst_Params, nullptr);
-	uFnClearSubst->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.WebResponse.Subst
@@ -14808,9 +14390,9 @@ void UWebResponse::ClearSubst()
 // Parameter Info:
 // class FString                  Variable                       (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Value                          (CPF_Parm | CPF_CoerceParm | CPF_NeedCtorLink)
-// bool                           bClear                         (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bClear                         (CPF_OptionalParm | CPF_Parm)
 
-void UWebResponse::Subst(class FString Variable, class FString Value, bool bClear)
+void UWebResponse::Subst(const class FString& Variable, const class FString& Value, bool bClear)
 {
 	static UFunction* uFnSubst = nullptr;
 
@@ -14825,9 +14407,7 @@ void UWebResponse::Subst(class FString Variable, class FString Value, bool bClea
 	memcpy_s(&Subst_Params.Value, sizeof(Subst_Params.Value), &Value, sizeof(Value));
 	Subst_Params.bClear = bClear;
 
-	uFnSubst->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnSubst, &Subst_Params, nullptr);
-	uFnSubst->FunctionFlags |= 0x400;
 };
 
 // Function IpDrv.WebResponse.FileExists
@@ -14836,7 +14416,7 @@ void UWebResponse::Subst(class FString Variable, class FString Value, bool bClea
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-bool UWebResponse::FileExists(class FString Filename)
+bool UWebResponse::FileExists(const class FString& Filename)
 {
 	static UFunction* uFnFileExists = nullptr;
 
@@ -14849,9 +14429,7 @@ bool UWebResponse::FileExists(class FString Filename)
 	memset(&FileExists_Params, 0, sizeof(FileExists_Params));
 	memcpy_s(&FileExists_Params.Filename, sizeof(FileExists_Params.Filename), &Filename, sizeof(Filename));
 
-	uFnFileExists->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnFileExists, &FileExists_Params, nullptr);
-	uFnFileExists->FunctionFlags |= 0x400;
 
 	return FileExists_Params.ReturnValue;
 };
@@ -14884,11 +14462,11 @@ int32_t UUIDataStore_OnlinePlaylists::eventGetMatchTypeForPlaylistId(int32_t Pla
 // [0x00426003] (FUNC_Final | FUNC_Defined | FUNC_Static | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class UOnlinePlaylistProvider* ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   ProviderTag                    (CPF_Parm)
+// class FName                    ProviderTag                    (CPF_Parm)
 // int32_t                        PlaylistId                     (CPF_Parm)
 // int32_t                        ProviderIndex                  (CPF_OptionalParm | CPF_Parm | CPF_OutParm)
 
-class UOnlinePlaylistProvider* UUIDataStore_OnlinePlaylists::GetOnlinePlaylistProvider(struct FName ProviderTag, int32_t PlaylistId, int32_t& ProviderIndex)
+class UOnlinePlaylistProvider* UUIDataStore_OnlinePlaylists::GetOnlinePlaylistProvider(const class FName& ProviderTag, int32_t PlaylistId, int32_t& ProviderIndex)
 {
 	static UFunction* uFnGetOnlinePlaylistProvider = nullptr;
 
@@ -14914,11 +14492,11 @@ class UOnlinePlaylistProvider* UUIDataStore_OnlinePlaylists::GetOnlinePlaylistPr
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   ProviderTag                    (CPF_Parm)
+// class FName                    ProviderTag                    (CPF_Parm)
 // int32_t                        ProviderIndex                  (CPF_Parm)
 // class UUIResourceDataProvider* out_Provider                   (CPF_Parm | CPF_OutParm)
 
-bool UUIDataStore_OnlinePlaylists::GetPlaylistProvider(struct FName ProviderTag, int32_t ProviderIndex, class UUIResourceDataProvider*& out_Provider)
+bool UUIDataStore_OnlinePlaylists::GetPlaylistProvider(const class FName& ProviderTag, int32_t ProviderIndex, class UUIResourceDataProvider*& out_Provider)
 {
 	static UFunction* uFnGetPlaylistProvider = nullptr;
 
@@ -14931,13 +14509,11 @@ bool UUIDataStore_OnlinePlaylists::GetPlaylistProvider(struct FName ProviderTag,
 	memset(&GetPlaylistProvider_Params, 0, sizeof(GetPlaylistProvider_Params));
 	memcpy_s(&GetPlaylistProvider_Params.ProviderTag, sizeof(GetPlaylistProvider_Params.ProviderTag), &ProviderTag, sizeof(ProviderTag));
 	memcpy_s(&GetPlaylistProvider_Params.ProviderIndex, sizeof(GetPlaylistProvider_Params.ProviderIndex), &ProviderIndex, sizeof(ProviderIndex));
-	memcpy_s(&GetPlaylistProvider_Params.out_Provider, sizeof(GetPlaylistProvider_Params.out_Provider), &out_Provider, sizeof(out_Provider));
+	GetPlaylistProvider_Params.out_Provider = out_Provider;
 
-	uFnGetPlaylistProvider->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetPlaylistProvider, &GetPlaylistProvider_Params, nullptr);
-	uFnGetPlaylistProvider->FunctionFlags |= 0x400;
 
-	memcpy_s(&out_Provider, sizeof(out_Provider), &GetPlaylistProvider_Params.out_Provider, sizeof(GetPlaylistProvider_Params.out_Provider));
+	out_Provider = GetPlaylistProvider_Params.out_Provider;
 
 	return GetPlaylistProvider_Params.ReturnValue;
 };
@@ -14946,10 +14522,10 @@ bool UUIDataStore_OnlinePlaylists::GetPlaylistProvider(struct FName ProviderTag,
 // [0x00420401] (FUNC_Final | FUNC_Native | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
-// struct FName                   ProviderTag                    (CPF_Parm)
-// TArray<class UUIResourceDataProvider*> out_Providers                  (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class FName                    ProviderTag                    (CPF_Parm)
+// class TArray<class UUIResourceDataProvider*> out_Providers                  (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UUIDataStore_OnlinePlaylists::GetResourceProviders(struct FName ProviderTag, TArray<class UUIResourceDataProvider*>& out_Providers)
+bool UUIDataStore_OnlinePlaylists::GetResourceProviders(const class FName& ProviderTag, class TArray<class UUIResourceDataProvider*>& out_Providers)
 {
 	static UFunction* uFnGetResourceProviders = nullptr;
 
@@ -14963,9 +14539,7 @@ bool UUIDataStore_OnlinePlaylists::GetResourceProviders(struct FName ProviderTag
 	memcpy_s(&GetResourceProviders_Params.ProviderTag, sizeof(GetResourceProviders_Params.ProviderTag), &ProviderTag, sizeof(ProviderTag));
 	memcpy_s(&GetResourceProviders_Params.out_Providers, sizeof(GetResourceProviders_Params.out_Providers), &out_Providers, sizeof(out_Providers));
 
-	uFnGetResourceProviders->FunctionFlags &= ~0x400;
 	this->ProcessEvent(uFnGetResourceProviders, &GetResourceProviders_Params, nullptr);
-	uFnGetResourceProviders->FunctionFlags |= 0x400;
 
 	memcpy_s(&out_Providers, sizeof(out_Providers), &GetResourceProviders_Params.out_Providers, sizeof(GetResourceProviders_Params.out_Providers));
 
@@ -15008,8 +14582,8 @@ void UWebApplication::PostQuery(class UWebRequest* Request, class UWebResponse* 
 
 	UWebApplication_execPostQuery_Params PostQuery_Params;
 	memset(&PostQuery_Params, 0, sizeof(PostQuery_Params));
-	memcpy_s(&PostQuery_Params.Request, sizeof(PostQuery_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&PostQuery_Params.Response, sizeof(PostQuery_Params.Response), &Response, sizeof(Response));
+	PostQuery_Params.Request = Request;
+	PostQuery_Params.Response = Response;
 
 	this->ProcessEvent(uFnPostQuery, &PostQuery_Params, nullptr);
 };
@@ -15031,8 +14605,8 @@ void UWebApplication::Query(class UWebRequest* Request, class UWebResponse* Resp
 
 	UWebApplication_execQuery_Params Query_Params;
 	memset(&Query_Params, 0, sizeof(Query_Params));
-	memcpy_s(&Query_Params.Request, sizeof(Query_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&Query_Params.Response, sizeof(Query_Params.Response), &Response, sizeof(Response));
+	Query_Params.Request = Request;
+	Query_Params.Response = Response;
 
 	this->ProcessEvent(uFnQuery, &Query_Params, nullptr);
 };
@@ -15055,8 +14629,8 @@ bool UWebApplication::PreQuery(class UWebRequest* Request, class UWebResponse* R
 
 	UWebApplication_execPreQuery_Params PreQuery_Params;
 	memset(&PreQuery_Params, 0, sizeof(PreQuery_Params));
-	memcpy_s(&PreQuery_Params.Request, sizeof(PreQuery_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&PreQuery_Params.Response, sizeof(PreQuery_Params.Response), &Response, sizeof(Response));
+	PreQuery_Params.Request = Request;
+	PreQuery_Params.Response = Response;
 
 	this->ProcessEvent(uFnPreQuery, &PreQuery_Params, nullptr);
 
@@ -15127,7 +14701,7 @@ void UWebApplication::Init()
 // class FString                  URI                            (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SubURI                         (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-class UWebApplication* AWebServer::GetApplication(class FString URI, class FString& SubURI)
+class UWebApplication* AWebServer::GetApplication(const class FString& URI, class FString& SubURI)
 {
 	static UFunction* uFnGetApplication = nullptr;
 
@@ -15149,7 +14723,7 @@ class UWebApplication* AWebServer::GetApplication(class FString URI, class FStri
 };
 
 // Function IpDrv.WebServer.LostChild
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class AActor*                  C                              (CPF_Parm)
 
@@ -15164,13 +14738,13 @@ void AWebServer::eventLostChild(class AActor* C)
 
 	AWebServer_eventLostChild_Params LostChild_Params;
 	memset(&LostChild_Params, 0, sizeof(LostChild_Params));
-	memcpy_s(&LostChild_Params.C, sizeof(LostChild_Params.C), &C, sizeof(C));
+	LostChild_Params.C = C;
 
 	this->ProcessEvent(uFnLostChild, &LostChild_Params, nullptr);
 };
 
 // Function IpDrv.WebServer.GainedChild
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class AActor*                  C                              (CPF_Parm)
 
@@ -15185,13 +14759,13 @@ void AWebServer::eventGainedChild(class AActor* C)
 
 	AWebServer_eventGainedChild_Params GainedChild_Params;
 	memset(&GainedChild_Params, 0, sizeof(GainedChild_Params));
-	memcpy_s(&GainedChild_Params.C, sizeof(GainedChild_Params.C), &C, sizeof(C));
+	GainedChild_Params.C = C;
 
 	this->ProcessEvent(uFnGainedChild, &GainedChild_Params, nullptr);
 };
 
 // Function IpDrv.WebServer.Destroyed
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void AWebServer::eventDestroyed()
@@ -15210,7 +14784,7 @@ void AWebServer::eventDestroyed()
 };
 
 // Function IpDrv.WebServer.PostBeginPlay
-// [0x400820002] (FUNC_Defined | FUNC_Public | FUNC_HasDefaults | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400820002] (FUNC_Defined | FUNC_Public | FUNC_HasDefaults | FUNC_AllFlags)
 // Parameter Info:
 
 void AWebServer::PostBeginPlay()
@@ -15229,7 +14803,7 @@ void AWebServer::PostBeginPlay()
 };
 
 // Function IpDrv.HelloWeb.Query
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UWebRequest*             Request                        (CPF_Parm)
 // class UWebResponse*            Response                       (CPF_Parm)
@@ -15245,14 +14819,14 @@ void UHelloWeb::eventQuery(class UWebRequest* Request, class UWebResponse* Respo
 
 	UHelloWeb_eventQuery_Params Query_Params;
 	memset(&Query_Params, 0, sizeof(Query_Params));
-	memcpy_s(&Query_Params.Request, sizeof(Query_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&Query_Params.Response, sizeof(Query_Params.Response), &Response, sizeof(Response));
+	Query_Params.Request = Request;
+	Query_Params.Response = Response;
 
 	this->ProcessEvent(uFnQuery, &Query_Params, nullptr);
 };
 
 // Function IpDrv.HelloWeb.Init
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void UHelloWeb::Init()
@@ -15271,7 +14845,7 @@ void UHelloWeb::Init()
 };
 
 // Function IpDrv.ImageServer.Query
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class UWebRequest*             Request                        (CPF_Parm)
 // class UWebResponse*            Response                       (CPF_Parm)
@@ -15287,8 +14861,8 @@ void UImageServer::eventQuery(class UWebRequest* Request, class UWebResponse* Re
 
 	UImageServer_eventQuery_Params Query_Params;
 	memset(&Query_Params, 0, sizeof(Query_Params));
-	memcpy_s(&Query_Params.Request, sizeof(Query_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&Query_Params.Response, sizeof(Query_Params.Response), &Response, sizeof(Response));
+	Query_Params.Request = Request;
+	Query_Params.Response = Response;
 
 	this->ProcessEvent(uFnQuery, &Query_Params, nullptr);
 };
@@ -15299,7 +14873,7 @@ void UImageServer::eventQuery(class UWebRequest* Request, class UWebResponse* Re
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UMcpServiceConfig::GetUserAuthTicket(class FString McpId)
+class FString UMcpServiceConfig::GetUserAuthTicket(const class FString& McpId)
 {
 	static UFunction* uFnGetUserAuthTicket = nullptr;
 
@@ -15324,7 +14898,7 @@ class FString UMcpServiceConfig::GetUserAuthTicket(class FString McpId)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        UserReward                     (CPF_Parm)
 
-void UMcpClashMobBase::UpdateChallengeUserReward(class FString UniqueChallengeId, class FString UniqueUserId, int32_t UserReward)
+void UMcpClashMobBase::UpdateChallengeUserReward(const class FString& UniqueChallengeId, const class FString& UniqueUserId, int32_t UserReward)
 {
 	static UFunction* uFnUpdateChallengeUserReward = nullptr;
 
@@ -15345,12 +14919,12 @@ void UMcpClashMobBase::UpdateChallengeUserReward(class FString UniqueChallengeId
 // Function IpDrv.McpClashMobBase.OnUpdateChallengeUserRewardComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::OnUpdateChallengeUserRewardComplete(bool bWasSuccessful, class FString UniqueChallengeId, class FString UniqueUserId, class FString Error)
+void UMcpClashMobBase::OnUpdateChallengeUserRewardComplete(bool bWasSuccessful, const class FString& UniqueChallengeId, const class FString& UniqueUserId, const class FString& Error)
 {
 	static UFunction* uFnOnUpdateChallengeUserRewardComplete = nullptr;
 
@@ -15374,10 +14948,10 @@ void UMcpClashMobBase::OnUpdateChallengeUserRewardComplete(bool bWasSuccessful, 
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bDidComplete                   (CPF_Parm)
+// uint32_t                       bDidComplete                   (CPF_Parm)
 // int32_t                        GoalProgress                   (CPF_Parm)
 
-void UMcpClashMobBase::UpdateChallengeUserProgress(class FString UniqueChallengeId, class FString UniqueUserId, bool bDidComplete, int32_t GoalProgress)
+void UMcpClashMobBase::UpdateChallengeUserProgress(const class FString& UniqueChallengeId, const class FString& UniqueUserId, bool bDidComplete, int32_t GoalProgress)
 {
 	static UFunction* uFnUpdateChallengeUserProgress = nullptr;
 
@@ -15399,12 +14973,12 @@ void UMcpClashMobBase::UpdateChallengeUserProgress(class FString UniqueChallenge
 // Function IpDrv.McpClashMobBase.OnUpdateChallengeUserProgressComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::OnUpdateChallengeUserProgressComplete(bool bWasSuccessful, class FString UniqueChallengeId, class FString UniqueUserId, class FString Error)
+void UMcpClashMobBase::OnUpdateChallengeUserProgressComplete(bool bWasSuccessful, const class FString& UniqueChallengeId, const class FString& UniqueUserId, const class FString& Error)
 {
 	static UFunction* uFnOnUpdateChallengeUserProgressComplete = nullptr;
 
@@ -15430,7 +15004,7 @@ void UMcpClashMobBase::OnUpdateChallengeUserProgressComplete(bool bWasSuccessful
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // struct FMcpClashMobChallengeUserStatus OutChallengeUserStatus         (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::GetChallengeUserStatus(class FString UniqueChallengeId, class FString UniqueUserId, struct FMcpClashMobChallengeUserStatus& OutChallengeUserStatus)
+void UMcpClashMobBase::GetChallengeUserStatus(const class FString& UniqueChallengeId, const class FString& UniqueUserId, struct FMcpClashMobChallengeUserStatus& OutChallengeUserStatus)
 {
 	static UFunction* uFnGetChallengeUserStatus = nullptr;
 
@@ -15455,9 +15029,9 @@ void UMcpClashMobBase::GetChallengeUserStatus(class FString UniqueChallengeId, c
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          UserIdsToRead                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FString>    UserIdsToRead                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::QueryChallengeMultiUserStatus(class FString UniqueChallengeId, class FString UniqueUserId, TArray<class FString>& UserIdsToRead)
+void UMcpClashMobBase::QueryChallengeMultiUserStatus(const class FString& UniqueChallengeId, const class FString& UniqueUserId, class TArray<class FString>& UserIdsToRead)
 {
 	static UFunction* uFnQueryChallengeMultiUserStatus = nullptr;
 
@@ -15483,7 +15057,7 @@ void UMcpClashMobBase::QueryChallengeMultiUserStatus(class FString UniqueChallen
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::QueryChallengeUserStatus(class FString UniqueChallengeId, class FString UniqueUserId)
+void UMcpClashMobBase::QueryChallengeUserStatus(const class FString& UniqueChallengeId, const class FString& UniqueUserId)
 {
 	static UFunction* uFnQueryChallengeUserStatus = nullptr;
 
@@ -15503,12 +15077,12 @@ void UMcpClashMobBase::QueryChallengeUserStatus(class FString UniqueChallengeId,
 // Function IpDrv.McpClashMobBase.OnQueryChallengeUserStatusComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::OnQueryChallengeUserStatusComplete(bool bWasSuccessful, class FString UniqueChallengeId, class FString UniqueUserId, class FString Error)
+void UMcpClashMobBase::OnQueryChallengeUserStatusComplete(bool bWasSuccessful, const class FString& UniqueChallengeId, const class FString& UniqueUserId, const class FString& Error)
 {
 	static UFunction* uFnOnQueryChallengeUserStatusComplete = nullptr;
 
@@ -15533,7 +15107,7 @@ void UMcpClashMobBase::OnQueryChallengeUserStatusComplete(bool bWasSuccessful, c
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::AcceptChallenge(class FString UniqueChallengeId, class FString UniqueUserId)
+void UMcpClashMobBase::AcceptChallenge(const class FString& UniqueChallengeId, const class FString& UniqueUserId)
 {
 	static UFunction* uFnAcceptChallenge = nullptr;
 
@@ -15553,12 +15127,12 @@ void UMcpClashMobBase::AcceptChallenge(class FString UniqueChallengeId, class FS
 // Function IpDrv.McpClashMobBase.OnAcceptChallengeComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::OnAcceptChallengeComplete(bool bWasSuccessful, class FString UniqueChallengeId, class FString UniqueUserId, class FString Error)
+void UMcpClashMobBase::OnAcceptChallengeComplete(bool bWasSuccessful, const class FString& UniqueChallengeId, const class FString& UniqueUserId, const class FString& Error)
 {
 	static UFunction* uFnOnAcceptChallengeComplete = nullptr;
 
@@ -15583,7 +15157,7 @@ void UMcpClashMobBase::OnAcceptChallengeComplete(bool bWasSuccessful, class FStr
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DLName                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::DeleteCachedChallengeFile(class FString UniqueChallengeId, class FString DLName)
+void UMcpClashMobBase::DeleteCachedChallengeFile(const class FString& UniqueChallengeId, const class FString& DLName)
 {
 	static UFunction* uFnDeleteCachedChallengeFile = nullptr;
 
@@ -15606,7 +15180,7 @@ void UMcpClashMobBase::DeleteCachedChallengeFile(class FString UniqueChallengeId
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DLName                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::ClearCachedChallengeFile(class FString UniqueChallengeId, class FString DLName)
+void UMcpClashMobBase::ClearCachedChallengeFile(const class FString& UniqueChallengeId, const class FString& DLName)
 {
 	static UFunction* uFnClearCachedChallengeFile = nullptr;
 
@@ -15628,9 +15202,9 @@ void UMcpClashMobBase::ClearCachedChallengeFile(class FString UniqueChallengeId,
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DLName                         (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                OutFileContents                (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          OutFileContents                (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::GetChallengeFileContents(class FString UniqueChallengeId, class FString DLName, TArray<uint8_t>& OutFileContents)
+void UMcpClashMobBase::GetChallengeFileContents(const class FString& UniqueChallengeId, const class FString& DLName, class TArray<uint8_t>& OutFileContents)
 {
 	static UFunction* uFnGetChallengeFileContents = nullptr;
 
@@ -15656,7 +15230,7 @@ void UMcpClashMobBase::GetChallengeFileContents(class FString UniqueChallengeId,
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DLName                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::DownloadChallengeFile(class FString UniqueChallengeId, class FString DLName)
+void UMcpClashMobBase::DownloadChallengeFile(const class FString& UniqueChallengeId, const class FString& DLName)
 {
 	static UFunction* uFnDownloadChallengeFile = nullptr;
 
@@ -15677,9 +15251,9 @@ void UMcpClashMobBase::DownloadChallengeFile(class FString UniqueChallengeId, cl
 // [0x00420000] (FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FMcpClashMobChallengeFile> OutChallengeFiles              (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpClashMobChallengeFile> OutChallengeFiles              (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::GetChallengeFileList(class FString UniqueChallengeId, TArray<struct FMcpClashMobChallengeFile>& OutChallengeFiles)
+void UMcpClashMobBase::GetChallengeFileList(const class FString& UniqueChallengeId, class TArray<struct FMcpClashMobChallengeFile>& OutChallengeFiles)
 {
 	static UFunction* uFnGetChallengeFileList = nullptr;
 
@@ -15701,13 +15275,13 @@ void UMcpClashMobBase::GetChallengeFileList(class FString UniqueChallengeId, TAr
 // Function IpDrv.McpClashMobBase.OnDownloadChallengeFileComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DLName                         (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::OnDownloadChallengeFileComplete(bool bWasSuccessful, class FString UniqueChallengeId, class FString DLName, class FString Filename, class FString Error)
+void UMcpClashMobBase::OnDownloadChallengeFileComplete(bool bWasSuccessful, const class FString& UniqueChallengeId, const class FString& DLName, const class FString& Filename, const class FString& Error)
 {
 	static UFunction* uFnOnDownloadChallengeFileComplete = nullptr;
 
@@ -15730,9 +15304,9 @@ void UMcpClashMobBase::OnDownloadChallengeFileComplete(bool bWasSuccessful, clas
 // Function IpDrv.McpClashMobBase.GetChallengeList
 // [0x00420000] (FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<struct FMcpClashMobChallengeEvent> OutChallengeEvents             (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpClashMobChallengeEvent> OutChallengeEvents             (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::GetChallengeList(TArray<struct FMcpClashMobChallengeEvent>& OutChallengeEvents)
+void UMcpClashMobBase::GetChallengeList(class TArray<struct FMcpClashMobChallengeEvent>& OutChallengeEvents)
 {
 	static UFunction* uFnGetChallengeList = nullptr;
 
@@ -15772,10 +15346,10 @@ void UMcpClashMobBase::QueryChallengeList()
 // Function IpDrv.McpClashMobBase.OnQueryChallengeListComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobBase::OnQueryChallengeListComplete(bool bWasSuccessful, class FString Error)
+void UMcpClashMobBase::OnQueryChallengeListComplete(bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnQueryChallengeListComplete = nullptr;
 
@@ -15815,12 +15389,12 @@ class UMcpClashMobBase* UMcpClashMobBase::CreateInstance()
 };
 
 // Function IpDrv.McpClashMobFileDownload.GetUrlForFile
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  Filename                       (CPF_Parm | CPF_NeedCtorLink)
 
-class FString UMcpClashMobFileDownload::GetUrlForFile(class FString Filename)
+class FString UMcpClashMobFileDownload::GetUrlForFile(const class FString& Filename)
 {
 	static UFunction* uFnGetUrlForFile = nullptr;
 
@@ -15843,7 +15417,7 @@ class FString UMcpClashMobFileDownload::GetUrlForFile(class FString Filename)
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpClashMobManager::OnUpdateChallengeUserRewardHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -15856,21 +15430,21 @@ void UMcpClashMobManager::OnUpdateChallengeUserRewardHTTPRequestComplete(class U
 
 	UMcpClashMobManager_execOnUpdateChallengeUserRewardHTTPRequestComplete_Params OnUpdateChallengeUserRewardHTTPRequestComplete_Params;
 	memset(&OnUpdateChallengeUserRewardHTTPRequestComplete_Params, 0, sizeof(OnUpdateChallengeUserRewardHTTPRequestComplete_Params));
-	memcpy_s(&OnUpdateChallengeUserRewardHTTPRequestComplete_Params.Request, sizeof(OnUpdateChallengeUserRewardHTTPRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnUpdateChallengeUserRewardHTTPRequestComplete_Params.Response, sizeof(OnUpdateChallengeUserRewardHTTPRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnUpdateChallengeUserRewardHTTPRequestComplete_Params.Request = Request;
+	OnUpdateChallengeUserRewardHTTPRequestComplete_Params.Response = Response;
 	OnUpdateChallengeUserRewardHTTPRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnUpdateChallengeUserRewardHTTPRequestComplete, &OnUpdateChallengeUserRewardHTTPRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpClashMobManager.UpdateChallengeUserReward
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        UserReward                     (CPF_Parm)
 
-void UMcpClashMobManager::UpdateChallengeUserReward(class FString UniqueChallengeId, class FString UniqueUserId, int32_t UserReward)
+void UMcpClashMobManager::UpdateChallengeUserReward(const class FString& UniqueChallengeId, const class FString& UniqueUserId, int32_t UserReward)
 {
 	static UFunction* uFnUpdateChallengeUserReward = nullptr;
 
@@ -15893,7 +15467,7 @@ void UMcpClashMobManager::UpdateChallengeUserReward(class FString UniqueChalleng
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpClashMobManager::OnUpdateChallengeUserProgressHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -15906,22 +15480,22 @@ void UMcpClashMobManager::OnUpdateChallengeUserProgressHTTPRequestComplete(class
 
 	UMcpClashMobManager_execOnUpdateChallengeUserProgressHTTPRequestComplete_Params OnUpdateChallengeUserProgressHTTPRequestComplete_Params;
 	memset(&OnUpdateChallengeUserProgressHTTPRequestComplete_Params, 0, sizeof(OnUpdateChallengeUserProgressHTTPRequestComplete_Params));
-	memcpy_s(&OnUpdateChallengeUserProgressHTTPRequestComplete_Params.Request, sizeof(OnUpdateChallengeUserProgressHTTPRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnUpdateChallengeUserProgressHTTPRequestComplete_Params.Response, sizeof(OnUpdateChallengeUserProgressHTTPRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnUpdateChallengeUserProgressHTTPRequestComplete_Params.Request = Request;
+	OnUpdateChallengeUserProgressHTTPRequestComplete_Params.Response = Response;
 	OnUpdateChallengeUserProgressHTTPRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnUpdateChallengeUserProgressHTTPRequestComplete, &OnUpdateChallengeUserProgressHTTPRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpClashMobManager.UpdateChallengeUserProgress
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bDidComplete                   (CPF_Parm)
+// uint32_t                       bDidComplete                   (CPF_Parm)
 // int32_t                        GoalProgress                   (CPF_Parm)
 
-void UMcpClashMobManager::UpdateChallengeUserProgress(class FString UniqueChallengeId, class FString UniqueUserId, bool bDidComplete, int32_t GoalProgress)
+void UMcpClashMobManager::UpdateChallengeUserProgress(const class FString& UniqueChallengeId, const class FString& UniqueUserId, bool bDidComplete, int32_t GoalProgress)
 {
 	static UFunction* uFnUpdateChallengeUserProgress = nullptr;
 
@@ -15941,13 +15515,13 @@ void UMcpClashMobManager::UpdateChallengeUserProgress(class FString UniqueChalle
 };
 
 // Function IpDrv.McpClashMobManager.GetChallengeUserStatus
-// [0x400C20002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400C20002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // struct FMcpClashMobChallengeUserStatus OutChallengeUserStatus         (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpClashMobManager::GetChallengeUserStatus(class FString UniqueChallengeId, class FString UniqueUserId, struct FMcpClashMobChallengeUserStatus& OutChallengeUserStatus)
+void UMcpClashMobManager::GetChallengeUserStatus(const class FString& UniqueChallengeId, const class FString& UniqueUserId, struct FMcpClashMobChallengeUserStatus& OutChallengeUserStatus)
 {
 	static UFunction* uFnGetChallengeUserStatus = nullptr;
 
@@ -15972,7 +15546,7 @@ void UMcpClashMobManager::GetChallengeUserStatus(class FString UniqueChallengeId
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpClashMobManager::OnQueryChallengeMultiStatusHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -15985,21 +15559,21 @@ void UMcpClashMobManager::OnQueryChallengeMultiStatusHTTPRequestComplete(class U
 
 	UMcpClashMobManager_execOnQueryChallengeMultiStatusHTTPRequestComplete_Params OnQueryChallengeMultiStatusHTTPRequestComplete_Params;
 	memset(&OnQueryChallengeMultiStatusHTTPRequestComplete_Params, 0, sizeof(OnQueryChallengeMultiStatusHTTPRequestComplete_Params));
-	memcpy_s(&OnQueryChallengeMultiStatusHTTPRequestComplete_Params.Request, sizeof(OnQueryChallengeMultiStatusHTTPRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnQueryChallengeMultiStatusHTTPRequestComplete_Params.Response, sizeof(OnQueryChallengeMultiStatusHTTPRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnQueryChallengeMultiStatusHTTPRequestComplete_Params.Request = Request;
+	OnQueryChallengeMultiStatusHTTPRequestComplete_Params.Response = Response;
 	OnQueryChallengeMultiStatusHTTPRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnQueryChallengeMultiStatusHTTPRequestComplete, &OnQueryChallengeMultiStatusHTTPRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpClashMobManager.QueryChallengeMultiUserStatus
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          UserIdsToRead                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FString>    UserIdsToRead                  (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpClashMobManager::QueryChallengeMultiUserStatus(class FString UniqueChallengeId, class FString UniqueUserId, TArray<class FString>& UserIdsToRead)
+void UMcpClashMobManager::QueryChallengeMultiUserStatus(const class FString& UniqueChallengeId, const class FString& UniqueUserId, class TArray<class FString>& UserIdsToRead)
 {
 	static UFunction* uFnQueryChallengeMultiUserStatus = nullptr;
 
@@ -16024,7 +15598,7 @@ void UMcpClashMobManager::QueryChallengeMultiUserStatus(class FString UniqueChal
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpClashMobManager::OnQueryChallengeStatusHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -16037,20 +15611,20 @@ void UMcpClashMobManager::OnQueryChallengeStatusHTTPRequestComplete(class UHttpR
 
 	UMcpClashMobManager_execOnQueryChallengeStatusHTTPRequestComplete_Params OnQueryChallengeStatusHTTPRequestComplete_Params;
 	memset(&OnQueryChallengeStatusHTTPRequestComplete_Params, 0, sizeof(OnQueryChallengeStatusHTTPRequestComplete_Params));
-	memcpy_s(&OnQueryChallengeStatusHTTPRequestComplete_Params.Request, sizeof(OnQueryChallengeStatusHTTPRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnQueryChallengeStatusHTTPRequestComplete_Params.Response, sizeof(OnQueryChallengeStatusHTTPRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnQueryChallengeStatusHTTPRequestComplete_Params.Request = Request;
+	OnQueryChallengeStatusHTTPRequestComplete_Params.Response = Response;
 	OnQueryChallengeStatusHTTPRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnQueryChallengeStatusHTTPRequestComplete, &OnQueryChallengeStatusHTTPRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpClashMobManager.QueryChallengeUserStatus
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobManager::QueryChallengeUserStatus(class FString UniqueChallengeId, class FString UniqueUserId)
+void UMcpClashMobManager::QueryChallengeUserStatus(const class FString& UniqueChallengeId, const class FString& UniqueUserId)
 {
 	static UFunction* uFnQueryChallengeUserStatus = nullptr;
 
@@ -16072,7 +15646,7 @@ void UMcpClashMobManager::QueryChallengeUserStatus(class FString UniqueChallenge
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpClashMobManager::OnAcceptChallengeHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -16085,20 +15659,20 @@ void UMcpClashMobManager::OnAcceptChallengeHTTPRequestComplete(class UHttpReques
 
 	UMcpClashMobManager_execOnAcceptChallengeHTTPRequestComplete_Params OnAcceptChallengeHTTPRequestComplete_Params;
 	memset(&OnAcceptChallengeHTTPRequestComplete_Params, 0, sizeof(OnAcceptChallengeHTTPRequestComplete_Params));
-	memcpy_s(&OnAcceptChallengeHTTPRequestComplete_Params.Request, sizeof(OnAcceptChallengeHTTPRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnAcceptChallengeHTTPRequestComplete_Params.Response, sizeof(OnAcceptChallengeHTTPRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnAcceptChallengeHTTPRequestComplete_Params.Request = Request;
+	OnAcceptChallengeHTTPRequestComplete_Params.Response = Response;
 	OnAcceptChallengeHTTPRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnAcceptChallengeHTTPRequestComplete, &OnAcceptChallengeHTTPRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpClashMobManager.AcceptChallenge
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobManager::AcceptChallenge(class FString UniqueChallengeId, class FString UniqueUserId)
+void UMcpClashMobManager::AcceptChallenge(const class FString& UniqueChallengeId, const class FString& UniqueUserId)
 {
 	static UFunction* uFnAcceptChallenge = nullptr;
 
@@ -16116,12 +15690,12 @@ void UMcpClashMobManager::AcceptChallenge(class FString UniqueChallengeId, class
 };
 
 // Function IpDrv.McpClashMobManager.DeleteCachedChallengeFile
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DLName                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobManager::DeleteCachedChallengeFile(class FString UniqueChallengeId, class FString DLName)
+void UMcpClashMobManager::DeleteCachedChallengeFile(const class FString& UniqueChallengeId, const class FString& DLName)
 {
 	static UFunction* uFnDeleteCachedChallengeFile = nullptr;
 
@@ -16139,12 +15713,12 @@ void UMcpClashMobManager::DeleteCachedChallengeFile(class FString UniqueChalleng
 };
 
 // Function IpDrv.McpClashMobManager.ClearCachedChallengeFile
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DLName                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobManager::ClearCachedChallengeFile(class FString UniqueChallengeId, class FString DLName)
+void UMcpClashMobManager::ClearCachedChallengeFile(const class FString& UniqueChallengeId, const class FString& DLName)
 {
 	static UFunction* uFnClearCachedChallengeFile = nullptr;
 
@@ -16162,13 +15736,13 @@ void UMcpClashMobManager::ClearCachedChallengeFile(class FString UniqueChallenge
 };
 
 // Function IpDrv.McpClashMobManager.GetChallengeFileContents
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DLName                         (CPF_Parm | CPF_NeedCtorLink)
-// TArray<uint8_t>                OutFileContents                (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<uint8_t>          OutFileContents                (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpClashMobManager::GetChallengeFileContents(class FString UniqueChallengeId, class FString DLName, TArray<uint8_t>& OutFileContents)
+void UMcpClashMobManager::GetChallengeFileContents(const class FString& UniqueChallengeId, const class FString& DLName, class TArray<uint8_t>& OutFileContents)
 {
 	static UFunction* uFnGetChallengeFileContents = nullptr;
 
@@ -16191,10 +15765,10 @@ void UMcpClashMobManager::GetChallengeFileContents(class FString UniqueChallenge
 // Function IpDrv.McpClashMobManager.OnDownloadMcpFileComplete
 // [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  DLName                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobManager::OnDownloadMcpFileComplete(bool bWasSuccessful, class FString DLName)
+void UMcpClashMobManager::OnDownloadMcpFileComplete(bool bWasSuccessful, const class FString& DLName)
 {
 	static UFunction* uFnOnDownloadMcpFileComplete = nullptr;
 
@@ -16214,10 +15788,10 @@ void UMcpClashMobManager::OnDownloadMcpFileComplete(bool bWasSuccessful, class F
 // Function IpDrv.McpClashMobManager.OnLoadCachedFileComplete
 // [0x00040003] (FUNC_Final | FUNC_Defined | FUNC_Private | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  DLName                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobManager::OnLoadCachedFileComplete(bool bWasSuccessful, class FString DLName)
+void UMcpClashMobManager::OnLoadCachedFileComplete(bool bWasSuccessful, const class FString& DLName)
 {
 	static UFunction* uFnOnLoadCachedFileComplete = nullptr;
 
@@ -16235,12 +15809,12 @@ void UMcpClashMobManager::OnLoadCachedFileComplete(bool bWasSuccessful, class FS
 };
 
 // Function IpDrv.McpClashMobManager.DownloadChallengeFile
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  DLName                         (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpClashMobManager::DownloadChallengeFile(class FString UniqueChallengeId, class FString DLName)
+void UMcpClashMobManager::DownloadChallengeFile(const class FString& UniqueChallengeId, const class FString& DLName)
 {
 	static UFunction* uFnDownloadChallengeFile = nullptr;
 
@@ -16258,12 +15832,12 @@ void UMcpClashMobManager::DownloadChallengeFile(class FString UniqueChallengeId,
 };
 
 // Function IpDrv.McpClashMobManager.GetChallengeFileList
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueChallengeId              (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FMcpClashMobChallengeFile> OutChallengeFiles              (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpClashMobChallengeFile> OutChallengeFiles              (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpClashMobManager::GetChallengeFileList(class FString UniqueChallengeId, TArray<struct FMcpClashMobChallengeFile>& OutChallengeFiles)
+void UMcpClashMobManager::GetChallengeFileList(const class FString& UniqueChallengeId, class TArray<struct FMcpClashMobChallengeFile>& OutChallengeFiles)
 {
 	static UFunction* uFnGetChallengeFileList = nullptr;
 
@@ -16283,11 +15857,11 @@ void UMcpClashMobManager::GetChallengeFileList(class FString UniqueChallengeId, 
 };
 
 // Function IpDrv.McpClashMobManager.GetChallengeList
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<struct FMcpClashMobChallengeEvent> OutChallengeEvents             (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpClashMobChallengeEvent> OutChallengeEvents             (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpClashMobManager::GetChallengeList(TArray<struct FMcpClashMobChallengeEvent>& OutChallengeEvents)
+void UMcpClashMobManager::GetChallengeList(class TArray<struct FMcpClashMobChallengeEvent>& OutChallengeEvents)
 {
 	static UFunction* uFnGetChallengeList = nullptr;
 
@@ -16310,7 +15884,7 @@ void UMcpClashMobManager::GetChallengeList(TArray<struct FMcpClashMobChallengeEv
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpClashMobManager::OnQueryChallengeListHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -16323,15 +15897,15 @@ void UMcpClashMobManager::OnQueryChallengeListHTTPRequestComplete(class UHttpReq
 
 	UMcpClashMobManager_execOnQueryChallengeListHTTPRequestComplete_Params OnQueryChallengeListHTTPRequestComplete_Params;
 	memset(&OnQueryChallengeListHTTPRequestComplete_Params, 0, sizeof(OnQueryChallengeListHTTPRequestComplete_Params));
-	memcpy_s(&OnQueryChallengeListHTTPRequestComplete_Params.Request, sizeof(OnQueryChallengeListHTTPRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnQueryChallengeListHTTPRequestComplete_Params.Response, sizeof(OnQueryChallengeListHTTPRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnQueryChallengeListHTTPRequestComplete_Params.Request = Request;
+	OnQueryChallengeListHTTPRequestComplete_Params.Response = Response;
 	OnQueryChallengeListHTTPRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnQueryChallengeListHTTPRequestComplete, &OnQueryChallengeListHTTPRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpClashMobManager.QueryChallengeList
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void UMcpClashMobManager::QueryChallengeList()
@@ -16350,7 +15924,7 @@ void UMcpClashMobManager::QueryChallengeList()
 };
 
 // Function IpDrv.McpClashMobManager.Init
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void UMcpClashMobManager::Init()
@@ -16372,10 +15946,10 @@ void UMcpClashMobManager::Init()
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnAcceptGroupInviteComplete(class FString GroupId, bool bWasSuccessful, class FString Error)
+void UMcpGroupsBase::OnAcceptGroupInviteComplete(const class FString& GroupId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnAcceptGroupInviteComplete = nullptr;
 
@@ -16398,9 +15972,9 @@ void UMcpGroupsBase::OnAcceptGroupInviteComplete(class FString GroupId, bool bWa
 // Parameter Info:
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bShouldAccept                  (CPF_Parm)
+// uint32_t                       bShouldAccept                  (CPF_Parm)
 
-void UMcpGroupsBase::AcceptGroupInvite(class FString UniqueUserId, class FString GroupId, bool bShouldAccept)
+void UMcpGroupsBase::AcceptGroupInvite(const class FString& UniqueUserId, const class FString& GroupId, bool bShouldAccept)
 {
 	static UFunction* uFnAcceptGroupInvite = nullptr;
 
@@ -16424,7 +15998,7 @@ void UMcpGroupsBase::AcceptGroupInvite(class FString UniqueUserId, class FString
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // struct FMcpGroupList           InviteList                     (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::GetGroupInviteList(class FString UserId, struct FMcpGroupList& InviteList)
+void UMcpGroupsBase::GetGroupInviteList(const class FString& UserId, struct FMcpGroupList& InviteList)
 {
 	static UFunction* uFnGetGroupInviteList = nullptr;
 
@@ -16446,10 +16020,10 @@ void UMcpGroupsBase::GetGroupInviteList(class FString UserId, struct FMcpGroupLi
 // Function IpDrv.McpGroupsBase.OnQueryGroupInvitesComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnQueryGroupInvitesComplete(bool bWasSuccessful, class FString Error)
+void UMcpGroupsBase::OnQueryGroupInvitesComplete(bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnQueryGroupInvitesComplete = nullptr;
 
@@ -16471,7 +16045,7 @@ void UMcpGroupsBase::OnQueryGroupInvitesComplete(bool bWasSuccessful, class FStr
 // Parameter Info:
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::QueryGroupInvites(class FString UniqueUserId)
+void UMcpGroupsBase::QueryGroupInvites(const class FString& UniqueUserId)
 {
 	static UFunction* uFnQueryGroupInvites = nullptr;
 
@@ -16491,10 +16065,10 @@ void UMcpGroupsBase::QueryGroupInvites(class FString UniqueUserId)
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  RequesterId                    (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnDeleteAllGroupsComplete(class FString RequesterId, bool bWasSuccessful, class FString Error)
+void UMcpGroupsBase::OnDeleteAllGroupsComplete(const class FString& RequesterId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnDeleteAllGroupsComplete = nullptr;
 
@@ -16517,7 +16091,7 @@ void UMcpGroupsBase::OnDeleteAllGroupsComplete(class FString RequesterId, bool b
 // Parameter Info:
 // class FString                  OwnerId                        (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::DeleteAllGroups(class FString OwnerId)
+void UMcpGroupsBase::DeleteAllGroups(const class FString& OwnerId)
 {
 	static UFunction* uFnDeleteAllGroups = nullptr;
 
@@ -16537,10 +16111,10 @@ void UMcpGroupsBase::DeleteAllGroups(class FString OwnerId)
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnRemoveGroupMembersComplete(class FString GroupId, bool bWasSuccessful, class FString Error)
+void UMcpGroupsBase::OnRemoveGroupMembersComplete(const class FString& GroupId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnRemoveGroupMembersComplete = nullptr;
 
@@ -16563,9 +16137,9 @@ void UMcpGroupsBase::OnRemoveGroupMembersComplete(class FString GroupId, bool bW
 // Parameter Info:
 // class FString                  OwnerId                        (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          MemberIds                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FString>    MemberIds                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::RemoveGroupMembers(class FString OwnerId, class FString GroupId, TArray<class FString>& MemberIds)
+void UMcpGroupsBase::RemoveGroupMembers(const class FString& OwnerId, const class FString& GroupId, class TArray<class FString>& MemberIds)
 {
 	static UFunction* uFnRemoveGroupMembers = nullptr;
 
@@ -16589,10 +16163,10 @@ void UMcpGroupsBase::RemoveGroupMembers(class FString OwnerId, class FString Gro
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnAddGroupMembersComplete(class FString GroupId, bool bWasSuccessful, class FString Error)
+void UMcpGroupsBase::OnAddGroupMembersComplete(const class FString& GroupId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnAddGroupMembersComplete = nullptr;
 
@@ -16615,10 +16189,10 @@ void UMcpGroupsBase::OnAddGroupMembersComplete(class FString GroupId, bool bWasS
 // Parameter Info:
 // class FString                  OwnerId                        (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bRequiresAcceptance            (CPF_Parm)
-// TArray<class FString>          MemberIds                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// uint32_t                       bRequiresAcceptance            (CPF_Parm)
+// class TArray<class FString>    MemberIds                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::AddGroupMembers(class FString OwnerId, class FString GroupId, bool bRequiresAcceptance, TArray<class FString>& MemberIds)
+void UMcpGroupsBase::AddGroupMembers(const class FString& OwnerId, const class FString& GroupId, bool bRequiresAcceptance, class TArray<class FString>& MemberIds)
 {
 	static UFunction* uFnAddGroupMembers = nullptr;
 
@@ -16643,9 +16217,9 @@ void UMcpGroupsBase::AddGroupMembers(class FString OwnerId, class FString GroupI
 // [0x00420000] (FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FMcpGroupMember> GroupMembers                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpGroupMember> GroupMembers                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::GetGroupMembers(class FString GroupId, TArray<struct FMcpGroupMember>& GroupMembers)
+void UMcpGroupsBase::GetGroupMembers(const class FString& GroupId, class TArray<struct FMcpGroupMember>& GroupMembers)
 {
 	static UFunction* uFnGetGroupMembers = nullptr;
 
@@ -16668,10 +16242,10 @@ void UMcpGroupsBase::GetGroupMembers(class FString GroupId, TArray<struct FMcpGr
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnQueryGroupMembersComplete(class FString GroupId, bool bWasSuccessful, class FString Error)
+void UMcpGroupsBase::OnQueryGroupMembersComplete(const class FString& GroupId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnQueryGroupMembersComplete = nullptr;
 
@@ -16695,7 +16269,7 @@ void UMcpGroupsBase::OnQueryGroupMembersComplete(class FString GroupId, bool bWa
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::QueryGroupMembers(class FString UniqueUserId, class FString GroupId)
+void UMcpGroupsBase::QueryGroupMembers(const class FString& UniqueUserId, const class FString& GroupId)
 {
 	static UFunction* uFnQueryGroupMembers = nullptr;
 
@@ -16718,7 +16292,7 @@ void UMcpGroupsBase::QueryGroupMembers(class FString UniqueUserId, class FString
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // struct FMcpGroupList           GroupList                      (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::GetGroupList(class FString UserId, struct FMcpGroupList& GroupList)
+void UMcpGroupsBase::GetGroupList(const class FString& UserId, struct FMcpGroupList& GroupList)
 {
 	static UFunction* uFnGetGroupList = nullptr;
 
@@ -16741,10 +16315,10 @@ void UMcpGroupsBase::GetGroupList(class FString UserId, struct FMcpGroupList& Gr
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnQueryGroupsComplete(class FString UserId, bool bWasSuccessful, class FString Error)
+void UMcpGroupsBase::OnQueryGroupsComplete(const class FString& UserId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnQueryGroupsComplete = nullptr;
 
@@ -16767,7 +16341,7 @@ void UMcpGroupsBase::OnQueryGroupsComplete(class FString UserId, bool bWasSucces
 // Parameter Info:
 // class FString                  RequesterId                    (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::QueryGroups(class FString RequesterId)
+void UMcpGroupsBase::QueryGroups(const class FString& RequesterId)
 {
 	static UFunction* uFnQueryGroups = nullptr;
 
@@ -16787,10 +16361,10 @@ void UMcpGroupsBase::QueryGroups(class FString RequesterId)
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnDeleteGroupComplete(class FString GroupId, bool bWasSuccessful, class FString Error)
+void UMcpGroupsBase::OnDeleteGroupComplete(const class FString& GroupId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnDeleteGroupComplete = nullptr;
 
@@ -16814,7 +16388,7 @@ void UMcpGroupsBase::OnDeleteGroupComplete(class FString GroupId, bool bWasSucce
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::DeleteGroup(class FString UniqueUserId, class FString GroupId)
+void UMcpGroupsBase::DeleteGroup(const class FString& UniqueUserId, const class FString& GroupId)
 {
 	static UFunction* uFnDeleteGroup = nullptr;
 
@@ -16835,10 +16409,10 @@ void UMcpGroupsBase::DeleteGroup(class FString UniqueUserId, class FString Group
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // struct FMcpGroup               Group                          (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnCreateGroupComplete(struct FMcpGroup Group, bool bWasSuccessful, class FString Error)
+void UMcpGroupsBase::OnCreateGroupComplete(const struct FMcpGroup& Group, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnCreateGroupComplete = nullptr;
 
@@ -16862,7 +16436,7 @@ void UMcpGroupsBase::OnCreateGroupComplete(struct FMcpGroup Group, bool bWasSucc
 // class FString                  OwnerId                        (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GroupName                      (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsBase::CreateGroup(class FString OwnerId, class FString GroupName)
+void UMcpGroupsBase::CreateGroup(const class FString& OwnerId, const class FString& GroupName)
 {
 	static UFunction* uFnCreateGroup = nullptr;
 
@@ -16908,7 +16482,7 @@ class UMcpGroupsBase* UMcpGroupsBase::CreateInstance()
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
 // EMcpGroupAcceptState           AcceptState                    (CPF_Parm)
 
-void UMcpGroupsManager::CacheGroupMember(class FString MemberId, class FString GroupId, EMcpGroupAcceptState AcceptState)
+void UMcpGroupsManager::CacheGroupMember(const class FString& MemberId, const class FString& GroupId, EMcpGroupAcceptState AcceptState)
 {
 	static UFunction* uFnCacheGroupMember = nullptr;
 
@@ -16932,7 +16506,7 @@ void UMcpGroupsManager::CacheGroupMember(class FString MemberId, class FString G
 // class FString                  RequesterId                    (CPF_Parm | CPF_NeedCtorLink)
 // struct FMcpGroup               Group                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsManager::CacheGroup(class FString RequesterId, struct FMcpGroup Group)
+void UMcpGroupsManager::CacheGroup(const class FString& RequesterId, const struct FMcpGroup& Group)
 {
 	static UFunction* uFnCacheGroup = nullptr;
 
@@ -16954,7 +16528,7 @@ void UMcpGroupsManager::CacheGroup(class FString RequesterId, struct FMcpGroup G
 // Parameter Info:
 // class UHttpRequestInterface*   OriginalRequest                (CPF_Parm)
 // class UHttpResponseInterface*  HttpResponse                   (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpGroupsManager::OnAcceptGroupInviteRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful)
 {
@@ -16967,21 +16541,21 @@ void UMcpGroupsManager::OnAcceptGroupInviteRequestComplete(class UHttpRequestInt
 
 	UMcpGroupsManager_execOnAcceptGroupInviteRequestComplete_Params OnAcceptGroupInviteRequestComplete_Params;
 	memset(&OnAcceptGroupInviteRequestComplete_Params, 0, sizeof(OnAcceptGroupInviteRequestComplete_Params));
-	memcpy_s(&OnAcceptGroupInviteRequestComplete_Params.OriginalRequest, sizeof(OnAcceptGroupInviteRequestComplete_Params.OriginalRequest), &OriginalRequest, sizeof(OriginalRequest));
-	memcpy_s(&OnAcceptGroupInviteRequestComplete_Params.HttpResponse, sizeof(OnAcceptGroupInviteRequestComplete_Params.HttpResponse), &HttpResponse, sizeof(HttpResponse));
+	OnAcceptGroupInviteRequestComplete_Params.OriginalRequest = OriginalRequest;
+	OnAcceptGroupInviteRequestComplete_Params.HttpResponse = HttpResponse;
 	OnAcceptGroupInviteRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnAcceptGroupInviteRequestComplete, &OnAcceptGroupInviteRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpGroupsManager.AcceptGroupInvite
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bShouldAccept                  (CPF_Parm)
+// uint32_t                       bShouldAccept                  (CPF_Parm)
 
-void UMcpGroupsManager::AcceptGroupInvite(class FString UniqueUserId, class FString GroupId, bool bShouldAccept)
+void UMcpGroupsManager::AcceptGroupInvite(const class FString& UniqueUserId, const class FString& GroupId, bool bShouldAccept)
 {
 	static UFunction* uFnAcceptGroupInvite = nullptr;
 
@@ -17004,7 +16578,7 @@ void UMcpGroupsManager::AcceptGroupInvite(class FString UniqueUserId, class FStr
 // Parameter Info:
 // class UHttpRequestInterface*   OriginalRequest                (CPF_Parm)
 // class UHttpResponseInterface*  HttpResponse                   (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpGroupsManager::OnDeleteAllGroupsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful)
 {
@@ -17017,19 +16591,19 @@ void UMcpGroupsManager::OnDeleteAllGroupsRequestComplete(class UHttpRequestInter
 
 	UMcpGroupsManager_execOnDeleteAllGroupsRequestComplete_Params OnDeleteAllGroupsRequestComplete_Params;
 	memset(&OnDeleteAllGroupsRequestComplete_Params, 0, sizeof(OnDeleteAllGroupsRequestComplete_Params));
-	memcpy_s(&OnDeleteAllGroupsRequestComplete_Params.OriginalRequest, sizeof(OnDeleteAllGroupsRequestComplete_Params.OriginalRequest), &OriginalRequest, sizeof(OriginalRequest));
-	memcpy_s(&OnDeleteAllGroupsRequestComplete_Params.HttpResponse, sizeof(OnDeleteAllGroupsRequestComplete_Params.HttpResponse), &HttpResponse, sizeof(HttpResponse));
+	OnDeleteAllGroupsRequestComplete_Params.OriginalRequest = OriginalRequest;
+	OnDeleteAllGroupsRequestComplete_Params.HttpResponse = HttpResponse;
 	OnDeleteAllGroupsRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnDeleteAllGroupsRequestComplete, &OnDeleteAllGroupsRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpGroupsManager.DeleteAllGroups
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsManager::DeleteAllGroups(class FString UniqueUserId)
+void UMcpGroupsManager::DeleteAllGroups(const class FString& UniqueUserId)
 {
 	static UFunction* uFnDeleteAllGroups = nullptr;
 
@@ -17050,7 +16624,7 @@ void UMcpGroupsManager::DeleteAllGroups(class FString UniqueUserId)
 // Parameter Info:
 // class UHttpRequestInterface*   OriginalRequest                (CPF_Parm)
 // class UHttpResponseInterface*  HttpResponse                   (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpGroupsManager::OnRemoveGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful)
 {
@@ -17063,21 +16637,21 @@ void UMcpGroupsManager::OnRemoveGroupMembersRequestComplete(class UHttpRequestIn
 
 	UMcpGroupsManager_execOnRemoveGroupMembersRequestComplete_Params OnRemoveGroupMembersRequestComplete_Params;
 	memset(&OnRemoveGroupMembersRequestComplete_Params, 0, sizeof(OnRemoveGroupMembersRequestComplete_Params));
-	memcpy_s(&OnRemoveGroupMembersRequestComplete_Params.OriginalRequest, sizeof(OnRemoveGroupMembersRequestComplete_Params.OriginalRequest), &OriginalRequest, sizeof(OriginalRequest));
-	memcpy_s(&OnRemoveGroupMembersRequestComplete_Params.HttpResponse, sizeof(OnRemoveGroupMembersRequestComplete_Params.HttpResponse), &HttpResponse, sizeof(HttpResponse));
+	OnRemoveGroupMembersRequestComplete_Params.OriginalRequest = OriginalRequest;
+	OnRemoveGroupMembersRequestComplete_Params.HttpResponse = HttpResponse;
 	OnRemoveGroupMembersRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnRemoveGroupMembersRequestComplete, &OnRemoveGroupMembersRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpGroupsManager.RemoveGroupMembers
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          MemberIds                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FString>    MemberIds                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpGroupsManager::RemoveGroupMembers(class FString UniqueUserId, class FString GroupId, TArray<class FString>& MemberIds)
+void UMcpGroupsManager::RemoveGroupMembers(const class FString& UniqueUserId, const class FString& GroupId, class TArray<class FString>& MemberIds)
 {
 	static UFunction* uFnRemoveGroupMembers = nullptr;
 
@@ -17102,7 +16676,7 @@ void UMcpGroupsManager::RemoveGroupMembers(class FString UniqueUserId, class FSt
 // Parameter Info:
 // class UHttpRequestInterface*   OriginalRequest                (CPF_Parm)
 // class UHttpResponseInterface*  HttpResponse                   (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpGroupsManager::OnAddGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful)
 {
@@ -17115,22 +16689,22 @@ void UMcpGroupsManager::OnAddGroupMembersRequestComplete(class UHttpRequestInter
 
 	UMcpGroupsManager_execOnAddGroupMembersRequestComplete_Params OnAddGroupMembersRequestComplete_Params;
 	memset(&OnAddGroupMembersRequestComplete_Params, 0, sizeof(OnAddGroupMembersRequestComplete_Params));
-	memcpy_s(&OnAddGroupMembersRequestComplete_Params.OriginalRequest, sizeof(OnAddGroupMembersRequestComplete_Params.OriginalRequest), &OriginalRequest, sizeof(OriginalRequest));
-	memcpy_s(&OnAddGroupMembersRequestComplete_Params.HttpResponse, sizeof(OnAddGroupMembersRequestComplete_Params.HttpResponse), &HttpResponse, sizeof(HttpResponse));
+	OnAddGroupMembersRequestComplete_Params.OriginalRequest = OriginalRequest;
+	OnAddGroupMembersRequestComplete_Params.HttpResponse = HttpResponse;
 	OnAddGroupMembersRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnAddGroupMembersRequestComplete, &OnAddGroupMembersRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpGroupsManager.AddGroupMembers
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bRequiresAcceptance            (CPF_Parm)
-// TArray<class FString>          MemberIds                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// uint32_t                       bRequiresAcceptance            (CPF_Parm)
+// class TArray<class FString>    MemberIds                      (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpGroupsManager::AddGroupMembers(class FString UniqueUserId, class FString GroupId, bool bRequiresAcceptance, TArray<class FString>& MemberIds)
+void UMcpGroupsManager::AddGroupMembers(const class FString& UniqueUserId, const class FString& GroupId, bool bRequiresAcceptance, class TArray<class FString>& MemberIds)
 {
 	static UFunction* uFnAddGroupMembers = nullptr;
 
@@ -17152,12 +16726,12 @@ void UMcpGroupsManager::AddGroupMembers(class FString UniqueUserId, class FStrin
 };
 
 // Function IpDrv.McpGroupsManager.GetGroupMembers
-// [0x400C20002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400C20002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_HasDefaults | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FMcpGroupMember> GroupMembers                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpGroupMember> GroupMembers                   (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpGroupsManager::GetGroupMembers(class FString GroupId, TArray<struct FMcpGroupMember>& GroupMembers)
+void UMcpGroupsManager::GetGroupMembers(const class FString& GroupId, class TArray<struct FMcpGroupMember>& GroupMembers)
 {
 	static UFunction* uFnGetGroupMembers = nullptr;
 
@@ -17181,7 +16755,7 @@ void UMcpGroupsManager::GetGroupMembers(class FString GroupId, TArray<struct FMc
 // Parameter Info:
 // class UHttpRequestInterface*   OriginalRequest                (CPF_Parm)
 // class UHttpResponseInterface*  HttpResponse                   (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpGroupsManager::OnQueryGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful)
 {
@@ -17194,20 +16768,20 @@ void UMcpGroupsManager::OnQueryGroupMembersRequestComplete(class UHttpRequestInt
 
 	UMcpGroupsManager_execOnQueryGroupMembersRequestComplete_Params OnQueryGroupMembersRequestComplete_Params;
 	memset(&OnQueryGroupMembersRequestComplete_Params, 0, sizeof(OnQueryGroupMembersRequestComplete_Params));
-	memcpy_s(&OnQueryGroupMembersRequestComplete_Params.OriginalRequest, sizeof(OnQueryGroupMembersRequestComplete_Params.OriginalRequest), &OriginalRequest, sizeof(OriginalRequest));
-	memcpy_s(&OnQueryGroupMembersRequestComplete_Params.HttpResponse, sizeof(OnQueryGroupMembersRequestComplete_Params.HttpResponse), &HttpResponse, sizeof(HttpResponse));
+	OnQueryGroupMembersRequestComplete_Params.OriginalRequest = OriginalRequest;
+	OnQueryGroupMembersRequestComplete_Params.HttpResponse = HttpResponse;
 	OnQueryGroupMembersRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnQueryGroupMembersRequestComplete, &OnQueryGroupMembersRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpGroupsManager.QueryGroupMembers
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsManager::QueryGroupMembers(class FString UniqueUserId, class FString GroupId)
+void UMcpGroupsManager::QueryGroupMembers(const class FString& UniqueUserId, const class FString& GroupId)
 {
 	static UFunction* uFnQueryGroupMembers = nullptr;
 
@@ -17225,12 +16799,12 @@ void UMcpGroupsManager::QueryGroupMembers(class FString UniqueUserId, class FStr
 };
 
 // Function IpDrv.McpGroupsManager.GetGroupList
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UserId                         (CPF_Parm | CPF_NeedCtorLink)
 // struct FMcpGroupList           GroupList                      (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpGroupsManager::GetGroupList(class FString UserId, struct FMcpGroupList& GroupList)
+void UMcpGroupsManager::GetGroupList(const class FString& UserId, struct FMcpGroupList& GroupList)
 {
 	static UFunction* uFnGetGroupList = nullptr;
 
@@ -17254,7 +16828,7 @@ void UMcpGroupsManager::GetGroupList(class FString UserId, struct FMcpGroupList&
 // Parameter Info:
 // class UHttpRequestInterface*   OriginalRequest                (CPF_Parm)
 // class UHttpResponseInterface*  HttpResponse                   (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpGroupsManager::OnQueryGroupsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful)
 {
@@ -17267,19 +16841,19 @@ void UMcpGroupsManager::OnQueryGroupsRequestComplete(class UHttpRequestInterface
 
 	UMcpGroupsManager_execOnQueryGroupsRequestComplete_Params OnQueryGroupsRequestComplete_Params;
 	memset(&OnQueryGroupsRequestComplete_Params, 0, sizeof(OnQueryGroupsRequestComplete_Params));
-	memcpy_s(&OnQueryGroupsRequestComplete_Params.OriginalRequest, sizeof(OnQueryGroupsRequestComplete_Params.OriginalRequest), &OriginalRequest, sizeof(OriginalRequest));
-	memcpy_s(&OnQueryGroupsRequestComplete_Params.HttpResponse, sizeof(OnQueryGroupsRequestComplete_Params.HttpResponse), &HttpResponse, sizeof(HttpResponse));
+	OnQueryGroupsRequestComplete_Params.OriginalRequest = OriginalRequest;
+	OnQueryGroupsRequestComplete_Params.HttpResponse = HttpResponse;
 	OnQueryGroupsRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnQueryGroupsRequestComplete, &OnQueryGroupsRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpGroupsManager.QueryGroups
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  RequesterId                    (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsManager::QueryGroups(class FString RequesterId)
+void UMcpGroupsManager::QueryGroups(const class FString& RequesterId)
 {
 	static UFunction* uFnQueryGroups = nullptr;
 
@@ -17300,7 +16874,7 @@ void UMcpGroupsManager::QueryGroups(class FString RequesterId)
 // Parameter Info:
 // class UHttpRequestInterface*   OriginalRequest                (CPF_Parm)
 // class UHttpResponseInterface*  HttpResponse                   (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpGroupsManager::OnDeleteGroupRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful)
 {
@@ -17313,20 +16887,20 @@ void UMcpGroupsManager::OnDeleteGroupRequestComplete(class UHttpRequestInterface
 
 	UMcpGroupsManager_execOnDeleteGroupRequestComplete_Params OnDeleteGroupRequestComplete_Params;
 	memset(&OnDeleteGroupRequestComplete_Params, 0, sizeof(OnDeleteGroupRequestComplete_Params));
-	memcpy_s(&OnDeleteGroupRequestComplete_Params.OriginalRequest, sizeof(OnDeleteGroupRequestComplete_Params.OriginalRequest), &OriginalRequest, sizeof(OriginalRequest));
-	memcpy_s(&OnDeleteGroupRequestComplete_Params.HttpResponse, sizeof(OnDeleteGroupRequestComplete_Params.HttpResponse), &HttpResponse, sizeof(HttpResponse));
+	OnDeleteGroupRequestComplete_Params.OriginalRequest = OriginalRequest;
+	OnDeleteGroupRequestComplete_Params.HttpResponse = HttpResponse;
 	OnDeleteGroupRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnDeleteGroupRequestComplete, &OnDeleteGroupRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpGroupsManager.DeleteGroup
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GroupId                        (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsManager::DeleteGroup(class FString UniqueUserId, class FString GroupId)
+void UMcpGroupsManager::DeleteGroup(const class FString& UniqueUserId, const class FString& GroupId)
 {
 	static UFunction* uFnDeleteGroup = nullptr;
 
@@ -17348,7 +16922,7 @@ void UMcpGroupsManager::DeleteGroup(class FString UniqueUserId, class FString Gr
 // Parameter Info:
 // class UHttpRequestInterface*   CreateGroupRequest             (CPF_Parm)
 // class UHttpResponseInterface*  HttpResponse                   (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpGroupsManager::OnCreateGroupRequestComplete(class UHttpRequestInterface* CreateGroupRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful)
 {
@@ -17361,20 +16935,20 @@ void UMcpGroupsManager::OnCreateGroupRequestComplete(class UHttpRequestInterface
 
 	UMcpGroupsManager_execOnCreateGroupRequestComplete_Params OnCreateGroupRequestComplete_Params;
 	memset(&OnCreateGroupRequestComplete_Params, 0, sizeof(OnCreateGroupRequestComplete_Params));
-	memcpy_s(&OnCreateGroupRequestComplete_Params.CreateGroupRequest, sizeof(OnCreateGroupRequestComplete_Params.CreateGroupRequest), &CreateGroupRequest, sizeof(CreateGroupRequest));
-	memcpy_s(&OnCreateGroupRequestComplete_Params.HttpResponse, sizeof(OnCreateGroupRequestComplete_Params.HttpResponse), &HttpResponse, sizeof(HttpResponse));
+	OnCreateGroupRequestComplete_Params.CreateGroupRequest = CreateGroupRequest;
+	OnCreateGroupRequestComplete_Params.HttpResponse = HttpResponse;
 	OnCreateGroupRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnCreateGroupRequestComplete, &OnCreateGroupRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpGroupsManager.CreateGroup
-// [0x400820002] (FUNC_Defined | FUNC_Public | FUNC_HasDefaults | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400820002] (FUNC_Defined | FUNC_Public | FUNC_HasDefaults | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  UniqueUserId                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GroupName                      (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpGroupsManager::CreateGroup(class FString UniqueUserId, class FString GroupName)
+void UMcpGroupsManager::CreateGroup(const class FString& UniqueUserId, const class FString& GroupName)
 {
 	static UFunction* uFnCreateGroup = nullptr;
 
@@ -17395,9 +16969,9 @@ void UMcpGroupsManager::CreateGroup(class FString UniqueUserId, class FString Gr
 // [0x00420000] (FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ExternalType                   (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FMcpIdMapping>   IDMappings                     (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpIdMapping> IDMappings                     (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpIdMappingBase::GetIdMappings(class FString ExternalType, TArray<struct FMcpIdMapping>& IDMappings)
+void UMcpIdMappingBase::GetIdMappings(const class FString& ExternalType, class TArray<struct FMcpIdMapping>& IDMappings)
 {
 	static UFunction* uFnGetIdMappings = nullptr;
 
@@ -17420,10 +16994,10 @@ void UMcpIdMappingBase::GetIdMappings(class FString ExternalType, TArray<struct 
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ExternalType                   (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpIdMappingBase::OnQueryMappingsComplete(class FString ExternalType, bool bWasSuccessful, class FString Error)
+void UMcpIdMappingBase::OnQueryMappingsComplete(const class FString& ExternalType, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnQueryMappingsComplete = nullptr;
 
@@ -17445,9 +17019,9 @@ void UMcpIdMappingBase::OnQueryMappingsComplete(class FString ExternalType, bool
 // [0x00420000] (FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ExternalType                   (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          ExternalIds                    (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FString>    ExternalIds                    (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpIdMappingBase::QueryMappings(class FString ExternalType, TArray<class FString>& ExternalIds)
+void UMcpIdMappingBase::QueryMappings(const class FString& ExternalType, class TArray<class FString>& ExternalIds)
 {
 	static UFunction* uFnQueryMappings = nullptr;
 
@@ -17472,10 +17046,10 @@ void UMcpIdMappingBase::QueryMappings(class FString ExternalType, TArray<class F
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ExternalId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ExternalType                   (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpIdMappingBase::OnAddMappingComplete(class FString McpId, class FString ExternalId, class FString ExternalType, bool bWasSuccessful, class FString Error)
+void UMcpIdMappingBase::OnAddMappingComplete(const class FString& McpId, const class FString& ExternalId, const class FString& ExternalType, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnAddMappingComplete = nullptr;
 
@@ -17502,7 +17076,7 @@ void UMcpIdMappingBase::OnAddMappingComplete(class FString McpId, class FString 
 // class FString                  ExternalId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ExternalType                   (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpIdMappingBase::AddMapping(class FString McpId, class FString ExternalId, class FString ExternalType)
+void UMcpIdMappingBase::AddMapping(const class FString& McpId, const class FString& ExternalId, const class FString& ExternalType)
 {
 	static UFunction* uFnAddMapping = nullptr;
 
@@ -17543,12 +17117,12 @@ class UMcpIdMappingBase* UMcpIdMappingBase::CreateInstance()
 };
 
 // Function IpDrv.McpIdMappingManager.GetIdMappings
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ExternalType                   (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FMcpIdMapping>   IDMappings                     (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpIdMapping> IDMappings                     (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpIdMappingManager::GetIdMappings(class FString ExternalType, TArray<struct FMcpIdMapping>& IDMappings)
+void UMcpIdMappingManager::GetIdMappings(const class FString& ExternalType, class TArray<struct FMcpIdMapping>& IDMappings)
 {
 	static UFunction* uFnGetIdMappings = nullptr;
 
@@ -17572,7 +17146,7 @@ void UMcpIdMappingManager::GetIdMappings(class FString ExternalType, TArray<stru
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpIdMappingManager::OnQueryMappingsRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -17585,20 +17159,20 @@ void UMcpIdMappingManager::OnQueryMappingsRequestComplete(class UHttpRequestInte
 
 	UMcpIdMappingManager_execOnQueryMappingsRequestComplete_Params OnQueryMappingsRequestComplete_Params;
 	memset(&OnQueryMappingsRequestComplete_Params, 0, sizeof(OnQueryMappingsRequestComplete_Params));
-	memcpy_s(&OnQueryMappingsRequestComplete_Params.Request, sizeof(OnQueryMappingsRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnQueryMappingsRequestComplete_Params.Response, sizeof(OnQueryMappingsRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnQueryMappingsRequestComplete_Params.Request = Request;
+	OnQueryMappingsRequestComplete_Params.Response = Response;
 	OnQueryMappingsRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnQueryMappingsRequestComplete, &OnQueryMappingsRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpIdMappingManager.QueryMappings
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ExternalType                   (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          ExternalIds                    (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FString>    ExternalIds                    (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpIdMappingManager::QueryMappings(class FString ExternalType, TArray<class FString>& ExternalIds)
+void UMcpIdMappingManager::QueryMappings(const class FString& ExternalType, class TArray<class FString>& ExternalIds)
 {
 	static UFunction* uFnQueryMappings = nullptr;
 
@@ -17622,7 +17196,7 @@ void UMcpIdMappingManager::QueryMappings(class FString ExternalType, TArray<clas
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpIdMappingManager::OnAddMappingRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -17635,21 +17209,21 @@ void UMcpIdMappingManager::OnAddMappingRequestComplete(class UHttpRequestInterfa
 
 	UMcpIdMappingManager_execOnAddMappingRequestComplete_Params OnAddMappingRequestComplete_Params;
 	memset(&OnAddMappingRequestComplete_Params, 0, sizeof(OnAddMappingRequestComplete_Params));
-	memcpy_s(&OnAddMappingRequestComplete_Params.Request, sizeof(OnAddMappingRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnAddMappingRequestComplete_Params.Response, sizeof(OnAddMappingRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnAddMappingRequestComplete_Params.Request = Request;
+	OnAddMappingRequestComplete_Params.Response = Response;
 	OnAddMappingRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnAddMappingRequestComplete, &OnAddMappingRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpIdMappingManager.AddMapping
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ExternalId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ExternalType                   (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpIdMappingManager::AddMapping(class FString McpId, class FString ExternalId, class FString ExternalType)
+void UMcpIdMappingManager::AddMapping(const class FString& McpId, const class FString& ExternalId, const class FString& ExternalType)
 {
 	static UFunction* uFnAddMapping = nullptr;
 
@@ -17672,11 +17246,11 @@ void UMcpIdMappingManager::AddMapping(class FString McpId, class FString Externa
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
-// struct FName                   ValueId                        (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class FName                    ValueId                        (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpManagedValueManagerBase::OnDeleteValueComplete(class FString McpId, class FString SaveSlot, struct FName ValueId, bool bWasSuccessful, class FString Error)
+void UMcpManagedValueManagerBase::OnDeleteValueComplete(const class FString& McpId, const class FString& SaveSlot, const class FName& ValueId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnDeleteValueComplete = nullptr;
 
@@ -17701,9 +17275,9 @@ void UMcpManagedValueManagerBase::OnDeleteValueComplete(class FString McpId, cla
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
-// struct FName                   ValueId                        (CPF_Parm)
+// class FName                    ValueId                        (CPF_Parm)
 
-void UMcpManagedValueManagerBase::DeleteValue(class FString McpId, class FString SaveSlot, struct FName ValueId)
+void UMcpManagedValueManagerBase::DeleteValue(const class FString& McpId, const class FString& SaveSlot, const class FName& ValueId)
 {
 	static UFunction* uFnDeleteValue = nullptr;
 
@@ -17726,12 +17300,12 @@ void UMcpManagedValueManagerBase::DeleteValue(class FString McpId, class FString
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
-// struct FName                   ValueId                        (CPF_Parm)
+// class FName                    ValueId                        (CPF_Parm)
 // int32_t                        Value                          (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpManagedValueManagerBase::OnUpdateValueComplete(class FString McpId, class FString SaveSlot, struct FName ValueId, int32_t Value, bool bWasSuccessful, class FString Error)
+void UMcpManagedValueManagerBase::OnUpdateValueComplete(const class FString& McpId, const class FString& SaveSlot, const class FName& ValueId, int32_t Value, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnUpdateValueComplete = nullptr;
 
@@ -17757,10 +17331,10 @@ void UMcpManagedValueManagerBase::OnUpdateValueComplete(class FString McpId, cla
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
-// struct FName                   ValueId                        (CPF_Parm)
+// class FName                    ValueId                        (CPF_Parm)
 // int32_t                        Value                          (CPF_Parm)
 
-void UMcpManagedValueManagerBase::UpdateValue(class FString McpId, class FString SaveSlot, struct FName ValueId, int32_t Value)
+void UMcpManagedValueManagerBase::UpdateValue(const class FString& McpId, const class FString& SaveSlot, const class FName& ValueId, int32_t Value)
 {
 	static UFunction* uFnUpdateValue = nullptr;
 
@@ -17785,9 +17359,9 @@ void UMcpManagedValueManagerBase::UpdateValue(class FString McpId, class FString
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
-// struct FName                   ValueId                        (CPF_Parm)
+// class FName                    ValueId                        (CPF_Parm)
 
-int32_t UMcpManagedValueManagerBase::GetValue(class FString McpId, class FString SaveSlot, struct FName ValueId)
+int32_t UMcpManagedValueManagerBase::GetValue(const class FString& McpId, const class FString& SaveSlot, const class FName& ValueId)
 {
 	static UFunction* uFnGetValue = nullptr;
 
@@ -17810,11 +17384,11 @@ int32_t UMcpManagedValueManagerBase::GetValue(class FString McpId, class FString
 // Function IpDrv.McpManagedValueManagerBase.GetValues
 // [0x00020000] (FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// TArray<struct FManagedValue>   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class TArray<struct FManagedValue> ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
 
-TArray<struct FManagedValue> UMcpManagedValueManagerBase::GetValues(class FString McpId, class FString SaveSlot)
+class TArray<struct FManagedValue> UMcpManagedValueManagerBase::GetValues(const class FString& McpId, const class FString& SaveSlot)
 {
 	static UFunction* uFnGetValues = nullptr;
 
@@ -17838,10 +17412,10 @@ TArray<struct FManagedValue> UMcpManagedValueManagerBase::GetValues(class FStrin
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpManagedValueManagerBase::OnReadSaveSlotComplete(class FString McpId, class FString SaveSlot, bool bWasSuccessful, class FString Error)
+void UMcpManagedValueManagerBase::OnReadSaveSlotComplete(const class FString& McpId, const class FString& SaveSlot, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnReadSaveSlotComplete = nullptr;
 
@@ -17866,7 +17440,7 @@ void UMcpManagedValueManagerBase::OnReadSaveSlotComplete(class FString McpId, cl
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpManagedValueManagerBase::ReadSaveSlot(class FString McpId, class FString SaveSlot)
+void UMcpManagedValueManagerBase::ReadSaveSlot(const class FString& McpId, const class FString& SaveSlot)
 {
 	static UFunction* uFnReadSaveSlot = nullptr;
 
@@ -17888,10 +17462,10 @@ void UMcpManagedValueManagerBase::ReadSaveSlot(class FString McpId, class FStrin
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpManagedValueManagerBase::OnCreateSaveSlotComplete(class FString McpId, class FString SaveSlot, bool bWasSuccessful, class FString Error)
+void UMcpManagedValueManagerBase::OnCreateSaveSlotComplete(const class FString& McpId, const class FString& SaveSlot, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnCreateSaveSlotComplete = nullptr;
 
@@ -17916,7 +17490,7 @@ void UMcpManagedValueManagerBase::OnCreateSaveSlotComplete(class FString McpId, 
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpManagedValueManagerBase::CreateSaveSlot(class FString McpId, class FString SaveSlot)
+void UMcpManagedValueManagerBase::CreateSaveSlot(const class FString& McpId, const class FString& SaveSlot)
 {
 	static UFunction* uFnCreateSaveSlot = nullptr;
 
@@ -17960,7 +17534,7 @@ class UMcpManagedValueManagerBase* UMcpManagedValueManagerBase::CreateInstance()
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpManagedValueManager::OnDeleteValueRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -17973,21 +17547,21 @@ void UMcpManagedValueManager::OnDeleteValueRequestComplete(class UHttpRequestInt
 
 	UMcpManagedValueManager_execOnDeleteValueRequestComplete_Params OnDeleteValueRequestComplete_Params;
 	memset(&OnDeleteValueRequestComplete_Params, 0, sizeof(OnDeleteValueRequestComplete_Params));
-	memcpy_s(&OnDeleteValueRequestComplete_Params.Request, sizeof(OnDeleteValueRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnDeleteValueRequestComplete_Params.Response, sizeof(OnDeleteValueRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnDeleteValueRequestComplete_Params.Request = Request;
+	OnDeleteValueRequestComplete_Params.Response = Response;
 	OnDeleteValueRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnDeleteValueRequestComplete, &OnDeleteValueRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpManagedValueManager.DeleteValue
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
-// struct FName                   ValueId                        (CPF_Parm)
+// class FName                    ValueId                        (CPF_Parm)
 
-void UMcpManagedValueManager::DeleteValue(class FString McpId, class FString SaveSlot, struct FName ValueId)
+void UMcpManagedValueManager::DeleteValue(const class FString& McpId, const class FString& SaveSlot, const class FName& ValueId)
 {
 	static UFunction* uFnDeleteValue = nullptr;
 
@@ -18010,7 +17584,7 @@ void UMcpManagedValueManager::DeleteValue(class FString McpId, class FString Sav
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpManagedValueManager::OnUpdateValueRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -18023,22 +17597,22 @@ void UMcpManagedValueManager::OnUpdateValueRequestComplete(class UHttpRequestInt
 
 	UMcpManagedValueManager_execOnUpdateValueRequestComplete_Params OnUpdateValueRequestComplete_Params;
 	memset(&OnUpdateValueRequestComplete_Params, 0, sizeof(OnUpdateValueRequestComplete_Params));
-	memcpy_s(&OnUpdateValueRequestComplete_Params.Request, sizeof(OnUpdateValueRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnUpdateValueRequestComplete_Params.Response, sizeof(OnUpdateValueRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnUpdateValueRequestComplete_Params.Request = Request;
+	OnUpdateValueRequestComplete_Params.Response = Response;
 	OnUpdateValueRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnUpdateValueRequestComplete, &OnUpdateValueRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpManagedValueManager.UpdateValue
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
-// struct FName                   ValueId                        (CPF_Parm)
+// class FName                    ValueId                        (CPF_Parm)
 // int32_t                        Value                          (CPF_Parm)
 
-void UMcpManagedValueManager::UpdateValue(class FString McpId, class FString SaveSlot, struct FName ValueId, int32_t Value)
+void UMcpManagedValueManager::UpdateValue(const class FString& McpId, const class FString& SaveSlot, const class FName& ValueId, int32_t Value)
 {
 	static UFunction* uFnUpdateValue = nullptr;
 
@@ -18058,14 +17632,14 @@ void UMcpManagedValueManager::UpdateValue(class FString McpId, class FString Sav
 };
 
 // Function IpDrv.McpManagedValueManager.GetValue
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
-// struct FName                   ValueId                        (CPF_Parm)
+// class FName                    ValueId                        (CPF_Parm)
 
-int32_t UMcpManagedValueManager::GetValue(class FString McpId, class FString SaveSlot, struct FName ValueId)
+int32_t UMcpManagedValueManager::GetValue(const class FString& McpId, const class FString& SaveSlot, const class FName& ValueId)
 {
 	static UFunction* uFnGetValue = nullptr;
 
@@ -18086,13 +17660,13 @@ int32_t UMcpManagedValueManager::GetValue(class FString McpId, class FString Sav
 };
 
 // Function IpDrv.McpManagedValueManager.GetValues
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// TArray<struct FManagedValue>   ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class TArray<struct FManagedValue> ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
 
-TArray<struct FManagedValue> UMcpManagedValueManager::GetValues(class FString McpId, class FString SaveSlot)
+class TArray<struct FManagedValue> UMcpManagedValueManager::GetValues(const class FString& McpId, const class FString& SaveSlot)
 {
 	static UFunction* uFnGetValues = nullptr;
 
@@ -18116,7 +17690,7 @@ TArray<struct FManagedValue> UMcpManagedValueManager::GetValues(class FString Mc
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpManagedValueManager::OnReadSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -18129,20 +17703,20 @@ void UMcpManagedValueManager::OnReadSaveSlotRequestComplete(class UHttpRequestIn
 
 	UMcpManagedValueManager_execOnReadSaveSlotRequestComplete_Params OnReadSaveSlotRequestComplete_Params;
 	memset(&OnReadSaveSlotRequestComplete_Params, 0, sizeof(OnReadSaveSlotRequestComplete_Params));
-	memcpy_s(&OnReadSaveSlotRequestComplete_Params.Request, sizeof(OnReadSaveSlotRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnReadSaveSlotRequestComplete_Params.Response, sizeof(OnReadSaveSlotRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnReadSaveSlotRequestComplete_Params.Request = Request;
+	OnReadSaveSlotRequestComplete_Params.Response = Response;
 	OnReadSaveSlotRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnReadSaveSlotRequestComplete, &OnReadSaveSlotRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpManagedValueManager.ReadSaveSlot
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpManagedValueManager::ReadSaveSlot(class FString McpId, class FString SaveSlot)
+void UMcpManagedValueManager::ReadSaveSlot(const class FString& McpId, const class FString& SaveSlot)
 {
 	static UFunction* uFnReadSaveSlot = nullptr;
 
@@ -18166,7 +17740,7 @@ void UMcpManagedValueManager::ReadSaveSlot(class FString McpId, class FString Sa
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  JsonPayload                    (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpManagedValueManager::ParseValuesForSaveSlot(class FString McpId, class FString SaveSlot, class FString JsonPayload)
+void UMcpManagedValueManager::ParseValuesForSaveSlot(const class FString& McpId, const class FString& SaveSlot, const class FString& JsonPayload)
 {
 	static UFunction* uFnParseValuesForSaveSlot = nullptr;
 
@@ -18191,7 +17765,7 @@ void UMcpManagedValueManager::ParseValuesForSaveSlot(class FString McpId, class 
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UMcpManagedValueManager::FindSaveSlotIndex(class FString McpId, class FString SaveSlot)
+int32_t UMcpManagedValueManager::FindSaveSlotIndex(const class FString& McpId, const class FString& SaveSlot)
 {
 	static UFunction* uFnFindSaveSlotIndex = nullptr;
 
@@ -18215,7 +17789,7 @@ int32_t UMcpManagedValueManager::FindSaveSlotIndex(class FString McpId, class FS
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpManagedValueManager::OnCreateSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -18228,20 +17802,20 @@ void UMcpManagedValueManager::OnCreateSaveSlotRequestComplete(class UHttpRequest
 
 	UMcpManagedValueManager_execOnCreateSaveSlotRequestComplete_Params OnCreateSaveSlotRequestComplete_Params;
 	memset(&OnCreateSaveSlotRequestComplete_Params, 0, sizeof(OnCreateSaveSlotRequestComplete_Params));
-	memcpy_s(&OnCreateSaveSlotRequestComplete_Params.Request, sizeof(OnCreateSaveSlotRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnCreateSaveSlotRequestComplete_Params.Response, sizeof(OnCreateSaveSlotRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnCreateSaveSlotRequestComplete_Params.Request = Request;
+	OnCreateSaveSlotRequestComplete_Params.Response = Response;
 	OnCreateSaveSlotRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnCreateSaveSlotRequestComplete, &OnCreateSaveSlotRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpManagedValueManager.CreateSaveSlot
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlot                       (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpManagedValueManager::CreateSaveSlot(class FString McpId, class FString SaveSlot)
+void UMcpManagedValueManager::CreateSaveSlot(const class FString& McpId, const class FString& SaveSlot)
 {
 	static UFunction* uFnCreateSaveSlot = nullptr;
 
@@ -18283,11 +17857,11 @@ class FString UMcpServerTimeBase::GetLastServerTime()
 // Function IpDrv.McpServerTimeBase.OnQueryServerTimeComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  DateTimeStr                    (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpServerTimeBase::OnQueryServerTimeComplete(bool bWasSuccessful, class FString DateTimeStr, class FString Error)
+void UMcpServerTimeBase::OnQueryServerTimeComplete(bool bWasSuccessful, const class FString& DateTimeStr, const class FString& Error)
 {
 	static UFunction* uFnOnQueryServerTimeComplete = nullptr;
 
@@ -18347,7 +17921,7 @@ class UMcpServerTimeBase* UMcpServerTimeBase::CreateInstance()
 };
 
 // Function IpDrv.McpServerTimeManager.GetLastServerTime
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 
@@ -18373,7 +17947,7 @@ class FString UMcpServerTimeManager::GetLastServerTime()
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpServerTimeManager::OnQueryServerTimeHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -18386,15 +17960,15 @@ void UMcpServerTimeManager::OnQueryServerTimeHTTPRequestComplete(class UHttpRequ
 
 	UMcpServerTimeManager_execOnQueryServerTimeHTTPRequestComplete_Params OnQueryServerTimeHTTPRequestComplete_Params;
 	memset(&OnQueryServerTimeHTTPRequestComplete_Params, 0, sizeof(OnQueryServerTimeHTTPRequestComplete_Params));
-	memcpy_s(&OnQueryServerTimeHTTPRequestComplete_Params.Request, sizeof(OnQueryServerTimeHTTPRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnQueryServerTimeHTTPRequestComplete_Params.Response, sizeof(OnQueryServerTimeHTTPRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnQueryServerTimeHTTPRequestComplete_Params.Request = Request;
+	OnQueryServerTimeHTTPRequestComplete_Params.Response = Response;
 	OnQueryServerTimeHTTPRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnQueryServerTimeHTTPRequestComplete, &OnQueryServerTimeHTTPRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpServerTimeManager.QueryServerTime
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void UMcpServerTimeManager::QueryServerTime()
@@ -18417,11 +17991,11 @@ void UMcpServerTimeManager::QueryServerTime()
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          UpdatedItemIds                 (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class TArray<class FString>    UpdatedItemIds                 (CPF_Parm | CPF_NeedCtorLink)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::OnRecordIapComplete(class FString McpId, class FString SaveSlotId, TArray<class FString> UpdatedItemIds, bool bWasSuccessful, class FString Error)
+void UMcpUserInventoryBase::OnRecordIapComplete(const class FString& McpId, const class FString& SaveSlotId, const class TArray<class FString>& UpdatedItemIds, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnRecordIapComplete = nullptr;
 
@@ -18448,7 +18022,7 @@ void UMcpUserInventoryBase::OnRecordIapComplete(class FString McpId, class FStri
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Receipt                        (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::RecordIap(class FString McpId, class FString SaveSlotId, class FString Receipt)
+void UMcpUserInventoryBase::RecordIap(const class FString& McpId, const class FString& SaveSlotId, const class FString& Receipt)
 {
 	static UFunction* uFnRecordIap = nullptr;
 
@@ -18472,10 +18046,10 @@ void UMcpUserInventoryBase::RecordIap(class FString McpId, class FString SaveSlo
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  InstanceItemId                 (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::OnDeleteItemComplete(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, bool bWasSuccessful, class FString Error)
+void UMcpUserInventoryBase::OnDeleteItemComplete(const class FString& McpId, const class FString& SaveSlotId, const class FString& InstanceItemId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnDeleteItemComplete = nullptr;
 
@@ -18503,7 +18077,7 @@ void UMcpUserInventoryBase::OnDeleteItemComplete(class FString McpId, class FStr
 // class FString                  InstanceItemId                 (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        StoreVersion                   (CPF_Parm)
 
-void UMcpUserInventoryBase::DeleteItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, int32_t StoreVersion)
+void UMcpUserInventoryBase::DeleteItem(const class FString& McpId, const class FString& SaveSlotId, const class FString& InstanceItemId, int32_t StoreVersion)
 {
 	static UFunction* uFnDeleteItem = nullptr;
 
@@ -18528,11 +18102,11 @@ void UMcpUserInventoryBase::DeleteItem(class FString McpId, class FString SaveSl
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  InstanceItemId                 (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          UpdatedItemIds                 (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class TArray<class FString>    UpdatedItemIds                 (CPF_Parm | CPF_NeedCtorLink)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::OnConsumeItemComplete(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, TArray<class FString> UpdatedItemIds, bool bWasSuccessful, class FString Error)
+void UMcpUserInventoryBase::OnConsumeItemComplete(const class FString& McpId, const class FString& SaveSlotId, const class FString& InstanceItemId, const class TArray<class FString>& UpdatedItemIds, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnConsumeItemComplete = nullptr;
 
@@ -18562,7 +18136,7 @@ void UMcpUserInventoryBase::OnConsumeItemComplete(class FString McpId, class FSt
 // int32_t                        Quantity                       (CPF_Parm)
 // int32_t                        StoreVersion                   (CPF_Parm)
 
-void UMcpUserInventoryBase::ConsumeItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, int32_t Quantity, int32_t StoreVersion)
+void UMcpUserInventoryBase::ConsumeItem(const class FString& McpId, const class FString& SaveSlotId, const class FString& InstanceItemId, int32_t Quantity, int32_t StoreVersion)
 {
 	static UFunction* uFnConsumeItem = nullptr;
 
@@ -18588,11 +18162,11 @@ void UMcpUserInventoryBase::ConsumeItem(class FString McpId, class FString SaveS
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GlobalItemId                   (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          UpdatedItemIds                 (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class TArray<class FString>    UpdatedItemIds                 (CPF_Parm | CPF_NeedCtorLink)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::OnEarnItemComplete(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, TArray<class FString> UpdatedItemIds, bool bWasSuccessful, class FString Error)
+void UMcpUserInventoryBase::OnEarnItemComplete(const class FString& McpId, const class FString& SaveSlotId, const class FString& GlobalItemId, const class TArray<class FString>& UpdatedItemIds, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnEarnItemComplete = nullptr;
 
@@ -18622,7 +18196,7 @@ void UMcpUserInventoryBase::OnEarnItemComplete(class FString McpId, class FStrin
 // int32_t                        Quantity                       (CPF_Parm)
 // int32_t                        StoreVersion                   (CPF_Parm)
 
-void UMcpUserInventoryBase::EarnItem(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, int32_t Quantity, int32_t StoreVersion)
+void UMcpUserInventoryBase::EarnItem(const class FString& McpId, const class FString& SaveSlotId, const class FString& GlobalItemId, int32_t Quantity, int32_t StoreVersion)
 {
 	static UFunction* uFnEarnItem = nullptr;
 
@@ -18648,11 +18222,11 @@ void UMcpUserInventoryBase::EarnItem(class FString McpId, class FString SaveSlot
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  InstanceItemId                 (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          UpdatedItemIds                 (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class TArray<class FString>    UpdatedItemIds                 (CPF_Parm | CPF_NeedCtorLink)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::OnSellItemComplete(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, TArray<class FString> UpdatedItemIds, bool bWasSuccessful, class FString Error)
+void UMcpUserInventoryBase::OnSellItemComplete(const class FString& McpId, const class FString& SaveSlotId, const class FString& InstanceItemId, const class TArray<class FString>& UpdatedItemIds, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnSellItemComplete = nullptr;
 
@@ -18681,9 +18255,9 @@ void UMcpUserInventoryBase::OnSellItemComplete(class FString McpId, class FStrin
 // class FString                  InstanceItemId                 (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Quantity                       (CPF_Parm)
 // int32_t                        StoreVersion                   (CPF_Parm)
-// TArray<struct FMcpInventoryItemContainer> ExpectedResultItems            (CPF_Const | CPF_OptionalParm | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpInventoryItemContainer> ExpectedResultItems            (CPF_Const | CPF_OptionalParm | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::SellItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, int32_t Quantity, int32_t StoreVersion, TArray<struct FMcpInventoryItemContainer>& ExpectedResultItems)
+void UMcpUserInventoryBase::SellItem(const class FString& McpId, const class FString& SaveSlotId, const class FString& InstanceItemId, int32_t Quantity, int32_t StoreVersion, class TArray<struct FMcpInventoryItemContainer>& ExpectedResultItems)
 {
 	static UFunction* uFnSellItem = nullptr;
 
@@ -18712,11 +18286,11 @@ void UMcpUserInventoryBase::SellItem(class FString McpId, class FString SaveSlot
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GlobalItemId                   (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          UpdatedItemIds                 (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// class TArray<class FString>    UpdatedItemIds                 (CPF_Parm | CPF_NeedCtorLink)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::OnPurchaseItemComplete(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, TArray<class FString> UpdatedItemIds, bool bWasSuccessful, class FString Error)
+void UMcpUserInventoryBase::OnPurchaseItemComplete(const class FString& McpId, const class FString& SaveSlotId, const class FString& GlobalItemId, const class TArray<class FString>& UpdatedItemIds, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnPurchaseItemComplete = nullptr;
 
@@ -18743,12 +18317,12 @@ void UMcpUserInventoryBase::OnPurchaseItemComplete(class FString McpId, class FS
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GlobalItemId                   (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          PurchaseItemIds                (CPF_Parm | CPF_NeedCtorLink)
+// class TArray<class FString>    PurchaseItemIds                (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Quantity                       (CPF_Parm)
 // int32_t                        StoreVersion                   (CPF_Parm)
 // float                          Scalar                         (CPF_Parm)
 
-void UMcpUserInventoryBase::PurchaseItem(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, TArray<class FString> PurchaseItemIds, int32_t Quantity, int32_t StoreVersion, float Scalar)
+void UMcpUserInventoryBase::PurchaseItem(const class FString& McpId, const class FString& SaveSlotId, const class FString& GlobalItemId, const class TArray<class FString>& PurchaseItemIds, int32_t Quantity, int32_t StoreVersion, float Scalar)
 {
 	static UFunction* uFnPurchaseItem = nullptr;
 
@@ -18779,7 +18353,7 @@ void UMcpUserInventoryBase::PurchaseItem(class FString McpId, class FString Save
 // class FString                  InstanceItemId                 (CPF_Parm | CPF_NeedCtorLink)
 // struct FMcpInventoryItem       OutInventoryItem               (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMcpUserInventoryBase::GetInventoryItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, struct FMcpInventoryItem& OutInventoryItem)
+bool UMcpUserInventoryBase::GetInventoryItem(const class FString& McpId, const class FString& SaveSlotId, const class FString& InstanceItemId, struct FMcpInventoryItem& OutInventoryItem)
 {
 	static UFunction* uFnGetInventoryItem = nullptr;
 
@@ -18807,9 +18381,9 @@ bool UMcpUserInventoryBase::GetInventoryItem(class FString McpId, class FString 
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FMcpInventoryItem> OutInventoryItems              (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpInventoryItem> OutInventoryItems              (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::GetInventoryItems(class FString McpId, class FString SaveSlotId, TArray<struct FMcpInventoryItem>& OutInventoryItems)
+void UMcpUserInventoryBase::GetInventoryItems(const class FString& McpId, const class FString& SaveSlotId, class TArray<struct FMcpInventoryItem>& OutInventoryItems)
 {
 	static UFunction* uFnGetInventoryItems = nullptr;
 
@@ -18834,10 +18408,10 @@ void UMcpUserInventoryBase::GetInventoryItems(class FString McpId, class FString
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::OnQueryInventoryItemsComplete(class FString McpId, class FString SaveSlotId, bool bWasSuccessful, class FString Error)
+void UMcpUserInventoryBase::OnQueryInventoryItemsComplete(const class FString& McpId, const class FString& SaveSlotId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnQueryInventoryItemsComplete = nullptr;
 
@@ -18862,7 +18436,7 @@ void UMcpUserInventoryBase::OnQueryInventoryItemsComplete(class FString McpId, c
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::QueryInventoryItems(class FString McpId, class FString SaveSlotId)
+void UMcpUserInventoryBase::QueryInventoryItems(const class FString& McpId, const class FString& SaveSlotId)
 {
 	static UFunction* uFnQueryInventoryItems = nullptr;
 
@@ -18883,10 +18457,10 @@ void UMcpUserInventoryBase::QueryInventoryItems(class FString McpId, class FStri
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::OnQuerySaveSlotListComplete(class FString McpId, bool bWasSuccessful, class FString Error)
+void UMcpUserInventoryBase::OnQuerySaveSlotListComplete(const class FString& McpId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnQuerySaveSlotListComplete = nullptr;
 
@@ -18907,10 +18481,10 @@ void UMcpUserInventoryBase::OnQuerySaveSlotListComplete(class FString McpId, boo
 // Function IpDrv.McpUserInventoryBase.GetSaveSlotList
 // [0x00020000] (FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// TArray<class FString>          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class TArray<class FString>    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 
-TArray<class FString> UMcpUserInventoryBase::GetSaveSlotList(class FString McpId)
+class TArray<class FString> UMcpUserInventoryBase::GetSaveSlotList(const class FString& McpId)
 {
 	static UFunction* uFnGetSaveSlotList = nullptr;
 
@@ -18933,7 +18507,7 @@ TArray<class FString> UMcpUserInventoryBase::GetSaveSlotList(class FString McpId
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::QuerySaveSlotList(class FString McpId)
+void UMcpUserInventoryBase::QuerySaveSlotList(const class FString& McpId)
 {
 	static UFunction* uFnQuerySaveSlotList = nullptr;
 
@@ -18954,10 +18528,10 @@ void UMcpUserInventoryBase::QuerySaveSlotList(class FString McpId)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::OnDeleteSaveSlotComplete(class FString McpId, class FString SaveSlotId, bool bWasSuccessful, class FString Error)
+void UMcpUserInventoryBase::OnDeleteSaveSlotComplete(const class FString& McpId, const class FString& SaveSlotId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnDeleteSaveSlotComplete = nullptr;
 
@@ -18982,7 +18556,7 @@ void UMcpUserInventoryBase::OnDeleteSaveSlotComplete(class FString McpId, class 
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::DeleteSaveSlot(class FString McpId, class FString SaveSlotId)
+void UMcpUserInventoryBase::DeleteSaveSlot(const class FString& McpId, const class FString& SaveSlotId)
 {
 	static UFunction* uFnDeleteSaveSlot = nullptr;
 
@@ -19004,10 +18578,10 @@ void UMcpUserInventoryBase::DeleteSaveSlot(class FString McpId, class FString Sa
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::OnCreateSaveSlotComplete(class FString McpId, class FString SaveSlotId, bool bWasSuccessful, class FString Error)
+void UMcpUserInventoryBase::OnCreateSaveSlotComplete(const class FString& McpId, const class FString& SaveSlotId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnCreateSaveSlotComplete = nullptr;
 
@@ -19033,7 +18607,7 @@ void UMcpUserInventoryBase::OnCreateSaveSlotComplete(class FString McpId, class 
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ParentSaveSlotId               (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryBase::CreateSaveSlot(class FString McpId, class FString SaveSlotId, class FString ParentSaveSlotId)
+void UMcpUserInventoryBase::CreateSaveSlot(const class FString& McpId, const class FString& SaveSlotId, const class FString& ParentSaveSlotId)
 {
 	static UFunction* uFnCreateSaveSlot = nullptr;
 
@@ -19078,7 +18652,7 @@ class UMcpUserInventoryBase* UMcpUserInventoryBase::CreateInstance()
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserInventoryManager::OnRecordIapRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -19091,21 +18665,21 @@ void UMcpUserInventoryManager::OnRecordIapRequestComplete(class UHttpRequestInte
 
 	UMcpUserInventoryManager_execOnRecordIapRequestComplete_Params OnRecordIapRequestComplete_Params;
 	memset(&OnRecordIapRequestComplete_Params, 0, sizeof(OnRecordIapRequestComplete_Params));
-	memcpy_s(&OnRecordIapRequestComplete_Params.Request, sizeof(OnRecordIapRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnRecordIapRequestComplete_Params.Response, sizeof(OnRecordIapRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnRecordIapRequestComplete_Params.Request = Request;
+	OnRecordIapRequestComplete_Params.Response = Response;
 	OnRecordIapRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnRecordIapRequestComplete, &OnRecordIapRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpUserInventoryManager.RecordIap
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Receipt                        (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryManager::RecordIap(class FString McpId, class FString SaveSlotId, class FString Receipt)
+void UMcpUserInventoryManager::RecordIap(const class FString& McpId, const class FString& SaveSlotId, const class FString& Receipt)
 {
 	static UFunction* uFnRecordIap = nullptr;
 
@@ -19128,7 +18702,7 @@ void UMcpUserInventoryManager::RecordIap(class FString McpId, class FString Save
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserInventoryManager::OnDeleteItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -19141,22 +18715,22 @@ void UMcpUserInventoryManager::OnDeleteItemRequestComplete(class UHttpRequestInt
 
 	UMcpUserInventoryManager_execOnDeleteItemRequestComplete_Params OnDeleteItemRequestComplete_Params;
 	memset(&OnDeleteItemRequestComplete_Params, 0, sizeof(OnDeleteItemRequestComplete_Params));
-	memcpy_s(&OnDeleteItemRequestComplete_Params.Request, sizeof(OnDeleteItemRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnDeleteItemRequestComplete_Params.Response, sizeof(OnDeleteItemRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnDeleteItemRequestComplete_Params.Request = Request;
+	OnDeleteItemRequestComplete_Params.Response = Response;
 	OnDeleteItemRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnDeleteItemRequestComplete, &OnDeleteItemRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpUserInventoryManager.DeleteItem
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  InstanceItemId                 (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        StoreVersion                   (CPF_Parm)
 
-void UMcpUserInventoryManager::DeleteItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, int32_t StoreVersion)
+void UMcpUserInventoryManager::DeleteItem(const class FString& McpId, const class FString& SaveSlotId, const class FString& InstanceItemId, int32_t StoreVersion)
 {
 	static UFunction* uFnDeleteItem = nullptr;
 
@@ -19180,7 +18754,7 @@ void UMcpUserInventoryManager::DeleteItem(class FString McpId, class FString Sav
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserInventoryManager::OnConsumeItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -19193,15 +18767,15 @@ void UMcpUserInventoryManager::OnConsumeItemRequestComplete(class UHttpRequestIn
 
 	UMcpUserInventoryManager_execOnConsumeItemRequestComplete_Params OnConsumeItemRequestComplete_Params;
 	memset(&OnConsumeItemRequestComplete_Params, 0, sizeof(OnConsumeItemRequestComplete_Params));
-	memcpy_s(&OnConsumeItemRequestComplete_Params.Request, sizeof(OnConsumeItemRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnConsumeItemRequestComplete_Params.Response, sizeof(OnConsumeItemRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnConsumeItemRequestComplete_Params.Request = Request;
+	OnConsumeItemRequestComplete_Params.Response = Response;
 	OnConsumeItemRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnConsumeItemRequestComplete, &OnConsumeItemRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpUserInventoryManager.ConsumeItem
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
@@ -19209,7 +18783,7 @@ void UMcpUserInventoryManager::OnConsumeItemRequestComplete(class UHttpRequestIn
 // int32_t                        Quantity                       (CPF_Parm)
 // int32_t                        StoreVersion                   (CPF_Parm)
 
-void UMcpUserInventoryManager::ConsumeItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, int32_t Quantity, int32_t StoreVersion)
+void UMcpUserInventoryManager::ConsumeItem(const class FString& McpId, const class FString& SaveSlotId, const class FString& InstanceItemId, int32_t Quantity, int32_t StoreVersion)
 {
 	static UFunction* uFnConsumeItem = nullptr;
 
@@ -19234,7 +18808,7 @@ void UMcpUserInventoryManager::ConsumeItem(class FString McpId, class FString Sa
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserInventoryManager::OnEarnItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -19247,15 +18821,15 @@ void UMcpUserInventoryManager::OnEarnItemRequestComplete(class UHttpRequestInter
 
 	UMcpUserInventoryManager_execOnEarnItemRequestComplete_Params OnEarnItemRequestComplete_Params;
 	memset(&OnEarnItemRequestComplete_Params, 0, sizeof(OnEarnItemRequestComplete_Params));
-	memcpy_s(&OnEarnItemRequestComplete_Params.Request, sizeof(OnEarnItemRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnEarnItemRequestComplete_Params.Response, sizeof(OnEarnItemRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnEarnItemRequestComplete_Params.Request = Request;
+	OnEarnItemRequestComplete_Params.Response = Response;
 	OnEarnItemRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnEarnItemRequestComplete, &OnEarnItemRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpUserInventoryManager.EarnItem
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
@@ -19263,7 +18837,7 @@ void UMcpUserInventoryManager::OnEarnItemRequestComplete(class UHttpRequestInter
 // int32_t                        Quantity                       (CPF_Parm)
 // int32_t                        StoreVersion                   (CPF_Parm)
 
-void UMcpUserInventoryManager::EarnItem(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, int32_t Quantity, int32_t StoreVersion)
+void UMcpUserInventoryManager::EarnItem(const class FString& McpId, const class FString& SaveSlotId, const class FString& GlobalItemId, int32_t Quantity, int32_t StoreVersion)
 {
 	static UFunction* uFnEarnItem = nullptr;
 
@@ -19288,7 +18862,7 @@ void UMcpUserInventoryManager::EarnItem(class FString McpId, class FString SaveS
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserInventoryManager::OnSellItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -19301,24 +18875,24 @@ void UMcpUserInventoryManager::OnSellItemRequestComplete(class UHttpRequestInter
 
 	UMcpUserInventoryManager_execOnSellItemRequestComplete_Params OnSellItemRequestComplete_Params;
 	memset(&OnSellItemRequestComplete_Params, 0, sizeof(OnSellItemRequestComplete_Params));
-	memcpy_s(&OnSellItemRequestComplete_Params.Request, sizeof(OnSellItemRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnSellItemRequestComplete_Params.Response, sizeof(OnSellItemRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnSellItemRequestComplete_Params.Request = Request;
+	OnSellItemRequestComplete_Params.Response = Response;
 	OnSellItemRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnSellItemRequestComplete, &OnSellItemRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpUserInventoryManager.SellItem
-// [0x400424002] (FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400424002] (FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  InstanceItemId                 (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Quantity                       (CPF_Parm)
 // int32_t                        StoreVersion                   (CPF_Parm)
-// TArray<struct FMcpInventoryItemContainer> ExpectedResultItems            (CPF_Const | CPF_OptionalParm | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpInventoryItemContainer> ExpectedResultItems            (CPF_Const | CPF_OptionalParm | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryManager::SellItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, int32_t Quantity, int32_t StoreVersion, TArray<struct FMcpInventoryItemContainer>& ExpectedResultItems)
+void UMcpUserInventoryManager::SellItem(const class FString& McpId, const class FString& SaveSlotId, const class FString& InstanceItemId, int32_t Quantity, int32_t StoreVersion, class TArray<struct FMcpInventoryItemContainer>& ExpectedResultItems)
 {
 	static UFunction* uFnSellItem = nullptr;
 
@@ -19346,7 +18920,7 @@ void UMcpUserInventoryManager::SellItem(class FString McpId, class FString SaveS
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserInventoryManager::OnPurchaseItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -19359,25 +18933,25 @@ void UMcpUserInventoryManager::OnPurchaseItemRequestComplete(class UHttpRequestI
 
 	UMcpUserInventoryManager_execOnPurchaseItemRequestComplete_Params OnPurchaseItemRequestComplete_Params;
 	memset(&OnPurchaseItemRequestComplete_Params, 0, sizeof(OnPurchaseItemRequestComplete_Params));
-	memcpy_s(&OnPurchaseItemRequestComplete_Params.Request, sizeof(OnPurchaseItemRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnPurchaseItemRequestComplete_Params.Response, sizeof(OnPurchaseItemRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnPurchaseItemRequestComplete_Params.Request = Request;
+	OnPurchaseItemRequestComplete_Params.Response = Response;
 	OnPurchaseItemRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnPurchaseItemRequestComplete, &OnPurchaseItemRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpUserInventoryManager.PurchaseItem
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  GlobalItemId                   (CPF_Parm | CPF_NeedCtorLink)
-// TArray<class FString>          PurchaseItemIds                (CPF_Parm | CPF_NeedCtorLink)
+// class TArray<class FString>    PurchaseItemIds                (CPF_Parm | CPF_NeedCtorLink)
 // int32_t                        Quantity                       (CPF_Parm)
 // int32_t                        StoreVersion                   (CPF_Parm)
 // float                          Scalar                         (CPF_Parm)
 
-void UMcpUserInventoryManager::PurchaseItem(class FString McpId, class FString SaveSlotId, class FString GlobalItemId, TArray<class FString> PurchaseItemIds, int32_t Quantity, int32_t StoreVersion, float Scalar)
+void UMcpUserInventoryManager::PurchaseItem(const class FString& McpId, const class FString& SaveSlotId, const class FString& GlobalItemId, const class TArray<class FString>& PurchaseItemIds, int32_t Quantity, int32_t StoreVersion, float Scalar)
 {
 	static UFunction* uFnPurchaseItem = nullptr;
 
@@ -19406,9 +18980,9 @@ void UMcpUserInventoryManager::PurchaseItem(class FString McpId, class FString S
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ItemID                         (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FInventoryItemRequestState> InItemRequests                 (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FInventoryItemRequestState> InItemRequests                 (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-int32_t UMcpUserInventoryManager::FindItemRequest(class FString McpId, class FString SaveSlotId, class FString ItemID, TArray<struct FInventoryItemRequestState>& InItemRequests)
+int32_t UMcpUserInventoryManager::FindItemRequest(const class FString& McpId, const class FString& SaveSlotId, const class FString& ItemID, class TArray<struct FInventoryItemRequestState>& InItemRequests)
 {
 	static UFunction* uFnFindItemRequest = nullptr;
 
@@ -19437,9 +19011,9 @@ int32_t UMcpUserInventoryManager::FindItemRequest(class FString McpId, class FSt
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState> InSaveSlotRequests             (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState> InSaveSlotRequests             (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-int32_t UMcpUserInventoryManager::FindSaveSlotRequest(class FString McpId, class FString SaveSlotId, TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState>& InSaveSlotRequests)
+int32_t UMcpUserInventoryManager::FindSaveSlotRequest(const class FString& McpId, const class FString& SaveSlotId, class TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState>& InSaveSlotRequests)
 {
 	static UFunction* uFnFindSaveSlotRequest = nullptr;
 
@@ -19468,7 +19042,7 @@ int32_t UMcpUserInventoryManager::FindSaveSlotRequest(class FString McpId, class
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UMcpUserInventoryManager::FindSaveSlotIndex(class FString McpId, class FString SaveSlotId)
+int32_t UMcpUserInventoryManager::FindSaveSlotIndex(const class FString& McpId, const class FString& SaveSlotId)
 {
 	static UFunction* uFnFindSaveSlotIndex = nullptr;
 
@@ -19493,7 +19067,7 @@ int32_t UMcpUserInventoryManager::FindSaveSlotIndex(class FString McpId, class F
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  JsonPayload                    (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryManager::ParseSaveSlotList(class FString McpId, class FString JsonPayload)
+void UMcpUserInventoryManager::ParseSaveSlotList(const class FString& McpId, const class FString& JsonPayload)
 {
 	static UFunction* uFnParseSaveSlotList = nullptr;
 
@@ -19513,12 +19087,12 @@ void UMcpUserInventoryManager::ParseSaveSlotList(class FString McpId, class FStr
 // Function IpDrv.McpUserInventoryManager.ParseInventoryForSaveSlot
 // [0x00020003] (FUNC_Final | FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// TArray<class FString>          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class TArray<class FString>    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  JsonPayload                    (CPF_Parm | CPF_NeedCtorLink)
 
-TArray<class FString> UMcpUserInventoryManager::ParseInventoryForSaveSlot(class FString McpId, class FString SaveSlotId, class FString JsonPayload)
+class TArray<class FString> UMcpUserInventoryManager::ParseInventoryForSaveSlot(const class FString& McpId, const class FString& SaveSlotId, const class FString& JsonPayload)
 {
 	static UFunction* uFnParseInventoryForSaveSlot = nullptr;
 
@@ -19539,7 +19113,7 @@ TArray<class FString> UMcpUserInventoryManager::ParseInventoryForSaveSlot(class 
 };
 
 // Function IpDrv.McpUserInventoryManager.GetInventoryItem
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
@@ -19547,7 +19121,7 @@ TArray<class FString> UMcpUserInventoryManager::ParseInventoryForSaveSlot(class 
 // class FString                  InstanceItemId                 (CPF_Parm | CPF_NeedCtorLink)
 // struct FMcpInventoryItem       OutInventoryItem               (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMcpUserInventoryManager::GetInventoryItem(class FString McpId, class FString SaveSlotId, class FString InstanceItemId, struct FMcpInventoryItem& OutInventoryItem)
+bool UMcpUserInventoryManager::GetInventoryItem(const class FString& McpId, const class FString& SaveSlotId, const class FString& InstanceItemId, struct FMcpInventoryItem& OutInventoryItem)
 {
 	static UFunction* uFnGetInventoryItem = nullptr;
 
@@ -19571,13 +19145,13 @@ bool UMcpUserInventoryManager::GetInventoryItem(class FString McpId, class FStri
 };
 
 // Function IpDrv.McpUserInventoryManager.GetInventoryItems
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
-// TArray<struct FMcpInventoryItem> OutInventoryItems              (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpInventoryItem> OutInventoryItems              (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryManager::GetInventoryItems(class FString McpId, class FString SaveSlotId, TArray<struct FMcpInventoryItem>& OutInventoryItems)
+void UMcpUserInventoryManager::GetInventoryItems(const class FString& McpId, const class FString& SaveSlotId, class TArray<struct FMcpInventoryItem>& OutInventoryItems)
 {
 	static UFunction* uFnGetInventoryItems = nullptr;
 
@@ -19602,7 +19176,7 @@ void UMcpUserInventoryManager::GetInventoryItems(class FString McpId, class FStr
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserInventoryManager::OnQueryInventoryItemsRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -19615,20 +19189,20 @@ void UMcpUserInventoryManager::OnQueryInventoryItemsRequestComplete(class UHttpR
 
 	UMcpUserInventoryManager_execOnQueryInventoryItemsRequestComplete_Params OnQueryInventoryItemsRequestComplete_Params;
 	memset(&OnQueryInventoryItemsRequestComplete_Params, 0, sizeof(OnQueryInventoryItemsRequestComplete_Params));
-	memcpy_s(&OnQueryInventoryItemsRequestComplete_Params.Request, sizeof(OnQueryInventoryItemsRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnQueryInventoryItemsRequestComplete_Params.Response, sizeof(OnQueryInventoryItemsRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnQueryInventoryItemsRequestComplete_Params.Request = Request;
+	OnQueryInventoryItemsRequestComplete_Params.Response = Response;
 	OnQueryInventoryItemsRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnQueryInventoryItemsRequestComplete, &OnQueryInventoryItemsRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpUserInventoryManager.QueryInventoryItems
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryManager::QueryInventoryItems(class FString McpId, class FString SaveSlotId)
+void UMcpUserInventoryManager::QueryInventoryItems(const class FString& McpId, const class FString& SaveSlotId)
 {
 	static UFunction* uFnQueryInventoryItems = nullptr;
 
@@ -19646,12 +19220,12 @@ void UMcpUserInventoryManager::QueryInventoryItems(class FString McpId, class FS
 };
 
 // Function IpDrv.McpUserInventoryManager.GetSaveSlotList
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
-// TArray<class FString>          ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
+// class TArray<class FString>    ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm | CPF_NeedCtorLink)
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 
-TArray<class FString> UMcpUserInventoryManager::GetSaveSlotList(class FString McpId)
+class TArray<class FString> UMcpUserInventoryManager::GetSaveSlotList(const class FString& McpId)
 {
 	static UFunction* uFnGetSaveSlotList = nullptr;
 
@@ -19674,7 +19248,7 @@ TArray<class FString> UMcpUserInventoryManager::GetSaveSlotList(class FString Mc
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserInventoryManager::OnQuerySaveSlotListRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -19687,19 +19261,19 @@ void UMcpUserInventoryManager::OnQuerySaveSlotListRequestComplete(class UHttpReq
 
 	UMcpUserInventoryManager_execOnQuerySaveSlotListRequestComplete_Params OnQuerySaveSlotListRequestComplete_Params;
 	memset(&OnQuerySaveSlotListRequestComplete_Params, 0, sizeof(OnQuerySaveSlotListRequestComplete_Params));
-	memcpy_s(&OnQuerySaveSlotListRequestComplete_Params.Request, sizeof(OnQuerySaveSlotListRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnQuerySaveSlotListRequestComplete_Params.Response, sizeof(OnQuerySaveSlotListRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnQuerySaveSlotListRequestComplete_Params.Request = Request;
+	OnQuerySaveSlotListRequestComplete_Params.Response = Response;
 	OnQuerySaveSlotListRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnQuerySaveSlotListRequestComplete, &OnQuerySaveSlotListRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpUserInventoryManager.QuerySaveSlotList
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryManager::QuerySaveSlotList(class FString McpId)
+void UMcpUserInventoryManager::QuerySaveSlotList(const class FString& McpId)
 {
 	static UFunction* uFnQuerySaveSlotList = nullptr;
 
@@ -19720,7 +19294,7 @@ void UMcpUserInventoryManager::QuerySaveSlotList(class FString McpId)
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserInventoryManager::OnDeleteSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -19733,20 +19307,20 @@ void UMcpUserInventoryManager::OnDeleteSaveSlotRequestComplete(class UHttpReques
 
 	UMcpUserInventoryManager_execOnDeleteSaveSlotRequestComplete_Params OnDeleteSaveSlotRequestComplete_Params;
 	memset(&OnDeleteSaveSlotRequestComplete_Params, 0, sizeof(OnDeleteSaveSlotRequestComplete_Params));
-	memcpy_s(&OnDeleteSaveSlotRequestComplete_Params.Request, sizeof(OnDeleteSaveSlotRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnDeleteSaveSlotRequestComplete_Params.Response, sizeof(OnDeleteSaveSlotRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnDeleteSaveSlotRequestComplete_Params.Request = Request;
+	OnDeleteSaveSlotRequestComplete_Params.Response = Response;
 	OnDeleteSaveSlotRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnDeleteSaveSlotRequestComplete, &OnDeleteSaveSlotRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpUserInventoryManager.DeleteSaveSlot
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryManager::DeleteSaveSlot(class FString McpId, class FString SaveSlotId)
+void UMcpUserInventoryManager::DeleteSaveSlot(const class FString& McpId, const class FString& SaveSlotId)
 {
 	static UFunction* uFnDeleteSaveSlot = nullptr;
 
@@ -19768,7 +19342,7 @@ void UMcpUserInventoryManager::DeleteSaveSlot(class FString McpId, class FString
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserInventoryManager::OnCreateSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -19781,21 +19355,21 @@ void UMcpUserInventoryManager::OnCreateSaveSlotRequestComplete(class UHttpReques
 
 	UMcpUserInventoryManager_execOnCreateSaveSlotRequestComplete_Params OnCreateSaveSlotRequestComplete_Params;
 	memset(&OnCreateSaveSlotRequestComplete_Params, 0, sizeof(OnCreateSaveSlotRequestComplete_Params));
-	memcpy_s(&OnCreateSaveSlotRequestComplete_Params.Request, sizeof(OnCreateSaveSlotRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnCreateSaveSlotRequestComplete_Params.Response, sizeof(OnCreateSaveSlotRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnCreateSaveSlotRequestComplete_Params.Request = Request;
+	OnCreateSaveSlotRequestComplete_Params.Response = Response;
 	OnCreateSaveSlotRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnCreateSaveSlotRequestComplete, &OnCreateSaveSlotRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpUserInventoryManager.CreateSaveSlot
-// [0x400024002] (FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400024002] (FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  SaveSlotId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ParentSaveSlotId               (CPF_OptionalParm | CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserInventoryManager::CreateSaveSlot(class FString McpId, class FString SaveSlotId, class FString ParentSaveSlotId)
+void UMcpUserInventoryManager::CreateSaveSlot(const class FString& McpId, const class FString& SaveSlotId, const class FString& ParentSaveSlotId)
 {
 	static UFunction* uFnCreateSaveSlot = nullptr;
 
@@ -19816,10 +19390,10 @@ void UMcpUserInventoryManager::CreateSaveSlot(class FString McpId, class FString
 // Function IpDrv.McpUserManagerBase.OnDeleteUserComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserManagerBase::OnDeleteUserComplete(bool bWasSuccessful, class FString Error)
+void UMcpUserManagerBase::OnDeleteUserComplete(bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnDeleteUserComplete = nullptr;
 
@@ -19841,7 +19415,7 @@ void UMcpUserManagerBase::OnDeleteUserComplete(bool bWasSuccessful, class FStrin
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserManagerBase::DeleteUser(class FString McpId)
+void UMcpUserManagerBase::DeleteUser(const class FString& McpId)
 {
 	static UFunction* uFnDeleteUser = nullptr;
 
@@ -19864,7 +19438,7 @@ void UMcpUserManagerBase::DeleteUser(class FString McpId)
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // struct FMcpUserStatus          User                           (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMcpUserManagerBase::GetUser(class FString McpId, struct FMcpUserStatus& User)
+bool UMcpUserManagerBase::GetUser(const class FString& McpId, struct FMcpUserStatus& User)
 {
 	static UFunction* uFnGetUser = nullptr;
 
@@ -19888,9 +19462,9 @@ bool UMcpUserManagerBase::GetUser(class FString McpId, struct FMcpUserStatus& Us
 // Function IpDrv.McpUserManagerBase.GetUsers
 // [0x00420000] (FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<struct FMcpUserStatus>  Users                          (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpUserStatus> Users                          (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpUserManagerBase::GetUsers(TArray<struct FMcpUserStatus>& Users)
+void UMcpUserManagerBase::GetUsers(class TArray<struct FMcpUserStatus>& Users)
 {
 	static UFunction* uFnGetUsers = nullptr;
 
@@ -19911,10 +19485,10 @@ void UMcpUserManagerBase::GetUsers(TArray<struct FMcpUserStatus>& Users)
 // Function IpDrv.McpUserManagerBase.OnQueryUsersComplete
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserManagerBase::OnQueryUsersComplete(bool bWasSuccessful, class FString Error)
+void UMcpUserManagerBase::OnQueryUsersComplete(bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnQueryUsersComplete = nullptr;
 
@@ -19934,9 +19508,9 @@ void UMcpUserManagerBase::OnQueryUsersComplete(bool bWasSuccessful, class FStrin
 // Function IpDrv.McpUserManagerBase.QueryUsers
 // [0x00420000] (FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<class FString>          McpIds                         (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FString>    McpIds                         (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpUserManagerBase::QueryUsers(TArray<class FString>& McpIds)
+void UMcpUserManagerBase::QueryUsers(class TArray<class FString>& McpIds)
 {
 	static UFunction* uFnQueryUsers = nullptr;
 
@@ -19958,9 +19532,9 @@ void UMcpUserManagerBase::QueryUsers(TArray<class FString>& McpIds)
 // [0x00024000] (FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bShouldUpdateLastActive        (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bShouldUpdateLastActive        (CPF_OptionalParm | CPF_Parm)
 
-void UMcpUserManagerBase::QueryUser(class FString McpId, bool bShouldUpdateLastActive)
+void UMcpUserManagerBase::QueryUser(const class FString& McpId, bool bShouldUpdateLastActive)
 {
 	static UFunction* uFnQueryUser = nullptr;
 
@@ -19982,10 +19556,10 @@ void UMcpUserManagerBase::QueryUser(class FString McpId, bool bShouldUpdateLastA
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  Token                          (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserManagerBase::OnAuthenticateUserComplete(class FString McpId, class FString Token, bool bWasSuccessful, class FString Error)
+void UMcpUserManagerBase::OnAuthenticateUserComplete(const class FString& McpId, const class FString& Token, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnAuthenticateUserComplete = nullptr;
 
@@ -20011,7 +19585,7 @@ void UMcpUserManagerBase::OnAuthenticateUserComplete(class FString McpId, class 
 // class FString                  ClientSecret                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UDID                           (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserManagerBase::AuthenticateUserMcp(class FString McpId, class FString ClientSecret, class FString UDID)
+void UMcpUserManagerBase::AuthenticateUserMcp(const class FString& McpId, const class FString& ClientSecret, const class FString& UDID)
 {
 	static UFunction* uFnAuthenticateUserMcp = nullptr;
 
@@ -20036,7 +19610,7 @@ void UMcpUserManagerBase::AuthenticateUserMcp(class FString McpId, class FString
 // class FString                  FacebookToken                  (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UDID                           (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserManagerBase::AuthenticateUserFacebook(class FString FacebookId, class FString FacebookToken, class FString UDID)
+void UMcpUserManagerBase::AuthenticateUserFacebook(const class FString& FacebookId, const class FString& FacebookToken, const class FString& UDID)
 {
 	static UFunction* uFnAuthenticateUserFacebook = nullptr;
 
@@ -20058,10 +19632,10 @@ void UMcpUserManagerBase::AuthenticateUserFacebook(class FString FacebookId, cla
 // [0x00120001] (FUNC_Final | FUNC_Public | FUNC_Delegate | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 // class FString                  Error                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserManagerBase::OnRegisterUserComplete(class FString McpId, bool bWasSuccessful, class FString Error)
+void UMcpUserManagerBase::OnRegisterUserComplete(const class FString& McpId, bool bWasSuccessful, const class FString& Error)
 {
 	static UFunction* uFnOnRegisterUserComplete = nullptr;
 
@@ -20085,7 +19659,7 @@ void UMcpUserManagerBase::OnRegisterUserComplete(class FString McpId, bool bWasS
 // class FString                  FacebookId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  FacebookAuthToken              (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserManagerBase::RegisterUserFacebook(class FString FacebookId, class FString FacebookAuthToken)
+void UMcpUserManagerBase::RegisterUserFacebook(const class FString& FacebookId, const class FString& FacebookAuthToken)
 {
 	static UFunction* uFnRegisterUserFacebook = nullptr;
 
@@ -20148,7 +19722,7 @@ class UMcpUserManagerBase* UMcpUserManagerBase::CreateInstance()
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserManager::OnDeleteUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -20161,19 +19735,19 @@ void UMcpUserManager::OnDeleteUserRequestComplete(class UHttpRequestInterface* R
 
 	UMcpUserManager_execOnDeleteUserRequestComplete_Params OnDeleteUserRequestComplete_Params;
 	memset(&OnDeleteUserRequestComplete_Params, 0, sizeof(OnDeleteUserRequestComplete_Params));
-	memcpy_s(&OnDeleteUserRequestComplete_Params.Request, sizeof(OnDeleteUserRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnDeleteUserRequestComplete_Params.Response, sizeof(OnDeleteUserRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnDeleteUserRequestComplete_Params.Request = Request;
+	OnDeleteUserRequestComplete_Params.Response = Response;
 	OnDeleteUserRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnDeleteUserRequestComplete, &OnDeleteUserRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpUserManager.DeleteUser
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserManager::DeleteUser(class FString McpId)
+void UMcpUserManager::DeleteUser(const class FString& McpId)
 {
 	static UFunction* uFnDeleteUser = nullptr;
 
@@ -20190,13 +19764,13 @@ void UMcpUserManager::DeleteUser(class FString McpId)
 };
 
 // Function IpDrv.McpUserManager.GetUser
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
 // bool                           ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // struct FMcpUserStatus          User                           (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-bool UMcpUserManager::GetUser(class FString McpId, struct FMcpUserStatus& User)
+bool UMcpUserManager::GetUser(const class FString& McpId, struct FMcpUserStatus& User)
 {
 	static UFunction* uFnGetUser = nullptr;
 
@@ -20218,11 +19792,11 @@ bool UMcpUserManager::GetUser(class FString McpId, struct FMcpUserStatus& User)
 };
 
 // Function IpDrv.McpUserManager.GetUsers
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<struct FMcpUserStatus>  Users                          (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<struct FMcpUserStatus> Users                          (CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpUserManager::GetUsers(TArray<struct FMcpUserStatus>& Users)
+void UMcpUserManager::GetUsers(class TArray<struct FMcpUserStatus>& Users)
 {
 	static UFunction* uFnGetUsers = nullptr;
 
@@ -20245,7 +19819,7 @@ void UMcpUserManager::GetUsers(TArray<struct FMcpUserStatus>& Users)
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserManager::OnQueryUsersRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -20258,8 +19832,8 @@ void UMcpUserManager::OnQueryUsersRequestComplete(class UHttpRequestInterface* R
 
 	UMcpUserManager_execOnQueryUsersRequestComplete_Params OnQueryUsersRequestComplete_Params;
 	memset(&OnQueryUsersRequestComplete_Params, 0, sizeof(OnQueryUsersRequestComplete_Params));
-	memcpy_s(&OnQueryUsersRequestComplete_Params.Request, sizeof(OnQueryUsersRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnQueryUsersRequestComplete_Params.Response, sizeof(OnQueryUsersRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnQueryUsersRequestComplete_Params.Request = Request;
+	OnQueryUsersRequestComplete_Params.Response = Response;
 	OnQueryUsersRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnQueryUsersRequestComplete, &OnQueryUsersRequestComplete_Params, nullptr);
@@ -20270,7 +19844,7 @@ void UMcpUserManager::OnQueryUsersRequestComplete(class UHttpRequestInterface* R
 // Parameter Info:
 // class FString                  JsonPayload                    (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserManager::ParseUsers(class FString JsonPayload)
+void UMcpUserManager::ParseUsers(const class FString& JsonPayload)
 {
 	static UFunction* uFnParseUsers = nullptr;
 
@@ -20287,11 +19861,11 @@ void UMcpUserManager::ParseUsers(class FString JsonPayload)
 };
 
 // Function IpDrv.McpUserManager.QueryUsers
-// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400420002] (FUNC_Defined | FUNC_Public | FUNC_HasOutParms | FUNC_AllFlags)
 // Parameter Info:
-// TArray<class FString>          McpIds                         (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
+// class TArray<class FString>    McpIds                         (CPF_Const | CPF_Parm | CPF_OutParm | CPF_NeedCtorLink)
 
-void UMcpUserManager::QueryUsers(TArray<class FString>& McpIds)
+void UMcpUserManager::QueryUsers(class TArray<class FString>& McpIds)
 {
 	static UFunction* uFnQueryUsers = nullptr;
 
@@ -20314,7 +19888,7 @@ void UMcpUserManager::QueryUsers(TArray<class FString>& McpIds)
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserManager::OnQueryUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -20327,20 +19901,20 @@ void UMcpUserManager::OnQueryUserRequestComplete(class UHttpRequestInterface* Re
 
 	UMcpUserManager_execOnQueryUserRequestComplete_Params OnQueryUserRequestComplete_Params;
 	memset(&OnQueryUserRequestComplete_Params, 0, sizeof(OnQueryUserRequestComplete_Params));
-	memcpy_s(&OnQueryUserRequestComplete_Params.Request, sizeof(OnQueryUserRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnQueryUserRequestComplete_Params.Response, sizeof(OnQueryUserRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnQueryUserRequestComplete_Params.Request = Request;
+	OnQueryUserRequestComplete_Params.Response = Response;
 	OnQueryUserRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnQueryUserRequestComplete, &OnQueryUserRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpUserManager.QueryUser
-// [0x400024002] (FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400024002] (FUNC_Defined | FUNC_NoExport | FUNC_OptionalParm | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
-// bool                           bShouldUpdateLastActive        (CPF_OptionalParm | CPF_Parm)
+// uint32_t                       bShouldUpdateLastActive        (CPF_OptionalParm | CPF_Parm)
 
-void UMcpUserManager::QueryUser(class FString McpId, bool bShouldUpdateLastActive)
+void UMcpUserManager::QueryUser(const class FString& McpId, bool bShouldUpdateLastActive)
 {
 	static UFunction* uFnQueryUser = nullptr;
 
@@ -20362,7 +19936,7 @@ void UMcpUserManager::QueryUser(class FString McpId, bool bShouldUpdateLastActiv
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserManager::OnAuthenticateUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -20375,21 +19949,21 @@ void UMcpUserManager::OnAuthenticateUserRequestComplete(class UHttpRequestInterf
 
 	UMcpUserManager_execOnAuthenticateUserRequestComplete_Params OnAuthenticateUserRequestComplete_Params;
 	memset(&OnAuthenticateUserRequestComplete_Params, 0, sizeof(OnAuthenticateUserRequestComplete_Params));
-	memcpy_s(&OnAuthenticateUserRequestComplete_Params.Request, sizeof(OnAuthenticateUserRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnAuthenticateUserRequestComplete_Params.Response, sizeof(OnAuthenticateUserRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnAuthenticateUserRequestComplete_Params.Request = Request;
+	OnAuthenticateUserRequestComplete_Params.Response = Response;
 	OnAuthenticateUserRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnAuthenticateUserRequestComplete, &OnAuthenticateUserRequestComplete_Params, nullptr);
 };
 
 // Function IpDrv.McpUserManager.AuthenticateUserMcp
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  McpId                          (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  ClientSecret                   (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UDID                           (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserManager::AuthenticateUserMcp(class FString McpId, class FString ClientSecret, class FString UDID)
+void UMcpUserManager::AuthenticateUserMcp(const class FString& McpId, const class FString& ClientSecret, const class FString& UDID)
 {
 	static UFunction* uFnAuthenticateUserMcp = nullptr;
 
@@ -20408,13 +19982,13 @@ void UMcpUserManager::AuthenticateUserMcp(class FString McpId, class FString Cli
 };
 
 // Function IpDrv.McpUserManager.AuthenticateUserFacebook
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  FacebookId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  FacebookToken                  (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  UDID                           (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserManager::AuthenticateUserFacebook(class FString FacebookId, class FString FacebookToken, class FString UDID)
+void UMcpUserManager::AuthenticateUserFacebook(const class FString& FacebookId, const class FString& FacebookToken, const class FString& UDID)
 {
 	static UFunction* uFnAuthenticateUserFacebook = nullptr;
 
@@ -20437,7 +20011,7 @@ void UMcpUserManager::AuthenticateUserFacebook(class FString FacebookId, class F
 // Parameter Info:
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // class UHttpResponseInterface*  Response                       (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
+// uint32_t                       bWasSuccessful                 (CPF_Parm)
 
 void UMcpUserManager::OnRegisterUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful)
 {
@@ -20450,8 +20024,8 @@ void UMcpUserManager::OnRegisterUserRequestComplete(class UHttpRequestInterface*
 
 	UMcpUserManager_execOnRegisterUserRequestComplete_Params OnRegisterUserRequestComplete_Params;
 	memset(&OnRegisterUserRequestComplete_Params, 0, sizeof(OnRegisterUserRequestComplete_Params));
-	memcpy_s(&OnRegisterUserRequestComplete_Params.Request, sizeof(OnRegisterUserRequestComplete_Params.Request), &Request, sizeof(Request));
-	memcpy_s(&OnRegisterUserRequestComplete_Params.Response, sizeof(OnRegisterUserRequestComplete_Params.Response), &Response, sizeof(Response));
+	OnRegisterUserRequestComplete_Params.Request = Request;
+	OnRegisterUserRequestComplete_Params.Response = Response;
 	OnRegisterUserRequestComplete_Params.bWasSuccessful = bWasSuccessful;
 
 	this->ProcessEvent(uFnOnRegisterUserRequestComplete, &OnRegisterUserRequestComplete_Params, nullptr);
@@ -20463,7 +20037,7 @@ void UMcpUserManager::OnRegisterUserRequestComplete(class UHttpRequestInterface*
 // int32_t                        ReturnValue                    (CPF_Parm | CPF_OutParm | CPF_ReturnParm)
 // class FString                  JsonPayload                    (CPF_Parm | CPF_NeedCtorLink)
 
-int32_t UMcpUserManager::ParseUser(class FString JsonPayload)
+int32_t UMcpUserManager::ParseUser(const class FString& JsonPayload)
 {
 	static UFunction* uFnParseUser = nullptr;
 
@@ -20482,12 +20056,12 @@ int32_t UMcpUserManager::ParseUser(class FString JsonPayload)
 };
 
 // Function IpDrv.McpUserManager.RegisterUserFacebook
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  FacebookId                     (CPF_Parm | CPF_NeedCtorLink)
 // class FString                  FacebookAuthToken              (CPF_Parm | CPF_NeedCtorLink)
 
-void UMcpUserManager::RegisterUserFacebook(class FString FacebookId, class FString FacebookAuthToken)
+void UMcpUserManager::RegisterUserFacebook(const class FString& FacebookId, const class FString& FacebookAuthToken)
 {
 	static UFunction* uFnRegisterUserFacebook = nullptr;
 
@@ -20505,7 +20079,7 @@ void UMcpUserManager::RegisterUserFacebook(class FString FacebookId, class FStri
 };
 
 // Function IpDrv.McpUserManager.RegisterUserGenerated
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void UMcpUserManager::RegisterUserGenerated()
@@ -20626,7 +20200,7 @@ void AWebConnection::CreateResponseObject()
 // Parameter Info:
 // class FString                  S                              (CPF_Parm | CPF_NeedCtorLink)
 
-void AWebConnection::ProcessPost(class FString S)
+void AWebConnection::ProcessPost(const class FString& S)
 {
 	static UFunction* uFnProcessPost = nullptr;
 
@@ -20647,7 +20221,7 @@ void AWebConnection::ProcessPost(class FString S)
 // Parameter Info:
 // class FString                  S                              (CPF_Parm | CPF_NeedCtorLink)
 
-void AWebConnection::ProcessGet(class FString S)
+void AWebConnection::ProcessGet(const class FString& S)
 {
 	static UFunction* uFnProcessGet = nullptr;
 
@@ -20668,7 +20242,7 @@ void AWebConnection::ProcessGet(class FString S)
 // Parameter Info:
 // class FString                  S                              (CPF_Parm | CPF_NeedCtorLink)
 
-void AWebConnection::ProcessHead(class FString S)
+void AWebConnection::ProcessHead(const class FString& S)
 {
 	static UFunction* uFnProcessHead = nullptr;
 
@@ -20685,11 +20259,11 @@ void AWebConnection::ProcessHead(class FString S)
 };
 
 // Function IpDrv.WebConnection.ReceivedLine
-// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020002] (FUNC_Defined | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  S                              (CPF_Parm | CPF_NeedCtorLink)
 
-void AWebConnection::ReceivedLine(class FString S)
+void AWebConnection::ReceivedLine(const class FString& S)
 {
 	static UFunction* uFnReceivedLine = nullptr;
 
@@ -20706,11 +20280,11 @@ void AWebConnection::ReceivedLine(class FString S)
 };
 
 // Function IpDrv.WebConnection.ReceivedText
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 // class FString                  Text                           (CPF_Parm | CPF_NeedCtorLink)
 
-void AWebConnection::eventReceivedText(class FString Text)
+void AWebConnection::eventReceivedText(const class FString& Text)
 {
 	static UFunction* uFnReceivedText = nullptr;
 
@@ -20727,7 +20301,7 @@ void AWebConnection::eventReceivedText(class FString Text)
 };
 
 // Function IpDrv.WebConnection.Timer
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void AWebConnection::eventTimer()
@@ -20746,7 +20320,7 @@ void AWebConnection::eventTimer()
 };
 
 // Function IpDrv.WebConnection.Closed
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void AWebConnection::eventClosed()
@@ -20765,7 +20339,7 @@ void AWebConnection::eventClosed()
 };
 
 // Function IpDrv.WebConnection.Accepted
-// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_NetValidate | FUNC_AllFlags)
+// [0x400020802] (FUNC_Defined | FUNC_Event | FUNC_Public | FUNC_AllFlags)
 // Parameter Info:
 
 void AWebConnection::eventAccepted()
@@ -20790,5 +20364,5 @@ void AWebConnection::eventAccepted()
 */
 
 #ifdef _MSC_VER
-	#pragma pack(pop)
+#pragma pack(pop)
 #endif
